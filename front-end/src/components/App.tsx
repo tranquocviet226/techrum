@@ -1,14 +1,28 @@
-import React from "react";
 import { Provider } from "react-redux";
+import { Router, Switch } from "react-router-dom";
 
-import { store } from "../store/";
+import { persistor, store } from "../store/";
+import history from "../services/RoutingService";
 
-import Counter from "../containers/counterContainer";
+import AuthContainer from "../containers/Login";
+import { PersistGate } from "redux-persist/integration/react";
+import PrivateRoute from "./PrivateRoute";
+import UnAuthRoute from './UnAuthRoute';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Counter />
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <Switch>
+            <UnAuthRoute path="/login" component={AuthContainer} exact />
+            <PrivateRoute path="/home" component={() => <div>
+              <text>asasjahs</text>
+            </div>} exact />
+            <UnAuthRoute path="/" component={AuthContainer} exact />
+          </Switch>
+        </Router>
+      </PersistGate>
     </Provider>
   );
 };
