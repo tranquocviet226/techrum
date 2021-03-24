@@ -15,7 +15,7 @@ import listEntity from '@entities/index';
         password: configService.get<string>('db_password'),
         database: configService.get<string>('db_name'),
         entities: listEntity,
-        synchronize: false
+        synchronize: true
       }),
       inject: [ConfigService]
     }),
