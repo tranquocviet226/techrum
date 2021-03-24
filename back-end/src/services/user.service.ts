@@ -14,7 +14,7 @@ export class UserService extends BaseService<UserEntity, UserRepository>{
   }
 
   findByEmail(email: string) : Promise<UserEntity> {
-    return this.repository.findOneOrFail({ where: { email:email }, cache: true });
+    return this.repository.findOne({ where: { email:email }, cache: true });
   }
 
   async createUser(registerRequest: RegisterRequest) : Promise<UserEntity> {
