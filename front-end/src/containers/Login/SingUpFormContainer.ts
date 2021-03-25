@@ -1,4 +1,3 @@
-import { omitBy } from "lodash";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { FormikErrors, withFormik } from "formik";
@@ -10,7 +9,6 @@ import SignUpForm, {
 import { register } from "../../actions/authAction";
 import signUpValidation from "./signUpValidation";
 import { User } from "../../entities/User";
-import userEvent from "@testing-library/user-event";
 
 interface OtherProps {
   register: (
@@ -26,16 +24,16 @@ const SignUpFormik = withFormik<OtherProps, FormValuesSignUp>({
   displayName: "SingUp Form",
   mapPropsToValues: () => ({
     email: "",
-    password: "",
+    new_password: "",
     firstName: "",
     lastName: "",
   }),
   validationSchema: signUpValidation,
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    const { email, password, firstName, lastName } = values;
+    const { email, new_password, firstName, lastName } = values;
     const newUser: User = {
       email: email,
-      password: password,
+      password: new_password,
       firstName: firstName,
       lastName: lastName,
       permissions: "",

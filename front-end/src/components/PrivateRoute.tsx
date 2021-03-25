@@ -3,20 +3,21 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { authSelector } from '../selectors/authSelector';
-import { AuthState } from '../types/authTypes';
 
 type Props = RouteProps & {
   component: React.ComponentType<any>,
-  auth?: AuthState;
+  isAuth?: boolean;
 }
 
-const PrivateRoute = ({ component: Component, auth, ...rest }:Props) => (
-  <Route
+const PrivateRoute = ({ component: Component, isAuth, ...rest }: Props) => {
+  console.log("PrivateRoute", isAuth);
+
+  return <Route
     {...rest}
-    render={props => (auth?.isAuth
+    render={props => (isAuth
       ? <Component {...props} />
       : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />)}
   />
-);
+}
 
 export default connect(authSelector, null)(PrivateRoute);

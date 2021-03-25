@@ -28,8 +28,6 @@ const SignInForm = (props: Props & FormikProps<FormValuesSignIn>) => {
     validForm,
     resetValid,
   } = props;
-  console.log(errors);
-
   return (
     <div className="form-container-l sign-in-container-l">
       <div style={{ color: "red" }}>{errors.api}</div>

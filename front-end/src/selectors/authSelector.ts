@@ -1,5 +1,7 @@
 import { AppState } from "../reducers";
 
 export const authSelector = (state: AppState) => ({
-  auth: state.auth,
+  email: state.auth.email,
+  isAuth: state.auth.isAuth,
+  accessToken: state.auth.accessToken
 });
