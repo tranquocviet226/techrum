@@ -12,15 +12,15 @@ const initialState: AuthState = {
 };
 
 const auth = (
-  state = initialState,
-  action: Action | AuthActionTypes
+  state: AuthState = initialState,
+  action: AuthActionTypes
 ): AuthState => {
   switch (action.type) {
     case AuthActionType.UPDATE_AUTH:
       return {
         ...state,
-        email: state.email,
-        isAuth: state.isAuth,
+        email: action.email,
+        isAuth: action.isAuth,
       };
     case AuthActionType.CLEAR_AUTH:
       return { ...initialState };

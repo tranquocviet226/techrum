@@ -8,7 +8,7 @@ function* signInSaga(action: SignInAction) {
   const { username, password, setErrors } = action;
   try {
     // const response = yield call([AuthApi, AuthApi.login], user);
-    // put response.data
+    // put response.data    
     yield put(updateAuth(username, true));
     history.push("/home");
   } catch (e) {

@@ -14,7 +14,7 @@ type Props = {
 
 export interface FormValuesSignUp {
   email: string;
-  password: string;
+  new_password: string;
   firstName: string;
   lastName: string;
   api?: string;
@@ -30,7 +30,6 @@ const SignUpForm = (props: Props & FormikProps<FormValuesSignUp>) => {
     validForm,
     resetValid,
   } = props;
-  console.log(errors);
   return (
     <div className="form-container-l sign-up-container-l">
       <form onSubmit={handleSubmit}>
@@ -70,14 +69,14 @@ const SignUpForm = (props: Props & FormikProps<FormValuesSignUp>) => {
         </div>
         <Input
           type="password"
-          name="password"
-          id="password"
-          value={values["password"] || ""}
+          name="new_password"
+          id="new_password"
+          value={values["new_password"] || ""}
           placeholder="Password"
           onChange={handleChange}
         />
         <div className="input-error">
-          {validForm && touched.password && errors["password"]}
+          {validForm && touched.new_password && errors["new_password"]}
         </div>
         <button
           onClick={resetValid}

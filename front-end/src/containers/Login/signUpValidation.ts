@@ -6,7 +6,7 @@ export default Yup.object().shape({
   email: Yup.string()
     .required('Email is required')
     .email('Email invalid format'),
-  password: Yup.string()
+  new_password: Yup.string()
     .required('Password is required')
     .min(6, 'Password must have min 6 characters')
     .matches(PASSWORD_REGEX, 'Password invalid format'),

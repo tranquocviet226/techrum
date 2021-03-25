@@ -10,21 +10,21 @@ import { connect } from "react-redux";
 
 import { authSelector } from "../selectors/authSelector";
 import { DEFAULT_PATH } from "../constants";
-import { AuthState } from "../types/authTypes";
 
 type Props = RouteComponentProps & {
   path: RouteProps["path"];
   exact: RouteProps["exact"];
   component: React.ComponentType<any>;
-  auth?: AuthState;
+  isAuth: boolean;
 };
 
-const UnAuthRoute = ({ component: Component, auth, ...rest }: Props) => {
+const UnAuthRoute = ({ component: Component, isAuth, ...rest }: Props) => {
+  console.log("UnAuthRoute", isAuth);
   return (
     <Route
       {...rest}
       render={(props) =>
-        !auth?.isAuth ? (
+        !isAuth ? (
           <Component {...props} />
         ) : (
           <Redirect
