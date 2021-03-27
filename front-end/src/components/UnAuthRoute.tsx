@@ -18,8 +18,7 @@ type Props = RouteComponentProps & {
   isAuth: boolean;
 };
 
-const UnAuthRoute = ({ component: Component, isAuth, ...rest }: Props) => {
-  console.log("UnAuthRoute", isAuth);
+const UnAuthRoute = ({ component: Component, isAuth, path, ...rest }: Props) => {
   return (
     <Route
       {...rest}

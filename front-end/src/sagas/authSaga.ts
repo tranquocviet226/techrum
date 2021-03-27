@@ -10,7 +10,7 @@ function* signInSaga(action: SignInAction) {
     // const response = yield call([AuthApi, AuthApi.login], user);
     // put response.data    
     yield put(updateAuth(username, true));
-    history.push("/home");
+    history.push("/admin/dashboard");
   } catch (e) {
     // errors by server response, setErrors of formik
     setErrors({ api: e.message });

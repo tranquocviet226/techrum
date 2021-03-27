@@ -9,14 +9,12 @@ type Props = RouteProps & {
   isAuth?: boolean;
 }
 
-const PrivateRoute = ({ component: Component, isAuth, ...rest }: Props) => {
-  console.log("PrivateRoute", isAuth);
-
+const PrivateRoute = ({ component: Component, isAuth,path, ...rest }: Props) => {
   return <Route
     {...rest}
     render={props => (isAuth
       ? <Component {...props} />
-      : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />)}
+      : <Redirect to={{ pathname: '/admin/login', state: { from: props.location } }} />)}
   />
 }
 
