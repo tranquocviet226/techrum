@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -15,10 +15,8 @@ import routes from '../types/dashboardRoutes';
 
 import dashboardStyle from '../assets/jss/material-dashboard-react/layouts/dashboardStyle';
 
-import image from '../assets/img/sidebar-2.jpg';
+import imageDefault from '../assets/img/sidebar-2.jpg';
 import logo from '../assets/img/reactlogo.png';
-import UnAuthRoute from '../components/UnAuthRoute';
-import PrivateRoute from '../components/PrivateRoute';
 
 const switchRoutes = (
   <Switch>
@@ -41,113 +39,78 @@ const switchRoutes = (
 interface Props {
   classes: any;
   location: any;
+  history: any;
 }
 
-interface State {
-  image: string;
-  color: string;
-  hasImage: boolean;
-  fixedClasses: string;
-  mobileOpen: boolean;
-}
+const Dashboard : React.FC<Props> = (props) => {
+  const { classes, ...rest } = props;
+   const refs = createRef<any>()
 
-class Dashboard extends React.Component<Props, State> {
-  refs: any;
+  const [mobileOpen, setMobileOpen] = useState(false)
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      image: image,
-      color: 'blue',
-      hasImage: true,
-      fixedClasses: 'dropdown show',
-      mobileOpen: false
-    };
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
   }
 
-  handleImageClick = (i: string) => {
-    this.setState({ image: i });
+  const getRoute = () => {
+    return props.location.pathname !== '/admin/maps';
   }
 
-  handleColorClick = (c: string) => {
-    this.setState({ color: c });
-  }
-
-  handleFixedClick = () => {
-    if (this.state.fixedClasses === 'dropdown') {
-      this.setState({ fixedClasses: 'dropdown show' });
-    } else {
-      this.setState({ fixedClasses: 'dropdown' });
-    }
-  }
-
-  handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
-  }
-
-  getRoute() {
-    return this.props.location.pathname !== '/admin/maps';
-  }
-
-  resizeFunction = () => {
+  const resizeFunction = () => {
     if (window.innerWidth >= 960) {
-      this.setState({ mobileOpen: false });
+      setMobileOpen(false)
     }
   }
 
-  componentDidMount() {
+  useEffect(() => {
     if (navigator.platform.indexOf('Win') > -1) {
-      const ps = new PerfectScrollbar(this.refs.mainPanel);
+      const ps = new PerfectScrollbar(refs.current.mainPanel);
     }
-    window.addEventListener('resize', this.resizeFunction);
-  }
+    window.addEventListener('resize', resizeFunction);
+    return () => {
+      window.removeEventListener('resize', resizeFunction);
+    }
+  }, [])
 
-  componentDidUpdate(e: any) {
-    if (e.history.location.pathname !== e.location.pathname) {
-      this.refs.mainPanel.scrollTop = 0;
-      if (this.state.mobileOpen) {
-        this.setState({ mobileOpen: false });
+  useEffect(() => {
+    if (props.history.location.pathname !== props.location.pathname) {
+      refs.current.mainPanel.scrollTop = 0;
+      if (mobileOpen) {
+        setMobileOpen(false)
       }
     }
-  }
+  })
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resizeFunction);
-  }
-
-  render() {
-    const { classes, ...rest } = this.props;
     return (
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
           logoText={'Creative Tim'}
           logo={logo}
-          image={this.state.image}
-          handleDrawerToggle={this.handleDrawerToggle}
-          open={this.state.mobileOpen}
-          color={this.state.color}
+          handleDrawerToggle={handleDrawerToggle}
+          open={mobileOpen}
+          image={imageDefault}
+          color='blue'
           {...rest}
         />
-        <div className={classes.mainPanel} ref="mainPanel">
+        <div className={classes.mainPanel} ref={refs}>
           <Navbar
             routes={routes}
-            handleDrawerToggle={this.handleDrawerToggle}
+            handleDrawerToggle={handleDrawerToggle}
             {...rest}
           />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-          {this.getRoute() ? (
+          {getRoute() ? (
             <div className={classes.content}>
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
             <div className={classes.map}>{switchRoutes}</div>
           )}
-          {this.getRoute() ? <Footer /> : null}
+          {getRoute() ? <Footer /> : null}
         </div>
       </div>
     );
-  }
 }
 
 export default withStyles(dashboardStyle)(Dashboard);

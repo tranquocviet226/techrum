@@ -18,7 +18,7 @@ import sidebarStyle from '../../../assets/jss/material-dashboard-react/component
 
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
-  function activeRoute(routeName: any) {
+  const activeRoute = (routeName: any) => {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
   const { classes, color, logo, image, logoText, routes } = props;
