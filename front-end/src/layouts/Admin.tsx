@@ -61,10 +61,9 @@ const Dashboard : React.FC<Props> = (props) => {
       setMobileOpen(false)
     }
   }
-
   useEffect(() => {
     if (navigator.platform.indexOf('Win') > -1) {
-      const ps = new PerfectScrollbar(refs.current.mainPanel);
+      const ps = new PerfectScrollbar(refs.current);
     }
     window.addEventListener('resize', resizeFunction);
     return () => {
@@ -74,7 +73,7 @@ const Dashboard : React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (props.history.location.pathname !== props.location.pathname) {
-      refs.current.mainPanel.scrollTop = 0;
+      refs.current.scrollTop = 0;
       if (mobileOpen) {
         setMobileOpen(false)
       }
