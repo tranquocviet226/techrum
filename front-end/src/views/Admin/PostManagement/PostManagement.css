@@ -1,0 +1,9 @@
+.container {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-container {
+  margin-bottom: 16px;
+}

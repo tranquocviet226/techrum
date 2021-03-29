@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
-
+import './i18n/config';
 import { persistor, store } from "./store";
 import history from "./services/RoutingService";
 
