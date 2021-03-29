@@ -1,0 +1,9 @@
+{
+  "POST_SCREEN": {
+    "post_title": "Title",
+    "label": "Label",
+    "post_date": "Date",
+    "publish": "Publish",
+    "preview": "Preview"
+  }
+}
