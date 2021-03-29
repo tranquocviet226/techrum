@@ -3,17 +3,17 @@ import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import InputLabel from '@material-ui/core/InputLabel';
 // core components
-import GridItem from '../../components/MaterialCommon/Grid/GridItem';
-import GridContainer from '../../components/MaterialCommon/Grid/GridContainer';
-import CustomInput from '../../components/MaterialCommon/CustomInput/CustomInput';
-import Button from '../../components/MaterialCommon/CustomButtons/Button';
-import Card from '../../components/MaterialCommon/Card/Card';
-import CardHeader from '../../components/MaterialCommon/Card/CardHeader';
-import CardAvatar from '../../components/MaterialCommon/Card/CardAvatar';
-import CardBody from '../../components/MaterialCommon/Card/CardBody';
-import CardFooter from '../../components/MaterialCommon/Card/CardFooter';
+import GridItem from 'components/MaterialCommon/Grid/GridItem';
+import GridContainer from 'components/MaterialCommon/Grid/GridContainer';
+import CustomInput from 'components/MaterialCommon/CustomInput/CustomInput';
+import Button from 'components/MaterialCommon/CustomButtons/Button';
+import Card from 'components/MaterialCommon/Card/Card';
+import CardHeader from 'components/MaterialCommon/Card/CardHeader';
+import CardAvatar from 'components/MaterialCommon/Card/CardAvatar';
+import CardBody from 'components/MaterialCommon/Card/CardBody';
+import CardFooter from 'components/MaterialCommon/Card/CardFooter';
 
-import avatar from '../../assets/img/faces/marc.jpg';
+import avatar from 'assets/img/faces/marc.jpg';
 import { createStyles } from '@material-ui/core';
 
 const styles = createStyles({
