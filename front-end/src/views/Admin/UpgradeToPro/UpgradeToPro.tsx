@@ -5,14 +5,14 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Close from '@material-ui/icons/Close';
 import Check from '@material-ui/icons/Check';
 // core components
-import GridItem from '../../components/MaterialCommon/Grid/GridItem';
-import GridContainer from '../../components/MaterialCommon/Grid/GridContainer';
-import Danger from '../../components/MaterialCommon/Typography/Danger';
-import Success from '../../components/MaterialCommon/Typography/Success';
-import Button from '../../components/MaterialCommon/CustomButtons/Button';
-import Card from '../../components/MaterialCommon/Card/Card';
-import CardHeader from '../../components/MaterialCommon/Card/CardHeader';
-import CardBody from '../../components/MaterialCommon/Card/CardBody';
+import GridItem from 'components/MaterialCommon/Grid/GridItem';
+import GridContainer from 'components/MaterialCommon/Grid/GridContainer';
+import Danger from 'components/MaterialCommon/Typography/Danger';
+import Success from 'components/MaterialCommon/Typography/Success';
+import Button from 'components/MaterialCommon/CustomButtons/Button';
+import Card from 'components/MaterialCommon/Card/Card';
+import CardHeader from 'components/MaterialCommon/Card/CardHeader';
+import CardBody from 'components/MaterialCommon/Card/CardBody';
 import { createStyles } from '@material-ui/core';
 
 const styles = createStyles({

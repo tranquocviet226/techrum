@@ -17,27 +17,27 @@ import BugReport from '@material-ui/icons/BugReport';
 import Code from '@material-ui/icons/Code';
 import Cloud from '@material-ui/icons/Cloud';
 // core components
-import GridItem from '../../components/MaterialCommon/Grid/GridItem';
-import GridContainer from '../../components/MaterialCommon/Grid/GridContainer';
-import Table from '../../components/MaterialCommon/Table/Table';
-import Tasks from '../../components/MaterialCommon/Tasks/Tasks';
-import CustomTabs from '../../components/MaterialCommon/CustomTabs/CustomTabs';
-import Danger from '../../components/MaterialCommon/Typography/Danger';
-import Card from '../../components/MaterialCommon/Card/Card';
-import CardHeader from '../../components/MaterialCommon/Card/CardHeader';
-import CardIcon from '../../components/MaterialCommon/Card/CardIcon';
-import CardBody from '../../components/MaterialCommon/Card/CardBody';
-import CardFooter from '../../components/MaterialCommon/Card/CardFooter';
+import GridItem from 'components/MaterialCommon/Grid/GridItem';
+import GridContainer from 'components/MaterialCommon/Grid/GridContainer';
+import Table from 'components/MaterialCommon/Table/Table';
+import Tasks from 'components/MaterialCommon/Tasks/Tasks';
+import CustomTabs from 'components/MaterialCommon/CustomTabs/CustomTabs';
+import Danger from 'components/MaterialCommon/Typography/Danger';
+import Card from 'components/MaterialCommon/Card/Card';
+import CardHeader from 'components/MaterialCommon/Card/CardHeader';
+import CardIcon from 'components/MaterialCommon/Card/CardIcon';
+import CardBody from 'components/MaterialCommon/Card/CardBody';
+import CardFooter from 'components/MaterialCommon/Card/CardFooter';
 
-import { bugs, website, server } from '../../variables/general';
+import { bugs, website, server } from 'variables/general';
 
 import {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart
-} from '../../variables/charts';
+} from 'variables/charts';
 
-import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle';
+import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle';
 
 interface Props {
   classes: any;

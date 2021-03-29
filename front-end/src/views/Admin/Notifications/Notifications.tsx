@@ -4,14 +4,14 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // @material-ui/icons
 import AddAlert from '@material-ui/icons/AddAlert';
 // core components
-import GridItem from '../../components/MaterialCommon/Grid/GridItem';
-import GridContainer from '../../components/MaterialCommon/Grid/GridContainer';
-import Button from '../../components/MaterialCommon/CustomButtons/Button';
-import SnackbarContent from '../../components/MaterialCommon/Snackbar/SnackbarContent';
-import Snackbar from '../../components/MaterialCommon/Snackbar/Snackbar';
-import Card from '../../components/MaterialCommon/Card/Card';
-import CardHeader from '../../components/MaterialCommon/Card/CardHeader';
-import CardBody from '../../components/MaterialCommon/Card/CardBody';
+import GridItem from 'components/MaterialCommon/Grid/GridItem';
+import GridContainer from 'components/MaterialCommon/Grid/GridContainer';
+import Button from 'components/MaterialCommon/CustomButtons/Button';
+import SnackbarContent from 'components/MaterialCommon/Snackbar/SnackbarContent';
+import Snackbar from 'components/MaterialCommon/Snackbar/Snackbar';
+import Card from 'components/MaterialCommon/Card/Card';
+import CardHeader from 'components/MaterialCommon/Card/CardHeader';
+import CardBody from 'components/MaterialCommon/Card/CardBody';
 import { createStyles } from '@material-ui/core';
 
 const styles = createStyles({

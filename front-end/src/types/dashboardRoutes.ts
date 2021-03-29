@@ -8,39 +8,36 @@ import Notifications from '@material-ui/icons/Notifications';
 import Unarchive from '@material-ui/icons/Unarchive';
 import Language from '@material-ui/icons/Language';
 // core components/views for Admin layout
-import DashboardPage from '../views/Dashboard/Dashboard';
-import UserProfile from '../views/UserProfile/UserProfile';
-import TableList from '../views/TableList/TableList';
-import Typography from '../views/Typography/Typography';
-import Icons from '../views/Icons/Icons';
-import Maps from '../views/Maps/Maps';
-import NotificationsPage from '../views/Notifications/Notifications';
-import UpgradeToPro from '../views/UpgradeToPro/UpgradeToPro';
+import DashboardPage from 'views/Admin/Dashboard/Dashboard';
+import PostManagement from 'views/Admin/PostManagement/PostManagement';
+import TableList from 'views/Admin/TableList/TableList';
+import Typography from 'views/Admin/Typography/Typography';
+import Icons from 'views/Admin/Icons/Icons';
+import Maps from 'views/Admin/Maps/Maps';
+import NotificationsPage from 'views/Admin/Notifications/Notifications';
+import UpgradeToPro from 'views/Admin/UpgradeToPro/UpgradeToPro';
 // core components/views for RTL layout
-import AuthContainer from "../containers/Login";
-import RTLPage from '../views/RTLPage/RTLPage';
+import AuthContainer from "containers/Login";
+import RTLPage from 'views/Admin/RTLPage/RTLPage';
 
 const dashboardRoutes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    rtlName: 'لوحة القيادة',
     icon: Dashboard,
     component: DashboardPage,
     layout: '/admin'
   },
   {
-    path: '/user',
-    name: 'User Profile',
-    rtlName: 'ملف تعريفي للمستخدم',
+    path: '/post',
+    name: 'Post Management',
     icon: Person,
-    component: UserProfile,
+    component: PostManagement,
     layout: '/admin'
   },
   {
     path: '/table',
-    name: 'Table List',
-    rtlName: 'قائمة الجدول',
+    name: 'Category',
     icon: 'content_paste',
     component: TableList,
     layout: '/admin'
@@ -48,7 +45,6 @@ const dashboardRoutes = [
   {
     path: '/typography',
     name: 'Typography',
-    rtlName: 'طباعة',
     icon: LibraryBooks,
     component: Typography,
     layout: '/admin'
@@ -56,7 +52,6 @@ const dashboardRoutes = [
   {
     path: '/icons',
     name: 'Icons',
-    rtlName: 'الرموز',
     icon: BubbleChart,
     component: Icons,
     layout: '/admin'
@@ -64,7 +59,6 @@ const dashboardRoutes = [
   {
     path: '/maps',
     name: 'Maps',
-    rtlName: 'خرائط',
     icon: LocationOn,
     component: Maps,
     layout: '/admin'
@@ -72,7 +66,6 @@ const dashboardRoutes = [
   {
     path: '/notifications',
     name: 'Notifications',
-    rtlName: 'إخطارات',
     icon: Notifications,
     component: NotificationsPage,
     layout: '/admin'
@@ -80,7 +73,6 @@ const dashboardRoutes = [
   {
     path: '/upgrade-to-pro',
     name: 'Upgrade To PRO',
-    rtlName: 'التطور للاحترافية',
     icon: Unarchive,
     component: UpgradeToPro,
     layout: '/admin'

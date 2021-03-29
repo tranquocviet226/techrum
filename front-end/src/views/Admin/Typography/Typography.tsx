@@ -2,16 +2,16 @@ import React from 'react';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 // core components
-import Quote from '../../components/MaterialCommon/Typography/Quote';
-import Muted from '../../components/MaterialCommon/Typography/Muted';
-import Primary from '../../components/MaterialCommon/Typography/Primary';
-import Info from '../../components/MaterialCommon/Typography/Info';
-import Success from '../../components/MaterialCommon/Typography/Success';
-import Warning from '../../components/MaterialCommon/Typography/Warning';
-import Danger from '../../components/MaterialCommon/Typography/Danger';
-import Card from '../../components/MaterialCommon/Card/Card';
-import CardHeader from '../../components/MaterialCommon/Card/CardHeader';
-import CardBody from '../../components/MaterialCommon/Card/CardBody';
+import Quote from 'components/MaterialCommon/Typography/Quote';
+import Muted from 'components/MaterialCommon/Typography/Muted';
+import Primary from 'components/MaterialCommon/Typography/Primary';
+import Info from 'components/MaterialCommon/Typography/Info';
+import Success from 'components/MaterialCommon/Typography/Success';
+import Warning from 'components/MaterialCommon/Typography/Warning';
+import Danger from 'components/MaterialCommon/Typography/Danger';
+import Card from 'components/MaterialCommon/Card/Card';
+import CardHeader from 'components/MaterialCommon/Card/CardHeader';
+import CardBody from 'components/MaterialCommon/Card/CardBody';
 import { createStyles } from '@material-ui/core';
 
 const style = createStyles({
