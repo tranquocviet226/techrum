@@ -5,4 +5,4 @@ export default (): Record<string, any> => ({
   db_username: process.env.TYPEORM_USERNAME,
   db_password: process.env.TYPEORM_PASSWORD,
   db_name: process.env.TYPEORM_DATABASE,
-})
+});

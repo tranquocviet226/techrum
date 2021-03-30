@@ -11,7 +11,7 @@ async function bootstrap() {
   const APP_VERSION = config.get<string>('app_ver');
   const APP_DESCRIPTION = config.get<string>('app_description');
   const SWAGGER_AUTH_PATH = config.get<string>('swagger_auth_path');
-  const APP_PORT =  config.get<number>('app_port');
+  const APP_PORT = config.get<number>('app_port');
 
   const options = new DocumentBuilder()
     .setTitle(APP_NAME)
@@ -27,4 +27,4 @@ async function bootstrap() {
 
   await app.listen(APP_PORT | 3000);
 }
-( async () =>  await bootstrap() )();
+(async () => await bootstrap())();

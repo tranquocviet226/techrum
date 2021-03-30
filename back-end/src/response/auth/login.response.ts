@@ -1,15 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class LoginResponse {
-
   @ApiProperty()
-  accessToken : string;
+  accessToken: string;
   @ApiProperty()
-  expiresIn : number;
+  expiresIn: number;
   @ApiProperty()
   tokenType: string;
 
-  constructor(accessToken: string, expiresIn: number, tokenType: string ) {
+  constructor(accessToken: string, expiresIn: number, tokenType: string) {
     this.accessToken = accessToken;
     this.expiresIn = expiresIn;
     this.tokenType = tokenType;

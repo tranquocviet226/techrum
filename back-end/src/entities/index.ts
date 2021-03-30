@@ -1,4 +1,4 @@
-import {UserEntity} from './user.entity';
-import {RoleEntity} from '@entities/role.entity';
+import { UserEntity } from './user.entity';
+import { RoleEntity } from '@entities/role.entity';
 
-export default [UserEntity,RoleEntity];
+export default [UserEntity, RoleEntity];
