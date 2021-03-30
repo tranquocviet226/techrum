@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import * as path from 'path';
 import { I18nModule, I18nJsonParser } from 'nestjs-i18n';
-import {  ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [

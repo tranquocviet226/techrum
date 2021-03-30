@@ -1,9 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserEntity } from '@entities/user.entity';
-import * as bcrypt from 'bcrypt'
-import { JwtService } from '@nestjs/jwt'
-import { ConfigService } from '@nestjs/config'
+import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class TokenFactoryService {
@@ -11,44 +11,45 @@ export class TokenFactoryService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
-  ) {
-  }
+  ) {}
 
   async validateUser(email: string, password: string): Promise<UserEntity> {
-    const user = await this.userService.findByEmail(email)
+    const user = await this.userService.findByEmail(email);
     if (!user) {
-      throw new UnauthorizedException('Username or password is incorrect')
+      throw new UnauthorizedException('Username or password is incorrect');
     }
     // system using bcrypt of laravel
     //if want compare for bcrypt of nodejs using code bellow !
-    const currentPasswordHash = (user.password).replace('$2y$', '$2a$');
+    const currentPasswordHash = user.password.replace('$2y$', '$2a$');
 
-    const compareResult = await bcrypt.compare(password, user.password)
+    const compareResult = await bcrypt.compare(password, user.password);
     if (!compareResult) {
-      throw new UnauthorizedException('Username or password is incorrect')
+      throw new UnauthorizedException('Username or password is incorrect');
     }
 
-    return user
+    return user;
   }
 
-  async generateJwtToken(user: UserEntity): Promise<{ accessToken: string ,expiresIn: number }> {
+  async generateJwtToken(
+    user: UserEntity,
+  ): Promise<{ accessToken: string; expiresIn: number }> {
     const payload = {
-      userId: user.id
-    }
+      userId: user.id,
+    };
 
     return {
       accessToken: await this.jwtService.signAsync(payload, {
         expiresIn: this.configService.get<string>('time_to_life'),
       }),
-      expiresIn: this.getTimeExpiresIn()
-    }
+      expiresIn: this.getTimeExpiresIn(),
+    };
   }
 
-  getTimeExpiresIn() : number {
-    const timeToLife = parseInt(this.configService.get<string>('time_to_life')) | 30;
+  getTimeExpiresIn(): number {
+    const timeToLife =
+      parseInt(this.configService.get<string>('time_to_life')) | 30;
     const today = new Date();
     today.setDate(today.getDate() + timeToLife);
     return today.getTime();
   }
-
 }

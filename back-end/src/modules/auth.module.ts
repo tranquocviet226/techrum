@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common'
+import { Module } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { CustomLoggerService } from '../logger/custom.logger.service';
 import { AuthController } from '../controlles/auth.controller';
@@ -10,10 +10,8 @@ import { AuthService } from '@service/auth.service';
 import { TokenFactoryService } from '@service/token.factory.service';
 
 @Module({
-  imports:[
-    TypeOrmModule.forFeature([
-    UserRepository,
-    ]),
+  imports: [
+    TypeOrmModule.forFeature([UserRepository]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -21,10 +19,11 @@ import { TokenFactoryService } from '@service/token.factory.service';
       }),
       inject: [ConfigService],
     }),
-    ConfigService,CustomLoggerService],
-  controllers:[AuthController],
-  providers: [UserService,AuthService,TokenFactoryService],
+    ConfigService,
+    CustomLoggerService,
+  ],
+  controllers: [AuthController],
+  providers: [UserService, AuthService, TokenFactoryService],
   exports: [TypeOrmModule],
 })
-export class AuthModule {
-}
+export class AuthModule {}
