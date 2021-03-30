@@ -47,14 +47,12 @@ export class UserEntity extends BaseEntity {
   lastLogin: Date;
 
   @CreateDateColumn({
-    default: null,
     nullable: true,
     name: 'created_at',
   })
   createdAt: string;
 
   @UpdateDateColumn({
-    default: null,
     nullable: true,
     name: 'updated_at',
   })
