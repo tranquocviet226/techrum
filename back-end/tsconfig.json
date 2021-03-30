@@ -15,10 +15,14 @@
       "@config/*": ["src/config/*"],
       "@entities/*": ["src/entities/*"],
       "@modules/*": ["src/modules/*"],
-      "@request/*": ["src/requests/*"],
+      "@requests/*": ["src/requests/*"],
       "@response/*": ["src/response/*"],
       "@utils/*": ["src/utils/*"],
-      "@service/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@logger/*": ["src/logger/*"],
+      "@repository/*": ["src/repository/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@database/*": ["src/database/*"]
     }
   }
 }

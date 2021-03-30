@@ -1,9 +1,9 @@
-import { RegisterRequest } from './../requests/auth/register.request';
-import { Injectable } from '@nestjs/common';
-import { BaseService } from './base.service';
-import { CustomLoggerService } from '../logger/custom.logger.service';
 import { UserEntity } from '@entities/user.entity';
-import { UserRepository } from '../repository/user.repository';
+import { CustomLoggerService } from '@logger/custom.logger.service';
+import { Injectable } from '@nestjs/common';
+import { UserRepository } from '@repository/user.repository';
+import { RegisterRequest } from '@requests/auth/register.request';
+import { BaseService } from '@services/base.service';
 import * as bcrypt from 'bcrypt';
 import { validate } from 'class-validator';
 

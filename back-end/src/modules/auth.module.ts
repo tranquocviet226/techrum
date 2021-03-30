@@ -1,13 +1,13 @@
+import { AuthController } from '@controllers/auth.controller';
+import { CustomLoggerService } from '@logger/custom.logger.service';
 import { Module } from '@nestjs/common';
-import { UserService } from '../services/user.service';
-import { CustomLoggerService } from '../logger/custom.logger.service';
-import { AuthController } from '../controlles/auth.controller';
-import { UserRepository } from '../repository/user.repository';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthService } from '@service/auth.service';
-import { TokenFactoryService } from '@service/token.factory.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserRepository } from '@repository/user.repository';
+import { AuthService } from '@services/auth/auth.service';
+import { TokenFactoryService } from '@services/auth/token.factory.service';
+import { UserService } from '@services/auth/user.service';
 
 @Module({
   imports: [

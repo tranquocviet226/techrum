@@ -1,17 +1,17 @@
-import { RegisterResponse } from './../response/auth/register.response';
-import { Controller, Post, Body, Put } from '@nestjs/common';
-import { LoginRequest } from '@request/auth/login.request';
-import { LoginResponse } from '@response/auth/login.response';
+import { Body, Controller, Post, Put } from '@nestjs/common';
 import {
   ApiOkResponse,
   ApiResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { LoginRequest } from '@requests/auth/login.request';
+import { RegisterRequest } from '@requests/auth/register.request';
+import { VerifyPhoneRequest } from '@requests/auth/verify-phone.request';
+import { LoginResponse } from '@response/auth/login.response';
+import { RegisterResponse } from '@response/auth/register.response';
+import { AuthService } from '@services/auth/auth.service';
 import { SWAGGER_MSG } from '@utils/constant';
-import { AuthService } from '@service/auth.service';
-import { RegisterRequest } from '@request/auth/register.request';
-import { VerifyPhoneRequest } from '@request/auth/verify-phone.request';
 
 @ApiTags('Auth Controller')
 @Controller('auth')

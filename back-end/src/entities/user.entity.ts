@@ -1,6 +1,8 @@
+import { RoleEntity } from '@entities/role.entity';
+import { Exclude, Expose } from 'class-transformer';
+import { IsEmail, Length } from 'class-validator';
 import {
   BaseEntity,
-  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -8,10 +10,7 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exclude, Expose } from 'class-transformer';
 import { JoinTable, ManyToMany } from 'typeorm/index';
-import { RoleEntity } from '@entities/role.entity';
-import { IsEmail, Length } from 'class-validator';
 
 @Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
