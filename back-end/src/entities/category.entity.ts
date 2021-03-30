@@ -1,3 +1,4 @@
+import { IsNumber } from 'class-validator';
 import {
   BaseEntity,
   Column,
@@ -14,35 +15,37 @@ export class CategoryEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Unique(['parent_id'])
   @Column({ name: 'parent_id' })
+  @IsNumber({}, { message: 'Incorrect value' })
   parentId: number;
 
+  @Unique(['slug'])
   @Column()
   slug: string;
 
   @Column()
+  @IsNumber({}, { message: 'Incorrect value' })
   position: number;
 
   @Column({ name: 'is_searchable' })
-  isSearchable: boolean;
+  @IsNumber({}, { message: 'Incorrect value' })
+  isSearchable: number;
 
   @Column({ name: 'is_active' })
-  isActive: boolean;
+  @IsNumber({}, { message: 'Incorrect value' })
+  isActive: number;
 
   @CreateDateColumn({
-    default: null,
     nullable: true,
     name: 'created_at',
   })
-  createdAt: string;
+  createdAt: Date;
 
   @UpdateDateColumn({
-    default: null,
     nullable: true,
     name: 'updated_at',
   })
-  updatedAt: string;
+  updatedAt: Date;
 
   @ManyToMany(type => CategoryEntity, { cascade: true })
   @JoinColumn({
