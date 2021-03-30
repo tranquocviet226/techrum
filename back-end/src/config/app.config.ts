@@ -4,7 +4,7 @@ export default (): Record<string, any> => ({
   app_env: process.env.APP_ENV,
   app_key: process.env.APP_KEY,
   app_debug: process.env.APP_DEBUG,
-  ap_url: process.env.APP_URL,
+  app_url: process.env.APP_URL,
   app_lang: process.env.APP_LANG,
   app_ver: process.env.APP_VER,
   app_description: process.env.APP_DESCRIPTON,

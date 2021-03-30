@@ -1,11 +1,11 @@
-import { RegisterResponse } from './../response/auth/register.response';
 import { Injectable } from '@nestjs/common';
-import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
-import { TokenFactoryService } from '@service/token.factory.service';
+import { RegisterRequest } from '@requests/auth/register.request';
 import { LoginResponse } from '@response/auth/login.response';
+import { RegisterResponse } from '@response/auth/register.response';
+import { TokenFactoryService } from '@services/auth/token.factory.service';
 import { AUTH_TYPE } from '@utils/constant';
-import { RegisterRequest } from '@request/auth/register.request';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthService {
