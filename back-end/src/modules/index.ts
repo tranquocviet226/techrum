@@ -1,6 +1,6 @@
 import { DatabaseModule } from '@database/database.module';
 import { LoggerModule } from '@logger/logger.module';
 import { AuthModule } from '@modules/auth.module';
-import { CategoryModule } from '@modules/category.module';
+import { CatalogModule } from '@modules/catalog.module';
 
-export default [DatabaseModule, LoggerModule, AuthModule, CategoryModule];
+export default [DatabaseModule, LoggerModule, AuthModule, CatalogModule];

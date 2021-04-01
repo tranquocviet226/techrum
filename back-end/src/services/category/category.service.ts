@@ -21,13 +21,19 @@ export class CategoryService extends BaseService<
     super(repository, logger);
   }
 
-  async findAll(): Promise<CategoryResponse[]> {
-    const category = await this.repository.find();
-    const categoryResponse = await this.categoryFactoryService.factoryCategory(
-      category,
-    );
+  async findAll(): Promise<CategoryResponse> {
+    try {
+      const category = await this.repository.find();
+      const response = new CategoryResponse(true, 200, 'success', category);
 
-    return categoryResponse;
+      return response;
+    } catch (error) {
+      const code = HttpStatus.NOT_FOUND;
+      const message = 'error';
+      const response = new CategoryResponse(false, code, message, error);
+
+      return response;
+    }
   }
 
   async createCategory(

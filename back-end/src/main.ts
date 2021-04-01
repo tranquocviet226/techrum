@@ -1,5 +1,5 @@
 import { AuthModule } from '@modules/auth.module';
-import { CategoryModule } from '@modules/category.module';
+import { CatalogModule } from '@modules/catalog.module';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -22,7 +22,7 @@ async function bootstrap() {
     .build();
 
   const apiDocument = SwaggerModule.createDocument(app, options, {
-    include: [AuthModule, CategoryModule],
+    include: [AuthModule, CatalogModule],
   });
   SwaggerModule.setup(SWAGGER_API_DOCS, app, apiDocument);
 
