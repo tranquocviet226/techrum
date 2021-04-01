@@ -17,7 +17,7 @@ export class CategoryController {
     description: SWAGGER_MSG.CATEGORY_SUCCESS,
   })
   @ApiResponse({ status: 401, description: SWAGGER_MSG.CATEGORY_FAIL })
-  findAll(): Promise<CategoryResponse[]> {
+  findAll(): Promise<CategoryResponse> {
     return this.categoryService.findAll();
   }
 

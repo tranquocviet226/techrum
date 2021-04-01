@@ -6,4 +6,6 @@ export const SWAGGER_MSG = {
   AUTH_FAIL: 'Authentication is required to access the resource !',
   CATEGORY_SUCCESS: 'Get list category successfully !',
   CATEGORY_FAIL: 'Get list category failure !',
+  POST_SUCCESS: 'Post successfully !',
+  POST_FAIL: 'Post failure !',
 };
