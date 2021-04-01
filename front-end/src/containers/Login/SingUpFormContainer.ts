@@ -39,7 +39,7 @@ const SignUpFormik = withFormik<OtherProps, FormValuesSignUp>({
       permissions: "",
     };
     props.register(newUser, setErrors);
-    props.toggle();
+    // props.toggle();
   },
 })(SignUpForm);
 

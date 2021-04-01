@@ -3,6 +3,7 @@ import { CategoryModule } from '@modules/category.module';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as cors from 'cors'
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -26,6 +27,7 @@ async function bootstrap() {
   });
   SwaggerModule.setup(SWAGGER_API_DOCS, app, apiDocument);
 
+  app.use(cors()) // Use this after the variable declaration
   await app.listen(APP_PORT | 3000);
 }
 (async () => await bootstrap())();

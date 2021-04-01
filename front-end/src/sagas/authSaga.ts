@@ -3,14 +3,23 @@ import { takeLatest, all, put, call } from "redux-saga/effects";
 import history from "../services/RoutingService";
 import { updateAuth, clearAuth } from "../actions/authAction";
 import { AuthActionType, SignInAction, SignUpAction } from "../types/authTypes";
+import AuthApi from "../services/api";
+import { AxiosResponse } from "axios";
+
 
 function* signInSaga(action: SignInAction) {
   const { username, password, setErrors } = action;
   try {
-    // const response = yield call([AuthApi, AuthApi.login], user);
-    // put response.data    
-    yield put(updateAuth(username, true));
-    history.push("/admin/dashboard");
+    const response: AxiosResponse<any> = yield call([AuthApi, AuthApi.signIn], {
+      username,
+      password,
+    });
+    if (response.status == 200) {
+      yield put(updateAuth(username, true));
+      history.push("/admin/dashboard");
+    } else {
+      setErrors({ api: response.statusText });
+    }
   } catch (e) {
     // errors by server response, setErrors of formik
     setErrors({ api: e.message });
@@ -20,8 +29,12 @@ function* signInSaga(action: SignInAction) {
 function* signUpSaga(action: SignUpAction) {
   const { user, setErrors } = action;
   try {
-    // yield call([AuthApi, AuthApi.signup], values);
-    // history.push('/');
+    const response: AxiosResponse<any> = yield call([AuthApi, AuthApi.signUp], user);
+    if (response.status == 200) {
+      history.push('/admin');
+    } else {
+      setErrors({ api: response.statusText });
+    }
   } catch (e) {
     // errors by server response, setErrors of formik
     setErrors({ api: e.message });
