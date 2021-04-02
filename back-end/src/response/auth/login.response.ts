@@ -1,16 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { BaseError, BaseResponse } from '@response/base.response';
 
-export class LoginResponse {
+export class LoginResponse extends BaseResponse<Data> {}
+class Data {
   @ApiProperty()
   access_token: string;
   @ApiProperty()
   expires_in: number;
   @ApiProperty()
   token_type: string;
-
-  constructor(accessToken: string, expiresIn: number, tokenType: string) {
-    this.access_token = accessToken;
-    this.expires_in = expiresIn;
-    this.token_type = tokenType;
-  }
 }

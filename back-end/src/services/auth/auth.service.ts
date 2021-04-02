@@ -20,15 +20,20 @@ export class AuthService {
       accessToken,
       expiresIn,
     } = await this.tokenFactoryService.generateJwtToken(user);
-    return new LoginResponse(accessToken, expiresIn, AUTH_TYPE);
+    return new LoginResponse(true, 200, undefined, {
+      access_token: accessToken,
+      expires_in: expiresIn,
+      token_type: AUTH_TYPE,
+    });
   }
 
   async register(registerRequest: RegisterRequest): Promise<RegisterResponse> {
-    const user = await this.userService.createUser(registerRequest);
-    if (user) {
-      return new RegisterResponse('success', 200, 'Register success!!!');
-    } else {
-      return new RegisterResponse('failure', 400, 'Register failure!!!');
-    }
+    const response = await this.userService.createUser(registerRequest);
+    return new RegisterResponse(
+      response.status,
+      response.code,
+      response.status ? undefined : [{ code: -1, message: response.message }],
+      response.status ? response.message : undefined,
+    );
   }
 }

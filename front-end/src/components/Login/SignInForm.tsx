@@ -30,7 +30,6 @@ const SignInForm = (props: Props & FormikProps<FormValuesSignIn>) => {
   } = props;
   return (
     <div className="form-container-l sign-in-container-l">
-      <div style={{ color: "red" }}>{errors.api}</div>
       <form onSubmit={handleSubmit}>
         <h1 className="title">Sign in</h1>
         <Input
@@ -61,6 +60,9 @@ const SignInForm = (props: Props & FormikProps<FormValuesSignIn>) => {
         <button type="submit" onClick={resetValid} className="login">
           Sign In
         </button>
+        <div style={{ color: "red", textAlign: "center", marginTop: 16 }}>
+          {errors.api}
+        </div>
       </form>
     </div>
   );

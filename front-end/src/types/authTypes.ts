@@ -44,6 +44,7 @@ export interface SignUpAction extends Action {
   type: AuthActionType.SIGN_UP;
   user: User;
   setErrors: (errors: FormikErrors<FormValuesSignUp>) => void;
+  toggle: () => void;
 }
 
 export type AuthActionTypes =

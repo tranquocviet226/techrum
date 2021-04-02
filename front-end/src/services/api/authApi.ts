@@ -9,15 +9,15 @@ class Auth {
       username: loginBody.username,
       password: loginBody.password,
     });
-  signUp = (registerBody: User) =>{
+  signUp = (registerBody: User) =>
     instance.post("auth/register", {
       email: registerBody.email,
       password: registerBody.password,
       firstName: registerBody.firstName,
       lastName: registerBody.lastName,
       permissions: registerBody.permissions,
-    })
-  }
+    });
+
   // logout = () => this.client.delete('/sessions');
 }
 

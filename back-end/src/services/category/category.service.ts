@@ -24,13 +24,18 @@ export class CategoryService extends BaseService<
   async findAll(): Promise<CategoryResponse> {
     try {
       const category = await this.repository.find();
-      const response = new CategoryResponse(true, 200, 'success', category);
+      const response = new CategoryResponse(true, 200, undefined, category);
 
       return response;
     } catch (error) {
       const code = HttpStatus.NOT_FOUND;
       const message = 'error';
-      const response = new CategoryResponse(false, code, message, error);
+      const response = new CategoryResponse(
+        false,
+        code,
+        [{ code: -1, message }],
+        error,
+      );
 
       return response;
     }
@@ -65,7 +70,7 @@ export class CategoryService extends BaseService<
       const code = HttpStatus.FORBIDDEN;
       const message = 'error';
 
-      return new CategoryResponse(false, code, message, errors);
+      return new CategoryResponse(false, code,  [{ code: -1, message }], errors);
     } else {
       try {
         const data = await this.repository.create(dataCategory);
@@ -73,7 +78,7 @@ export class CategoryService extends BaseService<
         const code = HttpStatus.OK;
         const message = 'success';
 
-        return new CategoryResponse(true, code, message, data);
+        return new CategoryResponse(true, code,  [{ code: -1, message }], data);
       } catch (error) {
         const code = HttpStatus.FORBIDDEN;
         const message = 'error';
@@ -81,7 +86,7 @@ export class CategoryService extends BaseService<
         return new CategoryResponse(
           false,
           code,
-          message,
+          [{ code: -1, message }],
           error?.message ?? error,
         );
       }

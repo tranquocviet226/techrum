@@ -2,6 +2,7 @@ import { UserEntity } from '@entities/user.entity';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { LoginResponse } from '@response/auth/login.response';
 import * as bcrypt from 'bcrypt';
 import { UserService } from './user.service';
 
@@ -16,7 +17,14 @@ export class TokenFactoryService {
   async validateUser(email: string, password: string): Promise<UserEntity> {
     const user = await this.userService.findByEmail(email);
     if (!user) {
-      throw new UnauthorizedException('Username or password is incorrect');
+      throw new UnauthorizedException(
+        new LoginResponse(
+          false,
+          401,
+          [{ code: -1, message: 'Username or password is incorrect' }],
+          undefined,
+        ),
+      );
     }
     // system using bcrypt of laravel
     //if want compare for bcrypt of nodejs using code bellow !
@@ -24,7 +32,14 @@ export class TokenFactoryService {
 
     const compareResult = await bcrypt.compare(password, user.password);
     if (!compareResult) {
-      throw new UnauthorizedException('Username or password is incorrect');
+      throw new UnauthorizedException(
+        new LoginResponse(
+          false,
+          401,
+          [{ code: -1, message: 'Username or password is incorrect' }],
+          undefined,
+        ),
+      );
     }
 
     return user;

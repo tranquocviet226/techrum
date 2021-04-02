@@ -24,11 +24,13 @@ export const login = (
 
 export const register = (
   user: User,
-  setErrors: (errors: FormikErrors<FormValuesSignUp>) => void
+  setErrors: (errors: FormikErrors<FormValuesSignUp>) => void,
+  toggle: () => void
 ): SignUpAction => ({
   type: AuthActionType.SIGN_UP,
   user: user,
   setErrors,
+  toggle
 });
 
 export const updateAuth = (

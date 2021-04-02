@@ -7,11 +7,11 @@ import { AxiosResponse } from "axios";
  *
  * @return {object}          The parsed JSON from the request
  */
-function parseJSON(response: AxiosResponse<any> ) {
+function parseJSON(response: AxiosResponse<any>) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
-  return JSON.parse(response.data);
+  return response.data;
 }
 
 /**
@@ -29,5 +29,18 @@ function checkStatus(response: AxiosResponse<any>) {
   throw Object.assign({
     error_code: response.status,
     message: response.statusText,
-  });;
+  });
 }
+
+function checkStatusData(response: any) {
+  if (response.code >= 200 && response.code < 300) {
+    return response;
+  }
+
+  throw Object.assign({
+    error_code: response.code,
+    message: response.errors[0].message,
+  });
+}
+
+export { parseJSON, checkStatus, checkStatusData };
