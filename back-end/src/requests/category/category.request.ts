@@ -28,11 +28,11 @@ export class CategoryRequest {
   }
 
   @ApiProperty()
-  get parentId(): number {
+  get parent_id(): number {
     return this._parentId;
   }
 
-  set parentId(value: number) {
+  set parent_id(value: number) {
     this._parentId = value;
   }
 
@@ -55,7 +55,7 @@ export class CategoryRequest {
   }
 
   @ApiProperty()
-  get isSearchable(): number {
+  get is_searchable(): number {
     return this._isSearchable;
   }
 
@@ -64,29 +64,29 @@ export class CategoryRequest {
   }
 
   @ApiProperty()
-  get isActive(): number {
+  get is_active(): number {
     return this._isActive;
   }
 
-  set isActive(value: number) {
+  set is_active(value: number) {
     this._isActive = value;
   }
 
   @ApiProperty()
-  get createdAt(): Date {
+  get created_at(): Date {
     return this._createdAt;
   }
 
-  set createdAt(value: Date) {
+  set created_at(value: Date) {
     this._createdAt = value;
   }
 
   @ApiProperty()
-  get updatedAt(): Date {
+  get updated_at(): Date {
     return this._updatedAt;
   }
 
-  set updatedAt(value: Date) {
+  set updated_at(value: Date) {
     this._updatedAt = value;
   }
 }

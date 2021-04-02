@@ -40,23 +40,23 @@ export class CategoryService extends BaseService<
     categoryRequest: CategoryRequest,
   ): Promise<CategoryResponse> {
     const {
-      parentId,
+      parent_id,
       slug,
       position,
       isSearchable,
-      isActive,
-      createdAt,
-      updatedAt,
+      is_active,
+      created_at,
+      updated_at,
     } = categoryRequest;
 
     const dataCategory = new CategoryEntity({
-      parentId: parentId,
+      parentId: parent_id,
       slug: slug,
       position: position,
       isSearchable: isSearchable,
-      isActive: isActive,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
+      isActive: is_active,
+      createdAt: created_at,
+      updatedAt: updated_at,
     });
 
     // Validatetion

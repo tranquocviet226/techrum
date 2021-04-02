@@ -20,24 +20,24 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
   async createUser(registerRequest: RegisterRequest): Promise<UserEntity> {
     const {
       email,
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       password,
       permissions,
-      lastLogin,
-      createdAt,
-      updatedAt,
+      last_login,
+      created_at,
+      updated_at,
     } = registerRequest;
     const hashedPassword = await bcrypt.hash(password, 10);
     const dataUser = new UserEntity({
       email: email,
-      firstName: firstName,
-      lastName: lastName,
+      firstName: first_name,
+      lastName: last_name,
       password: hashedPassword,
       permissions: permissions,
-      lastLogin: lastLogin,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
+      lastLogin: last_login,
+      createdAt: created_at,
+      updatedAt: updated_at,
     });
 
     // Validatetion

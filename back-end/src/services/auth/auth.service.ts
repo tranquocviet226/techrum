@@ -26,7 +26,7 @@ export class AuthService {
   async register(registerRequest: RegisterRequest): Promise<RegisterResponse> {
     const user = await this.userService.createUser(registerRequest);
     if (user) {
-      return new RegisterResponse('success', 200, 'Register sucess!!!');
+      return new RegisterResponse('success', 200, 'Register success!!!');
     } else {
       return new RegisterResponse('failure', 400, 'Register failure!!!');
     }
