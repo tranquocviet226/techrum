@@ -55,38 +55,38 @@ export class PostRequest {
   }
 
   @ApiProperty()
-  get categoryId(): number {
+  get category_id(): number {
     return this._categoryId;
   }
 
-  set categoryId(value: number) {
+  set category_id(value: number) {
     this._categoryId = value;
   }
 
   @ApiProperty()
-  get isActive(): number {
+  get is_active(): number {
     return this._isActive;
   }
 
-  set isActive(value: number) {
+  set is_active(value: number) {
     this._isActive = value;
   }
 
   @ApiProperty()
-  get createdAt(): Date {
+  get created_at(): Date {
     return this._createdAt;
   }
 
-  set createdAt(value: Date) {
+  set created_at(value: Date) {
     this._createdAt = value;
   }
 
   @ApiProperty()
-  get updatedAt(): Date {
+  get updated_at(): Date {
     return this._updatedAt;
   }
 
-  set updatedAt(value: Date) {
+  set updated_at(value: Date) {
     this._updatedAt = value;
   }
 }
