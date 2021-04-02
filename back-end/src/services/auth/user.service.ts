@@ -17,7 +17,7 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
     return this.repository.findOne({ where: { email: email }, cache: true });
   }
 
-  async createUser(registerRequest: RegisterRequest): Promise<UserEntity> {
+  async createUser(registerRequest: RegisterRequest): Promise<any> {
     const {
       email,
       first_name,
@@ -40,17 +40,34 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
       updatedAt: updated_at,
     });
 
-    // Validatetion
+    // Validation
     const errors = await validate(dataUser);
     if (errors.length > 0) {
-      return null;
+      return {
+        status: false,
+        message: 'Validation failure!!!',
+        code: 400,
+      };
     } else {
-      const data = await this.repository.create(dataUser);
-      await this.repository.save(data);
-      return this.repository.findOneOrFail({
+      const user = await this.repository.findOne({
         where: { email: email },
         cache: true,
       });
+      if (user) {
+        return {
+          status: false,
+          message: 'User already exist!!!',
+          code: 400,
+        };
+      } else {
+        const data = await this.repository.create(dataUser);
+        await this.repository.save(data);
+        return {
+          status: true,
+          message: 'Register success!!!',
+          code: 200,
+        };
+      }
     }
   }
 }

@@ -86,6 +86,9 @@ const SignUpForm = (props: Props & FormikProps<FormValuesSignUp>) => {
         >
           Sign Up
         </button>
+        <div style={{ color: "red", textAlign: "center", marginTop: 16 }}>
+          {errors.api}
+        </div>
       </form>
     </div>
   );

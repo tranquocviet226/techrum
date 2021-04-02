@@ -19,13 +19,18 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
   async findAll(): Promise<PostResponse> {
     try {
       const post = await this.repository.find();
-      const response = new PostResponse(true, 200, 'success', post);
+      const response = new PostResponse(true, 200, undefined, post);
 
       return response;
     } catch (error) {
       const code = HttpStatus.FORBIDDEN;
       const message = 'error';
-      const response = new PostResponse(false, code, message, error);
+      const response = new PostResponse(
+        false,
+        code,
+        [{ code: -1, message }],
+        error,
+      );
 
       return response;
     }

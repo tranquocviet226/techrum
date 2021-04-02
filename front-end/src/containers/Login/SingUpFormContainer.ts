@@ -13,7 +13,8 @@ import { User } from "../../entities/User";
 interface OtherProps {
   register: (
     user: User,
-    setErrors: (errors: FormikErrors<FormValuesSignUp>) => void
+    setErrors: (errors: FormikErrors<FormValuesSignUp>) => void,
+    toggle: () => void
   ) => void;
   validForm: boolean;
   resetValid: () => void;
@@ -38,16 +39,16 @@ const SignUpFormik = withFormik<OtherProps, FormValuesSignUp>({
       lastName: lastName,
       permissions: "",
     };
-    props.register(newUser, setErrors);
-    // props.toggle();
+    props.register(newUser, setErrors, props.toggle);
   },
 })(SignUpForm);
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   register: (
     user: User,
-    setErrors: (errors: FormikErrors<FormValuesSignUp>) => void
-  ) => dispatch(register(user, setErrors)),
+    setErrors: (errors: FormikErrors<FormValuesSignUp>) => void,
+    toggle: () => void
+  ) => dispatch(register(user, setErrors, toggle)),
 });
 
 export default connect(authSelector, mapDispatchToProps)(SignUpFormik);

@@ -5,7 +5,7 @@ import { updateAuth, clearAuth } from "../actions/authAction";
 import { AuthActionType, SignInAction, SignUpAction } from "../types/authTypes";
 import AuthApi from "../services/api";
 import { AxiosResponse } from "axios";
-
+import { checkStatus, checkStatusData, parseJSON } from "utils/request";
 
 function* signInSaga(action: SignInAction) {
   const { username, password, setErrors } = action;
@@ -14,7 +14,8 @@ function* signInSaga(action: SignInAction) {
       username,
       password,
     });
-    if (response.status == 200) {
+    const data = parseJSON(checkStatus(response));
+    if (data) {
       yield put(updateAuth(username, true));
       history.push("/admin/dashboard");
     } else {
@@ -22,16 +23,20 @@ function* signInSaga(action: SignInAction) {
     }
   } catch (e) {
     // errors by server response, setErrors of formik
-    setErrors({ api: e.message });
+    setErrors({ api: e.errors[0].message });
   }
 }
 
 function* signUpSaga(action: SignUpAction) {
-  const { user, setErrors } = action;
+  const { user, setErrors, toggle } = action;
   try {
-    const response: AxiosResponse<any> = yield call([AuthApi, AuthApi.signUp], user);
-    if (response.status == 200) {
-      history.push('/admin');
+    const response: AxiosResponse<any> = yield call(
+      [AuthApi, AuthApi.signUp],
+      user
+    );
+    const data = checkStatusData(response.data);
+    if (data) {
+      toggle();
     } else {
       setErrors({ api: response.statusText });
     }

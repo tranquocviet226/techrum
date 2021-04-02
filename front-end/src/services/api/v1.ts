@@ -32,11 +32,11 @@ instance.interceptors.request.use((config: any) => {
 
 instance.interceptors.response.use(
   (response) => {
-    console.log(response.data);
+    console.log("response",response);
     return response;
   },
   (error) => {
-    console.log(error);
+    console.log("error",error);
     if (!error.response)
       throw Object.assign({
         error_code: ERROR_CODES.uncaught,
