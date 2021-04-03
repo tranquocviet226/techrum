@@ -3,7 +3,6 @@ import {
   AuthState,
   AuthActionType,
 } from "../types/authTypes";
-import { Action } from "redux";
 
 const initialState: AuthState = {
   email: "",
