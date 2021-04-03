@@ -1,5 +1,5 @@
 import { clearAuth } from "actions/authAction";
-import axios, { AxiosRequestConfig, AxiosInstance } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { mapKeys, snakeCase } from "lodash";
 
 import { store, PERSIST_KEY } from "../../store";
