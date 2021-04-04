@@ -26,6 +26,7 @@
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
     "i18next": "^20.1.0",
+    "moment": "^2.29.1",
     "perfect-scrollbar": "^1.5.0",
     "react": "^17.0.1",
     "react-chartist": "^0.14.4",
@@ -43,7 +44,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "PORT=5000 react-scripts start",
+    "start": "SET PORT=5000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
