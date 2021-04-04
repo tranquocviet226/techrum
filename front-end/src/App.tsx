@@ -9,6 +9,7 @@ import Admin from "./layouts/Admin";
 import UnAuthRoute from "./components/UnAuthRoute";
 import AuthContainer from "./containers/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import HomePage from "components/User/HomePage/HomePage";
 
 const App = () => {
   return (
@@ -17,10 +18,7 @@ const App = () => {
         <Router history={history}>
           <Switch>
             <UnAuthRoute path="/admin/login" component={AuthContainer} exact/>
-            <Route path="/home" component={() =>
-              <div>
-                Home
-              </div>} exact />
+            <Route path="/home" component={HomePage} exact />
             <PrivateRoute path="/admin" component={Admin} />
             <Redirect from="/" to="/home" />
           </Switch>

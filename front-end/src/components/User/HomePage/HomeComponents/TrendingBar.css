@@ -1,0 +1,34 @@
+.trending-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #222;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.trending-bar-txt {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+.trending-bar-date {
+  display: flex;
+  align-items: center;
+}
+.trending {
+  font-weight: 700;
+  margin-right: 5px;
+  padding-right: 10px;
+  margin-left: 3px;
+  border-right: 1px solid #dedbdb;
+}
+.icon-flash {
+  font-size: 12px;
+  color: Tomato;
+}
+.trending-content {
+    margin-left: 5px;
+}
