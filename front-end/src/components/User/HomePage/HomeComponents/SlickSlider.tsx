@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Slider from "react-slick";
-import Image from 'components/User/Common/Image';
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import SlickItem from './SlickItem';
 import "./SlickSlider.css";
 
 const sliderData = [
@@ -22,7 +22,12 @@ const sliderData = [
                 name: "LIFESTYLE",
                 color: "#fda400"
             }
-        ]
+        ],
+        author: {
+            name: "TQV",
+            date: "June 30, 2021",
+            views: 4567
+        }
     },
     {
         id: 2,
@@ -34,7 +39,12 @@ const sliderData = [
                 name: "LIFESTYLE",
                 color: "#fda400"
             }
-        ]
+        ],
+        author: {
+            name: "DigiQuoles",
+            date: "June 30, 2021",
+            views: 3404
+        }
     },
     {
         id: 2,
@@ -51,7 +61,12 @@ const sliderData = [
                 name: "LIFESTYLE",
                 color: "#fda400"
             }
-        ]
+        ],
+        author: {
+            name: "Alubaba",
+            date: "January 11, 2021",
+            views: 9999
+        }
     }
 ]
 
@@ -68,20 +83,8 @@ const SlickSlider = () => {
         <div className="slider-container">
             <Slider {...settings} className="sl-mg">
                 {sliderData.map(item => (
-                    <div key={item.id} className="slider-img">
-                        <Image src={item.src} style={{ width: "100%", height: 600, borderRadius: 8 }} />
-                        <div className="infor-container">
-                            <div className="infor-content">
-                                <div className="category-container">
-                                    {item.category.map(it => (
-                                        <div className="category" style={{ backgroundColor: it.color }}>{it.name}</div>
-                                    ))}
-                                </div>
-                                <div className="title-container">
-                                    <p className="title">{item.title}</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div style={{ height: 600 }}>
+                        <SlickItem item={item} height={600} titleSize={36} />
                     </div>
                 ))}
             </Slider>
