@@ -13,7 +13,6 @@ const HomePage = () => {
                 <SlickSlider />
                 <SliderBannerRight />
             </div>
-
         </div>
     )
 }
