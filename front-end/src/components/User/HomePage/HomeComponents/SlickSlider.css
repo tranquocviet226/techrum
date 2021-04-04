@@ -7,6 +7,7 @@
 }
 .slider-img {
   position: relative;
+  height: 100%;
 }
 .infor-container {
   position: absolute;
@@ -16,7 +17,7 @@
   right: 0px;
 }
 .infor-content {
-    margin: 16px;
+  margin: 16px;
 }
 .category-container {
   display: flex;
@@ -37,4 +38,17 @@
   margin-top: 8px;
   margin-bottom: 8px;
   margin-left: 4px;
+}
+.note-container {
+  display: flex;
+  margin-left: 4px;
+}
+.note {
+  margin-right: 16px;
+}
+.note-fire {
+  color: orangered;
+}
+.pd-ic {
+  margin-right: 8px;
 }
