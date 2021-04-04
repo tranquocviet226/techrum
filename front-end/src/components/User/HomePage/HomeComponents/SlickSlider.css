@@ -1,0 +1,40 @@
+.slider-container {
+  width: 65%;
+}
+.sl-mg {
+  margin: 6px;
+  height: 100%;
+}
+.slider-img {
+  position: relative;
+}
+.infor-container {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+.infor-content {
+    margin: 16px;
+}
+.category-container {
+  display: flex;
+}
+.category {
+  font-size: 11px;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 4px;
+  font-weight: 700;
+}
+.title-container {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0px;
+}
+.title {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}

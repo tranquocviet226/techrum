@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
+import SlickSlider from './HomeComponents/SlickSlider';
+import SliderBannerRight from './HomeComponents/SliderBannerRight';
 import TrendingBar from './HomeComponents/TrendingBar';
+import "./HomePage.css";
 
 const HomePage = () => {
     const theme = "bg-dark";
     return (
         <div className={theme}>
             <TrendingBar />
-            HomE
+            <div className="sl-top">
+                <SlickSlider />
+                <SliderBannerRight />
+            </div>
         </div>
     )
 }
