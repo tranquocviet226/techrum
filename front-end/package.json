@@ -46,8 +46,9 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts build",
+    "start": "serve -s build",
     "dev": "react-scripts start",
+    "heroku-postbuild": "npm run build",
     "start_win": "SET PORT=5000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
