@@ -63,6 +63,12 @@
   font-weight: 800;
   margin: 0px;
 }
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .title-container {
+    font-size: 20px;
+  }
+}
 .title {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -80,4 +86,69 @@
 }
 .pd-ic {
   margin-right: 8px;
+}
+.vertical-dots {
+  left: 10px;
+  list-style: none;
+  display: block;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+}
+.vertical-dots li {
+  position: relative;
+  width: 20px;
+  height: 30px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.vertical-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.vertical-dots li button:hover,
+.vertical-dots li button:focus {
+  outline: none;
+}
+.vertical-dots li button:hover:before,
+.vertical-dots li button:focus:before {
+  opacity: 1;
+}
+.vertical-dots li button:before {
+  font-family: "slick";
+  font-size: 12px;
+  /* line-height: 20px; */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+
+  content: "";
+  text-align: center;
+
+  opacity: 0.8;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.vertical-dots li.slick-active button:before {
+  opacity: 1;
+  background-color: #fc4a00;
+  width: 10px;
+  height: 25px;
+  border-radius: 5px;
 }
