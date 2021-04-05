@@ -23,14 +23,8 @@ const item_1 = {
 const SliderBannerRight = () => {
     return (
         <div className="sl-banner-right">
-            <div className="sl-mg">
-                <div className="sl-banner-right-1">
-                    <SlickItem item={item_1} titleSize={20} />
-                </div>
-                <div className="sl-banner-right-2">
-                    <SlickItem item={item_1} titleSize={20} />
-                </div>
-            </div>
+            <SlickItem item={item_1} classContainer="sl-container-2" classImage="sl-img-2" titleSize={20} />
+            <SlickItem item={item_1} classContainer="sl-container-3" classImage="sl-img-3" titleSize={20} />
         </div>
     )
 }

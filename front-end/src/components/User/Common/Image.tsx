@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import "./Image.css";
 
 type Props = {
     src: string,
-    style: any
+    style: any,
+    className: any
 }
 
-const Image = ({ src, style }: Props) => {
+const Image = ({ src, style, className }: Props) => {
     return (
-        <img src={src} style={style} />
+        <img className={className} src={src} style={style} />
     )
 }
 
 Image.defaultProps = {
-    style: null
+    style: null,
+    className: null
 };
 
 export default connect(null, null)(Image);

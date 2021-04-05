@@ -1,0 +1,32 @@
+.sl-img-0 {
+  width: 100%;
+  height: 100%;
+}
+
+.sl-img-1 {
+  height: 600px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sl-img-2 {
+  height: 392px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sl-img-3 {
+  height: 200px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .sl-img-1,
+  .sl-img-2,
+  .sl-img-3 {
+    height: 300px;
+    width: 100%;
+  }
+}
