@@ -81,10 +81,10 @@ const SlickSlider = () => {
     };
     return (
         <div className="slider-container">
-            <Slider {...settings} className="sl-mg">
+            <Slider {...settings}>
                 {sliderData.map(item => (
-                    <div style={{ height: 600 }}>
-                        <SlickItem item={item} height={600} titleSize={36} />
+                    <div key={item.id} className="sl-img-con">
+                        <SlickItem item={item} classImage="sl-img-1" titleSize={36} />
                     </div>
                 ))}
             </Slider>

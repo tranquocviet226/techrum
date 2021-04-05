@@ -1,11 +1,12 @@
 .sl-banner-right {
   width: 35%;
-  height: 600px;
+  padding: 4px
 }
-.sl-banner-right-1 {
-  height: 65%;
-}
-.sl-banner-right-2 {
-  height: 35%;
-  padding-top: 12px;
+
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .sl-banner-right {
+    width: 100%;
+    height: auto;
+  }
 }

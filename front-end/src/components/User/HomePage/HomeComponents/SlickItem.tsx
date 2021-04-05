@@ -3,19 +3,20 @@ import "./SlickSlider.css";
 
 type Props = {
     item: any,
-    height: any,
+    classContainer: any,
+    classImage: any,
     titleSize: number
 }
 
-const SlickItem = ({ item, height, titleSize }: Props) => {
+const SlickItem = ({ item, classContainer, classImage, titleSize }: Props) => {
     return (
-        <div key={item.id} className="slider-img">
-            <Image src={item.src} style={{ width: "100%", height: height, borderRadius: 8 }} />
+        <div key={item.id} className={classContainer}>
+            <Image src={item.src} className={classImage} />
             <div className="infor-container">
                 <div className="infor-content">
                     <div className="category-container">
-                        {item.category.map((it: any) => (
-                            <div className="category" style={{ backgroundColor: it.color }}>{it.name}</div>
+                        {item.category.map((it: any, index: number) => (
+                            <div key={index} className="category" style={{ backgroundColor: it.color }}>{it.name}</div>
                         ))}
                     </div>
                     <div className="title-container">
@@ -32,9 +33,9 @@ const SlickItem = ({ item, height, titleSize }: Props) => {
     )
 }
 
-
 SlickItem.defaultProps = {
-    height: "100%",
+    classContainer: "sl-container-0",
+    className: "sl-img-0",
     titleSize: 14
 };
 

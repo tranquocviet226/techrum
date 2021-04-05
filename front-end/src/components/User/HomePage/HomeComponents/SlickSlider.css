@@ -1,20 +1,49 @@
 .slider-container {
   width: 65%;
 }
-.sl-mg {
-  margin: 6px;
-  height: 100%;
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .slider-container {
+    width: 100%;
+    height: auto;
+  }
 }
-.slider-img {
+.sl-container-0 {
   position: relative;
-  height: 100%;
 }
+
+.sl-container-2 {
+  position: relative;
+  height: 392px;
+  margin-bottom: 8px;
+}
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .sl-container-2 {
+    height: 300px;
+  }
+}
+.sl-container-3 {
+  position: relative;
+  height: 200px;
+}
+@media only screen and (max-width: 850px) {
+  /* For mobile phones: */
+  .sl-container-3 {
+    height: 300px;
+  }
+}
+.sl-img-con {
+  padding: 4px;
+}
+
 .infor-container {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
   bottom: 0px;
   left: 0px;
   right: 0px;
+  border-radius: 8px;
 }
 .infor-content {
   margin: 16px;
