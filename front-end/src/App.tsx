@@ -1,15 +1,15 @@
 import { Provider } from "react-redux";
-import { Redirect, Route, Router, Switch } from "react-router-dom";
-import './i18n/config';
-import { persistor, store } from "./store";
-import history from "./services/RoutingService";
+import { Route, Router, Switch } from "react-router-dom";
+import 'i18n/config';
+import { persistor, store } from "store";
+import history from "services/RoutingService";
 
 import { PersistGate } from "redux-persist/integration/react";
-import Admin from "./layouts/Admin";
-import UnAuthRoute from "./components/UnAuthRoute";
-import AuthContainer from "./containers/Login";
-import PrivateRoute from "./components/PrivateRoute";
-import HomePage from "components/User/HomePage/HomePage";
+import Admin from "layouts/Admin";
+import User from "layouts/User";
+import UnAuthRoute from "components/UnAuthRoute";
+import AuthContainer from "containers/Login";
+import PrivateRoute from "components/PrivateRoute";
 
 const App = () => {
   return (
@@ -17,10 +17,9 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <Router history={history}>
           <Switch>
-            <UnAuthRoute path="/admin/login" component={AuthContainer} exact/>
-            <Route path="/home" component={HomePage} exact />
+            <UnAuthRoute path="/admin/login" component={AuthContainer} exact />
             <PrivateRoute path="/admin" component={Admin} />
-            <Redirect from="/" to="/home" />
+            <Route path="/" component={User} />
           </Switch>
         </Router>
       </PersistGate>
