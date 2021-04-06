@@ -36,7 +36,7 @@ const PostDetail = () => {
                                             </a>
                                         </li>
                                         <li className="post-author">
-                                            <img alt="" src="http://1.gravatar.com/avatar/7671e962e8e4f746d1a188475283c83a?s=55&d=mm&r=g" srcSet="http://1.gravatar.com/avatar/7671e962e8e4f746d1a188475283c83a?s=110&d=mm&r=g 2x" className="avatar avatar-55 photo" height={55} width={55} loading="lazy" /><a href="./../../../../author/duynn100198/index.html">duynn100198</a>
+                                            <img alt="" src="https://wolf-wallpapers.pro/images/hd-wolf-backgrounds-pixelstalknet-79-1-wolf-wallpapers.pro.jpg" srcSet="https://wolf-wallpapers.pro/images/hd-wolf-backgrounds-pixelstalknet-79-1-wolf-wallpapers.pro.jpg" className="avatar avatar-55 photo" height={55} width={55} loading="lazy" /><a href="./../../../../author/duynn100198/index.html">duynn100198</a>
                                         </li>
                                         <li className="post-meta-date">
                                             <i className="fa fa-clock-o" />
@@ -131,7 +131,7 @@ const PostDetail = () => {
                             </article>
                             <div className="author-box solid-bg">
                                 <div className="author-img pull-left">
-                                    <img alt="" src="http://1.gravatar.com/avatar/7671e962e8e4f746d1a188475283c83a?s=96&d=mm&r=g" srcSet="http://1.gravatar.com/avatar/7671e962e8e4f746d1a188475283c83a?s=192&d=mm&r=g 2x" className="avatar avatar-96 photo" height={96} width={96} loading="lazy" />
+                                    <img alt="" src="https://wolf-wallpapers.pro/images/hd-wolf-backgrounds-pixelstalknet-79-1-wolf-wallpapers.pro.jpg" srcSet="https://wolf-wallpapers.pro/images/hd-wolf-backgrounds-pixelstalknet-79-1-wolf-wallpapers.pro.jpg" className="avatar avatar-96 photo" height={96} width={96} loading="lazy" />
                                 </div>
                                 <div className="author-info">
                                     <h3>duynn100198</h3>
