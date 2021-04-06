@@ -18,6 +18,8 @@ import logoLight from "assets/img/logo/logo-light.png";
 import TrendingBar from '../Common/TrendingBar';
 import Logo from '../Common/Logo';
 import Header from '../HomePage/HomeComponents/Header';
+import CopyRight from '../Common/CopyRight';
+import RecentPostList from '../Common/RecentPostList';
 const DetailPage = () => {
     const theme = "bg-dark";
     return (
@@ -728,202 +730,7 @@ const DetailPage = () => {
                                     <h3 className="widget-title">
                                         <span>Popular Post</span>
                                     </h3>
-                                    <div className="recent-posts-widget post-list-item">
-                                        <div className="post-tab-list">
-                                            <div className="post-content media">
-                                                <div className="post-thumb">
-                                                    <a
-                                                        href="https://demo.themewinter.com/wp/digiqoles/ratcliffe-to-be-director-of-nation-talent-trump-ignored/"
-                                                        rel="bookmark"
-                                                        title="Ratcliffe to be Director of nation  talent Trump ignored"
-                                                    >
-                                                        <span
-                                                            className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
-                                                            style={{
-                                                                backgroundImage:
-                                                                    'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/fashion_1-455x300.jpg")',
-                                                            }}
-                                                            data-ll-status="loaded"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="post-info media-body">
-                                                    <span className="post-tag">
-                                                        <a
-                                                            className="post-cat only-color"
-                                                            href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/fashion/"
-                                                            style={{ color: "#da1793" }}
-                                                        >
-                                                            Fashion
-                                                        </a>
-                                                    </span>
-                                                    <h4 className="post-title">
-                                                        <a
-                                                            href="https://demo.themewinter.com/wp/digiqoles/ratcliffe-to-be-director-of-nation-talent-trump-ignored/"
-                                                            rel="bookmark"
-                                                            title="Ratcliffe to be Director of nation  talent Trump ignored"
-                                                        >
-                                                            Ratcliffe to be Director of
-                                                        </a>
-                                                    </h4>
-                                                    <div className="post-meta">
-                                                        <span className="post-date">
-                                                            <i
-                                                                className="fa fa-clock-o"
-                                                                aria-hidden="true"
-                                                            />
-                                                            July 10, 2019
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix" />
-                                            </div>
-                                            <div className="post-content media">
-                                                <div className="post-thumb">
-                                                    <a
-                                                        href="https://demo.themewinter.com/wp/digiqoles/nancy-zhang-a-chinese-business-woman/"
-                                                        rel="bookmark"
-                                                        title="Nancy multi Chinese business woman trying"
-                                                    >
-                                                        <span
-                                                            className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
-                                                            style={{
-                                                                backgroundImage:
-                                                                    'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/sports_1-455x300.jpg")',
-                                                            }}
-                                                            data-ll-status="loaded"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="post-info media-body">
-                                                    <span className="post-tag">
-                                                        <a
-                                                            className="post-cat only-color"
-                                                            href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/sports/"
-                                                            style={{ color: "#4ca80b" }}
-                                                        >
-                                                            Sports
-                                                        </a>
-                                                    </span>
-                                                    <h4 className="post-title">
-                                                        <a
-                                                            href="https://demo.themewinter.com/wp/digiqoles/nancy-zhang-a-chinese-business-woman/"
-                                                            rel="bookmark"
-                                                            title="Nancy multi Chinese business woman trying"
-                                                        >
-                                                            Nancy multi Chinese business woman
-                                                        </a>
-                                                    </h4>
-                                                    <div className="post-meta">
-                                                        <span className="post-date">
-                                                            <i
-                                                                className="fa fa-clock-o"
-                                                                aria-hidden="true"
-                                                            />
-                                                            July 10, 2019
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix" />
-                                            </div>
-                                            <div className="post-content media">
-                                                <div className="post-thumb">
-                                                    <a
-                                                        href="https://demo.themewinter.com/wp/digiqoles/harbour-amid-a-slowen-down-in-the-city/"
-                                                        rel="bookmark"
-                                                        title="Harbour amid a Slowen down in singer city screening"
-                                                    >
-                                                        <span
-                                                            className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
-                                                            style={{
-                                                                backgroundImage:
-                                                                    'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1-455x300.jpg")',
-                                                            }}
-                                                            data-ll-status="loaded"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="post-info media-body">
-                                                    <span className="post-tag">
-                                                        <a
-                                                            className="post-cat only-color"
-                                                            href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/tech/"
-                                                            style={{ color: "#007bff" }}
-                                                        >
-                                                            Tech
-                                                        </a>
-                                                    </span>
-                                                    <h4 className="post-title">
-                                                        <a
-                                                            href="https://demo.themewinter.com/wp/digiqoles/harbour-amid-a-slowen-down-in-the-city/"
-                                                            rel="bookmark"
-                                                            title="Harbour amid a Slowen down in singer city screening"
-                                                        >
-                                                            Harbour amid a Slowen down
-                                                        </a>
-                                                    </h4>
-                                                    <div className="post-meta">
-                                                        <span className="post-date">
-                                                            <i
-                                                                className="fa fa-clock-o"
-                                                                aria-hidden="true"
-                                                            />
-                                                            July 10, 2019
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix" />
-                                            </div>
-                                            <div className="post-content media">
-                                                <div className="post-thumb">
-                                                    <a
-                                                        href="https://demo.themewinter.com/wp/digiqoles/bel-air-anchored-by-a-multi-level-mansion-property-complete-2/"
-                                                        rel="bookmark"
-                                                        title="Class property employ ancho red  multi level mansion"
-                                                    >
-                                                        <span
-                                                            className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
-                                                            style={{
-                                                                backgroundImage:
-                                                                    'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/video_1-455x300.jpg")',
-                                                            }}
-                                                            data-ll-status="loaded"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="post-info media-body">
-                                                    <span className="post-tag">
-                                                        <a
-                                                            className="post-cat only-color"
-                                                            href="https://demo.themewinter.com/wp/digiqoles/category/video/"
-                                                            style={{ color: "#fc4a00" }}
-                                                        >
-                                                            video
-                                                        </a>
-                                                    </span>
-                                                    <h4 className="post-title">
-                                                        <a
-                                                            href="https://demo.themewinter.com/wp/digiqoles/bel-air-anchored-by-a-multi-level-mansion-property-complete-2/"
-                                                            rel="bookmark"
-                                                            title="Class property employ ancho red  multi level mansion"
-                                                        >
-                                                            Class property employ ancho red
-                                                        </a>
-                                                    </h4>
-                                                    <div className="post-meta">
-                                                        <span className="post-date">
-                                                            <i
-                                                                className="fa fa-clock-o"
-                                                                aria-hidden="true"
-                                                            />
-                                                            July 8, 2019
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="clearfix" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <RecentPostList />
                                 </div>
                             </div>
                             <div className="col-lg-4  col-md-6">
@@ -938,12 +745,6 @@ const DetailPage = () => {
                                             style={{ maxWidth: "100%", height: "auto" }}
                                             data-ll-status="loaded"
                                         />
-                                        <noscript>
-                                            &lt;img width="285" height="375"
-                                            src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2020/07/widget_banner.png"
-                                            class="image wp-image-3495 attachment-full size-full"
-                                            alt="" style="max-width: 100%; height: auto;" /&gt;
-                                        </noscript>
                                     </a>
                                 </div>
                             </div>
@@ -951,29 +752,7 @@ const DetailPage = () => {
                         </div>
                     </div>
                 </footer>
-                <div className="copy-right">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-11  align-self-center">
-                                <div className="copyright-text text-center">
-                                    <p> © 2020, Digiqole. All rights reserved</p>
-                                </div>
-                            </div>
-                            <div className="top-up-btn col-md-1">
-                                {/* end footer */}
-                                <div className="BackTo">
-                                    <a
-                                        href="#"
-                                        className="ts-icon ts-icon-arrow-up"
-                                        aria-hidden="true"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        {/* end row */}
-                    </div>
-                </div>
-                {/* end footer */}
+                <CopyRight />
             </div>
         </div>
     );
