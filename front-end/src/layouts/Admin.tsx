@@ -13,7 +13,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React, { createRef, useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import routes from 'types/dashboardRoutes';
+import routes from 'types/dashboardAdminRoutes';
 
 const switchRoutes = (
   <Switch>
