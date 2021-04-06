@@ -1,6 +1,34 @@
-import data from "components/fake_data.json";
+import dataFake1 from "components/fake_data.json";
+import dataFake2 from "components/fake_data_2.json";
+import { useEffect, useState } from "react";
 
-const TabContent = () => {
+type Props = {
+  content_id: number;
+};
+
+const TabContent = ({ content_id }: Props) => {
+  const [data, setData] = useState<any>(dataFake1);
+
+  useEffect(() => {
+    switch (content_id) {
+      case 1:
+        setData(dataFake1);
+        break;
+      case 2:
+        setData(dataFake2);
+        break;
+      case 3:
+        setData(dataFake1);
+        break;
+      case 4:
+        setData(dataFake2);
+        break;
+      case 5:
+        setData(dataFake1);
+        break;
+    }
+  }, [content_id]);
+
   const _renderLeftData = (item: any) => {
     return (
       <div className="col-md-6 col-sm-6">
@@ -60,9 +88,7 @@ const TabContent = () => {
                 {item.date}
               </span>
             </div>
-            <p>
-              {item.sort_description}
-            </p>
+            <p>{item.sort_description}</p>
           </div>
         </div>
       </div>
@@ -81,7 +107,7 @@ const TabContent = () => {
             <div className="col-md-6 col-sm-6 second">
               <div className="post-block-list post-thumb-bg">
                 <ul className="list-post">
-                  {data.map((item) => (
+                  {data.map((item: any) => (
                     <div key={item.id}>
                       <li>
                         <div className="post-block-style post-float media">
@@ -100,8 +126,9 @@ const TabContent = () => {
                             </a>
                           </div>
                           <div className="post-content media-body">
-                            {item.categories.map((category) => (
+                            {item.categories.map((category: any) => (
                               <a
+                                key={category.id}
                                 className="post-cat only-color"
                                 href="./index.php/category/lifestyle/tech/index.html"
                                 style={{ color: category.color }}

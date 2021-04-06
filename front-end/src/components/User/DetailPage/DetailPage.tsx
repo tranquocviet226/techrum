@@ -15,8 +15,8 @@ import "assets/css/gutenberg-custom.css";
 import "assets/css/master.css";
 import logoDark from "assets/img/logo/logo-dark.png";
 import logoLight from "assets/img/logo/logo-light.png";
-import TrendingBar from '../HomePage/HomeComponents/TrendingBar';
-import Logo from '../HomePage/HomeComponents/Logo';
+import TrendingBar from '../Common/TrendingBar';
+import Logo from '../Common/Logo';
 import Header from '../HomePage/HomeComponents/Header';
 const DetailPage = () => {
     const theme = "bg-dark";
