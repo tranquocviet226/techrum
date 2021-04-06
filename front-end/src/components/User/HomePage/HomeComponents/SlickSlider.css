@@ -119,30 +119,30 @@
 }
 .vertical-dots li button:before {
   font-family: "slick";
-  font-size: 12px;
-  /* line-height: 20px; */
-
+  font-size: 13px;
   position: absolute;
   top: 0;
   left: 0;
-
   width: 10px;
   height: 10px;
   border-radius: 5px;
   background-color: lightgray;
-
-  content: "";
+  content: ".";
   text-align: center;
-
   opacity: 0.8;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .vertical-dots li.slick-active button:before {
   opacity: 1;
   background-color: #fc4a00;
-  width: 10px;
-  height: 25px;
-  border-radius: 5px;
+}
+
+.ss-w-732 {
+  width: 732px;
+  margin-right: 30px;
+}
+
+.ss-cl-fff {
+  color: #ffffff;
 }
