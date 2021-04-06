@@ -2567,7 +2567,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   -webkit-border-radius: 0;
   -ms-border-radius: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  width: 65px;
+  width: auto;
   height: auto;
   line-height: 70px;
   display: inline-block;
