@@ -1,0 +1,72 @@
+import data from "components/fake_data_2.json";
+import { Post } from "types/Post";
+
+type RecentPostItemProps = {
+    post: Post
+}
+
+type RecentPostListProps = {
+    postList: Post[]
+}
+
+const RecentPostList = (props: RecentPostListProps) => {
+    const { postList } = props
+    const renderItem = (postList: Post[]) => {
+        return postList.map((post: Post) => <RecentPostItem post={post} />)
+    }
+    return (
+        <div className="recent-posts-widget post-list-item">
+            <div className="post-tab-list">
+                {renderItem(postList)}
+            </div>
+        </div>
+    )
+}
+
+const RecentPostItem = (props: RecentPostItemProps) => {
+    const { post } = props
+    return (<div className="post-content media">
+        <div className="post-thumb">
+            <a href={post.redirect_to_url} rel="bookmark" title={post.title}>
+                <span
+                    className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
+                    style={{ backgroundImage: `url(${post.background_url})` }}
+                    data-ll-status="loaded"
+                />
+            </a>
+        </div>
+        <div className="post-info media-body">
+            <span className="post-tag">
+                <a
+                    className="post-cat only-color"
+                    href="£"
+                    style={{ color: post.categories[0].color }}
+                >
+                    {post.categories[0].title}
+                </a>
+            </span>
+            <h4 className="post-title">
+                <a href={post.redirect_to_url} rel="bookmark">
+                    {post.title}
+                </a>
+            </h4>
+            <div className="post-meta">
+                <span className="post-date">
+                    <i
+                        className="fa fa-clock-o"
+                        aria-hidden="true"
+                    />
+                    {post.date}
+                </span>
+            </div>
+        </div>
+        <div className="clearfix" />
+    </div>
+    )
+}
+
+RecentPostList.defaultProps = {
+    postList: data
+};
+
+export default RecentPostList;
