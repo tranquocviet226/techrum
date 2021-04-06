@@ -4,6 +4,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Before run app, you can run:
+
+### `yarn` or `yarn install`
+
+Run develop app for mac:
+
+### `yarn dev`
+
+Run develop app for win:
+
+### `yarn dev_win`
+
 In the project directory, you can run:
 
 ### `yarn start`
