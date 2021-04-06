@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'types/dashboardUserRoutes';
-import Footer from 'components/MaterialCommon/Footer/Footer';
+import Footer from 'components/User/Footer';
 import Logo from 'components/User/Common/Logo';
 import TrendingBar from 'components/User/Common/TrendingBar';
 import Header from 'components/User/HomePage/HomeComponents/Header';
