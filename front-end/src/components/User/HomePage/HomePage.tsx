@@ -19,6 +19,7 @@ import TrendingBar from './HomeComponents/TrendingBar';
 import Logo from './HomeComponents/Logo';
 import Header from './HomeComponents/Header';
 import SlickSlider from './HomeComponents/SlickSlider';
+import SliderBannerRight from './HomeComponents/SliderBannerRight';
 const HomePage = () => {
   const theme = "bg-dark";
   return (
@@ -78,136 +79,7 @@ const HomePage = () => {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-68ef10d7"
-                    data-id="68ef10d7"
-                    data-element_type="column"
-                  >
-                    <div className="elementor-column-wrap elementor-element-populated">
-                      <div className="elementor-widget-wrap">
-                        <div
-                          className="elementor-element elementor-element-7970a807 elementor-widget elementor-widget-newszone-post-grid"
-                          data-id="7970a807"
-                          data-element_type="widget"
-                          data-widget_type="newszone-post-grid.default"
-                        >
-                          <div className="elementor-widget-container">
-                            <div className="grid-item">
-                              <div className="ts-overlay-style featured-post  post-59 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-travel">
-                                <div
-                                  className="item item-before rocket-lazyload lazyloaded"
-                                  style={{
-                                    backgroundImage:
-                                      'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_3-600x398.jpg")',
-                                  }}
-                                  data-ll-status="loaded"
-                                >
-                                  <a
-                                    className="img-link"
-                                    href="https://demo.themewinter.com/wp/digiqoles/secretart-for-economic-air-plane-that-looks-like-largest/"
-                                  />
-                                  <div className="overlay-post-content">
-                                    <div className="post-content">
-                                      <div className="grid-category">
-                                        <a
-                                          className="post-cat"
-                                          href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/fashion/"
-                                          style={{
-                                            backgroundColor: "#da1793",
-                                            color: "#ffffff",
-                                          }}
-                                        >
-                                          Fashion
-                                          </a>
-                                      </div>
-                                      <h3 className="post-title">
-                                        <a href="https://demo.themewinter.com/wp/digiqoles/secretart-for-economic-air-plane-that-looks-like-largest/">
-                                          Secretart for Economic Air plane
-                                          that looks like
-                                          </a>
-                                      </h3>
-                                      <ul className="post-meta-info  ">
-                                        <li className="author">
-                                          <i className="fa fa-user" />
-                                          <a href="https://demo.themewinter.com/wp/digiqoles/author/digiQoles/">
-                                            digiQoles
-                                            </a>
-                                        </li>
-                                        <li>
-                                          <i className="fa fa-clock-o" /> June
-                                            30, 2019
-                                          </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className="elementor-element elementor-element-7c808275 sm-post-effect elementor-widget elementor-widget-newszone-post-grid"
-                          data-id="7c808275"
-                          data-element_type="widget"
-                          data-widget_type="newszone-post-grid.default"
-                        >
-                          <div className="elementor-widget-container">
-                            <div className="grid-item">
-                              <div className="ts-overlay-style featured-post  post-120 post type-post status-publish format-standard has-post-thumbnail hentry category-health tag-gadget tag-health tag-news tag-recipie">
-                                <div
-                                  className="item item-before rocket-lazyload lazyloaded"
-                                  style={{
-                                    backgroundImage:
-                                      'url("https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/health_3-600x398.jpg")',
-                                  }}
-                                  data-ll-status="loaded"
-                                >
-                                  <a
-                                    className="img-link"
-                                    href="https://demo.themewinter.com/wp/digiqoles/she-bought-the-home-the-full-same-year-she-married/"
-                                  />
-                                  <div className="overlay-post-content">
-                                    <div className="post-content">
-                                      <div className="grid-category">
-                                        <a
-                                          className="post-cat"
-                                          href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/health/"
-                                          style={{
-                                            backgroundColor: "#690aa0",
-                                            color: "#ffffff",
-                                          }}
-                                        >
-                                          Health
-                                          </a>
-                                      </div>
-                                      <h3 className="post-title">
-                                        <a href="https://demo.themewinter.com/wp/digiqoles/she-bought-the-home-the-full-same-year-she-married/">
-                                          She bought the Home the full same
-                                          year she married
-                                          </a>
-                                      </h3>
-                                      <ul className="post-meta-info  ">
-                                        <li className="author">
-                                          <i className="fa fa-user" />
-                                          <a href="https://demo.themewinter.com/wp/digiqoles/author/digiQoles/">
-                                            digiQoles
-                                            </a>
-                                        </li>
-                                        <li>
-                                          <i className="fa fa-clock-o" /> June
-                                            30, 2019
-                                          </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 <SliderBannerRight />
                 </div>
                 <div
                   className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-68ef10d7"
