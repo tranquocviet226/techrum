@@ -1,0 +1,1056 @@
+.ts-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ts-iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ts-icon-author_icon:before {
+  content: "\e900";
+}
+.ts-icon-date_icon:before {
+  content: "\e901";
+}
+.ts-icon-mobile:before {
+  content: "\e000";
+}
+.ts-icon-laptop:before {
+  content: "\e001";
+}
+.ts-icon-desktop:before {
+  content: "\e002";
+}
+.ts-icon-tablet:before {
+  content: "\e003";
+}
+.ts-icon-phone:before {
+  content: "\e004";
+}
+.ts-icon-document:before {
+  content: "\e005";
+}
+.ts-icon-documents:before {
+  content: "\e006";
+}
+.ts-icon-search:before {
+  content: "\e007";
+}
+.ts-icon-clipboard:before {
+  content: "\e008";
+}
+.ts-icon-newspaper:before {
+  content: "\e009";
+}
+.ts-icon-notebook:before {
+  content: "\e00a";
+}
+.ts-icon-book-open:before {
+  content: "\e00b";
+}
+.ts-icon-browser:before {
+  content: "\e00c";
+}
+.ts-icon-calendar:before {
+  content: "\e00d";
+}
+.ts-icon-presentation:before {
+  content: "\e00e";
+}
+.ts-icon-picture:before {
+  content: "\e00f";
+}
+.ts-icon-pictures:before {
+  content: "\e010";
+}
+.ts-icon-video:before {
+  content: "\e011";
+}
+.ts-icon-camera:before {
+  content: "\e012";
+}
+.ts-icon-printer:before {
+  content: "\e013";
+}
+.ts-icon-toolbox:before {
+  content: "\e014";
+}
+.ts-icon-briefcase:before {
+  content: "\e015";
+}
+.ts-icon-wallet:before {
+  content: "\e016";
+}
+.ts-icon-gift:before {
+  content: "\e017";
+}
+.ts-icon-bargraph:before {
+  content: "\e018";
+}
+.ts-icon-grid:before {
+  content: "\e019";
+}
+.ts-icon-expand:before {
+  content: "\e01a";
+}
+.ts-icon-focus:before {
+  content: "\e01b";
+}
+.ts-icon-edit:before {
+  content: "\e01c";
+}
+.ts-icon-adjustments:before {
+  content: "\e01d";
+}
+.ts-icon-ribbon:before {
+  content: "\e01e";
+}
+.ts-icon-hourglass:before {
+  content: "\e01f";
+}
+.ts-icon-lock:before {
+  content: "\e020";
+}
+.ts-icon-megaphone:before {
+  content: "\e021";
+}
+.ts-icon-shield:before {
+  content: "\e022";
+}
+.ts-icon-trophy:before {
+  content: "\e023";
+}
+.ts-icon-flag:before {
+  content: "\e024";
+}
+.ts-icon-map:before {
+  content: "\e025";
+}
+.ts-icon-puzzle:before {
+  content: "\e026";
+}
+.ts-icon-basket:before {
+  content: "\e027";
+}
+.ts-icon-envelope:before {
+  content: "\e028";
+}
+.ts-icon-streetsign:before {
+  content: "\e029";
+}
+.ts-icon-telescope:before {
+  content: "\e02a";
+}
+.ts-icon-gears:before {
+  content: "\e02b";
+}
+.ts-icon-key:before {
+  content: "\e02c";
+}
+.ts-icon-paperclip:before {
+  content: "\e02d";
+}
+.ts-icon-attachment:before {
+  content: "\e02e";
+}
+.ts-icon-pricetags:before {
+  content: "\e02f";
+}
+.ts-icon-lightbulb:before {
+  content: "\e030";
+}
+.ts-icon-layers:before {
+  content: "\e031";
+}
+.ts-icon-pencil:before {
+  content: "\e032";
+}
+.ts-icon-tools:before {
+  content: "\e033";
+}
+.ts-icon-tools-2:before {
+  content: "\e034";
+}
+.ts-icon-scissors:before {
+  content: "\e035";
+}
+.ts-icon-paintbrush:before {
+  content: "\e036";
+}
+.ts-icon-magnifying-glass:before {
+  content: "\e037";
+}
+.ts-icon-circle-compass:before {
+  content: "\e038";
+}
+.ts-icon-linegraph:before {
+  content: "\e039";
+}
+.ts-icon-mic:before {
+  content: "\e03a";
+}
+.ts-icon-strategy:before {
+  content: "\e03b";
+}
+.ts-icon-beaker:before {
+  content: "\e03c";
+}
+.ts-icon-caution:before {
+  content: "\e03d";
+}
+.ts-icon-recycle:before {
+  content: "\e03e";
+}
+.ts-icon-anchor:before {
+  content: "\e03f";
+}
+.ts-icon-profile-male:before {
+  content: "\e040";
+}
+.ts-icon-profile-female:before {
+  content: "\e041";
+}
+.ts-icon-bike:before {
+  content: "\e042";
+}
+.ts-icon-wine:before {
+  content: "\e043";
+}
+.ts-icon-hotairballoon:before {
+  content: "\e044";
+}
+.ts-icon-globe:before {
+  content: "\e045";
+}
+.ts-icon-genius:before {
+  content: "\e046";
+}
+.ts-icon-map-pin:before {
+  content: "\e047";
+}
+.ts-icon-dial:before {
+  content: "\e048";
+}
+.ts-icon-chat:before {
+  content: "\e049";
+}
+.ts-icon-heart:before {
+  content: "\e04a";
+}
+.ts-icon-cloud:before {
+  content: "\e04b";
+}
+.ts-icon-upload:before {
+  content: "\e04c";
+}
+.ts-icon-download:before {
+  content: "\e04d";
+}
+.ts-icon-target:before {
+  content: "\e04e";
+}
+.ts-icon-hazardous:before {
+  content: "\e04f";
+}
+.ts-icon-piechart:before {
+  content: "\e050";
+}
+.ts-icon-speedometer:before {
+  content: "\e051";
+}
+.ts-icon-global:before {
+  content: "\e052";
+}
+.ts-icon-compass:before {
+  content: "\e053";
+}
+.ts-icon-lifesaver:before {
+  content: "\e054";
+}
+.ts-icon-clock:before {
+  content: "\e055";
+}
+.ts-icon-aperture:before {
+  content: "\e056";
+}
+.ts-icon-quote:before {
+  content: "\e057";
+}
+.ts-icon-scope:before {
+  content: "\e058";
+}
+.ts-icon-alarmclock:before {
+  content: "\e059";
+}
+.ts-icon-refresh:before {
+  content: "\e05a";
+}
+.ts-icon-happy:before {
+  content: "\e05b";
+}
+.ts-icon-sad:before {
+  content: "\e05c";
+}
+.ts-icon-facebook:before {
+  content: "\e05d";
+}
+.ts-icon-twitter:before {
+  content: "\e05e";
+}
+.ts-icon-googleplus:before {
+  content: "\e05f";
+}
+.ts-icon-rss:before {
+  content: "\e060";
+}
+.ts-icon-tumblr:before {
+  content: "\e061";
+}
+.ts-icon-linkedin:before {
+  content: "\e062";
+}
+.ts-icon-dribbble:before {
+  content: "\e063";
+}
+.ts-icon-home:before {
+  content: "\e800";
+}
+.ts-icon-apartment:before {
+  content: "\e801";
+}
+.ts-icon-pencil1:before {
+  content: "\e802";
+}
+.ts-icon-magic-wand:before {
+  content: "\e803";
+}
+.ts-icon-drop:before {
+  content: "\e804";
+}
+.ts-icon-lighter:before {
+  content: "\e805";
+}
+.ts-icon-poop:before {
+  content: "\e806";
+}
+.ts-icon-sun:before {
+  content: "\e807";
+}
+.ts-icon-moon:before {
+  content: "\e808";
+}
+.ts-icon-cloud1:before {
+  content: "\e809";
+}
+.ts-icon-cloud-upload:before {
+  content: "\e80a";
+}
+.ts-icon-cloud-download:before {
+  content: "\e80b";
+}
+.ts-icon-cloud-sync:before {
+  content: "\e80c";
+}
+.ts-icon-cloud-check:before {
+  content: "\e80d";
+}
+.ts-icon-database:before {
+  content: "\e80e";
+}
+.ts-icon-lock1:before {
+  content: "\e80f";
+}
+.ts-icon-cog:before {
+  content: "\e810";
+}
+.ts-icon-trash:before {
+  content: "\e811";
+}
+.ts-icon-dice:before {
+  content: "\e812";
+}
+.ts-icon-heart1:before {
+  content: "\e813";
+}
+.ts-icon-star:before {
+  content: "\e814";
+}
+.ts-icon-star-half:before {
+  content: "\e815";
+}
+.ts-icon-star-empty:before {
+  content: "\e816";
+}
+.ts-icon-flag1:before {
+  content: "\e817";
+}
+.ts-icon-envelope1:before {
+  content: "\e818";
+}
+.ts-icon-paperclip1:before {
+  content: "\e819";
+}
+.ts-icon-inbox:before {
+  content: "\e81a";
+}
+.ts-icon-eye:before {
+  content: "\e81b";
+}
+.ts-icon-printer1:before {
+  content: "\e81c";
+}
+.ts-icon-file-empty:before {
+  content: "\e81d";
+}
+.ts-icon-file-add:before {
+  content: "\e81e";
+}
+.ts-icon-enter:before {
+  content: "\e81f";
+}
+.ts-icon-exit:before {
+  content: "\e820";
+}
+.ts-icon-graduation-hat:before {
+  content: "\e821";
+}
+.ts-icon-license:before {
+  content: "\e822";
+}
+.ts-icon-music-note:before {
+  content: "\e823";
+}
+.ts-icon-film-play:before {
+  content: "\e824";
+}
+.ts-icon-camera-video:before {
+  content: "\e825";
+}
+.ts-icon-camera1:before {
+  content: "\e826";
+}
+.ts-icon-picture1:before {
+  content: "\e827";
+}
+.ts-icon-book:before {
+  content: "\e828";
+}
+.ts-icon-bookmark:before {
+  content: "\e829";
+}
+.ts-icon-user:before {
+  content: "\e82a";
+}
+.ts-icon-users:before {
+  content: "\e82b";
+}
+.ts-icon-shirt:before {
+  content: "\e82c";
+}
+.ts-icon-store:before {
+  content: "\e82d";
+}
+.ts-icon-cart:before {
+  content: "\e82e";
+}
+.ts-icon-tag:before {
+  content: "\e82f";
+}
+.ts-icon-phone-handset:before {
+  content: "\e830";
+}
+.ts-icon-phone1:before {
+  content: "\e831";
+}
+.ts-icon-pushpin:before {
+  content: "\e832";
+}
+.ts-icon-map-marker:before {
+  content: "\e833";
+}
+.ts-icon-map1:before {
+  content: "\e834";
+}
+.ts-icon-location:before {
+  content: "\e835";
+}
+.ts-icon-calendar-full:before {
+  content: "\e836";
+}
+.ts-icon-keyboard:before {
+  content: "\e837";
+}
+.ts-icon-spell-check:before {
+  content: "\e838";
+}
+.ts-icon-screen:before {
+  content: "\e839";
+}
+.ts-icon-smartphone:before {
+  content: "\e83a";
+}
+.ts-icon-tablet1:before {
+  content: "\e83b";
+}
+.ts-icon-laptop1:before {
+  content: "\e83c";
+}
+.ts-icon-laptop-phone:before {
+  content: "\e83d";
+}
+.ts-icon-power-switch:before {
+  content: "\e83e";
+}
+.ts-icon-bubble:before {
+  content: "\e83f";
+}
+.ts-icon-heart-pulse:before {
+  content: "\e840";
+}
+.ts-icon-construction:before {
+  content: "\e841";
+}
+.ts-icon-pie-chart:before {
+  content: "\e842";
+}
+.ts-icon-chart-bars:before {
+  content: "\e843";
+}
+.ts-icon-gift1:before {
+  content: "\e844";
+}
+.ts-icon-diamond:before {
+  content: "\e845";
+}
+.ts-icon-dinner:before {
+  content: "\e847";
+}
+.ts-icon-coffee-cup:before {
+  content: "\e848";
+}
+.ts-icon-leaf:before {
+  content: "\e849";
+}
+.ts-icon-paw:before {
+  content: "\e84a";
+}
+.ts-icon-rocket:before {
+  content: "\e84b";
+}
+.ts-icon-briefcase1:before {
+  content: "\e84c";
+}
+.ts-icon-bus:before {
+  content: "\e84d";
+}
+.ts-icon-car:before {
+  content: "\e84e";
+}
+.ts-icon-train:before {
+  content: "\e84f";
+}
+.ts-icon-bicycle:before {
+  content: "\e850";
+}
+.ts-icon-wheelchair:before {
+  content: "\e851";
+}
+.ts-icon-select:before {
+  content: "\e852";
+}
+.ts-icon-earth:before {
+  content: "\e853";
+}
+.ts-icon-smile:before {
+  content: "\e854";
+}
+.ts-icon-sad1:before {
+  content: "\e855";
+}
+.ts-icon-neutral:before {
+  content: "\e856";
+}
+.ts-icon-mustache:before {
+  content: "\e857";
+}
+.ts-icon-alarm:before {
+  content: "\e858";
+}
+.ts-icon-bullhorn:before {
+  content: "\e859";
+}
+.ts-icon-volume-high:before {
+  content: "\e85a";
+}
+.ts-icon-volume-medium:before {
+  content: "\e85b";
+}
+.ts-icon-volume-low:before {
+  content: "\e85c";
+}
+.ts-icon-volume:before {
+  content: "\e85d";
+}
+.ts-icon-mic1:before {
+  content: "\e85e";
+}
+.ts-icon-hourglass1:before {
+  content: "\e85f";
+}
+.ts-icon-undo:before {
+  content: "\e860";
+}
+.ts-icon-redo:before {
+  content: "\e861";
+}
+.ts-icon-sync:before {
+  content: "\e862";
+}
+.ts-icon-history:before {
+  content: "\e863";
+}
+.ts-icon-clock1:before {
+  content: "\e864";
+}
+.ts-icon-download1:before {
+  content: "\e865";
+}
+.ts-icon-upload1:before {
+  content: "\e866";
+}
+.ts-icon-enter-down:before {
+  content: "\e867";
+}
+.ts-icon-exit-up:before {
+  content: "\e868";
+}
+.ts-icon-bug:before {
+  content: "\e869";
+}
+.ts-icon-code:before {
+  content: "\e86a";
+}
+.ts-icon-link:before {
+  content: "\e86b";
+}
+.ts-icon-unlink:before {
+  content: "\e86c";
+}
+.ts-icon-thumbs-up:before {
+  content: "\e86d";
+}
+.ts-icon-thumbs-down:before {
+  content: "\e86e";
+}
+.ts-icon-magnifier:before {
+  content: "\e86f";
+}
+.ts-icon-cross:before {
+  content: "\e870";
+}
+.ts-icon-menu:before {
+  content: "\e871";
+}
+.ts-icon-list:before {
+  content: "\e872";
+}
+.ts-icon-chevron-up:before {
+  content: "\e873";
+}
+.ts-icon-chevron-down:before {
+  content: "\e874";
+}
+.ts-icon-chevron-left:before {
+  content: "\e875";
+}
+.ts-icon-chevron-right:before {
+  content: "\e876";
+}
+.ts-icon-arrow-up:before {
+  content: "\e877";
+}
+.ts-icon-arrow-down:before {
+  content: "\e878";
+}
+.ts-icon-arrow-left:before {
+  content: "\e879";
+}
+.ts-icon-arrow-right:before {
+  content: "\e87a";
+}
+.ts-icon-move:before {
+  content: "\e87b";
+}
+.ts-icon-warning:before {
+  content: "\e87c";
+}
+.ts-icon-question-circle:before {
+  content: "\e87d";
+}
+.ts-icon-menu-circle:before {
+  content: "\e87e";
+}
+.ts-icon-checkmark-circle:before {
+  content: "\e87f";
+}
+.ts-icon-cross-circle:before {
+  content: "\e880";
+}
+.ts-icon-plus-circle:before {
+  content: "\e881";
+}
+.ts-icon-circle-minus:before {
+  content: "\e882";
+}
+.ts-icon-arrow-up-circle:before {
+  content: "\e883";
+}
+.ts-icon-arrow-down-circle:before {
+  content: "\e884";
+}
+.ts-icon-arrow-left-circle:before {
+  content: "\e885";
+}
+.ts-icon-arrow-right-circle:before {
+  content: "\e886";
+}
+.ts-icon-chevron-up-circle:before {
+  content: "\e887";
+}
+.ts-icon-chevron-down-circle:before {
+  content: "\e888";
+}
+.ts-icon-chevron-left-circle:before {
+  content: "\e889";
+}
+.ts-icon-chevron-right-circle:before {
+  content: "\e88a";
+}
+.ts-icon-crop:before {
+  content: "\e88b";
+}
+.ts-icon-frame-expand:before {
+  content: "\e88c";
+}
+.ts-icon-frame-contract:before {
+  content: "\e88d";
+}
+.ts-icon-layers1:before {
+  content: "\e88e";
+}
+.ts-icon-funnel:before {
+  content: "\e88f";
+}
+.ts-icon-text-format:before {
+  content: "\e890";
+}
+.ts-icon-text-size:before {
+  content: "\e892";
+}
+.ts-icon-bold:before {
+  content: "\e893";
+}
+.ts-icon-italic:before {
+  content: "\e894";
+}
+.ts-icon-underline:before {
+  content: "\e895";
+}
+.ts-icon-strikethrough:before {
+  content: "\e896";
+}
+.ts-icon-highlight:before {
+  content: "\e897";
+}
+.ts-icon-text-align-left:before {
+  content: "\e898";
+}
+.ts-icon-text-align-center:before {
+  content: "\e899";
+}
+.ts-icon-text-align-right:before {
+  content: "\e89a";
+}
+.ts-icon-text-align-justify:before {
+  content: "\e89b";
+}
+.ts-icon-line-spacing:before {
+  content: "\e89c";
+}
+.ts-icon-indent-increase:before {
+  content: "\e89d";
+}
+.ts-icon-indent-decrease:before {
+  content: "\e89e";
+}
+.ts-icon-page-break:before {
+  content: "\e8a2";
+}
+.ts-icon-hand:before {
+  content: "\e8a5";
+}
+.ts-icon-pointer-up:before {
+  content: "\e8a6";
+}
+.ts-icon-pointer-right:before {
+  content: "\e8a7";
+}
+.ts-icon-pointer-down:before {
+  content: "\e8a8";
+}
+.ts-icon-pointer-left:before {
+  content: "\e8a9";
+}
+.ts-icon-About3:before {
+  content: "\e902";
+}
+.ts-icon-About4:before {
+  content: "\e903";
+}
+.ts-icon-About:before {
+  content: "\e904";
+}
+.ts-icon-Banner_current:before {
+  content: "\e905";
+}
+.ts-icon-Banner_pumpjack:before {
+  content: "\e907";
+}
+.ts-icon-Funfacts2:before {
+  content: "\e908";
+}
+.ts-icon-Funfacts3:before {
+  content: "\e909";
+}
+.ts-icon-Funfacts4:before {
+  content: "\e90a";
+}
+.ts-icon-vplay:before {
+  content: "\e90c";
+}
+.ts-icon-newsletter:before {
+  content: "\e90d";
+}
+.ts-icon-coins-2:before {
+  content: "\e90e";
+}
+.ts-icon-commerce-2:before {
+  content: "\e90f";
+}
+.ts-icon-monitor:before {
+  content: "\e910";
+}
+.ts-icon-graphic-3:before {
+  content: "\e911";
+}
+.ts-icon-business:before {
+  content: "\e912";
+}
+.ts-icon-graphic-2:before {
+  content: "\e913";
+}
+.ts-icon-commerce-1:before {
+  content: "\e914";
+}
+.ts-icon-hammer:before {
+  content: "\e915";
+}
+.ts-icon-graphic-1:before {
+  content: "\e916";
+}
+.ts-icon-graphic:before {
+  content: "\e917";
+}
+.ts-icon-justice-1:before {
+  content: "\e918";
+}
+.ts-icon-line:before {
+  content: "\e919";
+}
+.ts-icon-money-3:before {
+  content: "\e91a";
+}
+.ts-icon-chart:before {
+  content: "\e91b";
+}
+.ts-icon-commerce:before {
+  content: "\e91c";
+}
+.ts-icon-agenda:before {
+  content: "\e91d";
+}
+.ts-icon-money-2:before {
+  content: "\e91e";
+}
+.ts-icon-justice:before {
+  content: "\e91f";
+}
+.ts-icon-money-1:before {
+  content: "\e920";
+}
+.ts-icon-money:before {
+  content: "\e921";
+}
+.ts-icon-technology:before {
+  content: "\e922";
+}
+.ts-icon-coins-1:before {
+  content: "\e923";
+}
+.ts-icon-coins:before {
+  content: "\e924";
+}
+.ts-icon-left-arrow:before {
+  content: "\e925";
+}
+.ts-icon-bank:before {
+  content: "\e926";
+}
+.ts-icon-calculator:before {
+  content: "\e927";
+}
+.ts-icon-chart1:before {
+  content: "\e928";
+}
+.ts-icon-chart2:before {
+  content: "\e929";
+}
+.ts-icon-checked:before {
+  content: "\e92a";
+}
+.ts-icon-clock2:before {
+  content: "\e92b";
+}
+.ts-icon-comment:before {
+  content: "\e92c";
+}
+.ts-icon-comments:before {
+  content: "\e92d";
+}
+.ts-icon-consult:before {
+  content: "\e92e";
+}
+.ts-icon-consut2:before {
+  content: "\e92f";
+}
+.ts-icon-deal:before {
+  content: "\e930";
+}
+.ts-icon-download2:before {
+  content: "\e931";
+}
+.ts-icon-envelope2:before {
+  content: "\e932";
+}
+.ts-icon-euro:before {
+  content: "\e933";
+}
+.ts-icon-folder:before {
+  content: "\e934";
+}
+.ts-icon-invest:before {
+  content: "\e935";
+}
+.ts-icon-loan:before {
+  content: "\e936";
+}
+.ts-icon-map-marker1:before {
+  content: "\e937";
+}
+.ts-icon-mutual-fund:before {
+  content: "\e938";
+}
+.ts-icon-percent:before {
+  content: "\e939";
+}
+.ts-icon-phone2:before {
+  content: "\e93a";
+}
+.ts-icon-pie-chart1:before {
+  content: "\e93b";
+}
+.ts-icon-play:before {
+  content: "\e93c";
+}
+.ts-icon-left-arrow2:before {
+  content: "\e93d";
+}
+.ts-icon-savings:before {
+  content: "\e93e";
+}
+.ts-icon-search1:before {
+  content: "\e93f";
+}
+.ts-icon-tag1:before {
+  content: "\e940";
+}
+.ts-icon-tags:before {
+  content: "\e941";
+}
+.ts-icon-tax:before {
+  content: "\e942";
+}
+.ts-icon-quote1:before {
+  content: "\e943";
+}
+.ts-icon-right-arrow2:before {
+  content: "\e944";
+}
+.ts-icon-strategicservices_icon5:before {
+  content: "\e948";
+}
+.ts-icon-post_icon1:before {
+  content: "\e94c";
+}
+.ts-icon-post_icon2:before {
+  content: "\e94d";
+}
+.ts-icon-post_icon3:before {
+  content: "\e94e";
+}
+.ts-icon-post_icon4:before {
+  content: "\e94f";
+}
+.ts-icon-post_icon5:before {
+  content: "\e950";
+}
+.ts-icon-application_icon:before {
+  content: "\e951";
+}
+.ts-icon-opened_positions_icon1:before {
+  content: "\e952";
+}
+.ts-icon-opened_positions_icon2:before {
+  content: "\e953";
+}
+.ts-icon-about_us_icon1:before {
+  content: "\e954";
+}
+.ts-icon-about_us_icon2:before {
+  content: "\e955";
+}
+.ts-icon-about_us_icon3:before {
+  content: "\e956";
+}
+.ts-icon-about_us_icon4:before {
+  content: "\e957";
+}
+.ts-icon-arrow-left1:before {
+  content: "\e906";
+}
+.ts-icon-arrow-right1:before {
+  content: "\e90b";
+}
+.ts-icon-fire:before {
+  content: "\e945";
+}
+.ts-icon-weather:before {
+  content: "\e946";
+}
