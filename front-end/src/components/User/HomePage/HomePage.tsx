@@ -1,30 +1,35 @@
-import { connect } from 'react-redux';
-import "assets/css/frontend.min.css";
-import "assets/css/post-1878.css";
-import "assets/css/bootstrap.min.css";
-import "assets/css/icon-font.css";
 import "assets/css/animate.css";
+import "assets/css/blog.css";
+import "assets/css/bootstrap.min.css";
+import "assets/css/frontend.min.css";
+import "assets/css/gutenberg-custom.css";
+import "assets/css/icon-font.css";
+import "assets/css/jquery.mCustomScrollbar.css";
 import "assets/css/magnific-popup.css";
+import "assets/css/master.css";
 import "assets/css/owl.carousel.min.css";
 import "assets/css/owl.theme.default.min.css";
-import "assets/css/jquery.mCustomScrollbar.css";
-import "assets/css/woocommerce.css";
-import "assets/css/blog.css";
+import "assets/css/post-1878.css";
 import "assets/css/print.css";
-import "assets/css/gutenberg-custom.css";
-import "assets/css/master.css";
-import logoDark from "assets/img/logo/logo-dark.png";
+import "assets/css/woocommerce.css";
 import logoLight from "assets/img/logo/logo-light.png";
-import TrendingBar from './HomeComponents/TrendingBar';
-import Logo from './HomeComponents/Logo';
-import Header from './HomeComponents/Header';
-import SlickSlider from './HomeComponents/SlickSlider';
-import SliderBannerRight from './HomeComponents/SliderBannerRight';
-import FeatureTab from './HomeComponents/FeatureTab';
-import TabContent from './HomeComponents/TabContent';
+import { useState } from "react";
+import { connect } from "react-redux";
+import Logo from "../Common/Logo";
+import TrendingBar from "../Common/TrendingBar";
+import FeatureTab from "./HomeComponents/FeatureTab";
+import Header from "./HomeComponents/Header";
+import SlickSlider from "./HomeComponents/SlickSlider";
+import SliderBannerRight from "./HomeComponents/SliderBannerRight";
+import TabContent from "./HomeComponents/TabContent";
 
 const HomePage = () => {
   const theme = "bg-dark";
+  const [contentId, setContentId] = useState<number>(1);
+
+  const handleSelectCategory = (id: number) => {
+    setContentId(id);
+  };
 
   const _renderSLider = () => {
     return (
@@ -75,8 +80,35 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    )
-  }
+    );
+  };
+
+  const _renderTab = () => {
+    return (
+      <div
+        className="elementor-element elementor-element-7fc4cdd4 elementor-widget elementor-widget-newszone-post-tab"
+        data-id="7fc4cdd4"
+        data-element_type="widget"
+        data-widget_type="newszone-post-tab.default"
+      >
+        <div className="elementor-widget-container">
+          <div className="featured-tab-item">
+            <div className="post-block-element featured-tab">
+              <div className="section-heading heading-style3">
+                <h2 className="block-title">
+                  <span className="title-angle-shap">what’s new</span>
+                </h2>
+              </div>
+              <FeatureTab
+                selectCategory={(id: number) => handleSelectCategory(id)}
+              />
+              <TabContent content_id={contentId} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="home page-template page-template-template page-template-homepage-template page-template-templatehomepage-template-php page page-id-1878 sidebar-active elementor-default elementor-kit-6 elementor-page elementor-page-1878">
@@ -105,30 +137,7 @@ const HomePage = () => {
                   data-element_type="column"
                 >
                   <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-7fc4cdd4 elementor-widget elementor-widget-newszone-post-tab"
-                      data-id="7fc4cdd4"
-                      data-element_type="widget"
-                      data-widget_type="newszone-post-tab.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <div className="featured-tab-item">
-                          <div className="post-block-element featured-tab">
-                            <div className="section-heading heading-style3">
-                              <h2 className="block-title">
-                                <span className="title-angle-shap">
-                                  what’s new
-                                  </span>
-                              </h2>
-                            </div>
-                           <FeatureTab />
-                           <TabContent />
-                          </div>
-                          {/*/.post-block6-element*/}
-                        </div>
-                        {/*/.post-block6-warp*/}
-                      </div>
-                    </div>
+                    {_renderTab()}
                     <section
                       className="elementor-section elementor-inner-section elementor-element elementor-element-41ac85fd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                       data-id="41ac85fd"
@@ -154,7 +163,7 @@ const HomePage = () => {
                                   <h2 className="block-title">
                                     <span className="title-angle-shap">
                                       Lifestyle
-                                      </span>
+                                    </span>
                                   </h2>
                                 </div>
                               </div>
@@ -193,7 +202,7 @@ const HomePage = () => {
                                               }}
                                             >
                                               Fashion
-                                              </a>
+                                            </a>
                                             <a
                                               className="post-cat"
                                               href="./index.php/category/lifestyle/index.html"
@@ -203,7 +212,7 @@ const HomePage = () => {
                                               }}
                                             >
                                               Lifestyle
-                                              </a>
+                                            </a>
                                           </div>
                                         </div>
                                         <div className="post-content">
@@ -215,7 +224,7 @@ const HomePage = () => {
                                             >
                                               The billionaire Philan thropist
                                               read to learn more and
-                                              </a>
+                                            </a>
                                           </h4>
                                           <div className="post-meta  ">
                                             <span className="post-author">
@@ -226,15 +235,15 @@ const HomePage = () => {
                                                 rel="author"
                                               >
                                                 duynn100198
-                                                </a>
+                                              </a>
                                             </span>
                                             <span className="post-date">
                                               <i
                                                 className="fa fa-clock-o"
                                                 aria-hidden="true"
                                               />
-                                                June 30, 2019
-                                              </span>
+                                              June 30, 2019
+                                            </span>
                                           </div>
                                         </div>
                                         {/* Post content end */}
@@ -270,13 +279,13 @@ const HomePage = () => {
                                                   title="Copa America: Luis Suarez devastated US"
                                                 >
                                                   Copa America: Luis Suarez
-                                                  </a>
+                                                </a>
                                               </h4>
                                               <div className="post-meta">
                                                 <span className="post-date">
                                                   <i className="fa fa-clock-o"></i>
-                                                    June 30, 2019
-                                                  </span>
+                                                  June 30, 2019
+                                                </span>
                                               </div>
                                             </div>
                                             {/* Post content end */}
@@ -309,13 +318,13 @@ const HomePage = () => {
                                                   title="Brazil Secretart  Thiago  wary Lionel Mesi"
                                                 >
                                                   Brazil Secretart Thiago wary
-                                                  </a>
+                                                </a>
                                               </h4>
                                               <div className="post-meta">
                                                 <span className="post-date">
                                                   <i className="fa fa-clock-o"></i>
-                                                    June 30, 2019
-                                                  </span>
+                                                  June 30, 2019
+                                                </span>
                                               </div>
                                             </div>
                                             {/* Post content end */}
@@ -348,13 +357,13 @@ const HomePage = () => {
                                                   title="Venezuela elan govt and opposit  the property collect negote"
                                                 >
                                                   Venezuela elan govt and
-                                                  </a>
+                                                </a>
                                               </h4>
                                               <div className="post-meta">
                                                 <span className="post-date">
                                                   <i className="fa fa-clock-o"></i>
-                                                    June 30, 2019
-                                                  </span>
+                                                  June 30, 2019
+                                                </span>
                                               </div>
                                             </div>
                                             {/* Post content end */}
@@ -387,13 +396,13 @@ const HomePage = () => {
                                                   title="Nancy multi Chinese business woman trying"
                                                 >
                                                   Nancy multi Chinese business
-                                                  </a>
+                                                </a>
                                               </h4>
                                               <div className="post-meta">
                                                 <span className="post-date">
                                                   <i className="fa fa-clock-o"></i>
-                                                    July 10, 2019
-                                                  </span>
+                                                  July 10, 2019
+                                                </span>
                                               </div>
                                             </div>
                                             {/* Post content end */}
@@ -431,9 +440,7 @@ const HomePage = () => {
                       <div className="elementor-widget-container">
                         <div className="section-heading heading-style3">
                           <h2 className="block-title">
-                            <span className="title-angle-shap">
-                              Follow us
-                              </span>
+                            <span className="title-angle-shap">Follow us</span>
                           </h2>
                         </div>
                       </div>
@@ -485,8 +492,8 @@ const HomePage = () => {
                                 data-toggle="tab"
                               >
                                 <span />
-                                  Recent
-                                </a>
+                                Recent
+                              </a>
                             </li>
                             <li role="presentation">
                               <a
@@ -495,8 +502,8 @@ const HomePage = () => {
                                 data-toggle="tab"
                               >
                                 <span />
-                                  POPULaR
-                                </a>
+                                POPULaR
+                              </a>
                             </li>
                             <li role="presentation">
                               <a
@@ -505,8 +512,8 @@ const HomePage = () => {
                                 data-toggle="tab"
                               >
                                 <span />
-                                  Comment
-                                </a>
+                                Comment
+                              </a>
                             </li>
                           </ul>
                           <div className="tab-content">
@@ -524,12 +531,12 @@ const HomePage = () => {
                                       style={{ color: "#fc4a00" }}
                                     >
                                       Uncategorized
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2021/04/05/hello-world/index.html">
                                       Hello world!
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -537,8 +544,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        April 5, 2021
-                                      </span>
+                                      April 5, 2021
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -567,12 +574,12 @@ const HomePage = () => {
                                       style={{ color: "#da1793" }}
                                     >
                                       Fashion
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html">
                                       Ratcliffe to be Director of nation
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -580,8 +587,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        July 10, 2019
-                                      </span>
+                                      July 10, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -610,13 +617,12 @@ const HomePage = () => {
                                       style={{ color: "#4ca80b" }}
                                     >
                                       Sports
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/07/10/nancy-zhang-a-chinese-business-woman/index.html">
-                                      Nancy multi Chinese business woman
-                                      trying
-                                      </a>
+                                      Nancy multi Chinese business woman trying
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -624,8 +630,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        July 10, 2019
-                                      </span>
+                                      July 10, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -654,12 +660,12 @@ const HomePage = () => {
                                       style={{ color: "#007bff" }}
                                     >
                                       Tech
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html">
                                       Harbour amid a Slowen down in
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -667,8 +673,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        July 10, 2019
-                                      </span>
+                                      July 10, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -703,12 +709,12 @@ const HomePage = () => {
                                       style={{ color: "#007bff" }}
                                     >
                                       Tech
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html">
                                       Harbour amid a Slowen down in
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -716,8 +722,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        July 10, 2019
-                                      </span>
+                                      July 10, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -746,12 +752,12 @@ const HomePage = () => {
                                       style={{ color: "#da1793" }}
                                     >
                                       Fashion
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/06/30/the-billionaire-philan-thropist-read-to-learn-more-and-city/index.html">
                                       The billionaire Philan thropist read to
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -759,8 +765,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        June 30, 2019
-                                      </span>
+                                      June 30, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -789,12 +795,12 @@ const HomePage = () => {
                                       style={{ color: "#da1793" }}
                                     >
                                       Fashion
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/06/30/lopez-has-reportedly-added-to-her-real-estate-holdings-an-eight/index.html">
                                       Lopez has reportedly added to her
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -802,8 +808,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        June 30, 2019
-                                      </span>
+                                      June 30, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -832,12 +838,12 @@ const HomePage = () => {
                                       style={{ color: "#da1793" }}
                                     >
                                       Fashion
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html">
                                       Ratcliffe to be Director of nation
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -845,8 +851,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        July 10, 2019
-                                      </span>
+                                      July 10, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -881,12 +887,12 @@ const HomePage = () => {
                                       style={{ color: "#f3670a" }}
                                     >
                                       Travel
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/06/30/early-tourists-choices-to-the-sea-of-maldives-in-fancy-dresses-and-suits/index.html">
                                       Early tourists choices to the sea
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -894,8 +900,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        June 30, 2019
-                                      </span>
+                                      June 30, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -908,12 +914,12 @@ const HomePage = () => {
                                       style={{ color: "#fc4a00" }}
                                     >
                                       Uncategorized
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2021/04/05/hello-world/index.html">
                                       Hello world!
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -921,8 +927,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        April 5, 2021
-                                      </span>
+                                      April 5, 2021
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -951,12 +957,12 @@ const HomePage = () => {
                                       style={{ color: "#bc8a61" }}
                                     >
                                       Food
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/06/06/nancy-zhang-a-chinese-busy-woman-and-social-media/index.html">
                                       Nancy Zhang a Chinese busy woman
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -964,8 +970,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        June 6, 2019
-                                      </span>
+                                      June 6, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -994,12 +1000,12 @@ const HomePage = () => {
                                       style={{ color: "#fc4a00" }}
                                     >
                                       video
-                                      </a>
+                                    </a>
                                   </span>
                                   <h4 className="post-title">
                                     <a href="./index.php/2019/03/08/super-bowl-lii-venue-know-more-about-minneapolis-us-bank-read/index.html">
                                       Super Bowl LII Venue Know more
-                                      </a>
+                                    </a>
                                   </h4>
                                   <div className="post-meta">
                                     <span className="post-date">
@@ -1007,8 +1013,8 @@ const HomePage = () => {
                                         className="fa fa-clock-o"
                                         aria-hidden="true"
                                       />
-                                        March 8, 2019
-                                      </span>
+                                      March 8, 2019
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -1070,7 +1076,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Tech
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1082,7 +1088,7 @@ const HomePage = () => {
                                   >
                                     Best garden wing supplies for the horticu
                                     ltural
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1090,8 +1096,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      June 30, 2019
-                                    </span>
+                                    June 30, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1123,7 +1129,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Tech
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1135,7 +1141,7 @@ const HomePage = () => {
                                   >
                                     Naturalistic a design is thriv as actual
                                     nature
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1143,8 +1149,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      June 30, 2019
-                                    </span>
+                                    June 30, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1176,7 +1182,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Sports
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1187,7 +1193,7 @@ const HomePage = () => {
                                     title="Copa America: Luis Suarez devastated US"
                                   >
                                     Copa America: Luis Suarez devastated US
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1195,8 +1201,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      June 30, 2019
-                                    </span>
+                                    June 30, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1228,7 +1234,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Lifestyle
-                                    </a>
+                                  </a>
                                   <a
                                     className="post-cat"
                                     href="./index.php/category/lifestyle/sports/index.html"
@@ -1238,7 +1244,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Sports
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1249,7 +1255,7 @@ const HomePage = () => {
                                     title="Brazil Secretart  Thiago  wary Lionel Mesi"
                                   >
                                     Brazil Secretart Thiago wary Lionel Mesi
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1257,8 +1263,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      June 30, 2019
-                                    </span>
+                                    June 30, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1290,7 +1296,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Sports
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1300,9 +1306,9 @@ const HomePage = () => {
                                     rel="bookmark"
                                     title="Venezuela elan govt and opposit  the property collect negote"
                                   >
-                                    Venezuela elan govt and opposit the
-                                    property collect
-                                    </a>
+                                    Venezuela elan govt and opposit the property
+                                    collect
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1310,8 +1316,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      June 30, 2019
-                                    </span>
+                                    June 30, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1343,7 +1349,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Tech
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1355,7 +1361,7 @@ const HomePage = () => {
                                   >
                                     The secret to moving this ancient sphinx
                                     screening
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1363,8 +1369,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 6, 2019
-                                    </span>
+                                    July 6, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1396,7 +1402,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Tech
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1407,7 +1413,7 @@ const HomePage = () => {
                                     title="Harbour amid a Slowen down in singer city screening"
                                   >
                                     Harbour amid a Slowen down in singer city
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1415,8 +1421,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 10, 2019
-                                    </span>
+                                    July 10, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1448,7 +1454,7 @@ const HomePage = () => {
                                     }}
                                   >
                                     Sports
-                                    </a>
+                                  </a>
                                 </div>
                               </div>
                               <div className="post-content">
@@ -1459,7 +1465,7 @@ const HomePage = () => {
                                     title="Nancy multi Chinese business woman trying"
                                   >
                                     Nancy multi Chinese business woman trying
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta ">
                                   <span className="post-date">
@@ -1467,8 +1473,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 10, 2019
-                                    </span>
+                                    July 10, 2019
+                                  </span>
                                 </div>
                               </div>
                               {/* Post content end */}
@@ -1553,7 +1559,7 @@ const HomePage = () => {
                                       }}
                                     >
                                       Tech
-                                      </a>
+                                    </a>
                                     <h4 className="post-title md">
                                       <a
                                         href="https://demo.themewinter.com/wp/digiqoles/cheap-smartphone-sensor-could-help-you-old-food-safe-eat/"
@@ -1562,7 +1568,7 @@ const HomePage = () => {
                                       >
                                         Cheap smartphone sensor could help you
                                         old food safe
-                                        </a>
+                                      </a>
                                     </h4>
                                     <div className="post-meta ">
                                       <span className="post-author">
@@ -1573,25 +1579,24 @@ const HomePage = () => {
                                           rel="author"
                                         >
                                           digiQoles
-                                          </a>
+                                        </a>
                                       </span>
                                       <span className="post-date">
-                                        <i className="fa fa-clock-o" /> June
-                                          30, 2019
-                                        </span>
+                                        <i className="fa fa-clock-o" /> June 30,
+                                        2019
+                                      </span>
                                       <span className="post-view">
                                         <i className="ts-icon ts-icon-fire" />
-                                          1772
-                                        </span>
+                                        1772
+                                      </span>
                                     </div>
                                     <p>
                                       Struggling to sell one multi-million
-                                      dollar home currently on the market
-                                      won’t stop actress and singer Jennifer
-                                      Lopez from expanding her property
-                                      collection. Lopez has reportedly added
-                                      to her real
-                                      </p>
+                                      dollar home currently on the market won’t
+                                      stop actress and singer Jennifer Lopez
+                                      from expanding her property collection.
+                                      Lopez has reportedly added to her real
+                                    </p>
                                   </div>
                                   {/* Post content end */}
                                 </div>
@@ -1623,7 +1628,7 @@ const HomePage = () => {
                                         style={{ color: "#007bff" }}
                                       >
                                         Tech
-                                        </a>
+                                      </a>
                                       <h4 className="post-title">
                                         <a
                                           href="https://demo.themewinter.com/wp/digiqoles/best-gardening-supplies-for-the-horticultural-hopeless/"
@@ -1632,7 +1637,7 @@ const HomePage = () => {
                                         >
                                           Best garden wing supplies for the
                                           horticu ltural
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta">
                                         <span className="post-date">
@@ -1640,8 +1645,8 @@ const HomePage = () => {
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            June 30, 2019
-                                          </span>
+                                          June 30, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -1674,7 +1679,7 @@ const HomePage = () => {
                                         style={{ color: "#007bff" }}
                                       >
                                         Tech
-                                        </a>
+                                      </a>
                                       <h4 className="post-title">
                                         <a
                                           href="https://demo.themewinter.com/wp/digiqoles/naturalistic-design-is-thriving-as-actual-nature-dies/"
@@ -1683,7 +1688,7 @@ const HomePage = () => {
                                         >
                                           Naturalistic a design is thriv as
                                           actual nature
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta">
                                         <span className="post-date">
@@ -1691,8 +1696,8 @@ const HomePage = () => {
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            June 30, 2019
-                                          </span>
+                                          June 30, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -1725,7 +1730,7 @@ const HomePage = () => {
                                         style={{ color: "#007bff" }}
                                       >
                                         Tech
-                                        </a>
+                                      </a>
                                       <h4 className="post-title">
                                         <a
                                           href="https://demo.themewinter.com/wp/digiqoles/the-secret-to-moving-this-ancient-sphinx-screening/"
@@ -1734,7 +1739,7 @@ const HomePage = () => {
                                         >
                                           The secret to moving this ancient
                                           sphinx screening
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta">
                                         <span className="post-date">
@@ -1742,8 +1747,8 @@ const HomePage = () => {
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 6, 2019
-                                          </span>
+                                          July 6, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -1776,7 +1781,7 @@ const HomePage = () => {
                                         style={{ color: "#007bff" }}
                                       >
                                         Tech
-                                        </a>
+                                      </a>
                                       <h4 className="post-title">
                                         <a
                                           href="https://demo.themewinter.com/wp/digiqoles/harbour-amid-a-slowen-down-in-the-city/"
@@ -1785,7 +1790,7 @@ const HomePage = () => {
                                         >
                                           Harbour amid a Slowen down in singer
                                           city
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta">
                                         <span className="post-date">
@@ -1793,8 +1798,8 @@ const HomePage = () => {
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 10, 2019
-                                          </span>
+                                          July 10, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -1967,9 +1972,7 @@ const HomePage = () => {
                       <div className="elementor-widget-container">
                         <div className="section-heading heading-style3">
                           <h2 className="block-title">
-                            <span className="title-angle-shap">
-                              Don't Miss
-                              </span>
+                            <span className="title-angle-shap">Don't Miss</span>
                           </h2>
                         </div>
                       </div>
@@ -2006,13 +2009,12 @@ const HomePage = () => {
                                       }}
                                     >
                                       Sports
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/07/10/nancy-zhang-a-chinese-business-woman/index.html">
-                                      Nancy multi Chinese business woman
-                                      trying
-                                      </a>
+                                      Nancy multi Chinese business woman trying
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2041,12 +2043,12 @@ const HomePage = () => {
                                       }}
                                     >
                                       Tech
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html">
                                       Harbour amid a Slowen down in singer
-                                      </a>
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2075,12 +2077,12 @@ const HomePage = () => {
                                       }}
                                     >
                                       Tech
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/07/06/the-secret-to-moving-this-ancient-sphinx-screening/index.html">
                                       The secret to moving this ancient sphinx
-                                      </a>
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2109,13 +2111,13 @@ const HomePage = () => {
                                       }}
                                     >
                                       Sports
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/06/30/venezuela-elan-govt-and-opposit-the-property-collect-negote/index.html">
                                       Venezuela elan govt and opposit the
                                       property
-                                      </a>
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2144,7 +2146,7 @@ const HomePage = () => {
                                       }}
                                     >
                                       Lifestyle
-                                      </a>
+                                    </a>
                                     <a
                                       className="post-cat"
                                       href="./index.php/category/lifestyle/sports/index.html"
@@ -2154,12 +2156,12 @@ const HomePage = () => {
                                       }}
                                     >
                                       Sports
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/06/30/brazil-secretart-thiago-wary-lionel-mesi/index.html">
                                       Brazil Secretart Thiago wary Lionel Mesi
-                                      </a>
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2188,12 +2190,12 @@ const HomePage = () => {
                                       }}
                                     >
                                       Sports
-                                      </a>
+                                    </a>
                                   </div>
                                   <h3 className="post-title">
                                     <a href="./index.php/2019/06/30/copa-america-luis-suarez-devastated-us/index.html">
                                       Copa America: Luis Suarez devastated US
-                                      </a>
+                                    </a>
                                   </h3>
                                   <ul className="post-meta-info  "></ul>
                                 </div>
@@ -2223,7 +2225,7 @@ const HomePage = () => {
                           <h2 className="block-title">
                             <span className="title-angle-shap">
                               Recent Post
-                              </span>
+                            </span>
                           </h2>
                         </div>
                       </div>
@@ -2246,7 +2248,7 @@ const HomePage = () => {
                                     title="Hello world!"
                                   >
                                     Hello world!
-                                    </a>
+                                  </a>
                                 </h4>
                                 <p className="post-meta">
                                   <span className="post-date">
@@ -2254,8 +2256,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      April 5, 2021
-                                    </span>
+                                    April 5, 2021
+                                  </span>
                                 </p>
                               </div>
                               <div className="clearfix" />
@@ -2284,7 +2286,7 @@ const HomePage = () => {
                                     style={{ color: "#da1793" }}
                                   >
                                     Fashion
-                                    </a>
+                                  </a>
                                 </span>
                                 <h4 className="post-title">
                                   <a
@@ -2293,7 +2295,7 @@ const HomePage = () => {
                                     title="Ratcliffe to be Director of nation  talent Trump ignored"
                                   >
                                     Ratcliffe to be Director of
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta">
                                   <span className="post-date">
@@ -2301,8 +2303,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 10, 2019
-                                    </span>
+                                    July 10, 2019
+                                  </span>
                                 </div>
                               </div>
                               <div className="clearfix" />
@@ -2331,7 +2333,7 @@ const HomePage = () => {
                                     style={{ color: "#4ca80b" }}
                                   >
                                     Sports
-                                    </a>
+                                  </a>
                                 </span>
                                 <h4 className="post-title">
                                   <a
@@ -2340,7 +2342,7 @@ const HomePage = () => {
                                     title="Nancy multi Chinese business woman trying"
                                   >
                                     Nancy multi Chinese business woman
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta">
                                   <span className="post-date">
@@ -2348,8 +2350,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 10, 2019
-                                    </span>
+                                    July 10, 2019
+                                  </span>
                                 </div>
                               </div>
                               <div className="clearfix" />
@@ -2378,7 +2380,7 @@ const HomePage = () => {
                                     style={{ color: "#007bff" }}
                                   >
                                     Tech
-                                    </a>
+                                  </a>
                                 </span>
                                 <h4 className="post-title">
                                   <a
@@ -2387,7 +2389,7 @@ const HomePage = () => {
                                     title="Harbour amid a Slowen down in singer city screening"
                                   >
                                     Harbour amid a Slowen down
-                                    </a>
+                                  </a>
                                 </h4>
                                 <div className="post-meta">
                                   <span className="post-date">
@@ -2395,8 +2397,8 @@ const HomePage = () => {
                                       className="fa fa-clock-o"
                                       aria-hidden="true"
                                     />
-                                      July 10, 2019
-                                    </span>
+                                    July 10, 2019
+                                  </span>
                                 </div>
                               </div>
                               <div className="clearfix" />
@@ -2434,7 +2436,7 @@ const HomePage = () => {
                               <h2 className="block-title">
                                 <span className="title-angle-shap">
                                   read next
-                                  </span>
+                                </span>
                               </h2>
                             </div>
                           </div>
@@ -2470,7 +2472,7 @@ const HomePage = () => {
                                           class="attachment-digiqole-medium
                                           size-digiqole-medium wp-post-image"
                                           alt="" /&gt;
-                                          </noscript>
+                                        </noscript>
                                       </a>
                                       <div className="grid-cat">
                                         <a
@@ -2482,7 +2484,7 @@ const HomePage = () => {
                                           }}
                                         >
                                           Fashion
-                                          </a>
+                                        </a>
                                       </div>
                                     </div>
                                     <div className="post-content">
@@ -2494,7 +2496,7 @@ const HomePage = () => {
                                         >
                                           Ratcliffe to be Director of nation
                                           talent Trump ignored
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta ">
                                         <span className="post-author">
@@ -2505,15 +2507,15 @@ const HomePage = () => {
                                             rel="author"
                                           >
                                             digiQoles
-                                            </a>
+                                          </a>
                                         </span>
                                         <span className="post-date">
                                           <i
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 10, 2019
-                                          </span>
+                                          July 10, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -2544,7 +2546,7 @@ const HomePage = () => {
                                           class="attachment-digiqole-medium
                                           size-digiqole-medium wp-post-image"
                                           alt="" /&gt;
-                                          </noscript>
+                                        </noscript>
                                       </a>
                                       <div className="grid-cat">
                                         <a
@@ -2556,7 +2558,7 @@ const HomePage = () => {
                                           }}
                                         >
                                           Sports
-                                          </a>
+                                        </a>
                                       </div>
                                     </div>
                                     <div className="post-content">
@@ -2568,7 +2570,7 @@ const HomePage = () => {
                                         >
                                           Nancy multi Chinese business woman
                                           trying
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta ">
                                         <span className="post-author">
@@ -2579,15 +2581,15 @@ const HomePage = () => {
                                             rel="author"
                                           >
                                             digiQoles
-                                            </a>
+                                          </a>
                                         </span>
                                         <span className="post-date">
                                           <i
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 10, 2019
-                                          </span>
+                                          July 10, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -2618,7 +2620,7 @@ const HomePage = () => {
                                           class="attachment-digiqole-medium
                                           size-digiqole-medium wp-post-image"
                                           alt="" /&gt;
-                                          </noscript>
+                                        </noscript>
                                       </a>
                                       <div className="grid-cat">
                                         <a
@@ -2630,7 +2632,7 @@ const HomePage = () => {
                                           }}
                                         >
                                           Tech
-                                          </a>
+                                        </a>
                                       </div>
                                     </div>
                                     <div className="post-content">
@@ -2642,7 +2644,7 @@ const HomePage = () => {
                                         >
                                           Harbour amid a Slowen down in singer
                                           city screening
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta ">
                                         <span className="post-author">
@@ -2653,15 +2655,15 @@ const HomePage = () => {
                                             rel="author"
                                           >
                                             digiQoles
-                                            </a>
+                                          </a>
                                         </span>
                                         <span className="post-date">
                                           <i
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 10, 2019
-                                          </span>
+                                          July 10, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -2692,7 +2694,7 @@ const HomePage = () => {
                                           class="attachment-digiqole-medium
                                           size-digiqole-medium wp-post-image"
                                           alt="" /&gt;
-                                          </noscript>
+                                        </noscript>
                                       </a>
                                       <div className="grid-cat">
                                         <a
@@ -2704,7 +2706,7 @@ const HomePage = () => {
                                           }}
                                         >
                                           Tech
-                                          </a>
+                                        </a>
                                       </div>
                                     </div>
                                     <div className="post-content">
@@ -2716,7 +2718,7 @@ const HomePage = () => {
                                         >
                                           The secret to moving this ancient
                                           sphinx screening
-                                          </a>
+                                        </a>
                                       </h4>
                                       <div className="post-meta ">
                                         <span className="post-author">
@@ -2727,15 +2729,15 @@ const HomePage = () => {
                                             rel="author"
                                           >
                                             digiQoles
-                                            </a>
+                                          </a>
                                         </span>
                                         <span className="post-date">
                                           <i
                                             className="fa fa-clock-o"
                                             aria-hidden="true"
                                           />
-                                            July 6, 2019
-                                          </span>
+                                          July 6, 2019
+                                        </span>
                                       </div>
                                     </div>
                                     {/* Post content end */}
@@ -2750,7 +2752,7 @@ const HomePage = () => {
                                 data-json_grid_meta='{"order":"DESC","posts_per_page":4,"terms":["2"],"tags":"","post_sortby":"latestpost","total_post":32,"grid_style":"style2","show_view_count":"no","show_cat":"yes","show_author":"yes","show_date":"yes","desc_limit":"35","post_title_crop":10,"show_gradient":"","show_author_avator":"no"}'
                               >
                                 Load More
-                                </button>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -2775,7 +2777,7 @@ const HomePage = () => {
                               <h2 className="block-title">
                                 <span className="title-angle-shap">
                                   Recent Comments
-                                  </span>
+                                </span>
                               </h2>
                             </div>
                           </div>
@@ -2807,25 +2809,25 @@ const HomePage = () => {
                                         srcset='https://secure.gravatar.com/avatar/6b622b6dde539b8091333c656733c122?s=96&amp;#038;d=mm&amp;#038;r=g
                                         2x' class='avatar avatar-96 photo'
                                         height='96' width='96' /&gt;
-                                        </noscript>
+                                      </noscript>
                                     </div>
                                     <div className="ts-author-meta">
                                       14 Jul 19
-                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                                 <div className="col-lg-8 col-md-10">
                                   <div className="ts-author-content">
                                     <div className="comment">
                                       <a href="https://demo.themewinter.com/wp/digiqoles/?post_type=post&p=52 ">
-                                        Hidden Hills property with mountain
-                                        and city views boasts nine bed rooms,
+                                        Hidden Hills property with mountain and
+                                        city views boasts nine bed rooms,
                                         including a big
-                                        </a>
+                                      </a>
                                     </div>
                                     <div className="ts-author">
                                       by
-                                        <a href="http://blank.com">John Doe</a>
+                                      <a href="http://blank.com">John Doe</a>
                                     </div>
                                   </div>
                                 </div>
@@ -2849,11 +2851,11 @@ const HomePage = () => {
                                         srcset='https://secure.gravatar.com/avatar/b63b48f9ace050d324419d86b600640e?s=96&amp;#038;d=mm&amp;#038;r=g
                                         2x' class='avatar avatar-96 photo'
                                         height='96' width='96' /&gt;
-                                        </noscript>
+                                      </noscript>
                                     </div>
                                     <div className="ts-author-meta">
                                       14 Jul 19
-                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                                 <div className="col-lg-8 col-md-10">
@@ -2861,15 +2863,15 @@ const HomePage = () => {
                                     <div className="comment">
                                       <a href="https://demo.themewinter.com/wp/digiqoles/?post_type=post&p=52 ">
                                         Lopez has reportedly added to her real
-                                        estat holdings an eight-plus acre
-                                        estate in Bel-Air
-                                        </a>
+                                        estat holdings an eight-plus acre estate
+                                        in Bel-Air
+                                      </a>
                                     </div>
                                     <div className="ts-author">
                                       by
-                                        <a href="http://ladygaga.com">
+                                      <a href="http://ladygaga.com">
                                         Lady Gaga
-                                        </a>
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
@@ -2893,11 +2895,11 @@ const HomePage = () => {
                                         srcset='https://secure.gravatar.com/avatar/af56e913707faef5d24ee78935fa64d4?s=96&amp;#038;d=mm&amp;#038;r=g
                                         2x' class='avatar avatar-96 photo'
                                         height='96' width='96' /&gt;
-                                        </noscript>
+                                      </noscript>
                                     </div>
                                     <div className="ts-author-meta">
                                       14 Jul 19
-                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                                 <div className="col-lg-8 col-md-10">
@@ -2907,11 +2909,11 @@ const HomePage = () => {
                                         Struggling to sell one multi-million
                                         dollar home currently on the market
                                         won’t stop actress and
-                                        </a>
+                                      </a>
                                     </div>
                                     <div className="ts-author">
                                       by
-                                        <a href="http://blank.com">John Wick</a>
+                                      <a href="http://blank.com">John Wick</a>
                                     </div>
                                   </div>
                                 </div>
@@ -2980,7 +2982,7 @@ const HomePage = () => {
                       &lt;img class="img-fluid"
                       src="//demo.themewinter.com/wp/digiqoles/wp-content/uploads/2020/07/logo-light.png"
                       alt="DigiQole"&gt;
-                      </noscript>
+                    </noscript>
                   </a>
                 </div>
               </div>
@@ -2996,10 +2998,7 @@ const HomePage = () => {
                     <div className="mc4wp-form-fields">
                       <div className="footer-newsletter">
                         <p>
-                          <i
-                            className="fa fa-paper-plane"
-                            aria-hidden="true"
-                          />
+                          <i className="fa fa-paper-plane" aria-hidden="true" />
                           <input
                             type="email"
                             name="EMAIL"
@@ -3031,7 +3030,7 @@ const HomePage = () => {
                       nine bedrooms including a master suite with private
                       terrace and an entertainment. wing which includes a
                       20-seat theater.
-                      </p>
+                    </p>
                   </div>
                 </div>
                 <div className="widget_text footer-left-widget">
@@ -3039,16 +3038,15 @@ const HomePage = () => {
                     <ul className="footer-info">
                       <li>
                         <i className="fa fa-home" /> 15 Cliff St, New York NY
-                          10038, USA
-                        </li>
+                        10038, USA
+                      </li>
                       <li>
-                        <i className="ts-icon ts-icon-phone2" /> +1
-                          212-602-9641
-                        </li>
+                        <i className="ts-icon ts-icon-phone2" /> +1 212-602-9641
+                      </li>
                       <li>
                         <i className="fa fa-envelope" />
-                          info@example.com
-                        </li>
+                        info@example.com
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -3117,7 +3115,7 @@ const HomePage = () => {
                               style={{ color: "#da1793" }}
                             >
                               Fashion
-                              </a>
+                            </a>
                           </span>
                           <h4 className="post-title">
                             <a
@@ -3126,16 +3124,13 @@ const HomePage = () => {
                               title="Ratcliffe to be Director of nation  talent Trump ignored"
                             >
                               Ratcliffe to be Director of
-                              </a>
+                            </a>
                           </h4>
                           <div className="post-meta">
                             <span className="post-date">
-                              <i
-                                className="fa fa-clock-o"
-                                aria-hidden="true"
-                              />
-                                July 10, 2019
-                              </span>
+                              <i className="fa fa-clock-o" aria-hidden="true" />
+                              July 10, 2019
+                            </span>
                           </div>
                         </div>
                         <div className="clearfix" />
@@ -3165,7 +3160,7 @@ const HomePage = () => {
                               style={{ color: "#4ca80b" }}
                             >
                               Sports
-                              </a>
+                            </a>
                           </span>
                           <h4 className="post-title">
                             <a
@@ -3174,16 +3169,13 @@ const HomePage = () => {
                               title="Nancy multi Chinese business woman trying"
                             >
                               Nancy multi Chinese business woman
-                              </a>
+                            </a>
                           </h4>
                           <div className="post-meta">
                             <span className="post-date">
-                              <i
-                                className="fa fa-clock-o"
-                                aria-hidden="true"
-                              />
-                                July 10, 2019
-                              </span>
+                              <i className="fa fa-clock-o" aria-hidden="true" />
+                              July 10, 2019
+                            </span>
                           </div>
                         </div>
                         <div className="clearfix" />
@@ -3213,7 +3205,7 @@ const HomePage = () => {
                               style={{ color: "#007bff" }}
                             >
                               Tech
-                              </a>
+                            </a>
                           </span>
                           <h4 className="post-title">
                             <a
@@ -3222,16 +3214,13 @@ const HomePage = () => {
                               title="Harbour amid a Slowen down in singer city screening"
                             >
                               Harbour amid a Slowen down
-                              </a>
+                            </a>
                           </h4>
                           <div className="post-meta">
                             <span className="post-date">
-                              <i
-                                className="fa fa-clock-o"
-                                aria-hidden="true"
-                              />
-                                July 10, 2019
-                              </span>
+                              <i className="fa fa-clock-o" aria-hidden="true" />
+                              July 10, 2019
+                            </span>
                           </div>
                         </div>
                         <div className="clearfix" />
@@ -3261,7 +3250,7 @@ const HomePage = () => {
                               style={{ color: "#fc4a00" }}
                             >
                               video
-                              </a>
+                            </a>
                           </span>
                           <h4 className="post-title">
                             <a
@@ -3270,16 +3259,13 @@ const HomePage = () => {
                               title="Class property employ ancho red  multi level mansion"
                             >
                               Class property employ ancho red
-                              </a>
+                            </a>
                           </h4>
                           <div className="post-meta">
                             <span className="post-date">
-                              <i
-                                className="fa fa-clock-o"
-                                aria-hidden="true"
-                              />
-                                July 8, 2019
-                              </span>
+                              <i className="fa fa-clock-o" aria-hidden="true" />
+                              July 8, 2019
+                            </span>
                           </div>
                         </div>
                         <div className="clearfix" />
@@ -3305,7 +3291,7 @@ const HomePage = () => {
                       src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2020/07/widget_banner.png"
                       class="image wp-image-3495 attachment-full size-full"
                       alt="" style="max-width: 100%; height: auto;" /&gt;
-                      </noscript>
+                    </noscript>
                   </a>
                 </div>
               </div>
@@ -3339,6 +3325,6 @@ const HomePage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default connect(null, null)(HomePage);

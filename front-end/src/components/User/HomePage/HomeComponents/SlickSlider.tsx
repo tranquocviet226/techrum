@@ -1,9 +1,9 @@
+import data from "components/fake_data.json";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./SlickSlider.css";
-import data from "components/fake_data.json";
 
 const SlickSlider = () => {
   const settings = {
@@ -54,7 +54,7 @@ const SlickSlider = () => {
                       {item.date}
                     </li>
                     <li className="active">
-                      <i className="ts-icon ts-icon-fire" />
+                      <i className="fas fa-fire"></i>
                       {item.views}
                     </li>
                   </ul>
