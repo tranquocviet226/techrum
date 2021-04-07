@@ -1,98 +1,11 @@
-import { useState } from "react";
 import { connect } from "react-redux";
-import FeatureTab from "./HomeComponents/FeatureTab";
-import SlickSlider from "./HomeComponents/SlickSlider";
-import SliderBannerRight from "./HomeComponents/SliderBannerRight";
-import TabContent from "./HomeComponents/TabContent";
-import RecentPostList from '../Common/RecentPostList';
+import Slider from "./HomeComponents/Slider";
+import NewContent from "./HomeComponents/NewContent";
+import RecentPostList from '../Common/PostList';
+import Rating from '../Common/Rating';
 
 const HomePage = () => {
   const theme = "bg-dark";
-  const [contentId, setContentId] = useState<number>(1);
-
-  const handleSelectCategory = (id: number) => {
-    setContentId(id);
-  };
-
-  const _renderSLider = () => {
-    return (
-      <section
-        className="elementor-section elementor-top-section elementor-element elementor-element-5c614333 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-        data-id="5c614333"
-        data-element_type="section"
-        data-settings='{"ekit_has_onepagescroll_dot":"yes"}'
-      >
-        <div className="elementor-container elementor-column-gap-default">
-          <div className="elementor-row">
-            <div
-              className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1753e2ea"
-              data-id="1753e2ea"
-              data-element_type="column"
-            >
-              <div className="elementor-column-wrap elementor-element-populated">
-                <div className="elementor-widget-wrap">
-                  <div
-                    className="elementor-element elementor-element-f075111 elementor-widget elementor-widget-newszone-main-slider"
-                    data-id="f075111"
-                    data-element_type="widget"
-                    data-widget_type="newszone-main-slider.default"
-                  >
-                    <div className="elementor-widget-container">
-                      <div
-                        data-controls='{"dot_nav_show":"","slider_dot_show":"yes","auto_nav_slide":"yes","item_count":5}'
-                        className="main-slider owl-carousel owl-loaded owl-drag"
-                      >
-                        <div className="owl-stage-outer">
-                          <SlickSlider />
-                        </div>
-                        <div className="owl-nav disabled">
-                          <div className="owl-prev">
-                            <i className="fa fa-angle-left" />
-                          </div>
-                          <div className="owl-next">
-                            <i className="fa fa-angle-right" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <SliderBannerRight />
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  const _renderTab = () => {
-    return (
-      <div
-        className="elementor-element elementor-element-7fc4cdd4 elementor-widget elementor-widget-newszone-post-tab"
-        data-id="7fc4cdd4"
-        data-element_type="widget"
-        data-widget_type="newszone-post-tab.default"
-      >
-        <div className="elementor-widget-container">
-          <div className="featured-tab-item">
-            <div className="post-block-element featured-tab">
-              <div className="section-heading heading-style3">
-                <h2 className="block-title">
-                  <span className="title-angle-shap">what’s new</span>
-                </h2>
-              </div>
-              <FeatureTab
-                selectCategory={(id: number) => handleSelectCategory(id)}
-              />
-              <TabContent content_id={contentId} />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div
       data-elementor-type="wp-post"
@@ -101,7 +14,7 @@ const HomePage = () => {
       data-elementor-settings="[]"
     >
       <div className="elementor-section-wrap">
-        {_renderSLider()}
+        <Slider />
         <section
           className="elementor-section elementor-top-section elementor-element elementor-element-61505dd8 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="61505dd8"
@@ -115,7 +28,7 @@ const HomePage = () => {
               data-element_type="column"
             >
               <div className="elementor-widget-wrap elementor-element-populated">
-                {_renderTab()}
+                <NewContent />
                 <section
                   className="elementor-section elementor-inner-section elementor-element elementor-element-41ac85fd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                   data-id="41ac85fd"
@@ -200,8 +113,8 @@ const HomePage = () => {
                                           rel="bookmark"
                                           title="The billionaire Philan thropist read to learn more and city"
                                         >
-                                          The billionaire Philan thropist
-                                          read to learn more and
+                                          The billionaire Philan thropist read
+                                          to learn more and
                                         </a>
                                       </h4>
                                       <div className="post-meta  ">
@@ -457,548 +370,7 @@ const HomePage = () => {
                   data-widget_type="newszone-post-list-tab.default"
                 >
                   <div className="elementor-widget-container">
-                    <div className="post-list-item widgets">
-                      <ul
-                        className="nav nav-tabs recen-tab-menu"
-                        role="tablist"
-                      >
-                        <li role="presentation">
-                          <a
-                            className="active show"
-                            href="#74cbf30f-recent"
-                            role="tab"
-                            data-toggle="tab"
-                          >
-                            <span />
-                            Recent
-                          </a>
-                        </li>
-                        <li role="presentation">
-                          <a
-                            href="#74cbf30f-popular"
-                            role="tab"
-                            data-toggle="tab"
-                          >
-                            <span />
-                            POPULaR
-                          </a>
-                        </li>
-                        <li role="presentation">
-                          <a
-                            href="#74cbf30f-tab-comment"
-                            role="tab"
-                            data-toggle="tab"
-                          >
-                            <span />
-                            Comment
-                          </a>
-                        </li>
-                      </ul>
-                      <div className="tab-content">
-                        <div
-                          role="tabpanel"
-                          className="tab-pane active post-tab-list post-thumb-bg"
-                          id="74cbf30f-recent"
-                        >
-                          <div className="post-content media">
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/uncategorized/index.html"
-                                  style={{ color: "#fc4a00" }}
-                                >
-                                  Uncategorized
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2021/04/05/hello-world/index.html">
-                                  Hello world!
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  April 5, 2021
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html"
-                                rel="bookmark"
-                                title="Ratcliffe to be Director of nation  talent Trump ignored"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 2</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/fashion/index.html"
-                                  style={{ color: "#da1793" }}
-                                >
-                                  Fashion
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html">
-                                  Ratcliffe to be Director of nation
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  July 10, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/07/10/nancy-zhang-a-chinese-business-woman/index.html"
-                                rel="bookmark"
-                                title="Nancy multi Chinese business woman trying"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 3</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/sports/index.html"
-                                  style={{ color: "#4ca80b" }}
-                                >
-                                  Sports
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/07/10/nancy-zhang-a-chinese-business-woman/index.html">
-                                  Nancy multi Chinese business woman trying
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  July 10, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html"
-                                rel="bookmark"
-                                title="Harbour amid a Slowen down in singer city screening"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 4</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/tech/index.html"
-                                  style={{ color: "#007bff" }}
-                                >
-                                  Tech
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html">
-                                  Harbour amid a Slowen down in
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  July 10, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          role="tabpanel"
-                          className="tab-pane post-tab-list post-thumb-bg"
-                          id="74cbf30f-popular"
-                        >
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html"
-                                rel="bookmark"
-                                title="Harbour amid a Slowen down in singer city screening"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 1</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/tech/index.html"
-                                  style={{ color: "#007bff" }}
-                                >
-                                  Tech
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/07/10/harbour-amid-a-slowen-down-in-the-city/index.html">
-                                  Harbour amid a Slowen down in
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  July 10, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/06/30/the-billionaire-philan-thropist-read-to-learn-more-and-city/index.html"
-                                rel="bookmark"
-                                title="The billionaire Philan thropist read to learn more and city"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 2</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/fashion/index.html"
-                                  style={{ color: "#da1793" }}
-                                >
-                                  Fashion
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/06/30/the-billionaire-philan-thropist-read-to-learn-more-and-city/index.html">
-                                  The billionaire Philan thropist read to
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  June 30, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/06/30/lopez-has-reportedly-added-to-her-real-estate-holdings-an-eight/index.html"
-                                rel="bookmark"
-                                title="Lopez has reportedly added to her real estate holdings an eight"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 3</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/fashion/index.html"
-                                  style={{ color: "#da1793" }}
-                                >
-                                  Fashion
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/06/30/lopez-has-reportedly-added-to-her-real-estate-holdings-an-eight/index.html">
-                                  Lopez has reportedly added to her
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  June 30, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html"
-                                rel="bookmark"
-                                title="Ratcliffe to be Director of nation  talent Trump ignored"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 4</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/fashion/index.html"
-                                  style={{ color: "#da1793" }}
-                                >
-                                  Fashion
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/07/10/ratcliffe-to-be-director-of-nation-talent-trump-ignored/index.html">
-                                  Ratcliffe to be Director of nation
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  July 10, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          role="tabpanel"
-                          className="tab-pane post-tab-list post-thumb-bg"
-                          id="74cbf30f-tab-comment"
-                        >
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/06/30/early-tourists-choices-to-the-sea-of-maldives-in-fancy-dresses-and-suits/index.html"
-                                rel="bookmark"
-                                title="Early tourists choices to the sea of Maldives in fancy dresses and suits"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 1</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/travel/index.html"
-                                  style={{ color: "#f3670a" }}
-                                >
-                                  Travel
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/06/30/early-tourists-choices-to-the-sea-of-maldives-in-fancy-dresses-and-suits/index.html">
-                                  Early tourists choices to the sea
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  June 30, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/uncategorized/index.html"
-                                  style={{ color: "#fc4a00" }}
-                                >
-                                  Uncategorized
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2021/04/05/hello-world/index.html">
-                                  Hello world!
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  April 5, 2021
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/06/06/nancy-zhang-a-chinese-busy-woman-and-social-media/index.html"
-                                rel="bookmark"
-                                title="Nancy Zhang a Chinese busy woman and social media"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 3</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/lifestyle/food/index.html"
-                                  style={{ color: "#bc8a61" }}
-                                >
-                                  Food
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/06/06/nancy-zhang-a-chinese-busy-woman-and-social-media/index.html">
-                                  Nancy Zhang a Chinese busy woman
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  June 6, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="post-content media">
-                            <div className="post-thumb post-thumb-radius">
-                              <a
-                                href="./index.php/2019/03/08/super-bowl-lii-venue-know-more-about-minneapolis-us-bank-read/index.html"
-                                rel="bookmark"
-                                title="Super Bowl LII Venue  Know more about Minneapolis  US Bank  Read"
-                              >
-                                <span
-                                  className="digiqole-sm-bg-img"
-                                  style={{
-                                    backgroundImage:
-                                      "url(https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1.jpg)",
-                                  }}
-                                />
-                                <span className="tab-post-count"> 4</span>
-                              </a>
-                            </div>
-                            <div className="media-body">
-                              <span className="post-ts-tag">
-                                <a
-                                  className="post-cat only-color"
-                                  href="./index.php/category/video/index.html"
-                                  style={{ color: "#fc4a00" }}
-                                >
-                                  video
-                                </a>
-                              </span>
-                              <h4 className="post-title">
-                                <a href="./index.php/2019/03/08/super-bowl-lii-venue-know-more-about-minneapolis-us-bank-read/index.html">
-                                  Super Bowl LII Venue Know more
-                                </a>
-                              </h4>
-                              <div className="post-meta">
-                                <span className="post-date">
-                                  <i
-                                    className="fa fa-clock-o"
-                                    aria-hidden="true"
-                                  />
-                                  March 8, 2019
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                     <Rating/>
                   </div>
                 </div>
               </div>
@@ -1064,8 +436,7 @@ const HomePage = () => {
                                 rel="bookmark"
                                 title="Best garden wing supplies for the horticu ltural hopeless"
                               >
-                                Best garden wing supplies for the horticu
-                                ltural
+                                Best garden wing supplies for the horticu ltural
                               </a>
                             </h4>
                             <div className="post-meta ">
@@ -1117,8 +488,7 @@ const HomePage = () => {
                                 rel="bookmark"
                                 title="Naturalistic a design is thriv  as actual nature dies"
                               >
-                                Naturalistic a design is thriv as actual
-                                nature
+                                Naturalistic a design is thriv as actual nature
                               </a>
                             </h4>
                             <div className="post-meta ">
@@ -1544,8 +914,8 @@ const HomePage = () => {
                                     rel="bookmark"
                                     title="Cheap smartphone sensor could help you old food safe eat"
                                   >
-                                    Cheap smartphone sensor could help you
-                                    old food safe
+                                    Cheap smartphone sensor could help you old
+                                    food safe
                                   </a>
                                 </h4>
                                 <div className="post-meta ">
@@ -1569,11 +939,11 @@ const HomePage = () => {
                                   </span>
                                 </div>
                                 <p>
-                                  Struggling to sell one multi-million
-                                  dollar home currently on the market won’t
-                                  stop actress and singer Jennifer Lopez
-                                  from expanding her property collection.
-                                  Lopez has reportedly added to her real
+                                  Struggling to sell one multi-million dollar
+                                  home currently on the market won’t stop
+                                  actress and singer Jennifer Lopez from
+                                  expanding her property collection. Lopez has
+                                  reportedly added to her real
                                 </p>
                               </div>
                               {/* Post content end */}
@@ -1613,8 +983,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Best garden wing supplies for the horticu ltural hopeless"
                                     >
-                                      Best garden wing supplies for the
-                                      horticu ltural
+                                      Best garden wing supplies for the horticu
+                                      ltural
                                     </a>
                                   </h4>
                                   <div className="post-meta">
@@ -1664,8 +1034,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Naturalistic a design is thriv  as actual nature dies"
                                     >
-                                      Naturalistic a design is thriv as
-                                      actual nature
+                                      Naturalistic a design is thriv as actual
+                                      nature
                                     </a>
                                   </h4>
                                   <div className="post-meta">
@@ -1715,8 +1085,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="The secret to moving this ancient sphinx screening"
                                     >
-                                      The secret to moving this ancient
-                                      sphinx screening
+                                      The secret to moving this ancient sphinx
+                                      screening
                                     </a>
                                   </h4>
                                   <div className="post-meta">
@@ -1766,8 +1136,7 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Harbour amid a Slowen down in singer city screening"
                                     >
-                                      Harbour amid a Slowen down in singer
-                                      city
+                                      Harbour amid a Slowen down in singer city
                                     </a>
                                   </h4>
                                   <div className="post-meta">
@@ -2093,8 +1462,7 @@ const HomePage = () => {
                               </div>
                               <h3 className="post-title">
                                 <a href="./index.php/2019/06/30/venezuela-elan-govt-and-opposit-the-property-collect-negote/index.html">
-                                  Venezuela elan govt and opposit the
-                                  property
+                                  Venezuela elan govt and opposit the property
                                 </a>
                               </h3>
                               <ul className="post-meta-info  "></ul>
@@ -2201,9 +1569,7 @@ const HomePage = () => {
                   <div className="elementor-widget-container">
                     <div className="section-heading heading-style3">
                       <h2 className="block-title">
-                        <span className="title-angle-shap">
-                          Recent Post
-                        </span>
+                        <span className="title-angle-shap">Recent Post</span>
                       </h2>
                     </div>
                   </div>
@@ -2245,9 +1611,7 @@ const HomePage = () => {
                       <div className="elementor-widget-container">
                         <div className="section-heading heading-style3">
                           <h2 className="block-title">
-                            <span className="title-angle-shap">
-                              read next
-                            </span>
+                            <span className="title-angle-shap">read next</span>
                           </h2>
                         </div>
                       </div>
@@ -2281,8 +1645,8 @@ const HomePage = () => {
                                       &lt;img width="600" height="398"
                                       src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/fashion_1-600x398.jpg"
                                       class="attachment-digiqole-medium
-                                      size-digiqole-medium wp-post-image"
-                                      alt="" /&gt;
+                                      size-digiqole-medium wp-post-image" alt=""
+                                      /&gt;
                                     </noscript>
                                   </a>
                                   <div className="grid-cat">
@@ -2305,8 +1669,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Ratcliffe to be Director of nation  talent Trump ignored"
                                     >
-                                      Ratcliffe to be Director of nation
-                                      talent Trump ignored
+                                      Ratcliffe to be Director of nation talent
+                                      Trump ignored
                                     </a>
                                   </h4>
                                   <div className="post-meta ">
@@ -2355,8 +1719,8 @@ const HomePage = () => {
                                       &lt;img width="600" height="398"
                                       src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/sports_1-600x398.jpg"
                                       class="attachment-digiqole-medium
-                                      size-digiqole-medium wp-post-image"
-                                      alt="" /&gt;
+                                      size-digiqole-medium wp-post-image" alt=""
+                                      /&gt;
                                     </noscript>
                                   </a>
                                   <div className="grid-cat">
@@ -2379,8 +1743,7 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Nancy multi Chinese business woman trying"
                                     >
-                                      Nancy multi Chinese business woman
-                                      trying
+                                      Nancy multi Chinese business woman trying
                                     </a>
                                   </h4>
                                   <div className="post-meta ">
@@ -2429,8 +1792,8 @@ const HomePage = () => {
                                       &lt;img width="600" height="398"
                                       src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_1-600x398.jpg"
                                       class="attachment-digiqole-medium
-                                      size-digiqole-medium wp-post-image"
-                                      alt="" /&gt;
+                                      size-digiqole-medium wp-post-image" alt=""
+                                      /&gt;
                                     </noscript>
                                   </a>
                                   <div className="grid-cat">
@@ -2453,8 +1816,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="Harbour amid a Slowen down in singer city screening"
                                     >
-                                      Harbour amid a Slowen down in singer
-                                      city screening
+                                      Harbour amid a Slowen down in singer city
+                                      screening
                                     </a>
                                   </h4>
                                   <div className="post-meta ">
@@ -2503,8 +1866,8 @@ const HomePage = () => {
                                       &lt;img width="600" height="398"
                                       src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/tech_2-600x398.jpg"
                                       class="attachment-digiqole-medium
-                                      size-digiqole-medium wp-post-image"
-                                      alt="" /&gt;
+                                      size-digiqole-medium wp-post-image" alt=""
+                                      /&gt;
                                     </noscript>
                                   </a>
                                   <div className="grid-cat">
@@ -2527,8 +1890,8 @@ const HomePage = () => {
                                       rel="bookmark"
                                       title="The secret to moving this ancient sphinx screening"
                                     >
-                                      The secret to moving this ancient
-                                      sphinx screening
+                                      The secret to moving this ancient sphinx
+                                      screening
                                     </a>
                                   </h4>
                                   <div className="post-meta ">
@@ -2622,18 +1985,15 @@ const HomePage = () => {
                                     height='96' width='96' /&gt;
                                   </noscript>
                                 </div>
-                                <div className="ts-author-meta">
-                                  14 Jul 19
-                                </div>
+                                <div className="ts-author-meta">14 Jul 19</div>
                               </div>
                             </div>
                             <div className="col-lg-8 col-md-10">
                               <div className="ts-author-content">
                                 <div className="comment">
                                   <a href="https://demo.themewinter.com/wp/digiqoles/?post_type=post&p=52 ">
-                                    Hidden Hills property with mountain and
-                                    city views boasts nine bed rooms,
-                                    including a big
+                                    Hidden Hills property with mountain and city
+                                    views boasts nine bed rooms, including a big
                                   </a>
                                 </div>
                                 <div className="ts-author">
@@ -2664,25 +2024,21 @@ const HomePage = () => {
                                     height='96' width='96' /&gt;
                                   </noscript>
                                 </div>
-                                <div className="ts-author-meta">
-                                  14 Jul 19
-                                </div>
+                                <div className="ts-author-meta">14 Jul 19</div>
                               </div>
                             </div>
                             <div className="col-lg-8 col-md-10">
                               <div className="ts-author-content">
                                 <div className="comment">
                                   <a href="https://demo.themewinter.com/wp/digiqoles/?post_type=post&p=52 ">
-                                    Lopez has reportedly added to her real
-                                    estat holdings an eight-plus acre estate
-                                    in Bel-Air
+                                    Lopez has reportedly added to her real estat
+                                    holdings an eight-plus acre estate in
+                                    Bel-Air
                                   </a>
                                 </div>
                                 <div className="ts-author">
                                   by
-                                  <a href="http://ladygaga.com">
-                                    Lady Gaga
-                                  </a>
+                                  <a href="http://ladygaga.com">Lady Gaga</a>
                                 </div>
                               </div>
                             </div>
@@ -2708,18 +2064,16 @@ const HomePage = () => {
                                     height='96' width='96' /&gt;
                                   </noscript>
                                 </div>
-                                <div className="ts-author-meta">
-                                  14 Jul 19
-                                </div>
+                                <div className="ts-author-meta">14 Jul 19</div>
                               </div>
                             </div>
                             <div className="col-lg-8 col-md-10">
                               <div className="ts-author-content">
                                 <div className="comment">
                                   <a href="https://demo.themewinter.com/wp/digiqoles/?post_type=post&p=52 ">
-                                    Struggling to sell one multi-million
-                                    dollar home currently on the market
-                                    won’t stop actress and
+                                    Struggling to sell one multi-million dollar
+                                    home currently on the market won’t stop
+                                    actress and
                                   </a>
                                 </div>
                                 <div className="ts-author">

@@ -1,4 +1,4 @@
-import data from "components/fake_data.json";
+import { fakeData } from "components/mock_data";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +19,7 @@ const SlickSlider = () => {
   };
   return (
     <Slider {...settings}>
-      {data.map((item) => (
+      {fakeData.map((item) => (
         <div key={item.id} className="owl-item cloned ss-w-732">
           <div className="ts-overlay-style featured-post  post-361 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-food">
             <div
