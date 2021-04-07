@@ -1,0 +1,199 @@
+:root {
+    --bg-color-1: #f84270;
+    --bg-color-2: #fe803b;
+    --text-light: #fff;
+    --text-dark: #000;
+    --bg-dropMenu: #f4f4f4;
+    --bg-dropMenu-hover: #fff;
+    --text-hover: #fc4a00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+/* animation */
+
+@-webkit-keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translatey(-10px);
+        -moz-transform: translatey(-10px);
+        -o-transform: translatey(-10px);
+        transform: translatey(-10px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+
+@-moz-keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translatey(-10px);
+        -moz-transform: translatey(-10px);
+        -o-transform: translatey(-10px);
+        transform: translatey(-10px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translatey(-10px);
+        -moz-transform: translatey(-10px);
+        -o-transform: translatey(-10px);
+        transform: translatey(-10px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+
+.in-down {
+    -webkit-animation-name: fadeInDown;
+    -moz-animation-name: fadeInDown;
+    -o-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+
+/* css sticky navigation */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky+.content {
+    padding-top: 60px;
+}
+
+.header {
+    animation: fadeInDown ease-in 0.8s;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(20deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
+}
+
+.header_navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_navigation__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.header_navigation__list-item {
+    list-style: none;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header_navigation__list-item--link {
+    text-decoration: none;
+    color: var(--bg-dropmenu);
+    padding: 0 24px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-light);
+}
+
+.header_navigation__list-item--link>i {
+    padding-left: 10px;
+}
+
+.header_navigation__list-item:hover {
+    background: rgba(255, 255, 255, .1);
+}
+
+.header_navigation__list-item--link:hover {
+    color: var(--text-light);
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.menu_drop__home {
+    animation: fadeInDown ease 0.4s;
+    display: none;
+    background-color: var(--bg-dropMenu);
+    position: absolute;
+    width: 230px;
+    top: 100%;
+    left: 0%;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.menu_drop__home-list {
+    list-style: none;
+    padding: 14px 22px;
+}
+
+.menu_drop__home-list:hover {
+    background-color: var(--bg-dropMenu-hover);
+}
+
+.menu_drop__home-list:hover .menu_drop__home-list--link {
+    color: var(--text-hover);
+}
+
+.menu_drop__home-list--link {
+    color: var(--text-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.header_navigation__list-item:hover .menu_drop__home {
+    display: block;
+}
