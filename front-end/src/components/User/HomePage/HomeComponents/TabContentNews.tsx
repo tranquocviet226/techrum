@@ -1,11 +1,65 @@
 import { fakeData, fakeData2 } from "components/mock_data";
 import { useEffect, useState } from "react";
+import { Post } from "types/Post";
 
 type Props = {
   content_id: number;
 };
 
-const TabContent = ({ content_id }: Props) => {
+type PostItemProps = {
+  item: Post;
+};
+
+const TabContentItem = ({ item }: PostItemProps) => {
+  const onSelectPost = () => {
+    console.log(item.id);
+  };
+  return (
+    <li>
+      <div className="post-block-style post-float media">
+        <div className="post-thumb d-flex">
+          <a
+            href="./index.php/2019/06/30/naturalistic-design-is-thriving-as-actual-nature-dies/index.html"
+            rel="bookmark"
+            title={item.title}
+          >
+            <span
+              className="digiqole-sm-bg-img"
+              style={{
+                backgroundImage: `url(${item.background_url})`,
+              }}
+            />
+          </a>
+        </div>
+        <div className="post-content media-body">
+          {item.categories.map((category: any) => (
+            <a
+              key={category.id}
+              className="post-cat only-color"
+              style={{ color: category.color }}
+            >
+              {category.title}
+            </a>
+          ))}
+
+          <h4 className="post-title title-small">
+            <a onClick={onSelectPost} rel="bookmark" title={item.title}>
+              {item.title}
+            </a>
+          </h4>
+          <div className="post-meta">
+            <span className="post-date">
+              <i className="fa fa-clock-o" />
+              {item.date}
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
+
+const TabContentNews = ({ content_id }: Props) => {
   const [data, setData] = useState<any>(fakeData);
 
   useEffect(() => {
@@ -106,55 +160,8 @@ const TabContent = ({ content_id }: Props) => {
             <div className="col-md-6 col-sm-6 second">
               <div className="post-block-list post-thumb-bg">
                 <ul className="list-post">
-                  {data.map((item: any) => (
-                    <div key={item.id}>
-                      <li>
-                        <div className="post-block-style post-float media">
-                          <div className="post-thumb d-flex">
-                            <a
-                              href="./index.php/2019/06/30/naturalistic-design-is-thriving-as-actual-nature-dies/index.html"
-                              rel="bookmark"
-                              title={item.title}
-                            >
-                              <span
-                                className="digiqole-sm-bg-img"
-                                style={{
-                                  backgroundImage: `url(${item.background_url})`,
-                                }}
-                              />
-                            </a>
-                          </div>
-                          <div className="post-content media-body">
-                            {item.categories.map((category: any) => (
-                              <a
-                                key={category.id}
-                                className="post-cat only-color"
-                                href="./index.php/category/lifestyle/tech/index.html"
-                                style={{ color: category.color }}
-                              >
-                                {category.title}
-                              </a>
-                            ))}
-
-                            <h4 className="post-title title-small">
-                              <a
-                                href="./index.php/2019/06/30/naturalistic-design-is-thriving-as-actual-nature-dies/index.html"
-                                rel="bookmark"
-                                title={item.title}
-                              >
-                                {item.title}
-                              </a>
-                            </h4>
-                            <div className="post-meta">
-                              <span className="post-date">
-                                <i className="fa fa-clock-o" />
-                                {item.date}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </div>
+                  {data.map((item: Post) => (
+                    <TabContentItem key={item.id} item={item} />
                   ))}
                 </ul>
               </div>
@@ -166,4 +173,4 @@ const TabContent = ({ content_id }: Props) => {
   );
 };
 
-export default TabContent;
+export default TabContentNews;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import FeatureTab from "./FeatureTabNew";
-import TabContent from "./TabContentNew";
+import FeatureTabNews from "./FeatureTabNews";
+import TabContentNews from "./TabContentNews";
 
-const TabContents = () => {
+const NewsContent = () => {
   const [contentId, setContentId] = useState<number>(1);
 
   const handleSelectCategory = (id: number) => {
@@ -24,10 +24,10 @@ const TabContents = () => {
                 <span className="title-angle-shap">what’s new</span>
               </h2>
             </div>
-            <FeatureTab
+            <FeatureTabNews
               selectCategory={(id: number) => handleSelectCategory(id)}
             />
-            <TabContent content_id={contentId} />
+            <TabContentNews content_id={contentId} />
           </div>
         </div>
       </div>
@@ -35,4 +35,4 @@ const TabContents = () => {
   );
 };
 
-export default TabContents;
+export default NewsContent;

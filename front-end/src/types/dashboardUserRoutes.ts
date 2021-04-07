@@ -1,15 +1,16 @@
 import HomePage from "components/User/HomePage//HomePage";
 import PostDetail from "containers/PostDetail";
+import { Path } from 'constants/path';
 
 const dashboardRoutes = [
     {
-        path: "home",
+        path: Path.HOME_PAGE,
         name: "Home",
         component: HomePage,
         layout: "/",
     },
     {
-        path: "post",
+        path: Path.POST.concat("/:id"),
         name: "Post",
         component: PostDetail,
         layout: "/",
