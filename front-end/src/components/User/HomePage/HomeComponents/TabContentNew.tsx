@@ -1,5 +1,4 @@
-import dataFake1 from "components/fake_data.json";
-import dataFake2 from "components/fake_data_2.json";
+import { fakeData, fakeData2 } from "components/mock_data";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -7,24 +6,24 @@ type Props = {
 };
 
 const TabContent = ({ content_id }: Props) => {
-  const [data, setData] = useState<any>(dataFake1);
+  const [data, setData] = useState<any>(fakeData);
 
   useEffect(() => {
     switch (content_id) {
       case 1:
-        setData(dataFake1);
+        setData(fakeData);
         break;
       case 2:
-        setData(dataFake2);
+        setData(fakeData2);
         break;
       case 3:
-        setData(dataFake1);
+        setData(fakeData);
         break;
       case 4:
-        setData(dataFake2);
+        setData(fakeData2);
         break;
       case 5:
-        setData(dataFake1);
+        setData(fakeData);
         break;
     }
   }, [content_id]);

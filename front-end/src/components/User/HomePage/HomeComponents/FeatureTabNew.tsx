@@ -1,5 +1,5 @@
 import { useState } from "react";
-import categories from "components/fake_category.json";
+import { fakeCategoryMenu } from "components/mock_data";
 
 type Props = {
   selectCategory: (id: number) => void;
@@ -14,7 +14,7 @@ const FeatureTab = ({ selectCategory }: Props) => {
 
   return (
     <ul className="nav nav-tabs" role="tablist">
-      {categories.map((ct) => (
+      {fakeCategoryMenu.map((ct) => (
         <li key={ct.id} className="nav-item">
           <a
             style={{ cursor: "pointer" }}
