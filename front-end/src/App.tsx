@@ -10,12 +10,14 @@ import User from "layouts/User";
 import UnAuthRoute from "components/UnAuthRoute";
 import AuthContainer from "containers/Login";
 import PrivateRoute from "components/PrivateRoute";
+import ScrollToTop from "services/ScrollToTop";
 
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
+          <ScrollToTop />
           <Switch>
             <UnAuthRoute path="/admin/login" component={AuthContainer} exact />
             <PrivateRoute path="/admin" component={Admin} />
