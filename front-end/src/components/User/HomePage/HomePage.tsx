@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Slider from "./HomeComponents/Slider";
-import NewContent from "./HomeComponents/NewContent";
+import NewContent from "./HomeComponents/NewsContent";
 import RecentPostList from '../Common/PostList';
 import Rating from '../Common/Rating';
 

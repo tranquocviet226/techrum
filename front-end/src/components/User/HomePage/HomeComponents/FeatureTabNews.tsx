@@ -5,7 +5,7 @@ type Props = {
   selectCategory: (id: number) => void;
 };
 
-const FeatureTab = ({ selectCategory }: Props) => {
+const FeatureTabNews = ({ selectCategory }: Props) => {
   const [activeId, setActiveId] = useState<number>(1);
   const onSelectCategory = (id: number) => {
     setActiveId(id);
@@ -32,4 +32,4 @@ const FeatureTab = ({ selectCategory }: Props) => {
   );
 };
 
-export default FeatureTab;
+export default FeatureTabNews;

@@ -1,42 +1,57 @@
-import Image from "components/User/Common/Image";
-import "./SlickSlider.css";
+import { Post } from "types/Post";
 
 type Props = {
-    item: any,
-    classContainer: any,
-    classImage: any,
-    titleSize: number
-}
-
-const SlickItem = ({ item, classContainer, classImage, titleSize }: Props) => {
-    return (
-        <div key={item.id} className={classContainer}>
-            <Image src={item.src} className={classImage} />
-            <div className="infor-container">
-                <div className="infor-content">
-                    <div className="category-container">
-                        {item.category.map((it: any, index: number) => (
-                            <div key={index} className="category" style={{ backgroundColor: it.color }}>{it.name}</div>
-                        ))}
-                    </div>
-                    <div className="title-container">
-                        <p className="title" style={{ fontSize: titleSize }}>{item.title}</p>
-                    </div>
-                    <div className="note-container">
-                        <span className="note"><i className="fas fa-user pd-ic"></i> {item.author.name}</span>
-                        <span className="note"><i className="far fa-clock pd-ic"></i>{item.author.date}</span>
-                        <span className="note-fire"><i className="fas fa-fire-alt pd-ic" color="red"></i></span>{item.author.views}
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-SlickItem.defaultProps = {
-    classContainer: "sl-container-0",
-    className: "sl-img-0",
-    titleSize: 14
+  item: Post;
+  onSelectPost: () => void;
 };
+
+const SlickItem = ({ item, onSelectPost }: Props) => {
+  return (
+    <div className="owl-item cloned ss-w-732">
+      <div className="ts-overlay-style featured-post  post-361 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-food">
+        <div
+          className="item item-before rocket-lazyload lazyloaded"
+          style={{ backgroundImage: `url("${item.background_url}")` }}
+          data-ll-status="loaded"
+        >
+          <div className="overlay-post-content">
+            <div className="post-content">
+              <div className="grid-category">
+                {item.categories.map((it: any) => (
+                  <a
+                    className="post-cat ss-cl-fff cur-po"
+                    key={it.id}
+                    style={{ backgroundColor: it.color }}
+                  >
+                    {it.title}
+                  </a>
+                ))}
+              </div>
+              <h3 onClick={onSelectPost} className="post-title cur-po">
+                <a>{item.title}</a>
+              </h3>
+              <ul className="post-meta-info">
+                <li className="author">
+                  <i className="fa fa-user" />
+                  <a href={item.author.url}>{item.author.name}</a>
+                </li>
+                <li>
+                  <i className="fa fa-clock-o" />
+                  {item.date}
+                </li>
+                <li className="active">
+                  <i className="fas fa-fire"></i>
+                  {item.views}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+SlickItem.defaultProps = {};
 
 export default SlickItem;

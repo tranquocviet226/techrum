@@ -29,3 +29,7 @@
 .cl-or {
   color: #fc4a00;
 }
+
+.cur-po {
+  cursor: pointer;
+}

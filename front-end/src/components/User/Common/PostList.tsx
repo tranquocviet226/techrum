@@ -12,7 +12,7 @@ type PostListProps = {
 const PostList = (props: PostListProps) => {
   const { postList } = props;
   const renderItem = (postList: Post[]) => {
-    return postList.map((post: Post) => <PostItem post={post} />);
+    return postList.map((post: Post) => <PostItem post={post} key={post.id}/>);
   };
   return (
     <div className="recent-posts-widget post-list-item">

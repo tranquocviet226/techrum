@@ -39,7 +39,7 @@ const switchRoutes = (
     </Switch>
 );
 
-const Dashboard: React.FC = () => {
+const User: React.FC = () => {
     return (
         <div className="home page-template page-template-template page-template-homepage-template page-template-templatehomepage-template-php page page-id-1878 sidebar-active elementor-default elementor-kit-6 elementor-page elementor-page-1878">
             <div className="body-inner-content">
@@ -54,4 +54,4 @@ const Dashboard: React.FC = () => {
     );
 }
 
-export default Dashboard;
+export default User;

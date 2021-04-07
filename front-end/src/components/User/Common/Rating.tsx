@@ -76,7 +76,7 @@ const TabContent = (props: TabContentProps) => {
       >
         {data.map((item, index) => {
           return (
-            <div className="post-content media">
+            <div key={item.id} className="post-content media">
               <div className="post-thumb post-thumb-radius">
                 <a href={item.redirect_to_url}>
                   <span
