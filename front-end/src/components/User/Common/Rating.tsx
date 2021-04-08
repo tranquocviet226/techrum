@@ -17,11 +17,13 @@ const Rating = () => {
     setCategoryId(id);
   };
   return (
-    <div className="post-list-item widgets grid-no-shadow">
-      <TabRatingCategory
-        selectCategory={(id: number) => handleSelectCategory(id)}
-      />
-      <TabContent category_id={categoryId} />
+    <div id="apsc_widget-3" className="widget widget_apsc_widget">
+      <div className="post-list-item widgets grid-no-shadow">
+        <TabRatingCategory
+          selectCategory={(id: number) => handleSelectCategory(id)}
+        />
+        <TabContent category_id={categoryId} />
+      </div>
     </div>
   );
 };
