@@ -47,6 +47,8 @@ export class CategoryService extends BaseService<
     const {
       parent_id,
       slug,
+      title,
+      color,
       position,
       isSearchable,
       is_active,
@@ -57,6 +59,8 @@ export class CategoryService extends BaseService<
     const dataCategory = new CategoryEntity({
       parentId: parent_id,
       slug: slug,
+      title: title,
+      color: color,
       position: position,
       isSearchable: isSearchable,
       isActive: is_active,

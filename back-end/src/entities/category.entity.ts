@@ -24,6 +24,12 @@ export class CategoryEntity extends BaseEntity {
   slug: string;
 
   @Column()
+  title: string;
+
+  @Column()
+  color: string
+
+  @Column()
   @IsNumber({}, { message: 'Incorrect value' })
   position: number;
 

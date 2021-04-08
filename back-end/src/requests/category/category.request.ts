@@ -3,6 +3,8 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CategoryRequest {
   private _parentId: number;
   private _slug: string;
+  private _title: string;
+  private _color: string;
   private _position: number;
   private _isSearchable: number;
   private _isActive: number;
@@ -12,6 +14,8 @@ export class CategoryRequest {
   constructor(
     _parentId: number,
     _slug: string,
+    _title: string,
+    _color: string,
     _position: number,
     _isSearchable: number,
     _isActive: number,
@@ -20,6 +24,8 @@ export class CategoryRequest {
   ) {
     this._parentId = _parentId;
     this._slug = _slug;
+    this._title = _title;
+    this._color = _color;
     this._position = _position;
     this._isSearchable = _isSearchable;
     this._isActive = _isActive;
@@ -43,6 +49,24 @@ export class CategoryRequest {
 
   set slug(value: string) {
     this._slug = value;
+  }
+
+  @ApiProperty()
+  get title(): string {
+    return this._title;
+  }
+
+  set title(value: string) {
+    this._title = value;
+  }
+
+  @ApiProperty()
+  get color(): string {
+    return this._color;
+  }
+
+  set color(value: string) {
+    this._color = value;
   }
 
   @ApiProperty()

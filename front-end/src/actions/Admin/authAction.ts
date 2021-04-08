@@ -1,7 +1,7 @@
 import { FormikErrors } from "formik";
-import { FormValuesSignIn } from "../components/Login/SignInForm";
-import { FormValuesSignUp } from "../components/Login/SignUpForm";
-import { User } from "../entities/User";
+import { FormValuesSignIn } from "components/Login/SignInForm"
+import { FormValuesSignUp } from "components/Login/SignUpForm";
+import { User } from "entities/User";
 import {
   AuthActionType,
   LogoutAction,
@@ -9,7 +9,7 @@ import {
   SignUpAction,
   UpdateAuthAction,
   ClearAuthAction,
-} from "../types/authTypes";
+} from "types/authTypes";
 
 export const login = (
   username: string,
