@@ -11,7 +11,7 @@ export class CategoryFactoryService {
     for (let item of category) {
       const categoryItem = {
         id: item.id,
-        parent_id: item.parentId,
+        parent_id: item.parent_id,
         slug: item.slug,
       };
       categoryArray.push(categoryItem);

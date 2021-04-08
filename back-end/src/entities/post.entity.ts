@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import { ManyToMany } from 'typeorm/index';
 import { CategoryEntity } from './category.entity';
+import { UserEntity } from './user.entity';
 
 @Entity({ name: 'posts' })
 export class PostEntity extends BaseEntity {
@@ -28,24 +29,23 @@ export class PostEntity extends BaseEntity {
   slug: string;
 
   @Column({ name: 'category_id' })
-  @IsNumber({}, { message: 'Incorrect value' })
-  categoryId: number;
+  category_id: string;
 
   @Column({ name: 'is_active' })
   @IsNumber({}, { message: 'Incorrect value' })
-  isActive: number;
+  is_active: number;
 
   @CreateDateColumn({
     nullable: true,
     name: 'created_at',
   })
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn({
     nullable: true,
     name: 'updated_at',
   })
-  updatedAt: Date;
+  updated_at: Date;
 
   @ManyToMany(type => CategoryEntity, { cascade: true })
   @JoinTable({
@@ -59,7 +59,21 @@ export class PostEntity extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  category: PostEntity[];
+  category: CategoryEntity[];
+
+  @ManyToMany(type => UserEntity, { cascade: true })
+  @JoinTable({
+    name: 'post_user',
+    joinColumn: {
+      name: 'post_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'id',
+    },
+  })
+  user: UserEntity[];
 
   constructor(partial: Partial<PostEntity>) {
     super();

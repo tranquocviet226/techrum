@@ -43,7 +43,11 @@ export class UserEntity extends BaseEntity {
   @Column({ name: 'permissions' })
   permissions: string;
 
-  @Column({ name: 'last_login', type: 'timestamp' })
+  @Column({
+    name: 'last_login',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   lastLogin: Date;
 
   @CreateDateColumn({
