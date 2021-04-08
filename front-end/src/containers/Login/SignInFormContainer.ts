@@ -2,11 +2,11 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { FormikErrors, withFormik } from "formik";
 
-import { authSelector } from "../../selectors/authSelector";
+import { authSelector } from "selectors/authSelector";
 import SignInForm, {
   FormValuesSignIn,
-} from "../../components/Login/SignInForm";
-import { login } from "../../actions/authAction";
+} from "components/Login/SignInForm";
+import { login } from "actions/Admin/authAction";
 import signInValidation from "./signInValidation";
 interface OtherProps {
   login: (

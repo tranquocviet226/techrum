@@ -19,9 +19,9 @@ const SlickItem = ({ item, onSelectPost }: Props) => {
               <div className="grid-category">
                 {item.categories.map((it: any) => (
                   <a
-                    className="post-cat ss-cl-fff cur-po"
+                    className="post-cat cur-po"
                     key={it.id}
-                    style={{ backgroundColor: it.color }}
+                    style={{ backgroundColor: it.color, color: "#fff" }}
                   >
                     {it.title}
                   </a>

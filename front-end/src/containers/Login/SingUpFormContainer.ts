@@ -6,7 +6,7 @@ import { authSelector } from "../../selectors/authSelector";
 import SignUpForm, {
   FormValuesSignUp,
 } from "../../components/Login/SignUpForm";
-import { register } from "../../actions/authAction";
+import { register } from "../../actions/Admin/authAction";
 import signUpValidation from "./signUpValidation";
 import { User } from "../../entities/User";
 
