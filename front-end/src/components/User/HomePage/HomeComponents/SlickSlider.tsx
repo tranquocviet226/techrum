@@ -1,4 +1,4 @@
-import { fakeData } from "components/mock_data";
+import { DataPost } from "data"
 import { Path } from "constants/path";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -32,7 +32,7 @@ const SlickSlider = () => {
   };
   return (
     <Slider {...settings}>
-      {fakeData.map((item) => (
+      {DataPost.map((item) => (
         <SlickItem
           key={item.id}
           item={item}

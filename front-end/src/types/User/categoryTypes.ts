@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { Category } from "types/Post";
+import { Category } from "types/Model";
 
 export interface CategoryState {
   categories: Category[];
