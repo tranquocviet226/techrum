@@ -8,7 +8,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Admin from "layouts/Admin";
 import User from "layouts/User";
 import UnAuthRoute from "components/UnAuthRoute";
-import AuthContainer from "containers/Login";
+import AuthContainer from "containers/admin/login";
 import PrivateRoute from "components/PrivateRoute";
 import ScrollToTop from "services/ScrollToTop";
 

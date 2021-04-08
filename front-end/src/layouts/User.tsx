@@ -1,12 +1,12 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "types/dashboardUserRoutes";
-import Footer from "components/User/Footer";
-import Logo from "components/User/Common/Logo";
-import TrendingBar from "components/User/Common/TrendingBar";
+import Footer from "components/user/footer";
+import Logo from "components/user/common/Logo";
+import TrendingBar from "components/user/common/TrendingBar";
 // import Header from 'components/User/HomePage/HomeComponents/Header';
-import Header from "containers/User";
-import { getListCategory } from "actions/User/categoryAction";
+import Header from "containers/user/HeaderContainer";
+import { getListCategory } from "actions/user/categoryAction";
 import { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 

@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import Slider from "./HomeComponents/Slider";
-import NewContent from "./HomeComponents/NewsContent";
-import RecentPostList from '../Common/PostList';
-import Rating from '../Common/Rating';
+import Slider from "./homeComponents/Slider";
+import NewContent from "./homeComponents/NewsContent";
+import RecentPostList from '../common/PostList';
+import Rating from '../common/Rating';
 
 const HomePage = () => {
   const theme = "bg-dark";

@@ -7,14 +7,14 @@ import Notifications from "@material-ui/icons/Notifications";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import Unarchive from "@material-ui/icons/Unarchive";
 // core components/views for Admin layout
-import DashboardPage from "views/Admin/Dashboard/Dashboard";
-import Icons from "views/Admin/Icons/Icons";
-import Maps from "views/Admin/Maps/Maps";
-import NotificationsPage from "views/Admin/Notifications/Notifications";
-import PostManagement from "views/Admin/PostManagement/PostManagement";
-import TableList from "views/Admin/TableList/TableList";
-import Typography from "views/Admin/Typography/Typography";
-import UpgradeToPro from "views/Admin/UpgradeToPro/UpgradeToPro";
+import DashboardPage from "components/admin/dashboard/Dashboard";
+import Icons from "components/admin/icons/Icons";
+import Maps from "components/admin/maps/Maps";
+import NotificationsPage from "components/admin/notifications/Notifications";
+import PostManagement from "components/admin/postManagement/PostManagement";
+import TableList from "components/admin/tableList/TableList";
+import Typography from "components/admin/typography/Typography";
+import UpgradeToPro from "components/admin/upgradeToPro/UpgradeToPro";
 
 const dashboardRoutes = [
   {

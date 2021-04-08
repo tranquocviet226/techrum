@@ -1,5 +1,5 @@
 import { DataPost } from "data";
-import { Post } from "types/Model";
+import { Post } from "types/model";
 
 type PostItemProps = {
   post: Post;

@@ -1,9 +1,9 @@
-import { Category } from "types/Model";
+import { Category } from "types/model";
 import {
   CategoryActionType,
   GetCategoriesAction,
   UpdateListCategoryAction,
-} from "types/User/categoryTypes";
+} from "types/user/categoryTypes";
 
 export const getListCategory = (): GetCategoriesAction => ({
   type: CategoryActionType.GET_LIST,

@@ -1,5 +1,5 @@
-import HomePage from "components/User/HomePage//HomePage";
-import PostDetail from "containers/PostDetail";
+import HomePage from "components/user/homePage/HomePage";
+import PostDetail from "containers/user/PostDetailContainer";
 import { Path } from 'constants/path';
 
 const dashboardRoutes = [

@@ -1,4 +1,4 @@
-import Rating from "../Common/Rating";
+import Rating from "../common/Rating";
 
 const PostDetail = () => {
   const theme = "bg-dark";

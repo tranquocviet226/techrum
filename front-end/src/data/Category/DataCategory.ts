@@ -1,4 +1,4 @@
-import { Category } from "types/Model";
+import { Category } from "types/model";
 
 const DataCategory: Category[] = [
   {
