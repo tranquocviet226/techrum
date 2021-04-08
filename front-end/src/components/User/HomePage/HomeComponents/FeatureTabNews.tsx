@@ -1,5 +1,5 @@
 import { useState } from "react";
-import fakeCategoryMenu from "data/Category/DataCategory";
+import fakeCategoryMenu from "data/category/DataCategory";
 
 type Props = {
   selectCategory: (id: number) => void;

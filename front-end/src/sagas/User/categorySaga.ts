@@ -1,8 +1,8 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
-import { updateListCategory } from "actions/User/categoryAction";
+import { updateListCategory } from "actions/user/categoryAction";
 import { AxiosResponse } from "axios";
 import { CategoryApi } from "services/api";
-import { CategoryActionType } from "types/User/categoryTypes";
+import { CategoryActionType } from "types/user/categoryTypes";
 import { checkStatus, parseJSON } from "utils/request";
 
 function* getListCategorySaga() {

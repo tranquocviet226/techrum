@@ -1,6 +1,6 @@
 import { DataPost, DataPost2 } from "data";
 import { useEffect, useState } from "react";
-import { Post } from "types/Model";
+import { Post } from "types/model";
 
 type Props = {
   content_id: number;

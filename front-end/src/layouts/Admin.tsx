@@ -4,10 +4,10 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import logo from 'assets/img/reactlogo.png';
 import imageDefault from 'assets/img/sidebar-2.jpg';
 import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle';
-import Footer from 'components/MaterialCommon/Footer/Footer';
+import Footer from 'components/admin/common/Footer/Footer';
 // core components
-import Navbar from 'components/MaterialCommon/Navbars/Navbar';
-import Sidebar from 'components/MaterialCommon/Sidebar/Sidebar';
+import Navbar from 'components/admin/common/Navbars/Navbar';
+import Sidebar from 'components/admin/common/Sidebar/Sidebar';
 // creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';

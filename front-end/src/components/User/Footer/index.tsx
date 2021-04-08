@@ -1,5 +1,5 @@
 import CopyRight from "./CopyRight";
-import PopularPostList from "../Common/PostList";
+import PopularPostList from "../common/PostList";
 import { ABOUT_DESCRIPTION, ABOUT_ADDRESS, ABOUT_EMAIL, ABOUT_PHONE } from "../../../constants";
 import NewsLetter from "./NewsLetter";
 

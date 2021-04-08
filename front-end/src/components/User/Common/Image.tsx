@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import "./Image.css";
+import "styles/user/css/Image.css";
 
 type Props = {
     src: string,

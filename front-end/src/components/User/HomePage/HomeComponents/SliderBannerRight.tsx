@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { DataPost } from "data";
 import { useHistory } from "react-router-dom";
 import { Path } from "constants/path";
-import { Category, Post } from "types/Model";
+import { Category, Post } from "types/model";
 
 const SliderBannerRight = () => {
   const history = useHistory();

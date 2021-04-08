@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import SlickItem from "./SlickItem";
-import "./SlickSlider.css";
+import "styles/user/css/SlickSlider.css";
 
 const SlickSlider = () => {
   const history = useHistory();

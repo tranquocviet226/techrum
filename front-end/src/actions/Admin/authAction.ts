@@ -1,6 +1,6 @@
 import { FormikErrors } from "formik";
-import { FormValuesSignIn } from "components/Login/SignInForm"
-import { FormValuesSignUp } from "components/Login/SignUpForm";
+import { FormValuesSignIn } from "components/admin/login/SignInForm"
+import { FormValuesSignUp } from "components/admin/login/SignUpForm";
 import { User } from "entities/User";
 import {
   AuthActionType,
@@ -9,7 +9,7 @@ import {
   SignUpAction,
   UpdateAuthAction,
   ClearAuthAction,
-} from "types/authTypes";
+} from "types/admin/authTypes";
 
 export const login = (
   username: string,

@@ -2,7 +2,7 @@ import {
   CategoryActionType,
   CategoryActionTypes,
   CategoryState,
-} from "types/User/categoryTypes";
+} from "types/user/categoryTypes";
 import { DataCategory } from "data";
 
 const initialState: CategoryState = {

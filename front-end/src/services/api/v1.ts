@@ -1,4 +1,4 @@
-import { clearAuth } from "actions/Admin/authAction";
+import { clearAuth } from "actions/admin/authAction";
 import axios, { AxiosRequestConfig } from "axios";
 import { mapKeys, snakeCase } from "lodash";
 
