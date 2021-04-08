@@ -3,7 +3,7 @@ import { takeLatest, all, put, call } from "redux-saga/effects";
 import history from "services/RoutingService";
 import { updateAuth, clearAuth } from "actions/Admin/authAction";
 import { AuthActionType, SignInAction, SignUpAction } from "types/authTypes";
-import AuthApi from "services/api";
+import { AuthApi } from "services/api";
 import { AxiosResponse } from "axios";
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
 

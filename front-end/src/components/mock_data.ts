@@ -16,8 +16,12 @@ const fakeData: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -44,13 +48,21 @@ const fakeData: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
       {
         id: 2,
-        title: "Lifestyle",
+        parentId: 1,
+        slug: "fashion",
+        title: "Fashion",
         color: "#fc4a00",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -77,13 +89,21 @@ const fakeData: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
       {
         id: 2,
-        title: "Lifestyle",
+        parentId: 1,
+        slug: "fashion",
+        title: "Fashion",
         color: "#fc4a00",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -109,8 +129,12 @@ const fakeData: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -139,8 +163,21 @@ const fakeData2: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
+      },
+      {
+        id: 2,
+        parentId: 1,
+        slug: "fashion",
+        title: "Fashion",
+        color: "#fc4a00",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -167,13 +204,12 @@ const fakeData2: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
-      },
-      {
-        id: 2,
-        title: "Lifestyle",
-        color: "#fc4a00",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -200,13 +236,21 @@ const fakeData2: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
       {
         id: 2,
-        title: "Lifestyle",
+        parentId: 1,
+        slug: "fashion",
+        title: "Fashion",
         color: "#fc4a00",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -232,8 +276,12 @@ const fakeData2: Post[] = [
     categories: [
       {
         id: 1,
+        parentId: 1,
+        slug: "fashion",
         title: "Fashion",
         color: "#da1793",
+        position: 1,
+        isActive: 1,
       },
     ],
     author: {
@@ -249,46 +297,51 @@ const fakeData2: Post[] = [
 const fakeCategoryMenu: Category[] = [
   {
     id: 1,
-    title: "All",
-    color: "red",
+    parentId: 1,
+    slug: "fashion",
+    title: "Fashion",
+    color: "#da1793",
+    position: 1,
+    isActive: 1,
   },
   {
     id: 2,
-    title: "Style",
-    color: "yellow",
-  },
-  {
-    id: 3,
+    parentId: 1,
+    slug: "fashion",
     title: "Fashion",
-    color: "blue",
-  },
-  {
-    id: 4,
-    title: "Life",
-    color: "yellow",
-  },
-  {
-    id: 5,
-    title: "Tech",
-    color: "blue",
+    color: "#fc4a00",
+    position: 1,
+    isActive: 1,
   },
 ];
 
 const fakeCategoryRating: Category[] = [
   {
     id: 1,
-    title: "Recent",
-    color: "red",
+    parentId: 1,
+    slug: "fashion",
+    title: "Fashion",
+    color: "#da1793",
+    position: 1,
+    isActive: 1,
   },
   {
     id: 2,
-    title: "Popular",
-    color: "red",
+    parentId: 1,
+    slug: "fashion",
+    title: "Fashion",
+    color: "#fc4a00",
+    position: 1,
+    isActive: 1,
   },
   {
     id: 3,
-    title: "Comment",
-    color: "red",
+    parentId: 2,
+    slug: "life",
+    title: "Life",
+    color: "green",
+    position: 1,
+    isActive: 1,
   },
 ];
 
