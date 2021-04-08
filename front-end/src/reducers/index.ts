@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
 import authReducer from "./authReducer";
+import categoryReducer from "./User/categoryReducer";
 
 const allReducers = combineReducers({
   auth: authReducer,
+  categories: categoryReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

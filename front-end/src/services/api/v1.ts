@@ -32,7 +32,6 @@ instance.interceptors.request.use((config: any) => {
 
 instance.interceptors.response.use(
   (response) => {
-    console.log("response",response);
     return response;
   },
   (error) => {

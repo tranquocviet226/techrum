@@ -1,3 +1,4 @@
 import { AuthApi } from "./authApi";
+import { CategoryApi } from './User/categoryApi';
 
-export default AuthApi ;
+export { AuthApi, CategoryApi };

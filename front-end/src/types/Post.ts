@@ -16,8 +16,12 @@ interface Post {
 
 interface Category {
     id: number,
+    parentId: number,
+    slug: string,
     title: string,
-    color: string
+    color: string,
+    position: number,
+    isActive: number
 }
 
 
