@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { categorySelector } from "selectors/User/categorySelector";
+import { categorySelector } from "selectors/user/categorySelector";
 import { getListCategory } from "actions/user/categoryAction";
 import HeaderComponent from "components/user/homePage/homeComponents/Header";
 
