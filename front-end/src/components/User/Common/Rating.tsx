@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { fakeData, fakeData2, fakeCategoryRating } from "components/mock_data";
+import { DataCategory, DataPost, DataPost2 } from "data";
 
 type TabContentProps = {
   category_id: number;
@@ -35,7 +35,7 @@ const TabRatingCategory = (props: FeatureTabProps) => {
   };
   return (
     <ul className="nav nav-tabs recen-tab-menu" role="tablist">
-      {fakeCategoryRating.map((item) => (
+      {DataCategory.map((item) => (
         <li key={item.id} role="presentation">
           <a
             className={activeId === item.id ? "active" : ""}
@@ -53,17 +53,17 @@ const TabRatingCategory = (props: FeatureTabProps) => {
 };
 const TabContent = (props: TabContentProps) => {
   const { category_id } = props;
-  const [data, setData] = useState(fakeData);
+  const [data, setData] = useState(DataPost);
   useEffect(() => {
     switch (category_id) {
       case 1:
-        setData(fakeData);
+        setData(DataPost);
         break;
       case 2:
-        setData(fakeData2);
+        setData(DataPost2);
         break;
       case 3:
-        setData(fakeData);
+        setData(DataPost);
         break;
     }
   }, [category_id]);

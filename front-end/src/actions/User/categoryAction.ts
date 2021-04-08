@@ -1,4 +1,4 @@
-import { Category } from "types/Post";
+import { Category } from "types/Model";
 import {
   CategoryActionType,
   GetCategoriesAction,

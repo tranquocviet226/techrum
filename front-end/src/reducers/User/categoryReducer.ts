@@ -3,9 +3,10 @@ import {
   CategoryActionTypes,
   CategoryState,
 } from "types/User/categoryTypes";
+import { DataCategory } from "data";
 
 const initialState: CategoryState = {
-  categories: [],
+  categories: DataCategory,
 };
 
 const auth = (
@@ -14,7 +15,6 @@ const auth = (
 ): CategoryState => {
   switch (action.type) {
     case CategoryActionType.UPDATE_LIST:
-      console.log("STATE", action.categories);
       return {
         ...state,
         categories: action.categories,

@@ -1,5 +1,5 @@
 import { RootStateOrAny, useSelector } from "react-redux";
-import { Category } from "types/Post";
+import { Category } from "types/Model";
 import "./header_style.css";
 import "./library_custom.css";
 
@@ -8,13 +8,15 @@ export const Header = () => {
     return state.categories.categories;
   });
 
+  console.log(categories);
+
   return (
     <header id="navbar" className="header">
       <div className="grid wide">
         <nav className="header_navigation">
           <ul className="header_navigation__list">
             {categories.map((item: Category) => (
-              <li className="header_navigation__list-item">
+              <li key={item.id} className="header_navigation__list-item">
                 <a href="#" className="header_navigation__list-item--link">
                   {item.title}
                   <i className="fas fa-chevron-down"></i>
