@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CategoryRequest {
-  private _parentId: number;
+  private _parent_id: number;
   private _slug: string;
   private _title: string;
   private _color: string;
@@ -12,7 +12,7 @@ export class CategoryRequest {
   private _updatedAt: Date;
 
   constructor(
-    _parentId: number,
+    _parent_id: number,
     _slug: string,
     _title: string,
     _color: string,
@@ -22,7 +22,7 @@ export class CategoryRequest {
     _createdAt: Date,
     _updatedAt: Date,
   ) {
-    this._parentId = _parentId;
+    this._parent_id = _parent_id;
     this._slug = _slug;
     this._title = _title;
     this._color = _color;
@@ -35,11 +35,11 @@ export class CategoryRequest {
 
   @ApiProperty()
   get parent_id(): number {
-    return this._parentId;
+    return this._parent_id;
   }
 
   set parent_id(value: number) {
-    this._parentId = value;
+    this._parent_id = value;
   }
 
   @ApiProperty()

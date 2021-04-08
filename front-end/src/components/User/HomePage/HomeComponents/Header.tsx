@@ -8,8 +8,6 @@ export const Header = () => {
     return state.categories.categories;
   });
 
-  console.log(categories);
-
   return (
     <header id="navbar" className="header">
       <div className="grid wide">

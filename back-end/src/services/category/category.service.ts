@@ -50,22 +50,22 @@ export class CategoryService extends BaseService<
       title,
       color,
       position,
-      isSearchable,
+      is_searchable,
       is_active,
       created_at,
       updated_at,
     } = categoryRequest;
 
     const dataCategory = new CategoryEntity({
-      parentId: parent_id,
+      parent_id: parent_id,
       slug: slug,
       title: title,
       color: color,
       position: position,
-      isSearchable: isSearchable,
-      isActive: is_active,
-      createdAt: created_at,
-      updatedAt: updated_at,
+      is_searchable: is_searchable,
+      is_active: is_active,
+      created_at: created_at,
+      updated_at: updated_at,
     });
 
     // Validatetion
@@ -74,7 +74,7 @@ export class CategoryService extends BaseService<
       const code = HttpStatus.FORBIDDEN;
       const message = 'error';
 
-      return new CategoryResponse(false, code,  [{ code: -1, message }], errors);
+      return new CategoryResponse(false, code, [{ code: -1, message }], errors);
     } else {
       try {
         const data = await this.repository.create(dataCategory);
@@ -82,7 +82,7 @@ export class CategoryService extends BaseService<
         const code = HttpStatus.OK;
         const message = 'success';
 
-        return new CategoryResponse(true, code,  [{ code: -1, message }], data);
+        return new CategoryResponse(true, code, [{ code: -1, message }], data);
       } catch (error) {
         const code = HttpStatus.FORBIDDEN;
         const message = 'error';

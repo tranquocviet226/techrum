@@ -1,4 +1,4 @@
 import { AuthApi } from "./authApi";
-import { CategoryApi } from './User/categoryApi';
+import { CategoryApi } from './user/categoryApi';
 
 export { AuthApi, CategoryApi };

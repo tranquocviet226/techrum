@@ -17,7 +17,7 @@ export class CategoryEntity extends BaseEntity {
 
   @Column({ name: 'parent_id' })
   @IsNumber({}, { message: 'Incorrect value' })
-  parentId: number;
+  parent_id: number;
 
   @Unique(['slug'])
   @Column()
@@ -35,23 +35,23 @@ export class CategoryEntity extends BaseEntity {
 
   @Column({ name: 'is_searchable' })
   @IsNumber({}, { message: 'Incorrect value' })
-  isSearchable: number;
+  is_searchable: number;
 
   @Column({ name: 'is_active' })
   @IsNumber({}, { message: 'Incorrect value' })
-  isActive: number;
+  is_active: number;
 
   @CreateDateColumn({
     nullable: true,
     name: 'created_at',
   })
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn({
     nullable: true,
     name: 'updated_at',
   })
-  updatedAt: Date;
+  updated_at: Date;
 
   @ManyToMany(type => CategoryEntity, { cascade: true })
   @JoinColumn({
