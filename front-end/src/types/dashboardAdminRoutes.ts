@@ -1,5 +1,6 @@
 // @material-ui/icons
 import BubbleChart from "@material-ui/icons/BubbleChart";
+import CategoryIcon from "@material-ui/icons/Category";
 import Dashboard from "@material-ui/icons/Dashboard";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -11,10 +12,10 @@ import DashboardPage from "components/admin/dashboard/Dashboard";
 import Icons from "components/admin/icons/Icons";
 import Maps from "components/admin/maps/Maps";
 import NotificationsPage from "components/admin/notifications/Notifications";
-import PostManagement from "components/admin/postManagement/PostManagement";
-import TableList from "components/admin/tableList/TableList";
+import PostManagementPage from "components/admin/postManagement/PostManagement";
 import Typography from "components/admin/typography/Typography";
 import UpgradeToPro from "components/admin/upgradeToPro/UpgradeToPro";
+import CategoryContainer from "containers/admin/category/CategoryContainer";
 
 const dashboardRoutes = [
   {
@@ -28,14 +29,14 @@ const dashboardRoutes = [
     path: "/post",
     name: "Post Management",
     icon: PostAddIcon,
-    component: PostManagement,
+    component: PostManagementPage,
     layout: "/admin",
   },
   {
-    path: "/table",
+    path: "/category",
     name: "Category",
-    icon: "content_paste",
-    component: TableList,
+    icon: CategoryIcon,
+    component: CategoryContainer,
     layout: "/admin",
   },
   {

@@ -1,16 +1,13 @@
-import { RootStateOrAny, useSelector } from "react-redux";
-import { Category } from "types/model";
 import "styles/user/css/header_style.css";
 import "styles/user/css/library_custom.css";
+import { Category } from "types/model";
 
 type HeaderProps = {
   categories?: Category[]
 };
 
-
 export const Header: React.FC<HeaderProps> = (props) => {
   const { categories } = props
-
   return (
     <header id="navbar" className="header">
       <div className="grid wide">
@@ -22,6 +19,15 @@ export const Header: React.FC<HeaderProps> = (props) => {
                   {item.title}
                   <i className="fas fa-chevron-down"></i>
                 </a>
+                <ul className="menu_drop__home">
+                  {item.sub_category.map((subCategort) => (
+                    <li key={subCategort.id} className="menu_drop__home-list">
+                      <a href="#" className="menu_drop__home-list--link">
+                        {subCategort.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>
