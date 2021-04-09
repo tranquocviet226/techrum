@@ -1,15 +1,4 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "types/dashboardUserRoutes";
-import Footer from "components/user/footer";
-import Logo from "components/user/common/Logo";
-import TrendingBar from "components/user/common/TrendingBar";
-// import Header from 'components/User/HomePage/HomeComponents/Header';
-import Header from "containers/user/HeaderContainer";
 import { getListCategory } from "actions/user/categoryAction";
-import { useEffect } from "react";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-
 import "assets/css/animate.css";
 import "assets/css/blog.css";
 import "assets/css/bootstrap.min.css";
@@ -24,6 +13,15 @@ import "assets/css/owl.theme.default.min.css";
 import "assets/css/post-1878.css";
 import "assets/css/print.css";
 import "assets/css/woocommerce.css";
+import Logo from "components/user/common/Logo";
+import TrendingBar from "components/user/common/TrendingBar";
+import Footer from "components/user/footer";
+// import Header from 'components/User/HomePage/HomeComponents/Header';
+import Header from "containers/user/HeaderContainer";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
+import routes from "types/dashboardUserRoutes";
 
 const switchRoutes = (
   <Switch>

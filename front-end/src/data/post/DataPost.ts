@@ -24,6 +24,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
     ],
     author: {
@@ -58,6 +59,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
       {
         id: 2,
@@ -69,6 +71,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
     ],
     author: {
@@ -103,6 +106,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
       {
         id: 2,
@@ -114,6 +118,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
     ],
     author: {
@@ -147,6 +152,7 @@ const DataPost: Post[] = [
         is_active: 1,
         background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
+        sub_category: []
       },
     ],
     author: {
