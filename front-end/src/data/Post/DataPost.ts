@@ -22,6 +22,8 @@ const DataPost: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
     ],
     author: {
@@ -54,6 +56,8 @@ const DataPost: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
       {
         id: 2,
@@ -63,6 +67,8 @@ const DataPost: Post[] = [
         color: "#fc4a00",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
     ],
     author: {
@@ -95,6 +101,8 @@ const DataPost: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
       {
         id: 2,
@@ -104,6 +112,8 @@ const DataPost: Post[] = [
         color: "#fc4a00",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
     ],
     author: {
@@ -135,6 +145,8 @@ const DataPost: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
+        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
       },
     ],
     author: {
