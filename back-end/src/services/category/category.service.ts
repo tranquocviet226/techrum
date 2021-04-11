@@ -7,6 +7,7 @@ import { CategoryResponse } from '@response/category/category.response';
 import { BaseService } from '@services/base.service';
 import { CategoryFactoryService } from '@services/category/category.factory.service';
 import { validate } from 'class-validator';
+import { getTreeRepository } from 'typeorm';
 
 @Injectable()
 export class CategoryService extends BaseService<
@@ -23,10 +24,16 @@ export class CategoryService extends BaseService<
 
   async findAll(): Promise<CategoryResponse> {
     try {
-      const category = await this.repository.find();
-      const response = new CategoryResponse(true, 200, undefined, category);
+      const categories = await this.repository.find();
+      const targetItem = categories[0];
 
-      return response;
+      if (targetItem) {
+        const childItems = await getTreeRepository(CategoryEntity).findTrees();
+        return new CategoryResponse(true, 200, undefined, childItems);
+      } else {
+        const result = await getTreeRepository(CategoryEntity).findRoots();
+        return new CategoryResponse(true, 200, undefined, result);
+      }
     } catch (error) {
       const code = HttpStatus.NOT_FOUND;
       const message = 'error';
@@ -44,29 +51,9 @@ export class CategoryService extends BaseService<
   async createCategory(
     categoryRequest: CategoryRequest,
   ): Promise<CategoryResponse> {
-    const {
-      parent_id,
-      slug,
-      title,
-      color,
-      position,
-      is_searchable,
-      is_active,
-      created_at,
-      updated_at,
-    } = categoryRequest;
-
-    const dataCategory = new CategoryEntity({
-      parent_id: parent_id,
-      slug: slug,
-      title: title,
-      color: color,
-      position: position,
-      is_searchable: is_searchable,
-      is_active: is_active,
-      created_at: created_at,
-      updated_at: updated_at,
-    });
+    const dataCategory = await this.categoryFactoryService.createCategoryTree(
+      categoryRequest,
+    );
 
     // Validatetion
     const errors = await validate(dataCategory);

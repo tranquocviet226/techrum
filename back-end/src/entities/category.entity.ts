@@ -5,19 +5,19 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  Tree,
+  TreeChildren,
+  TreeParent,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { JoinColumn, ManyToMany } from 'typeorm/index';
 
 @Entity({ name: 'categories' })
+@Tree('materialized-path')
 export class CategoryEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ name: 'parent_id' })
-  @IsNumber({}, { message: 'Incorrect value' })
-  parent_id: number;
 
   @Unique(['slug'])
   @Column()
@@ -28,6 +28,12 @@ export class CategoryEntity extends BaseEntity {
 
   @Column()
   color: string
+
+  @TreeParent()
+  parent: CategoryEntity;
+
+  @TreeChildren()
+  children: CategoryEntity[];
 
   @Column()
   @IsNumber({}, { message: 'Incorrect value' })
