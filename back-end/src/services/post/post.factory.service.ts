@@ -1,13 +1,24 @@
 import { PostEntity } from '@entities/post.entity';
 import { Injectable } from '@nestjs/common';
-import { PostResponse } from '@response/post/post.response';
+import { CategoryRepository } from '@repository/category.repository';
+import { PostRequest } from '@requests/post/post.request';
 
 @Injectable()
 export class PostFactoryService {
-  async factoryPost(post: PostEntity[]): Promise<PostResponse[]> {
-    const postArray = [];
+  constructor(private readonly categoryRepository: CategoryRepository) {}
 
-    postArray.push(post);
-    return postArray;
+  async postCreate(postRequest: PostRequest): Promise<PostEntity> {
+    const { category_id } = postRequest;
+    try {
+      const categories = await this.categoryRepository.findByIds(
+        JSON.parse(category_id),
+      );
+      const post = new PostEntity(postRequest);
+      post.categories = categories;
+      return post;
+    } catch (error) {
+      const post = new PostEntity(error);
+      return post;
+    }
   }
 }
