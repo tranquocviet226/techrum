@@ -18,7 +18,7 @@ export class PostEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'label' })
+  @Column({ name: 'title' })
   title: string;
 
   @Column({ name: 'content' })

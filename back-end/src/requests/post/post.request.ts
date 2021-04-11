@@ -43,7 +43,7 @@ export class PostRequest {
   get title(): string {
     return this._title;
   }
-  set label(value: string) {
+  set title(value: string) {
     this._title = value;
   }
 

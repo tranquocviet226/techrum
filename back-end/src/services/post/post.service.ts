@@ -44,17 +44,15 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     try {
       const post = await this.postFactoryService.postCreate(postRequest);
       await this.repository.save(post);
-      const response = new PostResponse(true, 200, null, post);
-
+      const response = new PostResponse(true, 200, undefined, post);
       return response;
     } catch (error) {
       const code = HttpStatus.FORBIDDEN;
-      const message = 'error';
       const response = new PostResponse(
         true,
         code,
-        [{ code: -1, message }],
-        error,
+        [{ code: -1, message: error.message }],
+        undefined,
       );
       return response;
     }

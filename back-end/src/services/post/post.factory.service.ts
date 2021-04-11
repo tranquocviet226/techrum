@@ -11,7 +11,7 @@ export class PostFactoryService {
     const { category_id } = postRequest;
     try {
       const categories = await this.categoryRepository.findByIds(
-        JSON.parse(category_id),
+        [category_id],
       );
       const post = new PostEntity(postRequest);
       post.categories = categories;
