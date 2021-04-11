@@ -1,3 +1,4 @@
+import { FolderIcon } from "assets/img/admin";
 import { Category } from "types/model";
 import "./CategoryPage.css";
 
@@ -6,50 +7,27 @@ type Props = {
 };
 
 const CategoryPage = ({ categories }: Props) => {
-  return (
-    <div>
-      <div className="category-content">
-        <div className="category-btn-container">
-          <div></div>
-          <div>
-            <button type="button" className="btn">
-              ADD
-            </button>
+  const _renderTree = (data: Category[]) => {
+    return (
+      <>
+        {data.map((item: Category) => (
+          <div key={item.id} style={{ borderLeft: "1px solid gray" }}>
+            <div style={{ display: "flex" }}>
+              <img src={FolderIcon} style={{ width: 20, height: 20 }} />
+              <p style={{ margin: 0 }}>{item.title}</p>
+            </div>
+
+            <div style={{ marginLeft: 16 }}>
+              {item.sub_category.length > 0
+                ? _renderTree(item.sub_category)
+                : null}
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="category-data">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>SLUG</th>
-              <th>COLOR</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((item: Category) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.title} </td>
-                <td>{item.slug}</td>
-                <td>
-                  <div
-                    style={{
-                      width: "100%",
-                      height: 16,
-                      backgroundColor: item.color,
-                    }}
-                  ></div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+        ))}
+      </>
+    );
+  };
+  return <>{_renderTree(categories)}</>;
 };
 
 export default CategoryPage;
