@@ -7,7 +7,7 @@ interface Category {
   position: number;
   is_active: number;
   background_image: string;
-  count: number
+  count: number;
   sub_category: Category[];
 }
 

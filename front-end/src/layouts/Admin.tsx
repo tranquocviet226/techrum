@@ -1,6 +1,7 @@
 /* eslint-disable */
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
+import { getListCategory } from 'actions/user/categoryAction';
 import logo from 'assets/img/reactlogo.png';
 import imageDefault from 'assets/img/sidebar-2.jpg';
 import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle';
@@ -12,6 +13,7 @@ import Sidebar from 'components/admin/common/Sidebar/Sidebar';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React, { createRef, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'types/dashboardAdminRoutes';
 
@@ -42,6 +44,7 @@ interface Props {
 const Dashboard: React.FC<Props> = (props) => {
   const { classes, ...rest } = props;
   const refs = createRef<any>()
+  const dispatch = useDispatch();
 
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -76,6 +79,14 @@ const Dashboard: React.FC<Props> = (props) => {
       }
     }
   })
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = () => {
+    dispatch(getListCategory());
+  };
 
   return (
     <div className={classes.wrapper}>
