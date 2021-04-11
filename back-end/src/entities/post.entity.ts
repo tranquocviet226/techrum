@@ -19,17 +19,26 @@ export class PostEntity extends BaseEntity {
   id: number;
 
   @Column({ name: 'label' })
-  label: string;
+  title: string;
 
   @Column({ name: 'content' })
   content: string;
 
+  @Column({ name: 'description' })
+  description: string;
+
+  @Column({ name: 'sort_description' })
+  sort_description: string;
+
+  @Column({ name: 'background_url' })
+  background_url: string;
+
+  @Column({ name: 'views', default: 0 })
+  views: number;
+
   @Unique(['slug'])
   @Column()
   slug: string;
-
-  @Column({ name: 'category_id' })
-  category_id: string;
 
   @Column({ name: 'is_active' })
   @IsNumber({}, { message: 'Incorrect value' })
@@ -47,7 +56,7 @@ export class PostEntity extends BaseEntity {
   })
   updated_at: Date;
 
-  @ManyToMany(type => CategoryEntity, { cascade: true })
+  @ManyToMany(() => CategoryEntity, { cascade: true })
   @JoinTable({
     name: 'post_category',
     joinColumn: {
@@ -59,7 +68,7 @@ export class PostEntity extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  category: CategoryEntity[];
+  categories: CategoryEntity[];
 
   @ManyToMany(type => UserEntity, { cascade: true })
   @JoinTable({
