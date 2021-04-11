@@ -33,7 +33,7 @@ export class CategoryEntity extends BaseEntity {
   parent: CategoryEntity;
 
   @TreeChildren()
-  children: CategoryEntity[];
+  sub_category: CategoryEntity[];
 
   @Column()
   @IsNumber({}, { message: 'Incorrect value' })
