@@ -2,6 +2,7 @@ import { PostEntity } from '@entities/post.entity';
 import { CustomLoggerService } from '@logger/custom.logger.service';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { PostRepository } from '@repository/post.repository';
+import { PostParams } from '@requests/post/post.params';
 import { PostRequest } from '@requests/post/post.request';
 import { PostResponse } from '@response/post/post.response';
 import { BaseService } from '@services/base.service';
@@ -17,11 +18,16 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     super(repository, logger);
   }
 
-  async findAll(): Promise<PostResponse> {
+  async findAll(query?: PostParams): Promise<PostResponse> {
+    const take: number = query.total_result || 10
+    const skip: number = query.page ? query.page - 1 : 0
+
     try {
       const post = await this.repository
         .createQueryBuilder('post')
         .leftJoinAndSelect('post.categories', 'categories')
+        .take(take)
+        .skip(skip)
         .getMany();
       const response = new PostResponse(true, 200, undefined, post);
       return response;
@@ -37,7 +43,9 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     }
   }
 
-  async findByCategory(category_id?: string): Promise<PostResponse> {
+  async findByCategory(query?: PostParams): Promise<PostResponse> {
+    const take: number = query.total_result || 10
+    const skip: number = query.page ? query.page - 1 : 0
     try {
       const post = await this.repository
         .createQueryBuilder('post')
@@ -45,8 +53,10 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
           'post.categories',
           'categories',
           'categories.id = :id',
-          { id: category_id },
+          { id: query.category_id },
         )
+        .take(take)
+        .skip(skip)
         .getMany();
       const response = new PostResponse(true, 200, undefined, post);
 
