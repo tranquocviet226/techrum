@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostRequest } from '@requests/post/post.request';
 import { PostResponse } from '@response/post/post.response';
@@ -32,5 +32,16 @@ export class PostController {
   @ApiResponse({ status: 401, description: SWAGGER_MSG.POST_FAIL })
   createPost(@Body() postRequest: PostRequest): Promise<PostResponse> {
     return this.postService.createPost(postRequest);
+  }
+
+  @Get(':id')
+  @ApiOkResponse({
+    status: 200,
+    type: PostResponse,
+    description: SWAGGER_MSG.POST_SUCCESS,
+  })
+  @ApiResponse({ status: 401, description: SWAGGER_MSG.POST_FAIL })
+  postDetail(@Param('id') id: string): Promise<PostResponse> {
+    return this.postService.findOne(id);
   }
 }

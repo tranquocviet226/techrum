@@ -80,4 +80,25 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
       return response;
     }
   }
+
+  async findOne(id: string): Promise<PostResponse> {
+    try {
+      const post = await this.repository
+        .createQueryBuilder('post')
+        .leftJoinAndSelect('post.categories', 'categories')
+        .where('post.id = :id', { id: id })
+        .getOne();
+      const response = new PostResponse(true, 200, undefined, post ? post : {});
+      return response;
+    } catch (error) {
+      const code = HttpStatus.FORBIDDEN;
+      const response = new PostResponse(
+        false,
+        code,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
 }
