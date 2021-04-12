@@ -23,19 +23,42 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         .createQueryBuilder('post')
         .leftJoinAndSelect('post.categories', 'categories')
         .getMany();
-      const response = new PostResponse(true, 200, null, post);
+      const response = new PostResponse(true, 200, undefined, post);
+      return response;
+    } catch (error) {
+      const code = HttpStatus.FORBIDDEN;
+      const response = new PostResponse(
+        false,
+        code,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
+
+  async findByCategory(category_id?: string): Promise<PostResponse> {
+    try {
+      const post = await this.repository
+        .createQueryBuilder('post')
+        .innerJoinAndSelect(
+          'post.categories',
+          'categories',
+          'categories.id = :id',
+          { id: category_id },
+        )
+        .getMany();
+      const response = new PostResponse(true, 200, undefined, post);
 
       return response;
     } catch (error) {
       const code = HttpStatus.FORBIDDEN;
-      const message = 'error';
       const response = new PostResponse(
         false,
         code,
-        [{ code: -1, message }],
-        error,
+        [{ code: -1, message: error.message }],
+        undefined,
       );
-
       return response;
     }
   }

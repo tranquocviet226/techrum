@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostRequest } from '@requests/post/post.request';
 import { PostResponse } from '@response/post/post.response';
@@ -6,7 +6,7 @@ import { PostService } from '@services/post/post.service';
 import { SWAGGER_MSG } from '@utils/constant';
 
 @ApiTags('Post Controller')
-@Controller('catalog/post')
+@Controller('catalog/posts')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
@@ -17,8 +17,10 @@ export class PostController {
     description: SWAGGER_MSG.POST_SUCCESS,
   })
   @ApiResponse({ status: 401, description: SWAGGER_MSG.POST_FAIL })
-  findAll(): Promise<PostResponse> {
-    return this.postService.findAll();
+  findAll(@Query('category_id') category_id?: string): Promise<PostResponse> {
+    return category_id
+      ? this.postService.findByCategory(category_id)
+      : this.postService.findAll();
   }
 
   @Post('')
