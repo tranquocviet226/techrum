@@ -1,9 +1,16 @@
-import { DataPost, DataPost2 } from "data";
 import { useEffect, useState } from "react";
+import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
+import { ParamsPost } from "types/model/Post";
 
 type Props = {
   content_id: number;
+  newContentPosts: Post[]
+  getPostsByCategory: (
+    componentType: ComponentType,
+    paramsPost?: ParamsPost
+  ) => void,
+  resetPosts: (componentType: ComponentType) => void
 };
 
 type PostItemProps = {
@@ -59,28 +66,10 @@ const TabContentItem = ({ item }: PostItemProps) => {
   );
 };
 
-const TabContentNews = ({ content_id }: Props) => {
-  const [data, setData] = useState<any>(DataPost);
-
+const TabContentNews = ({ content_id, getPostsByCategory, newContentPosts }: Props) => {
   useEffect(() => {
-    switch (content_id) {
-      case 1:
-        setData(DataPost);
-        break;
-      case 2:
-        setData(DataPost2);
-        break;
-      case 3:
-        setData(DataPost);
-        break;
-      case 4:
-        setData(DataPost2);
-        break;
-      case 5:
-        setData(DataPost);
-        break;
-    }
-  }, [content_id]);
+    getPostsByCategory(ComponentType.NEW_CONTENT_POSTS, { total_result: 5, category_id: content_id })
+  }, [content_id])
 
   const _renderLeftData = (item: any) => {
     return (
@@ -133,7 +122,7 @@ const TabContentNews = ({ content_id }: Props) => {
                   title="Posts by duynn100198"
                   rel="author"
                 >
-                  {item.author.name}
+                  {item.author ? item.author.name : "Duynn"}
                 </a>
               </span>
               <span className="post-date">
@@ -156,11 +145,11 @@ const TabContentNews = ({ content_id }: Props) => {
       >
         <div className="block-tab-item">
           <div className="row">
-            {_renderLeftData(data[1])}
+            {newContentPosts.length > 0 && _renderLeftData(newContentPosts[0])}
             <div className="col-md-6 col-sm-6 second">
               <div className="post-block-list post-thumb-bg">
                 <ul className="list-post">
-                  {data.map((item: Post) => (
+                  {newContentPosts.length > 1 && newContentPosts.slice(1, newContentPosts.length).map((item: Post) => (
                     <TabContentItem key={item.id} item={item} />
                   ))}
                 </ul>

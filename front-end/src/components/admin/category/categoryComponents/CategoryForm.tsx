@@ -1,6 +1,9 @@
-import { Grid, makeStyles, TextField } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Select from "components/admin/common/select/Selects";
+import { TextField } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
+import ColorLensIcon from "@material-ui/icons/ColorLens";
+import FingerprintIcon from "@material-ui/icons/Fingerprint";
+import HttpIcon from "@material-ui/icons/Http";
+import TitleIcon from "@material-ui/icons/Title";
 import { FormikProps } from "formik";
 import { Category } from "types/model";
 import styles from "./CategoryForm.module.css";
@@ -12,7 +15,7 @@ type Props = {
 };
 
 export interface FormValueCategory {
-  parent_id: [number];
+  parent_id: number;
   title: string;
   slug: string;
   color: string;
@@ -38,7 +41,7 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
       <form onSubmit={handleSubmit}>
         <h1 className={styles.title}>Create Category</h1>
         <div className={styles.input_container}>
-          <AccountCircle />
+          <TitleIcon />
           <TextField
             type="text"
             name="title"
@@ -48,22 +51,25 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
             className={styles.input_w_100}
           />
         </div>
-        <div className="input-error">{validForm && touched.title}</div>
+        <div className={styles.input_error}>
+          {validForm && touched.title && errors["title"]}
+        </div>
         <div className={styles.input_container}>
-          <AccountCircle />
+          <HttpIcon />
           <TextField
             type="text"
             name="slug"
             value={values["slug"] || ""}
             label="Slug"
             onChange={handleChange}
-            color="secondary"
             className={styles.input_w_100}
           />
         </div>
-        <div className="input-error">{validForm && touched.slug}</div>
+        <div className={styles.input_error}>
+          {validForm && touched.slug && errors["slug"]}
+        </div>
         <div className={styles.input_container}>
-          <AccountCircle />
+          <ColorLensIcon />
           <TextField
             type="color"
             name="color"
@@ -73,10 +79,35 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
             className={`${styles.input_w_100} ${styles.input_color}`}
           />
         </div>
-        <Select data={categories} />
-        <button type="submit" onClick={resetValid} className="login">
-          Save
-        </button>
+        <div className={styles.input_container}>
+          <FingerprintIcon />
+          <Select
+            native
+            value={values["parent_id"] || ""}
+            name="parent_id"
+            onChange={handleChange}
+            className={styles.input_w_100}
+            inputProps={{
+              name: "parent_id",
+              id: "age-native-simple",
+            }}
+          >
+            <option aria-label="None" value="" />
+            {categories.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </Select>
+        </div>
+        <div className={styles.btn_container}>
+          <button type="submit" onClick={resetValid} className="login">
+            Save
+          </button>
+          <button type="reset" className="login">
+            Cancel
+          </button>
+        </div>
         <div style={{ color: "red", textAlign: "center", marginTop: 16 }}>
           {errors.api}
         </div>

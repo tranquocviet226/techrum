@@ -1,11 +1,15 @@
-import { connect } from "react-redux";
-import { DataPost } from "data";
 import { useHistory } from "react-router-dom";
 import { Path } from "constants/path";
 import { Category, Post } from "types/model";
+import React from "react";
 
-const SliderBannerRight = () => {
+type Props = {
+  sliderPosts: Post[]
+}
+
+const SliderBannerRight: React.FC<Props> = (props) => {
   const history = useHistory();
+  const { sliderPosts } = props
 
   const onSelectPost = (id: number) => {
     history.push({
@@ -50,7 +54,7 @@ const SliderBannerRight = () => {
             <ul className="post-meta-info  ">
               <li className="author">
                 <i className="fa fa-user" />
-                <a>{item.author.name}</a>
+                <a>{item.author ? item.author.name : "Duynn"}</a>
               </li>
               <li>
                 <i className="fa fa-clock-o" />
@@ -74,7 +78,7 @@ const SliderBannerRight = () => {
         <div className="elementor-widget-container">
           <div className="grid-item">
             <div className="ts-overlay-style featured-post post-59 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-travel">
-              {_renderSubView(DataPost[0])}
+              {_renderSubView(sliderPosts[0])}
             </div>
           </div>
         </div>
@@ -93,7 +97,8 @@ const SliderBannerRight = () => {
         <div className="elementor-widget-container">
           <div className="grid-item">
             <div className="ts-overlay-style featured-post post-59 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-travel">
-              {_renderSubView(DataPost[0])}
+
+              {sliderPosts[1] ? _renderSubView(sliderPosts[1]) : ""}
             </div>
           </div>
         </div>
@@ -116,4 +121,4 @@ const SliderBannerRight = () => {
   );
 };
 
-export default connect(null, null)(SliderBannerRight);
+export default SliderBannerRight

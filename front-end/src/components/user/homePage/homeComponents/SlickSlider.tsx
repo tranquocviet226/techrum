@@ -1,14 +1,19 @@
-import { DataPost } from "data"
 import { Path } from "constants/path";
-import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import SlickItem from "./SlickItem";
 import "styles/user/css/SlickSlider.css";
+import { Post } from "types/model";
 
-const SlickSlider = () => {
+type Props = {
+  sliderPosts: Post[]
+}
+
+const SlickSlider : React.FC<Props>= (props) => {
+  const {sliderPosts} = props
+
   const history = useHistory();
   const settings = {
     dots: true,
@@ -32,7 +37,7 @@ const SlickSlider = () => {
   };
   return (
     <Slider {...settings}>
-      {DataPost.map((item) => (
+      {sliderPosts.map((item) => (
         <SlickItem
           key={item.id}
           item={item}
@@ -43,4 +48,4 @@ const SlickSlider = () => {
   );
 };
 
-export default connect(null, null)(SlickSlider);
+export default SlickSlider

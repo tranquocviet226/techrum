@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import FeatureTabNews from "./FeatureTabNews";
-import TabContentNews from "./TabContentNews";
+import FeatureTabNews from "containers/user/FeatureTabNewsContainer";
+import TabContentNews from "containers/user/TabContentNewsContainer";
 
 const NewsContent = () => {
   const [contentId, setContentId] = useState<number>(1);

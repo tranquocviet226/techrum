@@ -4,7 +4,7 @@
 .input_container {
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 16px;
 }
 
@@ -15,7 +15,18 @@
 
 .input_w_100 {
   width: 100%;
+  margin-left: 16px;
 }
 .input_color {
   height: 50px;
+}
+
+.input_error {
+  margin-left: 16px;
+  color: red
+}
+
+.btn_container {
+  display: flex;
+  justify-content: space-around;
 }

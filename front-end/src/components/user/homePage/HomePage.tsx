@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Slider from "./homeComponents/Slider";
+import Slider from "containers/user/SliderContainer";
 import NewContent from "./homeComponents/NewsContent";
 import RecentPostList from '../common/PostList';
 import Rating from '../common/Rating';

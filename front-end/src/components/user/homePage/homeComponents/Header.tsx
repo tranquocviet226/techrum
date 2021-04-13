@@ -1,13 +1,20 @@
+import { useEffect } from "react";
 import "styles/user/css/header_style.css";
 import "styles/user/css/library_custom.css";
 import { Category } from "types/model";
 
 type HeaderProps = {
   categories?: Category[]
+  getListCategory: () => void
 };
 
 export const Header: React.FC<HeaderProps> = (props) => {
-  const { categories } = props
+  const { categories, getListCategory } = props
+
+  useEffect(() => {
+    getListCategory();
+  }, []);
+  
   return (
     <header id="navbar" className="header">
       <div className="grid wide">
