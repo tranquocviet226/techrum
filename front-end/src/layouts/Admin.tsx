@@ -1,84 +1,87 @@
 /* eslint-disable */
 // @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles';
-import { getListCategory } from 'actions/user/categoryAction';
-import logo from 'assets/img/reactlogo.png';
-import imageDefault from 'assets/img/sidebar-2.jpg';
-import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle';
-import Footer from 'components/admin/common/Footer/Footer';
+import withStyles from "@material-ui/core/styles/withStyles";
+import { getListCategory } from "actions/common/categoryAction";
+import logo from "assets/img/reactlogo.png";
+import imageDefault from "assets/img/sidebar-2.jpg";
+import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle";
+import Footer from "components/admin/common/Footer/Footer";
+import Loading from "components/admin/common/loading/Loading";
 // core components
-import Navbar from 'components/admin/common/Navbars/Navbar';
-import Sidebar from 'components/admin/common/Sidebar/Sidebar';
+import Navbar from "components/admin/common/Navbars/Navbar";
+import Sidebar from "components/admin/common/Sidebar/Sidebar";
 // creates a beautiful scrollbar
-import PerfectScrollbar from 'perfect-scrollbar';
-import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import React, { createRef, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import routes from 'types/dashboardAdminRoutes';
+import PerfectScrollbar from "perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+import React, { createRef, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
+import routes from "types/dashboardAdminRoutes";
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === '/admin') {
-        return <Route
-          path={prop.layout + prop.path}
-          component={prop.component}
-          key={key}
-          exact />
+      if (prop.layout === "/admin") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+            exact
+          />
+        );
       }
     })}
-    <Redirect
-      path="/admin/"
-      to="/admin/dashboard"
-      exact />
+    <Redirect path="/admin/" to="/admin/dashboard" exact />
   </Switch>
 );
 
-interface Props {
+type Props = {
   classes: any;
   location: any;
   history: any;
-}
+  isLoading: boolean;
+};
 
 const Dashboard: React.FC<Props> = (props) => {
-  const { classes, ...rest } = props;
-  const refs = createRef<any>()
+  const { classes, isLoading, ...rest } = props;
+  console.log("IS LOAING", isLoading);
+  const refs = createRef<any>();
   const dispatch = useDispatch();
 
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
-  }
+    setMobileOpen(!mobileOpen);
+  };
 
   const getRoute = () => {
-    return props.location.pathname !== '/admin/maps';
-  }
+    return props.location.pathname !== "/admin/maps";
+  };
 
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
-      setMobileOpen(false)
+      setMobileOpen(false);
     }
-  }
+  };
   useEffect(() => {
-    if (navigator.platform.indexOf('Win') > -1) {
+    if (navigator.platform.indexOf("Win") > -1) {
       const ps = new PerfectScrollbar(refs.current);
     }
-    window.addEventListener('resize', resizeFunction);
+    window.addEventListener("resize", resizeFunction);
     return () => {
-      window.removeEventListener('resize', resizeFunction);
-    }
-  }, [])
+      window.removeEventListener("resize", resizeFunction);
+    };
+  }, []);
 
   useEffect(() => {
     if (props.history.location.pathname !== props.location.pathname) {
       refs.current.scrollTop = 0;
       if (mobileOpen) {
-        setMobileOpen(false)
+        setMobileOpen(false);
       }
     }
-  })
+  });
 
   useEffect(() => {
     getCategories();
@@ -90,14 +93,15 @@ const Dashboard: React.FC<Props> = (props) => {
 
   return (
     <div className={classes.wrapper}>
+      {isLoading ? <Loading /> : <></>}
       <Sidebar
         routes={routes}
-        logoText={'Tech'}
+        logoText={"Tech"}
         logo={logo}
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
         image={imageDefault}
-        color='blue'
+        color="blue"
         {...rest}
       />
       <div className={classes.mainPanel} ref={refs}>
@@ -118,6 +122,6 @@ const Dashboard: React.FC<Props> = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default withStyles(dashboardStyle)(Dashboard);

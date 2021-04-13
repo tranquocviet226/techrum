@@ -8,7 +8,7 @@ export class PostRequest {
   private _background_url: string;
   private _views: number;
   private _slug: string;
-  private _category_id: string;
+  private _category_id: [number];
   private _is_active: number;
   private _created_at: Date;
   private _updated_at: Date;
@@ -21,7 +21,7 @@ export class PostRequest {
     _background_url: string,
     _views: number,
     _slug: string,
-    _category_id: string,
+    _category_id: [number],
     _is_active: number,
     _created_at: Date,
     _updated_at: Date,
@@ -96,10 +96,10 @@ export class PostRequest {
   }
 
   @ApiProperty()
-  get category_id(): string {
+  get category_id(): [number] {
     return this._category_id;
   }
-  set category_id(value: string) {
+  set category_id(value: [number]) {
     this._category_id = value;
   }
 

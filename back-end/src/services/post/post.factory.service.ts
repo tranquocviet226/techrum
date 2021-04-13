@@ -10,9 +10,7 @@ export class PostFactoryService {
   async postCreate(postRequest: PostRequest): Promise<PostEntity> {
     const { category_id } = postRequest;
     try {
-      const categories = await this.categoryRepository.findByIds(
-        [category_id],
-      );
+      const categories = await this.categoryRepository.findByIds(category_id);
       const post = new PostEntity(postRequest);
       post.categories = categories;
       return post;
