@@ -9,7 +9,7 @@ const initialState: CategoryState = {
   categories: DataCategory,
 };
 
-const auth = (
+const category = (
   state: CategoryState = initialState,
   action: CategoryActionTypes
 ): CategoryState => {
@@ -19,9 +19,14 @@ const auth = (
         ...state,
         categories: action.categories,
       };
+    // case CategoryActionType.CREATE:
+    //   return {
+    //     ...state,
+    //     categories: [...state.categories, action.category],
+    //   };
     default:
       return state;
   }
 };
 
-export default auth;
+export default category;

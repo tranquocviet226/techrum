@@ -1,4 +1,4 @@
-import { getListCategory } from "actions/user/categoryAction";
+import { getListCategory } from "actions/common/categoryAction";
 import "assets/css/animate.css";
 import "assets/css/blog.css";
 import "assets/css/bootstrap.min.css";

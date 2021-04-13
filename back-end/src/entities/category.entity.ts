@@ -24,6 +24,7 @@ export class CategoryEntity extends BaseEntity {
   slug: string;
 
   @Column()
+  @Unique(['title'])
   title: string;
 
   @Column()
@@ -35,15 +36,15 @@ export class CategoryEntity extends BaseEntity {
   @TreeChildren()
   sub_category: CategoryEntity[];
 
-  @Column()
+  @Column({nullable: true, default: 0})
   @IsNumber({}, { message: 'Incorrect value' })
   position: number;
 
-  @Column({ name: 'is_searchable' })
+  @Column({ name: 'is_searchable', nullable: true, default: 1 })
   @IsNumber({}, { message: 'Incorrect value' })
   is_searchable: number;
 
-  @Column({ name: 'is_active' })
+  @Column({ name: 'is_active', nullable: true, default: 1 })
   @IsNumber({}, { message: 'Incorrect value' })
   is_active: number;
 
