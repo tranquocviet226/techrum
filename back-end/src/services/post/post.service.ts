@@ -19,8 +19,8 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
   }
 
   async findAll(query?: PostParams): Promise<PostResponse> {
-    const take: number = query.total_result || 10
-    const skip: number = query.page ? query.page - 1 : 0
+    const take: number = query.total_result || 10;
+    const skip: number = query.page ? query.page - 1 : 0;
 
     try {
       const post = await this.repository
@@ -44,8 +44,8 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
   }
 
   async findByCategory(query?: PostParams): Promise<PostResponse> {
-    const take: number = query.total_result || 10
-    const skip: number = query.page ? query.page - 1 : 0
+    const take: number = query.total_result || 10;
+    const skip: number = query.page ? query.page - 1 : 0;
     try {
       const post = await this.repository
         .createQueryBuilder('post')
@@ -102,6 +102,72 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
       return response;
     } catch (error) {
       const code = HttpStatus.FORBIDDEN;
+      const response = new PostResponse(
+        false,
+        code,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
+
+  async putOne(id: string, postRequest: PostRequest): Promise<PostResponse> {
+    try {
+      const oldPost = await this.repository.findOne(id);
+      if (oldPost) {
+        const post = await this.postFactoryService.postCreate(postRequest);
+        post.id = parseInt(id);
+        const updateResult = await this.repository.save(post);
+        const response = new PostResponse(
+          true,
+          200,
+          undefined,
+          updateResult ? updateResult : {},
+        );
+        return response;
+      } else {
+        const response = new PostResponse(
+          false,
+          HttpStatus.FORBIDDEN,
+          [{ code: -1, message: 'Not Found ID Post' }],
+          undefined,
+        );
+        return response;
+      }
+    } catch (error) {
+      const response = new PostResponse(
+        false,
+        HttpStatus.FORBIDDEN,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
+
+  async deleteOne(id: string): Promise<PostResponse> {
+    const code = HttpStatus.FORBIDDEN;
+    try {
+      const deleteResult = await this.repository.delete(id);
+      if (deleteResult.affected > 0) {
+        const response = new PostResponse(
+          true,
+          200,
+          undefined,
+          'Delete success!',
+        );
+        return response;
+      } else {
+        const response = new PostResponse(
+          false,
+          code,
+          [{ code: -1, message: 'Not Found ID Post' }],
+          undefined,
+        );
+        return response;
+      }
+    } catch (error) {
       const response = new PostResponse(
         false,
         code,
