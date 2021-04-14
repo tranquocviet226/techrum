@@ -3,10 +3,9 @@ import {
   CategoryActionTypes,
   CategoryState,
 } from "types/user/categoryTypes";
-import { DataCategory } from "data";
 
 const initialState: CategoryState = {
-  categories: DataCategory,
+  categories: [],
 };
 
 const category = (
@@ -19,11 +18,6 @@ const category = (
         ...state,
         categories: action.categories,
       };
-    // case CategoryActionType.CREATE:
-    //   return {
-    //     ...state,
-    //     categories: [...state.categories, action.category],
-    //   };
     default:
       return state;
   }

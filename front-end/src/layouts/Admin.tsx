@@ -45,7 +45,6 @@ type Props = {
 
 const Dashboard: React.FC<Props> = (props) => {
   const { classes, isLoading, ...rest } = props;
-  console.log("IS LOAING", isLoading);
   const refs = createRef<any>();
   const dispatch = useDispatch();
 

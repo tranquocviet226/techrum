@@ -6,6 +6,7 @@ import {
 
 const initialState: CommonState = {
   isLoading: false,
+  isShowModal: false,
 };
 
 const common = (
@@ -20,6 +21,11 @@ const common = (
       };
     case CommonActionType.GET_LOADING:
       return state;
+    case CommonActionType.SET_MODAL:
+      return {
+        ...state,
+        isShowModal: action.isShowModal
+      }
     default:
       return state;
   }

@@ -1,23 +1,27 @@
 import Button from "@material-ui/core/Button";
+import { setShowModal } from "actions/common/commonAction";
 import { FolderIcon } from "assets/img/admin";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import CategoryFormContainer from "containers/admin/category/CategoryFormContainer";
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Category } from "types/model";
 import "./CategoryPage.css";
 
 type Props = {
   categories: Category[];
+  isShowModal: boolean;
 };
 
-const CategoryPage = ({ categories }: Props) => {
+const CategoryPage = ({ categories, isShowModal }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [isShowModal, setIsShowModal] = useState(false);
+  const dispatch = useDispatch();
   const [validForm, setValidForm] = useState(true);
 
   useEffect(() => {
     window.onclick = function (event: any) {
       if (event.target == ref.current) {
-        setIsShowModal(false);
+        dispatch(setShowModal(false));
       }
     };
   }, []);
@@ -27,7 +31,7 @@ const CategoryPage = ({ categories }: Props) => {
   };
 
   const openModal = () => {
-    setIsShowModal(true);
+    dispatch(setShowModal(true));
   };
 
   const _renderTree = (data: Category[]) => {
@@ -36,7 +40,10 @@ const CategoryPage = ({ categories }: Props) => {
         {data?.map((item: Category) => (
           <details key={item.id}>
             <summary className="d-flex">
-              <img src={FolderIcon} className="ic_20" />
+              <div className="d-flex">
+                {item?.sub_category?.length > 0 ? <PlayArrowIcon /> : <></>}
+                <img src={FolderIcon} className="ic_20" />
+              </div>
               <p style={{ margin: 0 }}>{item.title}</p>
             </summary>
             <div className="ml-4">

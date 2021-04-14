@@ -10,7 +10,7 @@ export interface CategoryState {
 export enum CategoryActionType {
   GET_LIST = "GET LIST CATEGORY",
   UPDATE_LIST = "UPDATE LIST CATEGORY",
-  CREATE = "CREATE CATEGORY"
+  CREATE = "CREATE CATEGORY",
 }
 export interface GetCategoriesAction extends Action {
   type: CategoryActionType.GET_LIST;
@@ -30,4 +30,4 @@ export interface CreateCategoryAction extends Action {
 export type CategoryActionTypes =
   | GetCategoriesAction
   | UpdateListCategoryAction
-  | CreateCategoryAction
+  | CreateCategoryAction;
