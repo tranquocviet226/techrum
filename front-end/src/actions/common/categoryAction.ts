@@ -3,9 +3,9 @@ import { FormikErrors } from "formik";
 import { Category } from "types/model";
 import {
   CategoryActionType,
+  CreateCategoryAction,
   GetCategoriesAction,
   UpdateListCategoryAction,
-  CreateCategoryAction,
 } from "types/user/categoryTypes";
 
 export const getListCategory = (): GetCategoriesAction => ({
@@ -21,7 +21,7 @@ export const updateListCategory = (
 
 export const createCategory = (
   category: Category,
-  setErrors: (errors: FormikErrors<FormValueCategory>) => void,
+  setErrors: (errors: FormikErrors<FormValueCategory>) => void
 ): CreateCategoryAction => ({
   type: CategoryActionType.CREATE,
   category: category,

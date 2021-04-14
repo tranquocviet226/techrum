@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from "@redux-saga/core/effects";
 import { updateListCategory } from "actions/common/categoryAction";
 import { setLoading } from "actions/common/commonAction";
 import { AxiosResponse } from "axios";
+import { DataCategory } from "data";
 import { CategoryApi } from "services/api";
 import {
   CategoryActionType,
@@ -21,9 +22,10 @@ function* getListCategorySaga() {
     if (data) {
       yield put(updateListCategory(data.data));
     } else {
+      yield put(updateListCategory(DataCategory));
     }
   } catch (e) {
-    console.log("FAILURE", e);
+    yield put(updateListCategory(DataCategory));
   }
   yield put(setLoading(false));
 }
@@ -39,13 +41,12 @@ function* createCategorySaga(action: CreateCategoryAction) {
 
     const data = parseJSON(checkStatusData(response.data));
     if (data) {
-      console.log("SUCCESS");
+      window.location.reload();
     } else {
-      console.log("ERR", response);
-      setErrors({ api: response.statusText });
+      setErrors({ api: data?.errors[0]?.message });
     }
   } catch (e) {
-    console.log("FAILURE", e);
+    setErrors({ api: e?.message });
   }
   yield put(setLoading(false));
 }

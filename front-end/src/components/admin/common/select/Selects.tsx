@@ -48,9 +48,10 @@ function getStyles(name: any, personName: any, theme: any) {
 
 type Props = {
   data: Category[];
+  onChangeData: (vl: any) => void;
 };
 
-const MultipleSelect = ({ data }: Props) => {
+const MultipleSelect = ({ data, onChangeData }: Props) => {
   const classes = useStyles();
   const { t } = useTranslation(["ns1"]);
   const theme = useTheme();
@@ -58,12 +59,13 @@ const MultipleSelect = ({ data }: Props) => {
 
   const handleChange = (event: any) => {
     setPersonName(event.target.value);
+    onChangeData(event.target.value)
   };
 
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id="demo-mutiple-chip-label">
-        Parent
+        Parent ID
       </InputLabel>
       <Select
         labelId="demo-mutiple-chip-label"
@@ -84,7 +86,7 @@ const MultipleSelect = ({ data }: Props) => {
         {data.map((item) => (
           <MenuItem
             key={item.id}
-            value={item.title}
+            value={item.id}
             style={getStyles(item.title, personName, theme)}
           >
             {item.title}
