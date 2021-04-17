@@ -7,3 +7,8 @@
 .title-container {
   margin-bottom: 16px;
 }
+
+.editor_container {
+  width: 100%;
+  margin-top: 16px;
+}

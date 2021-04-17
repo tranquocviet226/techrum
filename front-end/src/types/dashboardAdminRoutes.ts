@@ -12,10 +12,10 @@ import DashboardPage from "components/admin/dashboard/Dashboard";
 import Icons from "components/admin/icons/Icons";
 import Maps from "components/admin/maps/Maps";
 import NotificationsPage from "components/admin/notifications/Notifications";
-import PostManagementPage from "components/admin/postManagement/PostManagement";
 import Typography from "components/admin/typography/Typography";
 import UpgradeToPro from "components/admin/upgradeToPro/UpgradeToPro";
 import CategoryContainer from "containers/admin/category/CategoryContainer";
+import PostContainer from "containers/admin/post/PostContainer";
 
 const dashboardRoutes = [
   {
@@ -29,7 +29,7 @@ const dashboardRoutes = [
     path: "/post",
     name: "Post Management",
     icon: PostAddIcon,
-    component: PostManagementPage,
+    component: PostContainer,
     layout: "/admin",
   },
   {
