@@ -6,7 +6,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "postinstall": "npm run prestart:prod",
     "prebuild": "rimraf dist",
     "migration:run": "ts-node ../../node_modules/typeorm/cli.js migration:run",
     "build": "nest build",
