@@ -6,14 +6,30 @@ import { checkStatusData, parseJSON } from "utils/request";
 
 function* createPostSaga(action: CreatePostAction) {
   const { formData } = action;
+  const newFormData = new FormData();
+  newFormData.append("file", formData?.backgroundUrl);
   try {
     const response: AxiosResponse<any> = yield call(
-      [PostApi, PostApi.create],
-      formData
+      [PostApi, PostApi.uploadFile],
+      newFormData
     );
-    const data = parseJSON(checkStatusData(response.data));
+
+    const data = checkStatusData(response.data);
     if (data) {
-      console.log("SUCCESS");
+      const backgroundUrl = data?.data?.path;
+      try {
+        const response: AxiosResponse<any> = yield call(
+          [PostApi, PostApi.create],
+          formData,
+          backgroundUrl
+        );
+        const data = parseJSON(checkStatusData(response.data));
+        if (data) {
+          window.location.reload();
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       console.log("EROP");
     }

@@ -6,6 +6,7 @@ export interface PostState {
 
 export enum PostActionType {
   CREATE_POST = "CREATE POST",
+  UPLOAD_FILE = "UPLOAD FILE",
 }
 
 export interface CreatePostAction extends Action {
@@ -13,4 +14,9 @@ export interface CreatePostAction extends Action {
   formData: any;
 }
 
-export type PostActionTypes = CreatePostAction;
+export interface UploadFileAction extends Action {
+  type: PostActionType.UPLOAD_FILE;
+  file: FormData;
+}
+
+export type PostActionTypes = CreatePostAction | UploadFileAction;

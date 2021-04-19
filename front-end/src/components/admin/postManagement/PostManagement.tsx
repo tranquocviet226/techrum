@@ -69,7 +69,7 @@ const PostManagement: React.FC<Props> = (props) => {
       description: description,
       sortDescription: sortDescription,
       backgroundUrl: backgroundUrl,
-      slug: slug
+      slug: slug,
     };
 
     dispatch(createPost(formData));
@@ -105,7 +105,7 @@ const PostManagement: React.FC<Props> = (props) => {
   };
 
   const handleChangeSlug = (e: any) => {
-    setSlug(e.target.value)
+    setSlug(e.target.value);
   };
 
   const _renderOption = () => {
@@ -135,30 +135,23 @@ const PostManagement: React.FC<Props> = (props) => {
       <div style={{ width: "100%" }}>
         <TextField
           onChange={handleChangeDescription}
-          color="secondary"
           fullWidth
           label="Description"
           className="mb-2"
+          required
         />
         <TextField
           onChange={handleChangeSortDescription}
-          color="secondary"
           fullWidth
           label="Sort description"
         />
         <TextField
           type="file"
           onChange={handleChangeImage}
-          color="secondary"
           fullWidth
           label="Image"
         />
-        <TextField
-          onChange={handleChangeSlug}
-          color="secondary"
-          fullWidth
-          label="Slug"
-        />
+        <TextField onChange={handleChangeSlug} fullWidth label="Slug" />
       </div>
     );
   };
@@ -181,7 +174,6 @@ const PostManagement: React.FC<Props> = (props) => {
       <form noValidate>
         <TextField
           onChange={handleChangeTitle}
-          color="secondary"
           fullWidth
           label={t("ns1:POST_SCREEN.post_title")}
         />
