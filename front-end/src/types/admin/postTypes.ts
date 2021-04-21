@@ -6,6 +6,7 @@ import { ParamsPost } from "types/model/Post";
 export interface PostState {
   formData: any;
   sliderPosts: Post[];
+  newContentPosts: Post[];
 }
 
 export enum PostActionType {

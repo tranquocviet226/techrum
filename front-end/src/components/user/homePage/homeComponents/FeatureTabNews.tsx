@@ -1,11 +1,13 @@
 import { useState } from "react";
-import fakeCategoryMenu from "data/category/DataCategory";
+import { Category } from "types/model";
 
 type Props = {
   selectCategory: (id: number) => void;
+  categories: Category[]
 };
 
-const FeatureTabNews = ({ selectCategory }: Props) => {
+const FeatureTabNews = ({ selectCategory, categories }: Props) => {
+
   const [activeId, setActiveId] = useState<number>(1);
   const onSelectCategory = (id: number) => {
     setActiveId(id);
@@ -14,7 +16,7 @@ const FeatureTabNews = ({ selectCategory }: Props) => {
 
   return (
     <ul className="nav nav-tabs" role="tablist">
-      {fakeCategoryMenu.map((ct) => (
+      {categories.length > 0 && categories.slice(0, 5).map((ct) => (
         <li key={ct.id} className="nav-item">
           <a
             style={{ cursor: "pointer" }}

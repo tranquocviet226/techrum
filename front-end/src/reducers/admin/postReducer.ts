@@ -9,6 +9,7 @@ import { ComponentType } from "types/common/componentTypes";
 const initialState: PostState = {
   formData: null,
   sliderPosts: [],
+  newContentPosts: [],
 };
 
 const postReducer = (
@@ -39,6 +40,10 @@ const postsByComponent = (action: UpdatePostsAction) => {
       return {
         sliderPosts: action.posts,
       };
+    case ComponentType.NEW_CONTENT_POSTS:
+      return {
+        newContentPosts: action.posts,
+      };
   }
 };
 
@@ -47,6 +52,10 @@ const postsResetByComponent = (action: ResetPostsAction) => {
     case ComponentType.SLIDER_POSTS:
       return {
         sliderPosts: [],
+      };
+    case ComponentType.NEW_CONTENT_POSTS:
+      return {
+        newContentPosts: [],
       };
   }
 };

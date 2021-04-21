@@ -5,7 +5,7 @@ import {
 } from "types/admin/postTypes";
 import { AxiosResponse } from "axios";
 import { PostApi } from "services/api/admin/postApi";
-import { takeLatest, all, put, call } from "redux-saga/effects";
+import { takeLatest, all, put, call, takeEvery } from "redux-saga/effects";
 import { checkStatusData, parseJSON } from "utils/request";
 import { updatePosts } from "actions/admin/postAction";
 
@@ -63,6 +63,6 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
 export default function* () {
   yield all([
     takeLatest(PostActionType.CREATE_POST, createPostSaga),
-    takeLatest(PostActionType.GET_POSTS_BY_CATEGORY, getPostsByCategorySaga),
+    takeEvery(PostActionType.GET_POSTS_BY_CATEGORY, getPostsByCategorySaga),
   ]);
 }
