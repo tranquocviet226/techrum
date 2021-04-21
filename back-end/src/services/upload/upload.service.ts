@@ -14,9 +14,9 @@ export class UploadService {
     .concat(file.filename);
 
     const data = {
-      file_name: file.filename,
+      file_name: file?.filename,
       path: pathFile,
-      flie_type: file.mimetype
+      flie_type: file?.mimetype
     }
  
     const response = new BaseResponse(true, 200, undefined, data);

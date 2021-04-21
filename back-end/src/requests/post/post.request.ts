@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class PostRequest {
+export default class PostRequest {
   private _title: string;
   private _content: string;
   private _description: string;

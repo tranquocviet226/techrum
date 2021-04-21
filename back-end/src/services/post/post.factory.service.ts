@@ -1,7 +1,7 @@
 import { PostEntity } from '@entities/post.entity';
 import { Injectable } from '@nestjs/common';
 import { CategoryRepository } from '@repository/category.repository';
-import { PostRequest } from '@requests/post/post.request';
+import { PostRequest } from '@requests/index';
 
 @Injectable()
 export class PostFactoryService {

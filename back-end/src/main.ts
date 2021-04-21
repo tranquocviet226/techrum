@@ -1,6 +1,10 @@
 import { AuthModule } from '@modules/auth.module';
 import { CatalogModule } from '@modules/catalog.module';
 import { UploadModule } from '@modules/upload.module';
+<<<<<<< Updated upstream
+=======
+import { ValidationPipe } from '@nestjs/common';
+>>>>>>> Stashed changes
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -17,6 +21,11 @@ async function bootstrap() {
   const APP_DESCRIPTION = config.get<string>('app_description');
   const SWAGGER_API_DOCS = config.get<string>('swagger_api_docs');
   const APP_PORT = config.get<number>('app_port');
+
+  app.setGlobalPrefix("api/v1");
+  app.useStaticAssets(join(__dirname, '..', 'files'));
+  app.use(cors()) // Use this after the variable declaration
+  app.useGlobalPipes(new ValidationPipe());
 
   const options = new DocumentBuilder()
     .setTitle(APP_NAME)
