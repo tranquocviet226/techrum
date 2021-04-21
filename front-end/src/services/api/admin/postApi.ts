@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ParamsPost } from "types/model/Post";
 import instance from "../v1";
 
 const config = { headers: { "Content-Type": "multipart/form-data" } };
@@ -29,10 +30,10 @@ class _PostApi {
         return response;
       });
 
-  getPosts = (categoryId?: string) =>
+  getPosts = (paramsPost?: ParamsPost) =>
     instance.get("/catalog/posts", {
       params: {
-        category_id: categoryId,
+        ...paramsPost,
       },
     });
 }

@@ -1,6 +1,7 @@
 import { Action } from "redux";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
+import { ParamsPost } from "types/model/Post";
 
 export interface PostState {
   formData: any;
@@ -28,7 +29,7 @@ export interface UploadFileAction extends Action {
 export interface GetPostsByCategoryAction extends Action {
   type: PostActionType.GET_POSTS_BY_CATEGORY;
   componentType: ComponentType;
-  categoryId?: string;
+  paramsPost?: ParamsPost;
 }
 
 export interface UpdatePostsAction extends Action {

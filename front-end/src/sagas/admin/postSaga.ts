@@ -48,7 +48,7 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
   try {
     const response: AxiosResponse<any> = yield call(
       [PostApi, PostApi.getPosts],
-      action.categoryId
+      action.paramsPost
     );
     const data = parseJSON(checkStatusData(response.data));
     if (data) {

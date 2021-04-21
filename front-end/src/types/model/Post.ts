@@ -15,4 +15,10 @@ interface Post {
   views: number;
 }
 
-export type { Post };
+interface ParamsPost {
+  category_id?: number;
+  total_result?: number;
+  page?: number;
+}
+
+export type { Post, ParamsPost };

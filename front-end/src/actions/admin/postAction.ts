@@ -8,6 +8,7 @@ import {
 } from "types/admin/postTypes";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
+import { ParamsPost } from "types/model/Post";
 
 export const createPost = (formData: any): CreatePostAction => ({
   type: PostActionType.CREATE_POST,
@@ -26,11 +27,11 @@ export const resetPosts = (componentType: ComponentType): ResetPostsAction => ({
 
 export const getPostsByCategory = (
   componentType: ComponentType,
-  categoryId?: string
+  paramsPost?: ParamsPost
 ): GetPostsByCategoryAction => ({
   type: PostActionType.GET_POSTS_BY_CATEGORY,
   componentType,
-  categoryId,
+  paramsPost,
 });
 
 export const updatePosts = (
