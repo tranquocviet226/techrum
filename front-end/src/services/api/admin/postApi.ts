@@ -20,7 +20,7 @@ class _PostApi {
   uploadFile = (file: FormData) =>
     axios({
       method: "post",
-      url: "http://localhost:3000/upload",
+      url: "http://localhost:3000/api/v1/upload",
       data: file,
     })
       .then(function (response) {

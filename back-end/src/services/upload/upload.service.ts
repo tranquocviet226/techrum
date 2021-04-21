@@ -10,6 +10,7 @@ export class UploadService {
     const APP_PORT = process.env.APP_PORT;
     const pathFile = APP_URL.concat(':')
     .concat(APP_PORT)
+    .concat("/api/v1")
     .concat('/upload/files/')
     .concat(file.filename);
 

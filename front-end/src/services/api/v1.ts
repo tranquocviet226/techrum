@@ -6,7 +6,7 @@ import { store, PERSIST_KEY } from "../../store";
 import history from "../RoutingService";
 
 const DEFAULT_API_CONFIG: AxiosRequestConfig = {
-  baseURL: "http://localhost:3000/",
+  baseURL: "http://localhost:3000/api/v1/",
   timeout: 30000,
 };
 
