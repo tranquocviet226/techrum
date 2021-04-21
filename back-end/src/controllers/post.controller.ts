@@ -1,7 +1,15 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PostParams } from '@requests/post/post.params';
-import { PostRequest } from '@requests/post/post.request';
+import { PostRequest, PostBody, PostParams } from '@requests/index';
 import { PostResponse } from '@response/post/post.response';
 import { PostService } from '@services/post/post.service';
 import { SWAGGER_MSG } from '@utils/constant';
@@ -22,6 +30,17 @@ export class PostController {
     return query.category_id
       ? this.postService.findByCategory(query)
       : this.postService.findAll(query);
+  }
+
+  @Post('find')
+  @ApiOkResponse({
+    status: 200,
+    type: PostResponse,
+    description: SWAGGER_MSG.POST_SUCCESS,
+  })
+  @ApiResponse({ status: 401, description: SWAGGER_MSG.POST_FAIL })
+  find(@Body() postBody: PostBody): Promise<PostResponse> {
+    return this.postService.find(postBody);
   }
 
   @Post('')

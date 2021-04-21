@@ -41,7 +41,7 @@ export class UploadController {
             .map(() => Math.round(Math.random() * 16).toString(16))
             .join('');
           //Calling the callback passing the random name generated with the original extension name
-          cb(null, `${randomName}${extname(file.originalname)}`);
+          cb(null, `${randomName}${extname(file?.originalname)}`);
         },
       }),
     }),

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class PostParams {
+export default class PostParams {
     private _category_id?: number;
     private _total_result?: number;
     private _page?: number;
