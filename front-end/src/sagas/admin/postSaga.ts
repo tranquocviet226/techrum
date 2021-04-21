@@ -1,8 +1,13 @@
-import { CreatePostAction, PostActionType } from "types/admin/postTypes";
+import {
+  CreatePostAction,
+  GetPostsByCategoryAction,
+  PostActionType,
+} from "types/admin/postTypes";
 import { AxiosResponse } from "axios";
 import { PostApi } from "services/api/admin/postApi";
 import { takeLatest, all, put, call } from "redux-saga/effects";
 import { checkStatusData, parseJSON } from "utils/request";
+import { updatePosts } from "actions/admin/postAction";
 
 function* createPostSaga(action: CreatePostAction) {
   const { formData } = action;
@@ -39,6 +44,25 @@ function* createPostSaga(action: CreatePostAction) {
   }
 }
 
+function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
+  try {
+    const response: AxiosResponse<any> = yield call(
+      [PostApi, PostApi.getPosts],
+      action.categoryId
+    );
+    const data = parseJSON(checkStatusData(response.data));
+    if (data) {
+      yield put(updatePosts(action.componentType, data));
+    }
+  } catch (e) {
+    // errors by server response, setErrors of formik
+    console.log("ERROR", e.message);
+  }
+}
+
 export default function* () {
-  yield all([takeLatest(PostActionType.CREATE_POST, createPostSaga)]);
+  yield all([
+    takeLatest(PostActionType.CREATE_POST, createPostSaga),
+    takeLatest(PostActionType.GET_POSTS_BY_CATEGORY, getPostsByCategorySaga),
+  ]);
 }

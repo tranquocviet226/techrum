@@ -18,8 +18,7 @@ import TrendingBar from "components/user/common/TrendingBar";
 import Footer from "components/user/footer";
 // import Header from 'components/User/HomePage/HomeComponents/Header';
 import Header from "containers/user/HeaderContainer";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "types/dashboardUserRoutes";
 
@@ -42,15 +41,6 @@ const switchRoutes = (
 );
 
 const User: React.FC = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  const getCategories = () => {
-    dispatch(getListCategory());
-  };
   return (
     <div className="home page-template page-template-template page-template-homepage-template page-template-templatehomepage-template-php page page-id-1878 sidebar-active elementor-default elementor-kit-6 elementor-page elementor-page-1878">
       <div className="body-inner-content">

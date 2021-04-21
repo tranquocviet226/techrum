@@ -28,6 +28,13 @@ class _PostApi {
       .catch(function (response) {
         return response;
       });
+
+  getPosts = (categoryId?: string) =>
+    instance.get("/catalog/posts", {
+      params: {
+        category_id: categoryId,
+      },
+    });
 }
 
 export const PostApi = new _PostApi();

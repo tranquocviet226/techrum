@@ -4,7 +4,7 @@ import {
   GetLoadingAction,
   SetModalAction,
   GetModalAction,
-} from "types/commin/commonTypes";
+} from "types/common/commonTypes";
 
 export const getLoading = (): GetLoadingAction => ({
   type: CommonActionType.GET_LOADING,

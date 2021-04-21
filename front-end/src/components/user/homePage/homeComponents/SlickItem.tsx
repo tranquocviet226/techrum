@@ -33,7 +33,7 @@ const SlickItem = ({ item, onSelectPost }: Props) => {
               <ul className="post-meta-info">
                 <li className="author">
                   <i className="fa fa-user" />
-                  <a href={item.author.url}>{item.author.name}</a>
+                  <a href={item.author ? item.author.url : ""}>{item.author ? item.author.name : ""}</a>
                 </li>
                 <li>
                   <i className="fa fa-clock-o" />

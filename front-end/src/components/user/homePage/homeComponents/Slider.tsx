@@ -1,7 +1,25 @@
+import { useEffect } from "react";
+import { ComponentType } from "types/common/componentTypes";
+import { Post } from "types/model";
 import SlickSlider from "./SlickSlider";
 import SliderBannerRight from "./SliderBannerRight";
 
-const Slider = () => {
+type Props = {
+  sliderPosts: Post[]
+  getPostsByCategory: (
+    componentType: ComponentType,
+  ) => void,
+  resetPosts: (componentType: ComponentType) => void
+}
+
+const Slider: React.FC<Props> = (props) => {
+  const { sliderPosts, getPostsByCategory, resetPosts } = props
+
+  useEffect(() => {
+    console.log("useEffect");
+
+    getPostsByCategory(ComponentType.SLIDER_POSTS)
+  }, [])
   return (
     <section
       className="elementor-section elementor-top-section elementor-element elementor-element-5c614333 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -30,7 +48,8 @@ const Slider = () => {
                       className="main-slider owl-carousel owl-loaded owl-drag"
                     >
                       <div className="owl-stage-outer">
-                        <SlickSlider />
+                        {sliderPosts.length &&
+                          <SlickSlider sliderPosts={sliderPosts} />}
                       </div>
                       <div className="owl-nav disabled">
                         <div className="owl-prev">
@@ -45,8 +64,8 @@ const Slider = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <SliderBannerRight />
+          </div> {sliderPosts.length > 1 &&
+            <SliderBannerRight sliderPosts={sliderPosts.slice(1, sliderPosts.length)} />}
         </div>
       </div>
     </section>

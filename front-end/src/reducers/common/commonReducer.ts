@@ -2,7 +2,7 @@ import {
   CommonActionType,
   CommonActionTypes,
   CommonState,
-} from "types/commin/commonTypes";
+} from "types/common/commonTypes";
 
 const initialState: CommonState = {
   isLoading: false,
