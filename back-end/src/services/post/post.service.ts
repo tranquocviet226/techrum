@@ -133,6 +133,8 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         .leftJoinAndSelect('post.categories', 'categories')
         .where('post.id = :id', { id: id })
         .getOne();
+      post.views = post.views + 1;
+      post.save();
       const response = new PostResponse(true, 200, undefined, post ? post : {});
       return response;
     } catch (error) {
