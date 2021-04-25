@@ -10,6 +10,7 @@ const initialState: PostState = {
   formData: null,
   sliderPosts: [],
   newContentPosts: [],
+  categoryFirstPosts: [],
 };
 
 const postReducer = (
@@ -44,6 +45,10 @@ const postsByComponent = (action: UpdatePostsAction) => {
       return {
         newContentPosts: action.posts,
       };
+    case ComponentType.CATEGORY_POSTS_1:
+      return {
+        categoryFirstPosts: action.posts,
+      };
   }
 };
 
@@ -56,6 +61,10 @@ const postsResetByComponent = (action: ResetPostsAction) => {
     case ComponentType.NEW_CONTENT_POSTS:
       return {
         newContentPosts: [],
+      };
+    case ComponentType.CATEGORY_POSTS_1:
+      return {
+        categoryFirstPosts: [],
       };
   }
 };

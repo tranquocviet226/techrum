@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Category } from "types/model";
 
 type Props = {
@@ -8,11 +8,17 @@ type Props = {
 
 const FeatureTabNews = ({ selectCategory, categories }: Props) => {
 
-  const [activeId, setActiveId] = useState<number>(1);
+  const [activeId, setActiveId] = useState<number>();
   const onSelectCategory = (id: number) => {
     setActiveId(id);
     selectCategory(id);
   };
+  useEffect(() => {
+    if (categories.length) {
+      setActiveId(categories[0].id);
+      selectCategory(categories[0].id);
+    }
+  }, [categories])
 
   return (
     <ul className="nav nav-tabs" role="tablist">

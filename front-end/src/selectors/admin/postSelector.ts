@@ -4,4 +4,6 @@ export const postSelector = (state: AppState) => ({
   formData: state.posts.formData,
   sliderPosts: state.posts.sliderPosts,
   newContentPosts: state.posts.newContentPosts,
+  categoryFirstPosts: state.posts.categoryFirstPosts,
+  categories: state.categories.categories,
 });

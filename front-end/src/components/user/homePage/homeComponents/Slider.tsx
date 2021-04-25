@@ -18,7 +18,7 @@ const Slider: React.FC<Props> = (props) => {
   const { sliderPosts, getPostsByCategory, resetPosts } = props
 
   useEffect(() => {
-    getPostsByCategory(ComponentType.SLIDER_POSTS, { total_result: 5 })
+    getPostsByCategory(ComponentType.SLIDER_POSTS, { total_result: 3 })
   }, [])
 
   return (

@@ -7,6 +7,7 @@ export interface PostState {
   formData: any;
   sliderPosts: Post[];
   newContentPosts: Post[];
+  categoryFirstPosts: Post[];
 }
 
 export enum PostActionType {
