@@ -56,7 +56,7 @@ h4,
 h5,
 h6 {
   color: #222222;
-  font-family: "Barlow", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
 
@@ -524,6 +524,11 @@ img.pull-right {
 }
 .post-title a {
   color: #222222;
+  overflow: hidden;
+  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 .post-title a:hover {
   color: #fc4a00;
@@ -716,7 +721,7 @@ a.post-cat.only-color {
   display: inline-block;
   color: #fff;
   font-weight: 400;
-  margin-right: 24px;
+  margin-right: 16px;
 }
 .ts-overlay-style .post-meta-info li img {
   border-radius: 100%;
@@ -3982,7 +3987,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   position: absolute;
   top: 0;
   content: "";
-  background: #fc4a00;
+  /* background: #fc4a00; */
   left: 0;
   opacity: 0;
 }

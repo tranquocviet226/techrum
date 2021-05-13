@@ -12,16 +12,15 @@ export class UploadService {
     .concat(APP_PORT)
     .concat("/api/v1")
     .concat('/upload/files/')
-    .concat(file.filename);
+    .concat(file?.filename);
 
     const data = {
       file_name: file?.filename,
-      path: pathFile,
+      link: pathFile,
       flie_type: file?.mimetype
     }
  
-    const response = new BaseResponse(true, 200, undefined, data);
-    return response;
+    return data;
   }
 
   readFile(fileId: string, res: any) {

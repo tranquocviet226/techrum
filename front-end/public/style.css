@@ -33,3 +33,11 @@
 .cur-po {
   cursor: pointer;
 }
+
+.txt_clip {
+  overflow: hidden;
+  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}

@@ -20,17 +20,14 @@ const DataPost2: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
-        count:1,
-        sub_category: []
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        count: 1,
+        sub_category: [],
       },
     ],
-    author: {
-      id: 1,
-      name: "VietTQ",
-      url: "sss",
-    },
-    date: "July 10, 2019",
+    author: "VietTQ",
+    created_at: "July 10, 2019",
     views: 3462,
   },
   {
@@ -55,9 +52,10 @@ const DataPost2: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
-        sub_category: []
+        sub_category: [],
       },
       {
         id: 2,
@@ -67,17 +65,14 @@ const DataPost2: Post[] = [
         color: "#fc4a00",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
-        sub_category: []
+        sub_category: [],
       },
     ],
-    author: {
-      id: 1,
-      name: "VietTQ",
-      url: "sss",
-    },
-    date: "July 11, 2021",
+    author: "VietTQ",
+    created_at: "July 11, 2021",
     views: 9811,
   },
   {
@@ -102,9 +97,10 @@ const DataPost2: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
-        sub_category: []
+        sub_category: [],
       },
       {
         id: 2,
@@ -114,17 +110,14 @@ const DataPost2: Post[] = [
         color: "#fc4a00",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
-        sub_category: []
+        sub_category: [],
       },
     ],
-    author: {
-      id: 1,
-      name: "VietTQ",
-      url: "sss",
-    },
-    date: "July 11, 2021",
+    author: "VietTQ",
+    created_at: "July 11, 2021",
     views: 9811,
   },
   {
@@ -148,17 +141,14 @@ const DataPost2: Post[] = [
         color: "#da1793",
         position: 1,
         is_active: 1,
-        background_image: "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
+        background_image:
+          "https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/fashion_5.jpg",
         count: 1,
-        sub_category: []
+        sub_category: [],
       },
     ],
-    author: {
-      id: 1,
-      name: "VietTQ",
-      url: "sss",
-    },
-    date: "July 10, 2019",
+    author: "VietTQ",
+    created_at: "July 10, 2019",
     views: 3462,
   },
 ];
