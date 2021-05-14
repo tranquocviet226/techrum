@@ -1,18 +1,31 @@
+import { getPostsByCategory } from "actions/admin/postAction";
+import { Path } from "constants/path";
+import { DataPost } from "data";
 import { useEffect, useState } from "react";
-
-import { DataCategory, DataPost, DataPost2 } from "data";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { ComponentType } from "types/common/componentTypes";
+import { Category, Post } from "types/model";
 
 type TabContentProps = {
   category_id: number;
+  ratingPosts?: Post[];
 };
 
 type FeatureTabProps = {
   selectCategory: (id: number) => void;
+  categories?: Category[];
 };
 
-const Rating = () => {
-  const [categoryId, setCategoryId] = useState<number>(1);
+type Props = {
+  categories?: Category[];
+  ratingPosts?: Post[];
+};
 
+const Rating: React.FC<Props> = (props) => {
+  const [categoryId, setCategoryId] = useState<number>(1);
+  const { categories, ratingPosts } = props;
+  // console.log(ratingPosts)
   const handleSelectCategory = (id: number) => {
     setCategoryId(id);
   };
@@ -20,27 +33,30 @@ const Rating = () => {
     <div id="apsc_widget-3" className="widget widget_apsc_widget">
       <div className="post-list-item widgets grid-no-shadow">
         <TabRatingCategory
+          categories={categories}
           selectCategory={(id: number) => handleSelectCategory(id)}
         />
-        <TabContent category_id={categoryId} />
+        <TabContent ratingPosts={ratingPosts} category_id={categoryId} />
       </div>
     </div>
   );
 };
 
 const TabRatingCategory = (props: FeatureTabProps) => {
-  const { selectCategory } = props;
+  const { selectCategory, categories } = props;
   const [activeId, setActiveId] = useState<number>(1);
+
   const onSelectCategory = (id: number) => {
     setActiveId(id);
     selectCategory(id);
   };
+
   return (
     <ul className="nav nav-tabs recen-tab-menu" role="tablist">
-      {DataCategory.slice(0,3).map((item) => (
-        <li key={item.id} role="presentation">
+      {categories?.slice(0, 3).map((item) => (
+        <li key={item.id} role="presentation ">
           <a
-            className={activeId === item.id ? "active" : ""}
+            className={activeId === item.id ? "active cur-po" : "cur-po"}
             aria-controls="home"
             role="tab"
             onClick={() => onSelectCategory(item.id)}
@@ -54,21 +70,32 @@ const TabRatingCategory = (props: FeatureTabProps) => {
   );
 };
 const TabContent = (props: TabContentProps) => {
-  const { category_id } = props;
-  const [data, setData] = useState(DataPost);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { category_id, ratingPosts } = props;
+
   useEffect(() => {
-    switch (category_id) {
-      case 1:
-        setData(DataPost);
-        break;
-      case 2:
-        setData(DataPost2);
-        break;
-      case 3:
-        setData(DataPost);
-        break;
-    }
+    getPostByCategory();
   }, [category_id]);
+
+  const getPostByCategory = () => {
+    dispatch(
+      getPostsByCategory(ComponentType.RATING_POSTS, {
+        total_result: 6,
+        category_id: category_id,
+      })
+    );
+  };
+
+  const handleSelectPost = (id: number) => {
+    history.push({
+      pathname: Path.POST.concat("/" + id),
+      state: {
+        id: id,
+      },
+    });
+  };
+
   return (
     <div className="tab-content">
       <div
@@ -76,7 +103,7 @@ const TabContent = (props: TabContentProps) => {
         className="tab-pane active post-tab-list post-thumb-bg"
         id="home"
       >
-        {data.map((item, index) => {
+        {ratingPosts?.map((item, index) => {
           return (
             <div key={item.id} className="post-content media">
               <div className="post-thumb post-thumb-radius">
@@ -93,16 +120,13 @@ const TabContent = (props: TabContentProps) => {
                 <span className="post-tag">
                   <a
                     className="post-cat only-color"
-                    href="https://demo.themewinter.com/wp/digiqoles/category/lifestyle/fashion/"
                     style={{ color: item.categories[0].color }}
                   >
                     {item.categories[0].title}
                   </a>
                 </span>
-                <h4 className="post-title">
-                  <a href="https://demo.themewinter.com/wp/digiqoles/ratcliffe-to-be-director-of-nation-talent-trump-ignored/">
-                    {item.title}
-                  </a>
+                <h4 className="post-title cur-po">
+                  <a onClick={() => handleSelectPost(item.id)}>{item.title}</a>
                 </h4>
                 <div className="post-meta">
                   <span className="post-date">

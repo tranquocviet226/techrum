@@ -2,6 +2,7 @@ import PrivateRoute from "components/PrivateRoute";
 import UnAuthRoute from "components/UnAuthRoute";
 import AdminContainer from "containers/admin/AdminContainer";
 import AuthContainer from "containers/admin/login";
+import LoadingContainer from "containers/common/LoadingContainer";
 import "i18n/config";
 import User from "layouts/User";
 import { Provider } from "react-redux";
@@ -17,6 +18,7 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <Router history={history}>
           <ScrollToTop />
+          <LoadingContainer />
           <Switch>
             <UnAuthRoute path="/admin/login" component={AuthContainer} exact />
             <PrivateRoute path="/admin" component={AdminContainer} />

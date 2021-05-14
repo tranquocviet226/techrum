@@ -9,6 +9,7 @@ import { PostApi } from "services/api/admin/postApi";
 import { takeLatest, all, put, call, takeEvery } from "redux-saga/effects";
 import { checkStatusData, parseJSON } from "utils/request";
 import { setPostDetail, updatePosts } from "actions/admin/postAction";
+import { setLoading } from "actions/common/commonAction";
 
 function* createPostSaga(action: CreatePostAction) {
   const { formData } = action;
@@ -46,6 +47,7 @@ function* createPostSaga(action: CreatePostAction) {
 
 function* getPostsById(action: GetPostsByIDAction) {
   try {
+    yield put(setLoading(true));
     const response: AxiosResponse<any> = yield call(
       [PostApi, PostApi.getPostsById],
       action.id
@@ -57,11 +59,14 @@ function* getPostsById(action: GetPostsByIDAction) {
   } catch (e) {
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
+  } finally {
+    // yield put(setLoading(false));
   }
 }
 
 function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
   try {
+    yield put(setLoading(true));
     const response: AxiosResponse<any> = yield call(
       [PostApi, PostApi.getPosts],
       action.paramsPost
@@ -73,6 +78,8 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
   } catch (e) {
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
+  } finally {
+    yield put(setLoading(false));
   }
 }
 

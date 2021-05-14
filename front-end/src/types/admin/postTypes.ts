@@ -8,7 +8,8 @@ export interface PostState {
   sliderPosts: Post[];
   newContentPosts: Post[];
   categoryFirstPosts: Post[];
-  postDetail: any
+  postDetail: any;
+  ratingPosts: Post[];
 }
 
 export enum PostActionType {
@@ -18,7 +19,7 @@ export enum PostActionType {
   GET_POSTS_BY_CATEGORY = "GET_POSTS_BY_CATEGORY",
   UPDATE_POSTS = "UPDATE_POSTS",
   RESET_POSTS = "RESET_POSTS",
-  SET_POST_DETAIL = "SET_POST_DETAIL"
+  SET_POST_DETAIL = "SET_POST_DETAIL",
 }
 
 export interface CreatePostAction extends Action {

@@ -6,12 +6,14 @@ import {
   UpdatePostsAction,
 } from "types/admin/postTypes";
 import { ComponentType } from "types/common/componentTypes";
+
 const initialState: PostState = {
   formData: null,
   sliderPosts: [],
   newContentPosts: [],
   categoryFirstPosts: [],
-  postDetail: null
+  postDetail: null,
+  ratingPosts: [],
 };
 
 const postReducer = (
@@ -32,8 +34,8 @@ const postReducer = (
     case PostActionType.SET_POST_DETAIL:
       return {
         ...state,
-        postDetail: action.post
-      }
+        postDetail: action.post,
+      };
     default:
       return state;
   }
@@ -54,6 +56,10 @@ const postsByComponent = (action: UpdatePostsAction) => {
     case ComponentType.CATEGORY_POSTS_1:
       return {
         categoryFirstPosts: action.posts,
+      };
+    case ComponentType.RATING_POSTS:
+      return {
+        ratingPosts: action.posts,
       };
   }
 };

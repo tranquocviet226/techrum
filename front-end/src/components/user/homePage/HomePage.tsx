@@ -4,6 +4,7 @@ import NewContent from "./homeComponents/NewsContent";
 import RecentPostList from '../common/PostList';
 import Rating from '../common/Rating';
 import CategoryFirst from "containers/user/CategoryFirstContainers";
+import RatingContainer from "containers/user/RatingContainer";
 
 const HomePage = () => {
   const theme = "bg-dark";
@@ -87,7 +88,7 @@ const HomePage = () => {
                   data-widget_type="newszone-post-list-tab.default"
                 >
                   <div className="elementor-widget-container">
-                    <Rating />
+                    <RatingContainer />
                   </div>
                 </div>
               </div>
