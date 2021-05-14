@@ -6,4 +6,5 @@ export const postSelector = (state: AppState) => ({
   newContentPosts: state.posts.newContentPosts,
   categoryFirstPosts: state.posts.categoryFirstPosts,
   categories: state.categories.categories,
+  postDetail: state.posts.postDetail
 });

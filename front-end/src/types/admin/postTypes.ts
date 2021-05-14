@@ -8,14 +8,17 @@ export interface PostState {
   sliderPosts: Post[];
   newContentPosts: Post[];
   categoryFirstPosts: Post[];
+  postDetail: any
 }
 
 export enum PostActionType {
   CREATE_POST = "CREATE POST",
   UPLOAD_FILE = "UPLOAD FILE",
+  GET_POSTS_BY_ID = "GET_POSTS_BY_ID",
   GET_POSTS_BY_CATEGORY = "GET_POSTS_BY_CATEGORY",
   UPDATE_POSTS = "UPDATE_POSTS",
   RESET_POSTS = "RESET_POSTS",
+  SET_POST_DETAIL = "SET_POST_DETAIL"
 }
 
 export interface CreatePostAction extends Action {
@@ -26,6 +29,11 @@ export interface CreatePostAction extends Action {
 export interface UploadFileAction extends Action {
   type: PostActionType.UPLOAD_FILE;
   file: FormData;
+}
+
+export interface GetPostsByIDAction extends Action {
+  type: PostActionType.GET_POSTS_BY_ID;
+  id: number;
 }
 
 export interface GetPostsByCategoryAction extends Action {
@@ -45,9 +53,16 @@ export interface ResetPostsAction extends Action {
   componentType: ComponentType;
 }
 
+export interface SetPostDetailAction extends Action {
+  type: PostActionType.SET_POST_DETAIL;
+  post: Post;
+}
+
 export type PostActionTypes =
   | CreatePostAction
   | UploadFileAction
+  | GetPostsByIDAction
   | GetPostsByCategoryAction
   | ResetPostsAction
+  | SetPostDetailAction
   | UpdatePostsAction;

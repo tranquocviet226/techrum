@@ -1,4 +1,5 @@
 import axios from "axios";
+import { APP_URL } from "constants/index";
 import { ParamsPost } from "types/model/Post";
 import instance from "../v1";
 
@@ -20,7 +21,7 @@ class _PostApi {
   uploadFile = (file: FormData) =>
     axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/upload",
+      url: APP_URL.concat("upload"),
       data: file,
     })
       .then(function (response) {
@@ -29,7 +30,7 @@ class _PostApi {
       .catch(function (response) {
         return response;
       });
-
+  getPostsById = (id: number) => instance.get(`/catalog/posts/${id}`);
   getPosts = (paramsPost?: ParamsPost) =>
     instance.get("/catalog/posts", {
       params: {

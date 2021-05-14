@@ -11,6 +11,7 @@ const initialState: PostState = {
   sliderPosts: [],
   newContentPosts: [],
   categoryFirstPosts: [],
+  postDetail: null
 };
 
 const postReducer = (
@@ -28,6 +29,11 @@ const postReducer = (
         ...state,
         ...postsResetByComponent(action),
       };
+    case PostActionType.SET_POST_DETAIL:
+      return {
+        ...state,
+        postDetail: action.post
+      }
     default:
       return state;
   }

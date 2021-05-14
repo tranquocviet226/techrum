@@ -1,15 +1,17 @@
-import { useHistory } from "react-router-dom";
+import txtConstants from "constants/index";
 import { Path } from "constants/path";
-import { Category, Post } from "types/model";
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { Category, Post } from "types/model";
+import { formatDate } from "utils/function";
 
 type Props = {
-  sliderPosts: Post[]
-}
+  sliderPosts: Post[];
+};
 
 const SliderBannerRight: React.FC<Props> = (props) => {
   const history = useHistory();
-  const { sliderPosts } = props
+  const { sliderPosts } = props;
 
   const onSelectPost = (id: number) => {
     history.push({
@@ -21,18 +23,25 @@ const SliderBannerRight: React.FC<Props> = (props) => {
   };
 
   const _renderSubView = (item: Post) => {
+    const id = item?.id || 1;
+    const background_url = item?.background_url || "";
+    const categories = item?.categories || [];
+    const title = item?.title || "";
+    const author = item?.author || txtConstants.rootAuthor;
+    const created_at = item?.created_at || Date.now();
+    const views = item?.views || 0;
     return (
       <div
         className="item item-before rocket-lazyload lazyloaded"
         style={{
-          backgroundImage: `url("${item.background_url}")`,
+          backgroundImage: `url("${background_url}")`,
         }}
         data-ll-status="loaded"
       >
         <div className="overlay-post-content">
           <div className="post-content">
             <div className="grid-category">
-              {item.categories.map((it: Category) => (
+              {categories.map((it: Category) => (
                 <a
                   key={it.id}
                   className="post-cat cur-po"
@@ -45,20 +54,21 @@ const SliderBannerRight: React.FC<Props> = (props) => {
                 </a>
               ))}
             </div>
-            <h3
-              onClick={() => onSelectPost(item.id)}
-              className="post-title cur-po"
-            >
-              <a>{item.title}</a>
+            <h3 onClick={() => onSelectPost(id)} className="post-title cur-po">
+              <a>{title}</a>
             </h3>
             <ul className="post-meta-info  ">
               <li className="author">
                 <i className="fa fa-user" />
-                <a>{item.author ? item.author.name : "Duynn"}</a>
+                <a>{author}</a>
               </li>
-              <li>
-                <i className="fa fa-clock-o" />
-                {item.views}
+              <li className="created_at">
+                <i className="far fa-clock" />
+                <a>{formatDate(created_at)}</a>
+              </li>
+              <li className="active">
+                <i className="fas fa-fire" />
+                {views}
               </li>
             </ul>
           </div>
@@ -97,7 +107,6 @@ const SliderBannerRight: React.FC<Props> = (props) => {
         <div className="elementor-widget-container">
           <div className="grid-item">
             <div className="ts-overlay-style featured-post post-59 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-travel">
-
               {sliderPosts[1] ? _renderSubView(sliderPosts[1]) : ""}
             </div>
           </div>
@@ -121,4 +130,4 @@ const SliderBannerRight: React.FC<Props> = (props) => {
   );
 };
 
-export default SliderBannerRight
+export default SliderBannerRight;

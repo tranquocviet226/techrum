@@ -1,13 +1,14 @@
 import {
   CreatePostAction,
   GetPostsByCategoryAction,
+  GetPostsByIDAction,
   PostActionType,
 } from "types/admin/postTypes";
 import { AxiosResponse } from "axios";
 import { PostApi } from "services/api/admin/postApi";
 import { takeLatest, all, put, call, takeEvery } from "redux-saga/effects";
 import { checkStatusData, parseJSON } from "utils/request";
-import { updatePosts } from "actions/admin/postAction";
+import { setPostDetail, updatePosts } from "actions/admin/postAction";
 
 function* createPostSaga(action: CreatePostAction) {
   const { formData } = action;
@@ -18,10 +19,9 @@ function* createPostSaga(action: CreatePostAction) {
       [PostApi, PostApi.uploadFile],
       newFormData
     );
-
-    const data = checkStatusData(response.data);
+    const data = response?.data;
     if (data) {
-      const backgroundUrl = data?.data?.path;
+      const backgroundUrl = data?.link;
       try {
         const response: AxiosResponse<any> = yield call(
           [PostApi, PostApi.create],
@@ -37,6 +37,22 @@ function* createPostSaga(action: CreatePostAction) {
       }
     } else {
       console.log("EROP");
+    }
+  } catch (e) {
+    // errors by server response, setErrors of formik
+    console.log("ERROR", e.message);
+  }
+}
+
+function* getPostsById(action: GetPostsByIDAction) {
+  try {
+    const response: AxiosResponse<any> = yield call(
+      [PostApi, PostApi.getPostsById],
+      action.id
+    );
+    const data = parseJSON(checkStatusData(response.data));
+    if (data) {
+      yield put(setPostDetail(data));
     }
   } catch (e) {
     // errors by server response, setErrors of formik
@@ -64,5 +80,6 @@ export default function* () {
   yield all([
     takeLatest(PostActionType.CREATE_POST, createPostSaga),
     takeEvery(PostActionType.GET_POSTS_BY_CATEGORY, getPostsByCategorySaga),
+    takeEvery(PostActionType.GET_POSTS_BY_ID, getPostsById),
   ]);
 }

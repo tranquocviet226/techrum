@@ -37,7 +37,7 @@ const TabRatingCategory = (props: FeatureTabProps) => {
   };
   return (
     <ul className="nav nav-tabs recen-tab-menu" role="tablist">
-      {DataCategory.map((item) => (
+      {DataCategory.slice(0,3).map((item) => (
         <li key={item.id} role="presentation">
           <a
             className={activeId === item.id ? "active" : ""}
@@ -107,7 +107,7 @@ const TabContent = (props: TabContentProps) => {
                 <div className="post-meta">
                   <span className="post-date">
                     <i className="fa fa-clock-o" aria-hidden="true" />
-                    {item.date}
+                    {item.created_at}
                   </span>
                 </div>
               </div>

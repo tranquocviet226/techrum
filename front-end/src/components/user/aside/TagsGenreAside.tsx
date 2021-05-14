@@ -7,7 +7,7 @@ const TagsGenreAside = () => {
       </h3>
       <div className="tagcloud">
         {dataTags().map((item) => (
-          <a href="#" style={{ fontSize: "8pt" }}>
+          <a key={item.id} href="#" style={{ fontSize: "8pt" }}>
             {item.title}
           </a>
         ))}
