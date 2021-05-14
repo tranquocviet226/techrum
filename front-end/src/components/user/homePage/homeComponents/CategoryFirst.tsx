@@ -196,17 +196,14 @@ const _renderContentLeft = (post: Post) => {
           <div className="post-meta  ">
             <span className="post-author">
               <i className="fa fa-user" />
-              <a
-                href="./index.php/author/duynn100198/index.html"
-                title="Posts by duynn100198"
-                rel="author"
-              >
+              <a title={post?.author} rel="author">
+                {` `}
                 {post.author ? post.author : "admin"}
               </a>
             </span>
             <span className="post-date">
               <i className="fa fa-clock-o" aria-hidden="true" />
-              {post.created_at}
+              {formatDate(post.created_at)}
             </span>
           </div>
         </div>

@@ -529,6 +529,7 @@ img.pull-right {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
+  cursor: pointer;
 }
 .post-title a:hover {
   color: #fc4a00;

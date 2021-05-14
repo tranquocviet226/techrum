@@ -1,4 +1,7 @@
+import txtConstants from "constants/index";
+import { Path } from "constants/path";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Category } from "types/model";
 import "./header_style.css";
 import "./library_custom.css";
@@ -9,6 +12,7 @@ type HeaderProps = {
 };
 
 export const Header: React.FC<HeaderProps> = (props) => {
+  const history = useHistory();
   const { categories, getListCategory } = props;
   const [headerClass, setHeaderClass] = useState<string>("header");
 
@@ -24,8 +28,19 @@ export const Header: React.FC<HeaderProps> = (props) => {
     }
   };
 
+  const handleGoHome = () => {
+    history.push({
+      pathname: `/${Path.HOME_PAGE}`,
+    });
+  };
+
   return (
     <header className={headerClass} id="myTopnav">
+      <a onClick={handleGoHome} className="header_navigation__list-item">
+        <div className="header_navigation__list-item--link">
+          {txtConstants.home.toUpperCase()}
+        </div>
+      </a>
       {categories?.map((item: Category) => (
         <a key={item.id} className="header_navigation__list-item">
           <div className="header_navigation__list-item--link">

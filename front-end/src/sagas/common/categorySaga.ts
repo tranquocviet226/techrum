@@ -27,7 +27,6 @@ function* getListCategorySaga() {
   } catch (e) {
     yield put(updateListCategory(DataCategory));
   }
-  yield put(setLoading(false));
 }
 
 function* createCategorySaga(action: CreateCategoryAction) {

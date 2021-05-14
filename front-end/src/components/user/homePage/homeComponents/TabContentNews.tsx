@@ -42,7 +42,6 @@ const TabContentItem = ({ item }: PostItemProps) => {
       <div className="post-block-style post-float media">
         <div className="post-thumb d-flex">
           <a
-            href="./index.php/2019/06/30/naturalistic-design-is-thriving-as-actual-nature-dies/index.html"
             rel="bookmark"
             title={title}
           >
