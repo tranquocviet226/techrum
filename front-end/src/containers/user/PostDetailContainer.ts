@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
+import PostDetailComponent from "components/user/postDetail";
+import { connect } from "react-redux";
+import { postSelector } from "selectors/admin/postSelector";
 
-import PostDetailComponent from 'components/user/postDetail';
-
-export default connect(null)(PostDetailComponent);
+export default connect(postSelector, null)(PostDetailComponent);

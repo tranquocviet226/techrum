@@ -5,6 +5,8 @@ import {
   GetPostsByCategoryAction,
   ResetPostsAction,
   UpdatePostsAction,
+  GetPostsByIDAction,
+  SetPostDetailAction,
 } from "types/admin/postTypes";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
@@ -25,6 +27,11 @@ export const resetPosts = (componentType: ComponentType): ResetPostsAction => ({
   componentType,
 });
 
+export const getPostById = (id: number): GetPostsByIDAction => ({
+  type: PostActionType.GET_POSTS_BY_ID,
+  id,
+});
+
 export const getPostsByCategory = (
   componentType: ComponentType,
   paramsPost?: ParamsPost
@@ -41,4 +48,11 @@ export const updatePosts = (
   type: PostActionType.UPDATE_POSTS,
   componentType,
   posts,
+});
+
+export const setPostDetail = (
+  post: Post
+): SetPostDetailAction => ({
+  type: PostActionType.SET_POST_DETAIL,
+  post,
 });

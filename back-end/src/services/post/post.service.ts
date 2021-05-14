@@ -31,17 +31,30 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
       const order = `post.${sort_target}`;
       const condition = `post.${condition_target} ${condition_operator} :value`;
 
-      const post = await this.repository
-        .createQueryBuilder('post')
-        .leftJoinAndSelect('post.categories', 'categories')
-        .take(take)
-        .skip(skip)
-        .where(condition, { value: condition_value })
-        .orderBy(order, sort_order)
-        .getMany();
+      if (type === 'rand') {
+        const post = await this.repository
+          .createQueryBuilder('post')
+          .leftJoinAndSelect('post.categories', 'categories')
+          .take(take)
+          .skip(skip)
+          .orderBy('RAND()')
+          .getMany();
 
-      const response = new PostResponse(true, 200, undefined, post);
-      return response;
+        const response = new PostResponse(true, 200, undefined, post);
+        return response;
+      } else {
+        const post = await this.repository
+          .createQueryBuilder('post')
+          .leftJoinAndSelect('post.categories', 'categories')
+          .take(take)
+          .skip(skip)
+          .where(condition, { value: condition_value })
+          .orderBy(order, sort_order)
+          .getMany();
+
+        const response = new PostResponse(true, 200, undefined, post);
+        return response;
+      }
     } catch (error) {
       const code = HttpStatus.FORBIDDEN;
       const response = new PostResponse(
@@ -63,6 +76,7 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         .leftJoinAndSelect('post.categories', 'categories')
         .take(take)
         .skip(skip)
+        .orderBy('post.created_at', 'DESC')
         .getMany();
       const response = new PostResponse(true, 200, undefined, post);
       return response;
@@ -92,6 +106,7 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         )
         .take(take)
         .skip(skip)
+        .orderBy('post.created_at', 'DESC')
         .getMany();
       const response = new PostResponse(true, 200, undefined, post);
 

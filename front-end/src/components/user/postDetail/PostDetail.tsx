@@ -1,7 +1,37 @@
+import { getPostById } from "actions/admin/postAction";
 import Aside from "components/user/aside";
+import txtConstants from "constants/index";
+import moment from "moment";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Post } from "types/model";
+import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 
-const PostDetail = () => {
-  const theme = "bg-dark";
+type Props = {
+  postDetail: Post;
+  location: any;
+};
+
+const PostDetail: React.FC<Props> = (props) => {
+  const id = props.location?.state?.id;
+  const { postDetail } = props;
+  const dispatch = useDispatch();
+
+  const title = postDetail?.title || "";
+  const categories = postDetail?.categories || [];
+  const firstCategory = categories?.length > 0 ? categories[0].title : null;
+  const author = postDetail?.author || "admin";
+  const createdAt = postDetail?.created_at || Date.now();
+  const content = postDetail?.content || "";
+
+  useEffect(() => {
+    getPostDetail();
+  }, []);
+
+  const getPostDetail = () => {
+    dispatch(getPostById(id));
+  };
+
   return (
     <>
       <div className="container">
@@ -9,16 +39,15 @@ const PostDetail = () => {
           <div className="col-lg-12">
             <ol className="breadcrumb" data-wow-duration="2s">
               <li>
-                <i className="fa fa-home" /> <a href="">Home</a>
+                <i className="fa fa-home" /> <a href="">{txtConstants.home}</a>
                 <i className="fa fa-angle-right" />
               </li>
               <li>
-                {" "}
-                <a href="">video</a>{" "}
+                <a href="">{firstCategory}</a>{" "}
               </li>
               <li>
                 <i className="fa fa-angle-right" />
-                This cheap smartphone…
+                {title}
               </li>
             </ol>
           </div>
@@ -39,10 +68,7 @@ const PostDetail = () => {
               >
                 {/* Article header */}
                 <header className="entry-header clearfix">
-                  <h1 className="post-title lg">
-                    This cheap smartphone sensor could help you tell if old food
-                    is safe to eat
-                  </h1>
+                  <h1 className="post-title lg">{title}</h1>
                   <ul className="post-meta">
                     <li className="post-category">
                       <a
@@ -60,7 +86,7 @@ const PostDetail = () => {
                             color: "#ffffff",
                           }}
                         />
-                        video
+                        {firstCategory}
                         <span
                           className="after"
                           style={{
@@ -80,200 +106,28 @@ const PostDetail = () => {
                         width={55}
                         loading="lazy"
                       />
-                      <a href="./../../../../author/duynn100198/index.html">
-                        duynn100198
-                      </a>
+                      <a href="#">{author}</a>
                     </li>
                     <li className="post-meta-date">
                       <i className="fa fa-clock-o" />
-                      March 15, 2018
+                      {moment(createdAt).format("lll")}
                     </li>
                     <li className="post-comment">
                       <i className="fa fa-comments" />
                       <a href="#" className="comments-link">
-                        0{" "}
+                        {Math.floor(Math.random() * 100000)}{" "}
                       </a>
                     </li>
                   </ul>
                 </header>
-                {/* header end */}
-                <div className="post-media post-image">
-                  <div className="embed-responsive embed-responsive-16by9">
-                    <iframe
-                      className="embed-responsive-item"
-                      src="https://www.youtube.com/embed/SL_YBLWdZb8"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                </div>
                 <div className="post-body clearfix">
                   {/* Article content */}
                   <div className="entry-content clearfix">
-                    <p>
-                      Struggling to sell one multi-million dollar home currently
-                      on the market won’t stop actress and singer Jennifer Lopez
-                      from expanding her property collection. Lopez has
-                      reportedly added to her real estate holdings an eight-plus
-                      acre estate in Bel-Air anchored by a multi-level mansion.
-                    </p>
-                    <p>
-                      The property, complete with a 30-seat screening room, a
-                      100-seat amphitheater and a swimming pond with sandy beach
-                      and outdoor shower, was asking about $40 million, but J.
-                      Lo managed to make it hers for $28 million. As the Bronx
-                      native acquires a new home in California, she is trying to
-                      sell a gated compound.
-                    </p>
-                    <p />
-                    <p>
-                      {" "}
-                      Black farmers in the US’s South—&nbsp;faced with continued
-                      failure their efforts to run successful farms&nbsp;their
-                      launched a lawsuit claiming that “white racism” is to
-                      blame for their inability to the produce crop yields and
-                      on equivalent to that switched seeds.
-                    </p>
-                    <blockquote className="wp-block-quote">
-                      <p>
-                        I’m thinking I’m back you want a war or you want to just
-                        give me a gun everything’s got a price rusty, I guess.
-                        You stabbed <em> price rusty,</em> the Devil in the back
-                        how good to see you again.
-                      </p>
-                      <cite>
-                        <em style={{ display: "inline !important" }}>
-                          Steve Jobs
-                        </em>
-                      </cite>
-                    </blockquote>
-                    <p>
-                      Struggling to sell one multi-million dollar home currently
-                      on the market won’t stop actress and singer Jennifer Lopez
-                      from expanding her property collection. Lopez has
-                      reportedly added to her real estate holdings an eight-plus
-                      acre estate in Bel-Air anchored by a multi-level mansion.
-                      The property, complete with a 30-seat screening room, a
-                      100-seat amphitheater and a swimming pond with sandy beach
-                      and outdoor shower, was asking about $40 million, but J.
-                      Lo managed to make it hers for $28 illion. As the Bronx
-                      native acquires a new home in California, she is trying to
-                      sell a gated compound.
-                    </p>
-                    <div className="wp-block-image">
-                      <figure className="alignleft size-large">
-                        <img
-                          src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/07/image.jpg"
-                          alt=""
-                          className="wp-image-3345"
-                        />
-                      </figure>
-                    </div>
-                    <h3>
-                      Lopez has reportedly added to her real home in California{" "}
-                    </h3>
-                    <p>
-                      Lo managed to make it hers for $28 million. As the Bronx
-                      native acquires a new home in California, she is trying to
-                      sell a gated compound in the Golden State. The 17,000
-                      square-foot Hidden Hills property with mountain views
-                      boasts nine bedrooms, including a master suite with
-                      private terrace and an entertainment wing, which includes
-                      a 20-seat theater, dance studio and recording studio.
-                      China’s youngest female billionaire has unloaded her
-                      triplex penthouse in Sydney.
-                    </p>
-                    <p />
-                    <p>
-                      The 17,000 square-foot Hidden Hills property with mountain
-                      views boasts nine bedrooms, includin. master suite with
-                      private terrace and an entertainment wing .
-                    </p>
-                    <p>
-                      Following years of white-hot growth, luxury home prices in
-                      Sydney declined for the first time in years, slipping 1%
-                      between the second quarter and third quarter of 2018,
-                      according to the latest report from brokerage Knight
-                      Frank.The nearly 6,500-square-foot apartment has sweeping
-                      views.
-                    </p>
-                    <figure className="wp-block-image size-large">
-                      <img
-                        src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2019/06/tech_4.jpg"
-                        alt=""
-                        className="wp-image-3311"
-                      />
-                    </figure>
-                    <h3>
-                      The property, complete with a 30-seat screening room, a
-                      100-seat amp
-                      <br /> hitheater and a swimming pond with sandy beach
-                    </h3>
-                    <p>
-                      She is trying to sell a gated compound in the Golden
-                      State. The 17,000-square-foot Hidden Hills property with
-                      mountain and city views boasts nine bedrooms, including a
-                      master suite with private terrace and an entertainment
-                      wing, which includes a 20-seat theater
-                    </p>
-                    <figure className="wp-block-image size-large">
-                      <img
-                        src="https://demo.themewinter.com/wp/digiqoles/wp-content/uploads/2020/07/content_banner.png"
-                        alt=""
-                        className="wp-image-3529"
-                      />
-                    </figure>
-                    <h4>
-                      Lopez has reportedly added to her real estate holdings an
-                      eight-plus
-                    </h4>
-                    <ul>
-                      <li>
-                        Struggling to sell one multi-million dollar home
-                        currently on the market{" "}
-                      </li>
-                      <li>
-                        Lopez has reportedly added to her real estate holdings
-                        an eight-plus acre
-                      </li>
-                      <li>
-                        The property, complete with a 30-seat screening room, a
-                        100-seat amphit
-                      </li>
-                      <li>
-                        Lo managed to make it hers for $28 million. As the Bronx
-                        native acquires
-                      </li>
-                    </ul>
-                    <p>
-                      The 17,000-square-foot Hidden Hills property with mountain
-                      and city views boasts nine bedrooms, including a master
-                      suite with private terrace and an entertainment wing,
-                      which includes a 20-seat theater.
-                    </p>
-                    <p>
-                      {" "}
-                      Black farmers in the US’s South—faced with continued
-                      failure in their efforts to run successful farms their
-                      launched a lawsuit claiming that “white racism”{" "}
-                    </p>
-                    <h3 />
-                    <div className="post-footer clearfix">
-                      <div className="post-tag-container">
-                        <div className="tag-lists">
-                          <span>Tags: </span>
-                          <a
-                            href="./../../../../tag/technology/index.html"
-                            rel="tag"
-                          >
-                            technology
-                          </a>
-                        </div>
-                      </div>
-                    </div>{" "}
-                    {/* .entry-footer */}
-                  </div>{" "}
+                    {/* {content} */}
+                    <FroalaEditorView model={content}/>
+                  </div>  
                   {/* end entry-content */}
-                </div>{" "}
+                </div>
                 {/* end post-body */}
               </article>
               <div className="author-box solid-bg">

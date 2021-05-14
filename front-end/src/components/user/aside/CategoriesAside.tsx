@@ -18,7 +18,7 @@ const CategoriesAside = (props: CategoriesProps) => {
         <div className="widgets_category ts-category-list-item">
             <ul className="ts-category-list">
                 {categories?.map((item: Category) => {
-                    return <CategoryAside category={item} />
+                    return <CategoryAside key={item.id} category={item} />
                 })}
             </ul>
         </div>

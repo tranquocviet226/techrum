@@ -36,7 +36,7 @@ export class PostEntity extends BaseEntity {
   @Column({ name: 'views', default: 0 })
   views: number;
 
-  @Column({ name: 'author' })
+  @Column({ name: 'author', default: 'admin' })
   author: string;
 
   @Unique(['slug'])

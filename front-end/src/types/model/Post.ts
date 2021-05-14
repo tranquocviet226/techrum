@@ -1,4 +1,3 @@
-import { Auth } from "./Auth";
 import { Category } from "./Category";
 
 interface Post {
@@ -10,8 +9,8 @@ interface Post {
   background_url: string;
   redirect_to_url: string;
   categories: Category[];
-  author: Auth;
-  date: string;
+  author: string;
+  created_at: string;
   views: number;
 }
 

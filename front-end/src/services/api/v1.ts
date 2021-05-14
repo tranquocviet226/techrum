@@ -1,12 +1,14 @@
 import { clearAuth } from "actions/admin/authAction";
 import axios, { AxiosRequestConfig } from "axios";
+import { APP_URL } from "constants/index";
 import { mapKeys, snakeCase } from "lodash";
 
 import { store, PERSIST_KEY } from "../../store";
 import history from "../RoutingService";
 
+
 const DEFAULT_API_CONFIG: AxiosRequestConfig = {
-  baseURL: "http://localhost:3000/api/v1/",
+  baseURL: APP_URL,
   timeout: 30000,
 };
 

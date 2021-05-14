@@ -1,5 +1,7 @@
+import txtConstants from "constants/index";
 import { DataPost } from "data";
 import { Post } from "types/model";
+import { formatDate } from "utils/function";
 
 type PostItemProps = {
   post: Post;
@@ -23,13 +25,17 @@ const PostList = (props: PostListProps) => {
 
 const PostItem = (props: PostItemProps) => {
   const { post } = props;
+  const background_url = post?.background_url || "";
+  const categories = post?.categories || [];
+  const title = post?.title || "";
+  const created_at = post?.created_at || Date.now();
   return (
     <div className="post-content media">
       <div className="post-thumb">
-        <a href={post.redirect_to_url} rel="bookmark" title={post.title}>
+        <a href={post.redirect_to_url} rel="bookmark" title={title}>
           <span
             className="digiqole-sm-bg-img rocket-lazyload lazyloaded"
-            style={{ backgroundImage: `url(${post.background_url})` }}
+            style={{ backgroundImage: `url(${background_url})` }}
             data-ll-status="loaded"
           />
         </a>
@@ -39,20 +45,20 @@ const PostItem = (props: PostItemProps) => {
           <a
             className="post-cat only-color"
             href="£"
-            style={{ color: post.categories[0].color }}
+            style={{ color: categories[0].color }}
           >
-            {post.categories[0].title}
+            {categories[0].title}
           </a>
         </span>
         <h4 className="post-title">
-          <a href={post.redirect_to_url} rel="bookmark">
-            {post.title}
+          <a href={"#"} rel="bookmark">
+            {title}
           </a>
         </h4>
         <div className="post-meta">
           <span className="post-date">
             <i className="fa fa-clock-o" aria-hidden="true" />
-            {post.date}
+            {formatDate(created_at)}
           </span>
         </div>
       </div>
