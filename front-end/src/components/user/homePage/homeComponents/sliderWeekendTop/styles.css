@@ -1,0 +1,15 @@
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.pd-15 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.min-h-310 {
+  min-height: 310px;
+  object-fit: cover;
+}

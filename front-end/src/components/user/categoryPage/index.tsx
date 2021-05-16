@@ -240,13 +240,10 @@ const CategoryPage = () => {
                                 </article>
                             </div>
                         </div>
-                        <Aside />
+                        <Aside/>
                     </div>
-                    {/* .row */}
                 </div>
-                {/* .container */}
             </div>
-            {/*#main-content */}
         </>
     );
 };

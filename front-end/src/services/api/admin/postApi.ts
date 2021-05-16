@@ -3,8 +3,6 @@ import { APP_URL } from "constants/index";
 import { ParamsPost } from "types/model/Post";
 import instance from "../v1";
 
-const config = { headers: { "Content-Type": "multipart/form-data" } };
-
 class _PostApi {
   create = (formData: any, backgroundUrl: string) =>
     instance.post("/catalog/posts", {

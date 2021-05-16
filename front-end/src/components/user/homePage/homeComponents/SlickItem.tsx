@@ -14,8 +14,11 @@ const SlickItem = ({ item, onSelectPost }: Props) => {
   const author = item?.author || txtConstants.rootAuthor;
   const created_at = item?.created_at || Date.now();
   const views = item?.views || 0;
+
   return (
-    <div className="ts-overlay-style featured-post  post-361 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-food">
+    <div
+      className="ts-overlay-style featured-post  post-361 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-food"
+    >
       <div
         className="item item-before rocket-lazyload lazyloaded"
         style={{ backgroundImage: `url("${background_url}")` }}
