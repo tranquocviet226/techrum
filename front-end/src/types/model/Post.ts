@@ -20,4 +20,24 @@ interface ParamsPost {
   page?: number;
 }
 
-export type { Post, ParamsPost };
+interface FindPostBody {
+  total_result?: number;
+  page?: number;
+  category_id?: number;
+  type?: string; //type == rand || null
+  sort_by?: SortBy;
+  condition?: Condition;
+}
+
+interface SortBy {
+  target: string; // created_at
+  order: string; // ASC
+}
+
+interface Condition {
+  target: string, // created_at
+  operator: string, // <=
+  value: string
+}
+
+export type { Post, ParamsPost, FindPostBody };

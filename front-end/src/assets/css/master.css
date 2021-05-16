@@ -521,6 +521,12 @@ img.pull-right {
   font-weight: 600;
   color: #222222;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  cursor: pointer;
 }
 .post-title a {
   color: #222222;
@@ -529,9 +535,8 @@ img.pull-right {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
-  cursor: pointer;
 }
-.post-title a:hover {
+.post-title:hover {
   color: #fc4a00;
 }
 .post-title.md {
@@ -657,6 +662,22 @@ a.post-cat.only-color {
 
 .ts-overlay-style {
   position: relative;
+}
+.ts-overlay-style-weekendtop::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
 }
 .ts-overlay-style .item, .ts-overlay-style.item {
   background-repeat: no-repeat;
@@ -5054,7 +5075,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  margin: 0 65px 0 25px;
+  margin: 0 75px 0 35px;
 }
 .ts-category-list-item .ts-category-list li a .category-count {
   position: absolute;
@@ -6387,7 +6408,7 @@ blockquote p {
 }
 
 .featured-tab-item .block-tab-item .post-block-list .post-thumb a {
-  padding-bottom: 65%;
+  padding-bottom: 70%;
 }
 
 .recent-posts-widget .posts-thumb img {

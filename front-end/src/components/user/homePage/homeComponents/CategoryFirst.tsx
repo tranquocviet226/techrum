@@ -151,6 +151,9 @@ const _renderContentLeft = (post: Post) => {
   const history = useHistory();
   const title = post?.title || "";
   const id = post?.id || 1;
+  const background_url = post?.background_url || "";
+  const author = post?.author || "admin";
+  const created_at = post?.created_at || Date.now();
 
   const handleSelectPost = () => {
     history.push({
@@ -181,7 +184,7 @@ const _renderContentLeft = (post: Post) => {
         <div className="post-thumb ts-resize">
           <div
             className="item ts-overlay-style"
-            style={{ backgroundImage: `url(${post.background_url})` }}
+            style={{ backgroundImage: `url(${background_url})` }}
           >
             <a className="img-link" />
           </div>
@@ -190,26 +193,24 @@ const _renderContentLeft = (post: Post) => {
         <div className="post-content">
           <h4 className="post-title">
             <a onClick={handleSelectPost} rel="bookmark" title={title}>
-              {post.title}
+              {title}
             </a>
           </h4>
           <div className="post-meta  ">
             <span className="post-author">
               <i className="fa fa-user" />
-              <a title={post?.author} rel="author">
+              <a title={author} rel="author">
                 {` `}
-                {post.author ? post.author : "admin"}
+                {author}
               </a>
             </span>
             <span className="post-date">
-              <i className="fa fa-clock-o" aria-hidden="true" />
-              {formatDate(post.created_at)}
+              <i className="far fa-clock" aria-hidden="true" />
+              {formatDate(created_at)}
             </span>
           </div>
         </div>
-        {/* Post content end */}
       </div>
-      {/* Post Block style end */}
     </div>
   );
 };

@@ -6,6 +6,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Post } from "types/model";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
+import { getLocalStorage, setLocalStorage } from "utils/localStorage";
+import keys from "constants/key";
+import { upsert } from "utils/function";
 
 type Props = {
   postDetail: Post;
@@ -23,6 +26,23 @@ const PostDetail: React.FC<Props> = (props) => {
   const author = postDetail?.author || "admin";
   const createdAt = postDetail?.created_at || Date.now();
   const content = postDetail?.content || "";
+
+  // Save recent post to localstorage
+  useEffect(() => {
+    if (postDetail) {
+      const recentPosts = getLocalStorage(keys.recentPosts);
+      if (recentPosts) {
+        const newPosts = JSON.parse(recentPosts) as Array<any>;
+        upsert(newPosts, postDetail);
+        const sliceArray = newPosts.slice(0, 4);
+        setLocalStorage(keys.recentPosts, JSON.stringify(sliceArray));
+      } else {
+        const newPosts = [];
+        newPosts.push(postDetail);
+        setLocalStorage(keys.recentPosts, JSON.stringify(newPosts));
+      }
+    }
+  }, [postDetail]);
 
   useEffect(() => {
     getPostDetail();
@@ -124,8 +144,8 @@ const PostDetail: React.FC<Props> = (props) => {
                   {/* Article content */}
                   <div className="entry-content clearfix">
                     {/* {content} */}
-                    <FroalaEditorView model={content}/>
-                  </div>  
+                    <FroalaEditorView model={content} />
+                  </div>
                   {/* end entry-content */}
                 </div>
                 {/* end post-body */}
@@ -143,10 +163,10 @@ const PostDetail: React.FC<Props> = (props) => {
                   />
                 </div>
                 <div className="author-info">
-                  <h3>duynn100198</h3>
+                  <h3>admin</h3>
                   <p className="author-url">
                     <a href="" target="_blank">
-                      akdjskdhskdh
+                      em dep lam
                     </a>
                   </p>
                   <p></p>
@@ -517,15 +537,11 @@ const PostDetail: React.FC<Props> = (props) => {
                   <div className="owl-dots disabled" />
                 </div>
               </div>
-            </div>{" "}
-            {/* .col-md-8 */}
+            </div>
             <Aside />
-          </div>{" "}
-          {/* .row */}
-        </div>{" "}
-        {/* .container */}
+          </div>
+        </div>
       </div>
-      {/*#main-content */}
     </>
   );
 };

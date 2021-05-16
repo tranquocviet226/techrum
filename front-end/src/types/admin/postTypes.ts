@@ -8,8 +8,11 @@ export interface PostState {
   sliderPosts: Post[];
   newContentPosts: Post[];
   categoryFirstPosts: Post[];
+  categorySecondPosts: Post[];
   postDetail: any;
   ratingPosts: Post[];
+  weekendTop: Post[];
+  randomPosts: Post[];
 }
 
 export enum PostActionType {

@@ -1,49 +1,52 @@
-import { Category } from "types/model"
+import { Category } from "types/model";
 
 type CategoryProps = {
-    category: Category
+  category: Category;
+  index: number;
 };
 
 type CategoriesProps = {
-    categories?: Category[]
+  categories?: Category[];
 };
 
 const CategoriesAside = (props: CategoriesProps) => {
-    const { categories } = props
+  const { categories } = props;
 
-    return (<div
-        id="digiqole-category-list-2"
-        className="widget digiqole-category-list"
+  return (
+    <div
+      id="digiqole-category-list-2"
+      className="widget digiqole-category-list"
     >
-        <div className="widgets_category ts-category-list-item">
-            <ul className="ts-category-list">
-                {categories?.map((item: Category) => {
-                    return <CategoryAside key={item.id} category={item} />
-                })}
-            </ul>
-        </div>
-    </div>)
-}
+      <div className="widgets_category ts-category-list-item">
+        <ul className="ts-category-list">
+          {categories?.slice(0, 5).map((item: Category, index: number) => {
+            return (
+              <CategoryAside key={item.id} category={item} index={index} />
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 const CategoryAside = (props: CategoryProps) => {
-    const { category } = props
-    return (
-        <li>
-            <a
-                className="rocket-lazyload lazyloaded"
-                style={{
-                    backgroundImage:
-                        `url(${category.background_image})`,
-                }}
-                href="£"
-                data-ll-status="loaded"
-            >
-                <span>{category.title}</span>
-                <span className="bar" />
-                <span className="category-count">{category.count}</span>
-            </a>
-        </li>
-    )
-}
+  const { category, index } = props;
+  return (
+    <li>
+      <a
+        className="rocket-lazyload lazyloaded"
+        style={{
+          backgroundColor: category.color
+        }}
+        data-ll-status="loaded"
+      >
+        <span>{category.title}</span>
+        <span className="bar" />
+        <span className="category-count">{index + 1}</span>
+      </a>
+    </li>
+  );
+};
 
-export default CategoriesAside
+export default CategoriesAside;

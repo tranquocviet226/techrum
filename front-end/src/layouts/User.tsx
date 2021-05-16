@@ -1,4 +1,3 @@
-import { getListCategory } from "actions/common/categoryAction";
 import "assets/css/animate.css";
 import "assets/css/blog.css";
 import "assets/css/bootstrap.min.css";
@@ -16,7 +15,6 @@ import "assets/css/woocommerce.css";
 import Logo from "components/user/common/Logo";
 import TrendingBar from "components/user/common/TrendingBar";
 import Footer from "components/user/footer";
-// import Header from 'components/User/HomePage/HomeComponents/Header';
 import Header from "containers/user/HeaderContainer";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";

@@ -12,8 +12,11 @@ const initialState: PostState = {
   sliderPosts: [],
   newContentPosts: [],
   categoryFirstPosts: [],
+  categorySecondPosts: [],
   postDetail: null,
   ratingPosts: [],
+  weekendTop: [],
+  randomPosts: [],
 };
 
 const postReducer = (
@@ -57,9 +60,21 @@ const postsByComponent = (action: UpdatePostsAction) => {
       return {
         categoryFirstPosts: action.posts,
       };
+    case ComponentType.CATEGORY_POSTS_2:
+      return {
+        categorySecondPosts: action.posts,
+      };
     case ComponentType.RATING_POSTS:
       return {
         ratingPosts: action.posts,
+      };
+    case ComponentType.WEEKEND_TOP:
+      return {
+        weekendTop: action.posts,
+      };
+    case ComponentType.RANDOM_POSTS:
+      return {
+        randomPosts: action.posts,
       };
   }
 };

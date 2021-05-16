@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { ComponentType } from "types/common/componentTypes";
 import { Category, Post } from "types/model";
+import { formatDate } from "utils/function";
 
 type TabContentProps = {
   category_id: number;
@@ -54,9 +55,9 @@ const TabRatingCategory = (props: FeatureTabProps) => {
   return (
     <ul className="nav nav-tabs recen-tab-menu" role="tablist">
       {categories?.slice(0, 3).map((item) => (
-        <li key={item.id} role="presentation ">
+        <li key={item.id} role="presentation">
           <a
-            className={activeId === item.id ? "active cur-po" : "cur-po"}
+            className={activeId === item.id ? "active" : ""}
             aria-controls="home"
             role="tab"
             onClick={() => onSelectCategory(item.id)}
@@ -130,8 +131,8 @@ const TabContent = (props: TabContentProps) => {
                 </h4>
                 <div className="post-meta">
                   <span className="post-date">
-                    <i className="fa fa-clock-o" aria-hidden="true" />
-                    {item.created_at}
+                    <i className="far fa-clock" aria-hidden="true" />
+                    {formatDate(item.created_at)}
                   </span>
                 </div>
               </div>

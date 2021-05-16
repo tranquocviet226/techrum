@@ -71,7 +71,7 @@ const TabContentItem = ({ item }: PostItemProps) => {
           </h4>
           <div className="post-meta">
             <span className="post-date">
-              <i className="fa fa-clock-o" />
+              <i className="far fa-clock" />
               {formatDate(created_at)}
             </span>
           </div>
@@ -154,7 +154,7 @@ const TabContentNews = ({
                 </a>
               </span>
               <span className="post-date">
-                <i className="fa fa-clock-o" />
+                <i className="far fa-clock" />
                 {formatDate(created_at)}
               </span>
             </div>

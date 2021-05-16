@@ -156,12 +156,6 @@
   color: var(--text-light);
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 .menu_drop__home {
   animation: fadeInDown ease 0.4s;
   display: none;

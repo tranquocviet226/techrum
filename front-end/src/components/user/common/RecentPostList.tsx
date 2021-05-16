@@ -1,24 +1,37 @@
-import txtConstants from "constants/index";
+import keys from "constants/key";
 import { DataPost } from "data";
+import { useEffect, useState } from "react";
 import { Post } from "types/model";
 import { formatDate } from "utils/function";
+import { getLocalStorage } from "utils/localStorage";
 
 type PostItemProps = {
   post: Post;
 };
 
 type PostListProps = {
-  postList: Post[];
+  postList?: Post[];
 };
 
-const PostList = (props: PostListProps) => {
-  const { postList } = props;
-  const renderItem = (postList: Post[]) => {
-    return postList.map((post: Post) => <PostItem post={post} key={post.id}/>);
+const RecentPostList = (props: PostListProps) => {
+  const [posts, setPosts] = useState<Post[]>();
+
+  useEffect(() => {
+    const data = getLocalStorage(keys.recentPosts);
+    if (data) {
+      setPosts(JSON.parse(data));
+    }
+  }, []);
+
+  const renderItem = () => {
+    return posts?.map((post: Post) => (
+      <PostItem post={post} key={post.id} />
+    ));
   };
+
   return (
     <div className="recent-posts-widget post-list-item">
-      <div className="post-tab-list">{renderItem(postList)}</div>
+      <div className="post-tab-list">{renderItem()}</div>
     </div>
   );
 };
@@ -29,6 +42,7 @@ const PostItem = (props: PostItemProps) => {
   const categories = post?.categories || [];
   const title = post?.title || "";
   const created_at = post?.created_at || Date.now();
+
   return (
     <div className="post-content media">
       <div className="post-thumb">
@@ -44,7 +58,7 @@ const PostItem = (props: PostItemProps) => {
         <span className="post-tag">
           <a
             className="post-cat only-color"
-            href="£"
+            href=""
             style={{ color: categories[0].color }}
           >
             {categories[0].title}
@@ -67,8 +81,4 @@ const PostItem = (props: PostItemProps) => {
   );
 };
 
-PostList.defaultProps = {
-  postList: DataPost,
-};
-
-export default PostList;
+export default RecentPostList;
