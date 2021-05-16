@@ -2,11 +2,11 @@ import CategoryFirst from "containers/user/CategoryFirstContainers";
 import CategorySecondContainer from "containers/user/CategorySecondContainer";
 import DontMissContainer from "containers/user/DontMissContainer";
 import RatingContainer from "containers/user/RatingContainer";
+import "./home.css"
 import Slider from "containers/user/SliderContainer";
 import SliderRandomContainer from "containers/user/SliderRandomContainer";
 import WeekendTopContainer from "containers/user/WeekendTopContainer";
 import { connect } from "react-redux";
-import DontMiss from "./homeComponents/dontMiss/DontMiss";
 import NewContent from "./homeComponents/NewsContent";
 
 const HomePage = () => {
@@ -63,6 +63,63 @@ const HomePage = () => {
                       <h2 className="block-title">
                         <span className="title-angle-shap">Follow us</span>
                       </h2>
+                    </div>
+                    <div className="elementer-widget">
+                      <div className="apsc-icon">
+                        
+                        <div className="apsc-profile">
+                          <span className="social-icon">
+                            <i className="fab fa-facebook-f apsc-facebook"></i>
+                          </span>
+                          <div className="div">
+                            <span className="apsc-count">8,047</span>
+                            <span className="apsc-media-type">Fans</span>
+                          </div>
+
+                        </div>
+
+                      </div>
+                      <div className="apsc-icon">
+                        
+                        <div className="apsc-profile2">
+                          <span className="social-icon">
+                            <i className="fab fa-twitter apsc-twitter"></i>
+                          </span>
+                          <div className="div">
+                          <span className="apsc-count">502</span>
+                          <span className="apsc-media-type">Followers</span>
+                        </div>
+                        </div>
+                        
+                   
+                      </div>
+                      <div className="apsc-icon">
+                        <div className="apsc-profile3">
+                          <span className="social-icon">
+                            <i className="apsc-instagram fab fa-instagram"></i>
+                          </span>
+                          <div>
+                            <div className="div">
+                              <span className="apsc-count">302</span>
+                              <span className="apsc-media-type">Followers</span>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div className="apsc-icon">
+                        <div className="apsc-profile4">
+                          <span className="social-icon">
+                            <i className="apsc-youtube fab fa-youtube"></i>
+                          </span>
+                          <div className="div">
+                          <span className="apsc-count">819</span>
+                          <span className="apsc-media-type">Subscriber</span></div>
+
+                      </div>
+                        </div>
+                        
+
                     </div>
                   </div>
                 </div>
