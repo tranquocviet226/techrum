@@ -218,7 +218,8 @@ const CategorySecond: React.FC<Props> = (props) => {
             isShowGenre={false}
             isFollow={false}
             isShowBannerAds1={false}
-            isShowCategoriesAside={false}
+            // isShowCategoriesAside={false}
+            isShowRating={false}
           />
         </div>
       </div>

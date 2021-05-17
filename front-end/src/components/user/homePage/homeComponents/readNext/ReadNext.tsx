@@ -21,7 +21,7 @@ const ReadNext: React.FC<Props> = (props) => {
 
   const getRandomPost = () => {
     const body: FindPostBody = {
-      total_result: 12,
+      total_result: 6,
       type: "rand",
     };
     dispatch(getPostFind(ComponentType.READ_NEXT_POSTS, body));

@@ -19,6 +19,8 @@ const initialState: PostState = {
   randomPosts: [],
   readNextPosts: [],
   relatedPosts: [],
+  dontMissPosts: [],
+  categoryDetailPosts: [],
 };
 
 const postReducer = (
@@ -85,6 +87,14 @@ const postsByComponent = (action: UpdatePostsAction) => {
     case ComponentType.RELATED_POSTS:
       return {
         relatedPosts: action.posts,
+      };
+    case ComponentType.DON_T_MISS_POSTS:
+      return {
+        dontMissPosts: action.posts,
+      };
+    case ComponentType.CATEGORY_DETAIL:
+      return {
+        categoryDetailPosts: action.posts,
       };
   }
 };
