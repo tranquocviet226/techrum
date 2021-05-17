@@ -6399,7 +6399,7 @@ blockquote p {
 }
 .recent-posts-widget .post-block-style .post-thumb .digiqole-sm-bg-img,
 .post-thumb-bg .post-block-style .post-thumb .digiqole-sm-bg-img {
-  background-size: auto;
+  /* background-size: auto; */
   background-position: center;
 }
 .recent-posts-widget .post-block-style:hover .post-thumb .digiqole-sm-bg-img,

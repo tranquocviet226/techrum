@@ -46,7 +46,7 @@ const CategorySecond: React.FC<Props> = (props) => {
 
   const handleSelectPost = (id: number) => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },
@@ -214,7 +214,12 @@ const CategorySecond: React.FC<Props> = (props) => {
               </div>
             </div>
           </div>
-          <Aside isShowGenre={false} />
+          <Aside
+            isShowGenre={false}
+            isFollow={false}
+            isShowBannerAds1={false}
+            isShowCategoriesAside={false}
+          />
         </div>
       </div>
     </section>

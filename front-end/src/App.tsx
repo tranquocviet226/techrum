@@ -2,6 +2,7 @@ import PrivateRoute from "components/PrivateRoute";
 import UnAuthRoute from "components/UnAuthRoute";
 import AdminContainer from "containers/admin/AdminContainer";
 import AuthContainer from "containers/admin/login";
+import LoadingContainer from "containers/common/LoadingContainer";
 import "i18n/config";
 import User from "layouts/User";
 import moment from "moment";
@@ -23,6 +24,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
+          <LoadingContainer />
           <ScrollToTop />
           <Switch>
             <UnAuthRoute path="/admin/login" component={AuthContainer} exact />

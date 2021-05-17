@@ -25,3 +25,7 @@
 .min-h-48 {
     min-height: 48px;
 }
+
+.color-gray {
+  color: #999999;
+}

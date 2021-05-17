@@ -11,7 +11,7 @@ import {
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
 
 function* getListCategorySaga() {
-  yield put(setLoading(true));
+
   try {
     const response: AxiosResponse<any> = yield call([
       CategoryApi,
@@ -31,7 +31,7 @@ function* getListCategorySaga() {
 
 function* createCategorySaga(action: CreateCategoryAction) {
   const { category, setErrors } = action;
-  yield put(setLoading(true));
+
   try {
     const response: AxiosResponse<any> = yield call(
       [CategoryApi, CategoryApi.create],
@@ -47,7 +47,6 @@ function* createCategorySaga(action: CreateCategoryAction) {
   } catch (e) {
     setErrors({ api: e?.message });
   }
-  yield put(setLoading(false));
 }
 
 export default function* () {

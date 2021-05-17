@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           {txtConstants.home.toUpperCase()}
         </div>
       </a>
-      {categories?.map((item: Category) => (
+      {categories?.slice(0, 5)?.map((item: Category) => (
         <a key={item.id} className="header_navigation__list-item">
           <div className="header_navigation__list-item--link">
             {item.title}

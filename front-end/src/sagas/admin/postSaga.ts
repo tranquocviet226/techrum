@@ -60,13 +60,12 @@ function* getPostsById(action: GetPostsByIDAction) {
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
   } finally {
-    // yield put(setLoading(false));
+    yield put(setLoading(false));
   }
 }
 
 function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
   try {
-    yield put(setLoading(true));
     const response: AxiosResponse<any> = yield call(
       [PostApi, PostApi.getPosts],
       action.paramsPost
@@ -79,7 +78,7 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
   } finally {
-    yield put(setLoading(false));
+
   }
 }
 

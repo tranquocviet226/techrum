@@ -26,7 +26,6 @@ type Props = {
 const Rating: React.FC<Props> = (props) => {
   const [categoryId, setCategoryId] = useState<number>(1);
   const { categories, ratingPosts } = props;
-  // console.log(ratingPosts)
   const handleSelectCategory = (id: number) => {
     setCategoryId(id);
   };
@@ -82,7 +81,7 @@ const TabContent = (props: TabContentProps) => {
   const getPostByCategory = () => {
     dispatch(
       getPostsByCategory(ComponentType.RATING_POSTS, {
-        total_result: 6,
+        total_result: 5,
         category_id: category_id,
       })
     );
@@ -90,7 +89,7 @@ const TabContent = (props: TabContentProps) => {
 
   const handleSelectPost = (id: number) => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },

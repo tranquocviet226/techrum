@@ -64,7 +64,7 @@ const SliderRandom: React.FC<Props> = (props) => {
 
   const handleSelectPost = (id: number) => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },
@@ -107,11 +107,11 @@ const SliderRandom: React.FC<Props> = (props) => {
                   <a>{item?.title}</a>
                 </h3>
                 <div className="sub-title">
-                  <div className="txt_clip fz-13 mr-2">
+                  <div className="txt_clip fz-13 mr-2 color-gray">
                     <i className="far fa-clock" />
                     <a> {formatDate(item?.created_at)}</a>
                   </div>
-                  <div className="txt_clip fz-13">
+                  <div className="txt_clip fz-13 color-gray">
                     <i className="fas fa-fire mr-1"></i>
                     {item?.views}
                   </div>

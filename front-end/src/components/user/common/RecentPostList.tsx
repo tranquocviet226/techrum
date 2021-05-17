@@ -1,6 +1,8 @@
 import keys from "constants/key";
+import { Path } from "constants/path";
 import { DataPost } from "data";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Post } from "types/model";
 import { formatDate } from "utils/function";
 import { getLocalStorage } from "utils/localStorage";
@@ -38,10 +40,21 @@ const RecentPostList = (props: PostListProps) => {
 
 const PostItem = (props: PostItemProps) => {
   const { post } = props;
+  const history = useHistory()
+  const id = post?.id || 0
   const background_url = post?.background_url || "";
   const categories = post?.categories || [];
   const title = post?.title || "";
   const created_at = post?.created_at || Date.now();
+
+  const handleSelectPost = () => {
+    history.push({
+      pathname: `/${Path.POST.concat("/" + id)}`,
+      state: {
+        id: id,
+      },
+    })
+  }
 
   return (
     <div className="post-content media">
@@ -64,8 +77,8 @@ const PostItem = (props: PostItemProps) => {
             {categories[0].title}
           </a>
         </span>
-        <h4 className="post-title">
-          <a href={"#"} rel="bookmark">
+        <h4 onClick={handleSelectPost} className="post-title">
+          <a rel="bookmark" className="post-title">
             {title}
           </a>
         </h4>

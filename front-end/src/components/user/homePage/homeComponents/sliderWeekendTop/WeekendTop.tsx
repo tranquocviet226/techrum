@@ -67,7 +67,7 @@ const WeekenTop: React.FC<Props> = (props) => {
 
   const handleSelectPost = (id: number) => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },

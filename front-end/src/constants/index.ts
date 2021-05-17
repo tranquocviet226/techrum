@@ -3,8 +3,7 @@ export const DEFAULT_PATH = "dashboard";
 export const COPY_RIGHT = " © 2021, Tech. All rights reserved";
 
 // About us
-export const ABOUT_DESCRIPTION =
-  "Tech company 2021.";
+export const ABOUT_DESCRIPTION = "Tech company 2021.";
 export const ABOUT_ADDRESS = "00001 Tech street, Da Nang, Viet Nam";
 export const ABOUT_PHONE = "+84 346718110";
 export const ABOUT_EMAIL = "vtnplusd@gmail.com";
@@ -19,6 +18,13 @@ const txtConstants = {
   randomPost: "Random Posts",
   dontMiss: "Don't Miss",
   recentPost: "Recent Post",
+  readNext: "Read next",
+  loadMore: "Load More",
+  recentComment: "Recent Comment",
+  relatedPost: "Related post",
+  email: "Email",
+  submit: "Xác nhận",
+  comment: "Nhận xét"
 };
 
 export default txtConstants;

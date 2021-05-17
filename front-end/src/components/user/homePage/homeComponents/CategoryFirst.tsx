@@ -99,7 +99,7 @@ const _renderItemContentRight = (post: Post) => {
 
   const handleSelectPost = () => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },
@@ -157,7 +157,7 @@ const _renderContentLeft = (post: Post) => {
 
   const handleSelectPost = () => {
     history.push({
-      pathname: Path.POST.concat("/" + id),
+      pathname: `/${Path.POST.concat("/" + id)}`,
       state: {
         id: id,
       },

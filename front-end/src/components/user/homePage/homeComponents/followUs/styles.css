@@ -1,0 +1,70 @@
+.apsc-icon {
+  border: 1px solid rgb(199, 186, 186);
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 45%;
+  margin: 5px 5px;
+  flex: 0 0 50%;
+}
+.elementer-widget {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.apsc-profile {
+  width: 30px;
+  height: 30px;
+  background-color: #3b5998;
+  border-radius: 6px;
+  display: flex;
+}
+.apsc-profile2 {
+  width: 30px;
+  height: 30px;
+  background-color: #1dcaff;
+  border-radius: 6px;
+  display: flex;
+}
+.apsc-profile3 {
+  width: 30px;
+  height: 30px;
+  background-color: #3f729b;
+  border-radius: 6px;
+  display: flex;
+}
+.apsc-profile4 {
+  width: 30px;
+  height: 30px;
+  background-color: #e52d27;
+  border-radius: 6px;
+  display: flex;
+}
+
+.fab {
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  color: #fff !important;
+  padding: 7px 0;
+  text-align: center;
+}
+.apsc-count {
+  margin-bottom: -9px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  display: block;
+  font-weight: 700;
+  margin-left: 12px;
+}
+.apsc-media-type {
+  font-size: 11px;
+
+  margin-left: 12px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.div {
+  height: 40px;
+}

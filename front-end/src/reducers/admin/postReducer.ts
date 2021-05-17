@@ -17,6 +17,8 @@ const initialState: PostState = {
   ratingPosts: [],
   weekendTop: [],
   randomPosts: [],
+  readNextPosts: [],
+  relatedPosts: [],
 };
 
 const postReducer = (
@@ -75,6 +77,14 @@ const postsByComponent = (action: UpdatePostsAction) => {
     case ComponentType.RANDOM_POSTS:
       return {
         randomPosts: action.posts,
+      };
+    case ComponentType.READ_NEXT_POSTS:
+      return {
+        readNextPosts: action.posts,
+      };
+    case ComponentType.RELATED_POSTS:
+      return {
+        relatedPosts: action.posts,
       };
   }
 };

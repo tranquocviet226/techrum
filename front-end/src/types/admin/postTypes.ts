@@ -13,6 +13,8 @@ export interface PostState {
   ratingPosts: Post[];
   weekendTop: Post[];
   randomPosts: Post[];
+  readNextPosts: Post[];
+  relatedPosts: Post[];
 }
 
 export enum PostActionType {
