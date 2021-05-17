@@ -8,7 +8,7 @@ import moment from "moment";
 import React, { useEffect } from "react";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Post } from "types/model";
 import colors from "utils/colors";
 import { upsert } from "utils/function";
@@ -17,18 +17,19 @@ import CommentComponent from "./postComponents/CommentComponent";
 
 type Props = {
   postDetail: Post;
-  location: any;
+  match: any;
 };
 
 const PostDetail: React.FC<Props> = (props) => {
-  const id = props.location?.state?.id;
+  const id = props?.match?.params?.id;
+
   const { postDetail } = props;
   const dispatch = useDispatch();
   const history = useHistory();
 
   const title = postDetail?.title || "";
   const categories = postDetail?.categories || [];
-  const firstCategory = categories?.length > 0 ? categories[0] : null;
+  const firstCategory = categories?.length > 0 ? categories[0] : undefined;
   const author = postDetail?.author || "admin";
   const createdAt = postDetail?.created_at || Date.now();
   const content = postDetail?.content || "";
@@ -67,32 +68,35 @@ const PostDetail: React.FC<Props> = (props) => {
   const _renderHeader = () => {
     return (
       <header className="entry-header clearfix">
-        <h1 className="post-title lg">{title}</h1>
+        <h1 className="lg">{title}</h1>
         <ul className="post-meta">
-          <li className="post-category">
-            <a
-              className="post-cat"
-              style={{
-                backgroundColor: firstCategory?.color,
-              }}
-            >
-              <span
-                className="before"
+          {categories.map((it) => (
+            <li key={it.id} className="post-category">
+              <a
+                className="post-cat"
                 style={{
-                  backgroundColor: firstCategory?.color,
-                  color: "#ffffff",
+                  backgroundColor: it?.color,
                 }}
-              />
-              {firstCategory?.title}
-              <span
-                className="after"
-                style={{
-                  backgroundColor: firstCategory?.color,
-                  color: "#ffffff",
-                }}
-              />
-            </a>
-          </li>
+              >
+                <span
+                  className="before"
+                  style={{
+                    backgroundColor: it?.color,
+                    color: "#ffffff",
+                  }}
+                />
+                {it?.title}
+                <span
+                  className="after"
+                  style={{
+                    backgroundColor: it?.color,
+                    color: "#ffffff",
+                  }}
+                />
+              </a>
+            </li>
+          ))}
+          <p></p>
           <li className="post-author">
             <img
               alt=""
@@ -172,7 +176,7 @@ const PostDetail: React.FC<Props> = (props) => {
                 </div>
               </article>
               {/* Author box end */}
-              <RelatedPostsContainer category_id={firstCategory?.id} />
+              <RelatedPostsContainer category={firstCategory} />
               <CommentComponent />
             </div>
             <Aside />

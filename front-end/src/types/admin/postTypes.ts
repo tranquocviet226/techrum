@@ -15,6 +15,8 @@ export interface PostState {
   randomPosts: Post[];
   readNextPosts: Post[];
   relatedPosts: Post[];
+  dontMissPosts: Post[];
+  categoryDetailPosts: Post[];
 }
 
 export enum PostActionType {

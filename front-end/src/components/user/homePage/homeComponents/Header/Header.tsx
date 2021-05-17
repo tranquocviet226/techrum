@@ -34,6 +34,12 @@ export const Header: React.FC<HeaderProps> = (props) => {
     });
   };
 
+  const handleGoCategory = (category_id: number) => {
+    history.push({
+      pathname: `/${Path.CATEGORY}/${category_id}`,
+    });
+  };
+
   return (
     <header className={headerClass} id="myTopnav">
       <a onClick={handleGoHome} className="header_navigation__list-item">
@@ -42,7 +48,11 @@ export const Header: React.FC<HeaderProps> = (props) => {
         </div>
       </a>
       {categories?.slice(0, 5)?.map((item: Category) => (
-        <a key={item.id} className="header_navigation__list-item">
+        <a
+          onClick={() => handleGoCategory(item?.id)}
+          key={item.id}
+          className="header_navigation__list-item"
+        >
           <div className="header_navigation__list-item--link">
             {item.title}
             {item.sub_category && item.sub_category.length > 0 ? (

@@ -1,6 +1,6 @@
 import { Path } from "constants/path";
 import { useHistory } from "react-router";
-import { Post } from "types/model";
+import { Category, Post } from "types/model";
 import { formatDate } from "utils/function";
 
 type Props = {
@@ -12,8 +12,8 @@ const RelatedPostItem: React.FC<Props> = (props) => {
   const history = useHistory();
   const id = item?.id || 0;
   const title = item?.title || "";
+  const categories = item?.categories || [];
   const background_url = item?.background_url || "";
-  const category = item?.categories[0];
   const created_at = item?.created_at || Date.now();
 
   const handleSelectPost = () => {
@@ -31,7 +31,6 @@ const RelatedPostItem: React.FC<Props> = (props) => {
         <div className="post-thumb">
           <a>
             <img
-              onClick={handleSelectPost}
               className="img-fluid lazyloaded"
               src={background_url}
               style={{ height: 250, objectFit: "cover" }}
@@ -43,15 +42,17 @@ const RelatedPostItem: React.FC<Props> = (props) => {
             </noscript>
           </a>
           <div className="grid-cat">
-            <a
-              className="post-cat"
-              style={{
-                backgroundColor: category.color,
-                color: "#ffffff",
-              }}
-            >
-              {category.title}
-            </a>
+            {categories.map((it) => (
+              <a
+                className="post-cat"
+                style={{
+                  backgroundColor: it?.color,
+                  color: "#ffffff",
+                }}
+              >
+                {it?.title}
+              </a>
+            ))}
           </div>
         </div>
         <div className="post-content">

@@ -1,3 +1,5 @@
+import { Path } from "constants/path";
+import { useHistory } from "react-router";
 import { Category } from "types/model";
 
 type CategoryProps = {
@@ -32,16 +34,29 @@ const CategoriesAside = (props: CategoriesProps) => {
 
 const CategoryAside = (props: CategoryProps) => {
   const { category, index } = props;
+  const history = useHistory();
+
+  const id = category?.id || 0;
+  const color = category?.color || "";
+  const title = category?.title || "";
+
+  const handleSelectCategory = () => {
+    history.push({
+      pathname: `/${Path.CATEGORY.concat("/" + id)}`,
+    });
+  };
+
   return (
     <li>
       <a
+        onClick={handleSelectCategory}
         className="rocket-lazyload lazyloaded"
         style={{
-          backgroundColor: category.color
+          backgroundColor: color,
         }}
         data-ll-status="loaded"
       >
-        <span>{category.title}</span>
+        <span>{title}</span>
         <span className="bar" />
         <span className="category-count">{index + 1}</span>
       </a>

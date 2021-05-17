@@ -1,3 +1,4 @@
+import txtConstants, { FB_URL } from "constants/index";
 import "./styles.css";
 
 const FollowUs = () => {
@@ -12,11 +13,11 @@ const FollowUs = () => {
         <div className="elementor-widget-container">
           <div className="section-heading heading-style3">
             <h2 className="block-title">
-              <span className="title-angle-shap">Follow us</span>
+              <span className="title-angle-shap">{txtConstants.followUs}</span>
             </h2>
           </div>
           <div className="elementer-widget">
-            <div className="apsc-icon">
+            <a href={FB_URL} target="_blank" className="apsc-icon">
               <div className="apsc-profile">
                 <span className="social-icon">
                   <i className="fab fa-facebook-f apsc-facebook"></i>
@@ -26,7 +27,7 @@ const FollowUs = () => {
                   <span className="apsc-media-type">Fans</span>
                 </div>
               </div>
-            </div>
+            </a>
             <div className="apsc-icon">
               <div className="apsc-profile2">
                 <span className="social-icon">

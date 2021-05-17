@@ -19,20 +19,145 @@ type Props = {
 const CategoryFirst: React.FC<Props> = (props) => {
   const { categoryFirstPosts, getPostsByCategory, resetPosts, categories } =
     props;
-
-  const categoryFirst = categories[0];
+  const history = useHistory();
 
   useEffect(() => {
     if (categories?.length)
       getPostsByCategory(ComponentType.CATEGORY_POSTS_1, {
         total_result: 5,
-        category_id: categoryFirst?.id,
+        category_id: categories[0].id,
       });
   }, [categories]);
 
+  const _renderContentLeft = () => {
+    const post = categoryFirstPosts[0];
+    const title = post?.title || "";
+    const id = post?.id || 1;
+    const background_url = post?.background_url || "";
+    const author = post?.author || "admin";
+    const created_at = post?.created_at || Date.now();
+
+    const handleSelectPost = () => {
+      history.push({
+        pathname: `/${Path.POST.concat("/" + id)}`,
+        state: {
+          id: id,
+        },
+      });
+    };
+
+    const _renderItemCategory = (categories: Category[]) => {
+      return categories.map((category) => (
+        <a
+          key={category.id}
+          className="post-cat"
+          style={{
+            backgroundColor: category.color,
+            color: "#ffffff",
+          }}
+        >
+          {category.title}
+        </a>
+      ));
+    };
+
+    return (
+      <div className="col-md-6 col-sm-6 feature-grid-content order-md-1">
+        <div className="post-block-style clearfix">
+          <div className="post-thumb ts-resize">
+            <div
+              className="item ts-overlay-style"
+              style={{ backgroundImage: `url(${background_url})` }}
+            >
+              <a className="img-link" />
+            </div>
+            {_renderItemCategory(post.categories)}
+          </div>
+          <div className="post-content">
+            <h4 className="post-title">
+              <a onClick={handleSelectPost} rel="bookmark" title={title}>
+                {title}
+              </a>
+            </h4>
+            <div className="post-meta  ">
+              <span className="post-author">
+                <i className="fa fa-user" />
+                <a title={author} rel="author">
+                  {` `}
+                  {author}
+                </a>
+              </span>
+              <span className="post-date">
+                <i className="far fa-clock" aria-hidden="true" />
+                {formatDate(created_at)}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const _renderItemContentRight = (post: Post) => {
+    const id = post?.id || 1;
+    const background_url = post?.background_url || "";
+    const title = post?.title || "";
+    const created_at = post?.created_at || Date.now();
+
+    const handleSelectPost = () => {
+      history.push({
+        pathname: `/${Path.POST.concat("/" + id)}`,
+        state: {
+          id: id,
+        },
+      });
+    };
+
+    return (
+      <div key={post.id} className="col-md-6 col-sm-6 sm-grid-content">
+        <div className="post-block-style post-float post-thumb-bg">
+          <div className="post-thumb post-thumb-full post-thumb-low-padding">
+            <a rel={title} title={title}>
+              <span
+                className="digiqole-sm-bg-img"
+                style={{ backgroundImage: `url(${background_url})` }}
+              />
+            </a>
+          </div>
+          <div className="post-content">
+            <h4 onClick={handleSelectPost} className="post-title">
+              <a rel="bookmark" title={title}>
+                {title}
+              </a>
+            </h4>
+            <div className="post-meta">
+              <span className="post-date">
+                <i className="fa fa-clock-o"></i>
+                {formatDate(created_at)}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const _renderContentRight = () => {
+    const posts = categoryFirstPosts.slice(1, categoryFirstPosts.length);
+    return (
+      <div className="col-md-6 col-sm-6 order-md-2">
+        <div className="row">
+          {posts.map((post) => {
+            return _renderItemContentRight(post);
+          })}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
-      {categoryFirstPosts[0] && (
+      {categoryFirstPosts.length && (
         <section
           className="elementor-section elementor-inner-section elementor-element elementor-element-41ac85fd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="41ac85fd"
@@ -57,7 +182,7 @@ const CategoryFirst: React.FC<Props> = (props) => {
                     <div className="section-heading heading-style3">
                       <h2 className="block-title">
                         <span className="title-angle-shap">
-                          {categoryFirst.title}
+                          {categories[0].title || ""}
                         </span>
                       </h2>
                     </div>
@@ -72,10 +197,8 @@ const CategoryFirst: React.FC<Props> = (props) => {
                   <div className="elementor-widget-container">
                     <div className="post-block-item style3">
                       <div className="row">
-                        {_renderContentLeft(categoryFirstPosts[0])}
-                        {_renderContentRight(
-                          categoryFirstPosts.slice(1, categoryFirstPosts.length)
-                        )}
+                        {_renderContentLeft()}
+                        {_renderContentRight()}
                       </div>
                     </div>
                   </div>
@@ -86,132 +209,6 @@ const CategoryFirst: React.FC<Props> = (props) => {
         </section>
       )}
     </>
-  );
-};
-
-const _renderItemContentRight = (post: Post) => {
-  const history = useHistory();
-
-  const id = post?.id || 1;
-  const background_url = post?.background_url || "";
-  const title = post?.title || "";
-  const created_at = post?.created_at || Date.now();
-
-  const handleSelectPost = () => {
-    history.push({
-      pathname: `/${Path.POST.concat("/" + id)}`,
-      state: {
-        id: id,
-      },
-    });
-  };
-
-  return (
-    <div key={post.id} className="col-md-6 col-sm-6 sm-grid-content">
-      <div className="post-block-style post-float post-thumb-bg">
-        <div className="post-thumb post-thumb-full post-thumb-low-padding">
-          <a rel={title} title={title}>
-            <span
-              className="digiqole-sm-bg-img"
-              style={{ backgroundImage: `url(${background_url})` }}
-            />
-          </a>
-        </div>
-        <div className="post-content">
-          <h4 onClick={handleSelectPost} className="post-title">
-            <a rel="bookmark" title={title}>
-              {title}
-            </a>
-          </h4>
-          <div className="post-meta">
-            <span className="post-date">
-              <i className="fa fa-clock-o"></i>
-              {formatDate(created_at)}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const _renderContentRight = (posts: Post[]) => {
-  return (
-    <div className="col-md-6 col-sm-6 order-md-2">
-      <div className="row">
-        {posts.map((post) => {
-          return _renderItemContentRight(post);
-        })}
-      </div>
-    </div>
-  );
-};
-
-const _renderContentLeft = (post: Post) => {
-  const history = useHistory();
-  const title = post?.title || "";
-  const id = post?.id || 1;
-  const background_url = post?.background_url || "";
-  const author = post?.author || "admin";
-  const created_at = post?.created_at || Date.now();
-
-  const handleSelectPost = () => {
-    history.push({
-      pathname: `/${Path.POST.concat("/" + id)}`,
-      state: {
-        id: id,
-      },
-    });
-  };
-
-  const _renderItemCategory = (categories: Category[]) => {
-    return categories.map((category) => (
-      <a
-        key={category.id}
-        className="post-cat"
-        style={{
-          backgroundColor: category.color,
-          color: "#ffffff",
-        }}
-      >
-        {category.title}
-      </a>
-    ));
-  };
-  return (
-    <div className="col-md-6 col-sm-6 feature-grid-content order-md-1">
-      <div className="post-block-style clearfix">
-        <div className="post-thumb ts-resize">
-          <div
-            className="item ts-overlay-style"
-            style={{ backgroundImage: `url(${background_url})` }}
-          >
-            <a className="img-link" />
-          </div>
-          {_renderItemCategory(post.categories)}
-        </div>
-        <div className="post-content">
-          <h4 className="post-title">
-            <a onClick={handleSelectPost} rel="bookmark" title={title}>
-              {title}
-            </a>
-          </h4>
-          <div className="post-meta  ">
-            <span className="post-author">
-              <i className="fa fa-user" />
-              <a title={author} rel="author">
-                {` `}
-                {author}
-              </a>
-            </span>
-            <span className="post-date">
-              <i className="far fa-clock" aria-hidden="true" />
-              {formatDate(created_at)}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

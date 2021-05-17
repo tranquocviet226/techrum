@@ -1,32 +1,34 @@
 import { getPostFind } from "actions/user/postAction";
 import txtConstants from "constants/index";
-import { Path } from "constants/path";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import { ComponentType } from "types/common/componentTypes";
+import { Category } from "types/model";
 import { FindPostBody, Post } from "types/model/Post";
 import RelatedPostItem from "./RelatedPostItem";
 import "./styles.css";
 
 type Props = {
-  category_id?: number;
+  category?: Category;
   relatedPosts?: Post[];
 };
 
 const RelatedPosts: React.FC<Props> = (props) => {
-  const { category_id, relatedPosts } = props;
-  const history = useHistory();
+  const { category, relatedPosts } = props;
   const dispatch = useDispatch();
 
+  console.log('category', category)
+
   useEffect(() => {
-    getRelatedPosts();
-  }, []);
+    if (category) {
+      getRelatedPosts();
+    }
+  }, [category]);
 
   const getRelatedPosts = () => {
     const body: FindPostBody = {
-      category_id: category_id,
+      category_id: category?.id,
     };
     dispatch(getPostFind(ComponentType.RELATED_POSTS, body));
   };
@@ -39,15 +41,6 @@ const RelatedPosts: React.FC<Props> = (props) => {
     speed: 800,
     slidesToShow: 3,
     slidesToScroll: 3,
-  };
-
-  const onSelectPost = (id: number) => {
-    history.push({
-      pathname: Path.POST.concat("/" + id),
-      state: {
-        id: id,
-      },
-    });
   };
 
   return (

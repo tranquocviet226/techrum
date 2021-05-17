@@ -9,6 +9,7 @@ export const ABOUT_PHONE = "+84 346718110";
 export const ABOUT_EMAIL = "vtnplusd@gmail.com";
 
 export const APP_URL = "http://54.179.130.248:3000/api/v1/";
+export const FB_URL = "https://www.facebook.com/blogviettran";
 
 const txtConstants = {
   rootAuthor: "admin",
@@ -24,7 +25,11 @@ const txtConstants = {
   relatedPost: "Related post",
   email: "Email",
   submit: "Xác nhận",
-  comment: "Nhận xét"
+  comment: "Nhận xét",
+  followUs: "Follow us",
+  category: "Category",
+  readMore: "Read More",
+  aboutUs: "About Us",
 };
 
 export default txtConstants;

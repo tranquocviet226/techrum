@@ -22,8 +22,9 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
       const take = body.total_result || 10;
       const skip = body.page ? body.page - 1 : 0;
       const type = body.type || '';
+      const category_id = body.category_id || null;
       const sort_target = body?.sort_by?.target || 'created_at';
-      const sort_order = body?.sort_by?.order || 'ASC';
+      const sort_order = body?.sort_by?.order || 'DESC';
       const condition_target = body?.condition?.target || 'created_at';
       const condition_operator = body?.condition?.operator || '<=';
       const condition_value = body?.condition?.value || new Date();
@@ -43,16 +44,23 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         const response = new PostResponse(true, 200, undefined, post);
         return response;
       } else {
-        const post = await this.repository
+        const query = await this.repository
           .createQueryBuilder('post')
           .leftJoinAndSelect('post.categories', 'categories')
           .take(take)
           .skip(skip)
-          .where(condition, { value: condition_value })
-          .orderBy(order, sort_order)
-          .getMany();
+          .orderBy(order, sort_order);
 
-        const response = new PostResponse(true, 200, undefined, post);
+        if (category_id) {
+          query.andWhere('categories.id = :id', { id: category_id });
+        }
+
+        if (body?.condition) {
+          query.andWhere(condition, { value: condition_value });
+        }
+
+        const posts = await query.getMany();
+        const response = new PostResponse(true, 200, undefined, posts);
         return response;
       }
     } catch (error) {

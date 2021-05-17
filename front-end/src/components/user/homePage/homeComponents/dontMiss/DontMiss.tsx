@@ -1,16 +1,34 @@
+import { getPostFind } from "actions/user/postAction";
 import RecentPostList from "components/user/common/RecentPostList";
 import txtConstants from "constants/index";
 import { Path } from "constants/path";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
+import { FindPostBody } from "types/model/Post";
 
 type Props = {
-  randomPosts?: Post[];
+  dontMissPosts?: Post[];
 };
 
 const DontMiss: React.FC<Props> = (props) => {
-  const { randomPosts } = props;
+  const { dontMissPosts } = props;
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    getDonMissPosts();
+  }, []);
+
+  const getDonMissPosts = () => {
+    const body: FindPostBody = {
+      total_result: 6,
+      type: "rand",
+    };
+    dispatch(getPostFind(ComponentType.DON_T_MISS_POSTS, body));
+  };
 
   const handleSelectPost = (id: number) => {
     history.push({
@@ -60,7 +78,7 @@ const DontMiss: React.FC<Props> = (props) => {
               <div className="elementor-widget-container">
                 <div className="vertical-post-grid">
                   <div className="row">
-                    {randomPosts?.map((item) => (
+                    {dontMissPosts?.map((item) => (
                       <DontMissItem
                         key={item.id}
                         item={item}
