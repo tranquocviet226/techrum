@@ -1,12 +1,9 @@
-import { getPostFind } from "actions/user/postAction";
 import Aside from "components/user/aside";
 import { Path } from "constants/path";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { ComponentType } from "types/common/componentTypes";
 import { Category } from "types/model";
-import { FindPostBody, Post } from "types/model/Post";
+import { Post } from "types/model/Post";
 import { formatDate } from "utils/function";
 
 type Props = {
@@ -16,7 +13,6 @@ type Props = {
 
 const CategorySecond: React.FC<Props> = (props) => {
   const { categories, categorySecondPosts } = props;
-  const dispatch = useDispatch();
   const history = useHistory();
   const [category, setCategory] = useState<Category>();
   const categoryTitle = category?.title;
@@ -27,22 +23,6 @@ const CategorySecond: React.FC<Props> = (props) => {
       setCategory(categories[1]);
     }
   }, [categories]);
-
-  useEffect(() => {
-    getListPostByCategorySecond();
-  }, []);
-
-  const getListPostByCategorySecond = () => {
-    const body: FindPostBody = {
-      total_result: 5,
-      category_id: categories && categories?.length > 0 ? categories[1].id : 0,
-      sort_by: {
-        target: "views",
-        order: "DESC",
-      },
-    };
-    dispatch(getPostFind(ComponentType.CATEGORY_POSTS_2, body));
-  };
 
   const handleSelectPost = (id: number) => {
     history.push({

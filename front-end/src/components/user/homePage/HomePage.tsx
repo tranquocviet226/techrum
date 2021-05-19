@@ -4,12 +4,123 @@ import ReadNextContainer from "containers/user/ReadNextContainer";
 import Slider from "containers/user/SliderContainer";
 import SliderRandomContainer from "containers/user/SliderRandomContainer";
 import WeekendTopContainer from "containers/user/WeekendTopContainer";
-import { connect } from "react-redux";
+import { useEffect } from "react";
+import { Category, Post } from "types/model";
 import BannerAds2 from "./homeComponents/bannerAds2/BannerAds2";
 import WhatNew from "./homeComponents/whatNew/WhatNew";
+import { useDispatch } from "react-redux";
+import { FindPostBody } from "types/model/Post";
+import { getPostFind } from "actions/user/postAction";
+import { ComponentType } from "types/common/componentTypes";
+import { getPostsByCategory } from "actions/admin/postAction";
+import ScrollToTop from "services/ScrollToTop";
 
-const HomePage = () => {
-  const theme = "bg-dark";
+type Props = {
+  categories: Category[];
+  postWeekendTop: Post[];
+  newContentPosts: Post[];
+  randomPosts: Post[];
+  categorySecondPosts: Post[];
+  dontMissPosts: Post[];
+  readNextPosts: Post[];
+};
+
+const HomePage: React.FC<Props> = (props) => {
+  const {
+    categories,
+    postWeekendTop,
+    randomPosts,
+    categorySecondPosts,
+    dontMissPosts,
+    readNextPosts,
+  } = props;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
+
+  const getAllPosts = () => {
+    getWeekenTop();
+    getRandomPost();
+    getListPostByCategorySecond();
+    getDonMissPosts();
+    getReadNext();
+  };
+
+  const getWeekenTop = () => {
+    const body: FindPostBody = {
+      total_result: 12,
+      sort_by: {
+        target: "views",
+        order: "DESC",
+      },
+    };
+    dispatch(getPostFind(ComponentType.WEEKEND_TOP, body));
+  };
+
+  const getRandomPost = () => {
+    const body: FindPostBody = {
+      total_result: 12,
+      type: "rand",
+    };
+    dispatch(getPostFind(ComponentType.RANDOM_POSTS, body));
+  };
+
+  const getListPostByCategorySecond = () => {
+    const body: FindPostBody = {
+      total_result: 5,
+      category_id: categories && categories?.length > 0 ? categories[1].id : 0,
+      sort_by: {
+        target: "views",
+        order: "DESC",
+      },
+    };
+    dispatch(getPostFind(ComponentType.CATEGORY_POSTS_2, body));
+  };
+
+  const getDonMissPosts = () => {
+    const body: FindPostBody = {
+      total_result: 6,
+      type: "rand",
+    };
+    dispatch(getPostFind(ComponentType.DON_T_MISS_POSTS, body));
+  };
+
+  const getReadNext = () => {
+    const body: FindPostBody = {
+      total_result: 6,
+      type: "rand",
+    };
+    dispatch(getPostFind(ComponentType.READ_NEXT_POSTS, body));
+  };
+
+  const _renderWeekendTop = () => {
+    if (postWeekendTop && postWeekendTop.length > 0)
+      return <WeekendTopContainer />;
+  };
+
+  const _renderWhatNew = () => {
+    if (categories && categories.length > 0) return <WhatNew />;
+  };
+
+  const _renderSliderRandom = () => {
+    if (randomPosts && randomPosts.length > 0) return <SliderRandomContainer />;
+  };
+
+  const _renderCategorySecond = () => {
+    if (categorySecondPosts && categorySecondPosts.length > 0)
+      return <CategorySecondContainer />;
+  };
+
+  const _renderDontMiss = () => {
+    if (dontMissPosts && dontMissPosts.length > 0) return <DontMissContainer />;
+  };
+
+  const _renderReadNext = () => {
+    if (readNextPosts && readNextPosts.length > 0) return <ReadNextContainer />;
+  };
+
   return (
     <div
       data-elementor-type="wp-post"
@@ -17,15 +128,17 @@ const HomePage = () => {
       className="elementor elementor-1878"
       data-elementor-settings="[]"
     >
+      <ScrollToTop />
       <div className="elementor-section-wrap">
         <Slider />
-        <WeekendTopContainer />
-        <WhatNew />
-        <SliderRandomContainer />
-        <CategorySecondContainer />
-        <DontMissContainer />
+        {_renderWeekendTop()}
+        {_renderWhatNew()}
+        {_renderSliderRandom()}
+        {_renderCategorySecond()}
+        {_renderDontMiss()}
         <BannerAds2 />
-        <ReadNextContainer />
+        {_renderReadNext()}
+
         <section
           className="elementor-section elementor-top-section elementor-element elementor-element-3282d3f elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="3282d3f"
@@ -64,4 +177,4 @@ const HomePage = () => {
   );
 };
 
-export default connect(null, null)(HomePage);
+export default HomePage;

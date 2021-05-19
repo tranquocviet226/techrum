@@ -6,6 +6,7 @@ export default class PostRequest {
   private _description: string;
   private _sort_description: string;
   private _background_url: string;
+  private _background_name: string;
   private _views: number;
   private _slug: string;
   private _category_id: [number];
@@ -19,6 +20,7 @@ export default class PostRequest {
     _description: string,
     _sort_description: string,
     _background_url: string,
+    _background_name: string,
     _views: number,
     _slug: string,
     _category_id: [number],
@@ -31,6 +33,7 @@ export default class PostRequest {
     this._description = _description;
     this._sort_description = _sort_description;
     this._background_url = _background_url;
+    this._background_name = _background_name;
     this._views = _views;
     this._slug = _slug;
     this._category_id = _category_id;
@@ -77,6 +80,14 @@ export default class PostRequest {
   }
   set background_url(value: string) {
     this._background_url = value;
+  }
+
+  @ApiProperty()
+  get background_name(): string {
+    return this._background_name;
+  }
+  set background_name(value: string) {
+    this._background_name = value;
   }
 
   @ApiProperty()

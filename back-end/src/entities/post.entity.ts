@@ -33,6 +33,9 @@ export class PostEntity extends BaseEntity {
   @Column({ name: 'background_url' })
   background_url: string;
 
+  @Column({ name: 'background_name' })
+  background_name: string;
+
   @Column({ name: 'views', default: 0 })
   views: number;
 

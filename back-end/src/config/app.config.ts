@@ -8,4 +8,6 @@ export default (): Record<string, any> => ({
   app_lang: process.env.APP_LANG,
   app_ver: process.env.APP_VER,
   app_description: process.env.APP_DESCRIPTON,
+  server_port: process.env.SERVER_PORT,
+  server_url: process.env.SERVER_URL
 });

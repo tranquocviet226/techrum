@@ -1,13 +1,8 @@
-import { getPostFind } from "actions/user/postAction";
 import RecentPostList from "components/user/common/RecentPostList";
 import txtConstants from "constants/index";
 import { Path } from "constants/path";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
-import { FindPostBody } from "types/model/Post";
 
 type Props = {
   dontMissPosts?: Post[];
@@ -15,20 +10,7 @@ type Props = {
 
 const DontMiss: React.FC<Props> = (props) => {
   const { dontMissPosts } = props;
-  const dispatch = useDispatch();
   const history = useHistory();
-
-  useEffect(() => {
-    getDonMissPosts();
-  }, []);
-
-  const getDonMissPosts = () => {
-    const body: FindPostBody = {
-      total_result: 6,
-      type: "rand",
-    };
-    dispatch(getPostFind(ComponentType.DON_T_MISS_POSTS, body));
-  };
 
   const handleSelectPost = (id: number) => {
     history.push({

@@ -1,5 +1,4 @@
-import { Injectable, Logger, Res } from '@nestjs/common';
-import { BaseResponse } from '@response/base.response';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UploadService {
@@ -7,19 +6,16 @@ export class UploadService {
 
   async uploadFile(file: Express.Multer.File): Promise<any> {
     const APP_URL = process.env.APP_URL;
-    const APP_PORT = process.env.APP_PORT;
-    const pathFile = APP_URL.concat(':')
-    .concat(APP_PORT)
-    .concat("/api/v1")
-    .concat('/upload/files/')
-    .concat(file?.filename);
+    const pathFile = APP_URL.concat('api/v1/upload/files/').concat(
+      file?.filename,
+    );
 
     const data = {
       file_name: file?.filename,
       link: pathFile,
-      flie_type: file?.mimetype
-    }
- 
+      flie_type: file?.mimetype,
+    };
+
     return data;
   }
 

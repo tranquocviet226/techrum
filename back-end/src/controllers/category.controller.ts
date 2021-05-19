@@ -3,10 +3,10 @@ import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CategoryRequest } from '@requests/category/category.request';
 import { CategoryResponse } from '@response/category/category.response';
 import { CategoryService } from '@services/category/category.service';
-import { SWAGGER_MSG } from '@utils/constant';
+import { SERVER_PORT, SWAGGER_MSG } from '@utils/constant';
 
 @ApiTags('Category Controller')
-@Controller('catalog/categories')
+@Controller(SERVER_PORT.concat('catalog/categories'))
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 

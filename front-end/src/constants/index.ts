@@ -6,9 +6,9 @@ export const COPY_RIGHT = " © 2021, Tech. All rights reserved";
 export const ABOUT_DESCRIPTION = "Tech company 2021.";
 export const ABOUT_ADDRESS = "00001 Tech street, Da Nang, Viet Nam";
 export const ABOUT_PHONE = "+84 346718110";
-export const ABOUT_EMAIL = "vtnplusd@gmail.com";
+export const ABOUT_EMAIL = "vtnplusd@gmail.com"; 
 
-export const APP_URL = "http://54.179.130.248:3000/api/v1/";
+export const APP_URL = "http://localhost:3000/api/v1/";
 export const FB_URL = "https://www.facebook.com/blogviettran";
 
 const txtConstants = {

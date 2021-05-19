@@ -1,5 +1,6 @@
 // auth message
 // only for swagger , not use for response message
+
 export const AUTH_TYPE = 'bearer';
 export const SWAGGER_MSG = {
   AUTH_SUCCESS: 'Authentication is successfully !',
@@ -9,3 +10,5 @@ export const SWAGGER_MSG = {
   POST_SUCCESS: 'Post successfully !',
   POST_FAIL: 'Post failure !',
 };
+
+export const SERVER_PORT = "api/v1/"

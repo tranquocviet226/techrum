@@ -10,16 +10,17 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UploadService } from '@services/upload/upload.service';
+import { SERVER_PORT } from '@utils/constant';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
 @ApiTags('Upload Controller')
-@Controller('upload')
+@Controller(SERVER_PORT.concat('upload'))
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
   @Get('files/:fileId')
-  async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+  async serveImage(@Param('fileId') fileId, @Res() res): Promise<any> {
     this.uploadService.readFile(fileId, res);
   }
 

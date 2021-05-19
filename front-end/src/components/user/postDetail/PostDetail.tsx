@@ -8,7 +8,7 @@ import moment from "moment";
 import React, { useEffect } from "react";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import { Post } from "types/model";
 import colors from "utils/colors";
 import { upsert } from "utils/function";
@@ -171,7 +171,7 @@ const PostDetail: React.FC<Props> = (props) => {
                 {_renderHeader()}
                 <div className="post-body clearfix">
                   <div className="entry-content clearfix">
-                    <FroalaEditorView model={content} />
+                    <FroalaEditorView model={content} config={{attribution: false}}/>
                   </div>
                 </div>
               </article>

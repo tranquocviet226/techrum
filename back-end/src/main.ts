@@ -19,7 +19,7 @@ async function bootstrap() {
   const SWAGGER_API_DOCS = config.get<string>('swagger_api_docs');
   const APP_PORT = config.get<number>('app_port');
 
-  app.setGlobalPrefix("api/v1");
+  // app.setGlobalPrefix("api/v1");
   app.useStaticAssets(join(__dirname, '..', 'files'));
   app.use(cors()) // Use this after the variable declaration
   app.useGlobalPipes(new ValidationPipe());

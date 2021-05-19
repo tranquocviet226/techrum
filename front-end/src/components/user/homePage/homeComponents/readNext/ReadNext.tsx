@@ -1,9 +1,5 @@
-import { getPostFind } from "actions/user/postAction";
 import txtConstants from "constants/index";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { ComponentType } from "types/common/componentTypes";
-import { FindPostBody, Post } from "types/model/Post";
+import { Post } from "types/model/Post";
 import RecentComment from "../recentComment/RecentComment";
 import ReadNextPostItem from "./ReadNextPostItem";
 
@@ -13,19 +9,6 @@ type Props = {
 
 const ReadNext: React.FC<Props> = (props) => {
   const { readNextPosts } = props;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getRandomPost();
-  }, []);
-
-  const getRandomPost = () => {
-    const body: FindPostBody = {
-      total_result: 6,
-      type: "rand",
-    };
-    dispatch(getPostFind(ComponentType.READ_NEXT_POSTS, body));
-  };
 
   return (
     <section
