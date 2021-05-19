@@ -12,10 +12,10 @@ import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostRequest, PostBody, PostParams } from '@requests/index';
 import { PostResponse } from '@response/post/post.response';
 import { PostService } from '@services/post/post.service';
-import { SERVER_PORT, SWAGGER_MSG } from '@utils/constant';
+import { SWAGGER_MSG } from '@utils/constant';
 
 @ApiTags('Post Controller')
-@Controller(SERVER_PORT.concat('catalog/posts'))
+@Controller('catalog/posts')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
