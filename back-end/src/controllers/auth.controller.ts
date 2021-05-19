@@ -11,10 +11,10 @@ import { VerifyPhoneRequest } from '@requests/auth/verify-phone.request';
 import { LoginResponse } from '@response/auth/login.response';
 import { RegisterResponse } from '@response/auth/register.response';
 import { AuthService } from '@services/auth/auth.service';
-import { SERVER_PORT, SWAGGER_MSG } from '@utils/constant';
+import { SWAGGER_MSG } from '@utils/constant';
 
 @ApiTags('Auth Controller')
-@Controller(SERVER_PORT.concat('auth'))
+@Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

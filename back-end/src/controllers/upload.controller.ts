@@ -10,12 +10,11 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UploadService } from '@services/upload/upload.service';
-import { SERVER_PORT } from '@utils/constant';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
 @ApiTags('Upload Controller')
-@Controller(SERVER_PORT.concat('upload'))
+@Controller('upload')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
