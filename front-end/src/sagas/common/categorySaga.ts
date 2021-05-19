@@ -1,12 +1,11 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
 import { updateListCategory } from "actions/common/categoryAction";
-import { setLoading } from "actions/common/commonAction";
 import { AxiosResponse } from "axios";
 import { DataCategory } from "data";
 import { CategoryApi } from "services/api";
 import {
   CategoryActionType,
-  CreateCategoryAction,
+  CreateCategoryAction
 } from "types/user/categoryTypes";
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
 

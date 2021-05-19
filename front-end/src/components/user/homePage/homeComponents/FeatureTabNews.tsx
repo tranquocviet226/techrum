@@ -8,14 +8,21 @@ type Props = {
 
 const FeatureTabNews = ({ selectCategory, categories }: Props) => {
   const [activeId, setActiveId] = useState<number>();
+
+  const getRandomCategory = () => {
+    const random = categories[Math.floor(Math.random() * categories.length)];
+    return random;
+  };
+
   const onSelectCategory = (id: number) => {
     setActiveId(id);
     selectCategory(id);
   };
   useEffect(() => {
-    if (categories.length) {
-      setActiveId(categories[0].id);
-      selectCategory(categories[0].id);
+    if (categories && categories.length > 0) {
+      const randomCategory = getRandomCategory();
+      setActiveId(randomCategory.id);
+      selectCategory(randomCategory.id);
     }
   }, [categories]);
 

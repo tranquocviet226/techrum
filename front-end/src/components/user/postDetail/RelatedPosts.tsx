@@ -18,8 +18,6 @@ const RelatedPosts: React.FC<Props> = (props) => {
   const { category, relatedPosts } = props;
   const dispatch = useDispatch();
 
-  console.log('category', category)
-
   useEffect(() => {
     if (category) {
       getRelatedPosts();
@@ -39,8 +37,28 @@ const RelatedPosts: React.FC<Props> = (props) => {
     arrows: false,
     infinite: true,
     speed: 800,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: relatedPosts && relatedPosts.length >= 3 ? 3 : 2,
+    slidesToScroll: relatedPosts && relatedPosts.length >= 3 ? 3 : 2,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 690,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -52,7 +70,7 @@ const RelatedPosts: React.FC<Props> = (props) => {
         <Slider {...settings}>
           {relatedPosts?.map((item) => (
             <div key={item.id} className="pd-15">
-              <RelatedPostItem item={item}/>
+              <RelatedPostItem item={item} />
             </div>
           ))}
         </Slider>

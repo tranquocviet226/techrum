@@ -44,6 +44,7 @@ const RelatedPostItem: React.FC<Props> = (props) => {
           <div className="grid-cat">
             {categories.map((it) => (
               <a
+                key={it.id}
                 className="post-cat"
                 style={{
                   backgroundColor: it?.color,

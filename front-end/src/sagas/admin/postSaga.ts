@@ -23,11 +23,13 @@ function* createPostSaga(action: CreatePostAction) {
     const data = response?.data;
     if (data) {
       const backgroundUrl = data?.link;
+      const backgroundName = data?.file_name;
       try {
         const response: AxiosResponse<any> = yield call(
           [PostApi, PostApi.create],
           formData,
-          backgroundUrl
+          backgroundUrl,
+          backgroundName
         );
         const data = parseJSON(checkStatusData(response.data));
         if (data) {

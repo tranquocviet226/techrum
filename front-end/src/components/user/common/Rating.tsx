@@ -44,7 +44,28 @@ const Rating: React.FC<Props> = (props) => {
 
 const TabRatingCategory = (props: FeatureTabProps) => {
   const { selectCategory, categories } = props;
-  const [activeId, setActiveId] = useState<number>(1);
+  const [randomCategory, setRandomategory] = useState<Category[]>([]);
+  const [activeId, setActiveId] = useState<number>();
+
+  useEffect(() => {
+    if (categories && categories.length > 0) {
+      const categoriesRandom = getRandomListCategory(categories);
+      setRandomategory(categoriesRandom);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (randomCategory && randomCategory.length > 0) {
+      onSelectCategory(randomCategory[0].id);
+    }
+  }, [randomCategory]);
+
+  const getRandomListCategory = (categories: Category[]) => {
+    let newArray = [...categories];
+    const shuffled = newArray.sort(() => Math.random() - 0.5);
+
+    return shuffled.slice(0, 3);
+  };
 
   const onSelectCategory = (id: number) => {
     setActiveId(id);
@@ -53,7 +74,7 @@ const TabRatingCategory = (props: FeatureTabProps) => {
 
   return (
     <ul className="nav nav-tabs recen-tab-menu" role="tablist">
-      {categories?.slice(0, 3).map((item) => (
+      {randomCategory?.map((item) => (
         <li key={item.id} role="presentation">
           <a
             className={activeId === item.id ? "active" : ""}

@@ -4004,6 +4004,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   position: relative;
   display: block;
   letter-spacing: 0.64px;
+  cursor: pointer;
 }
 .post-list-item .recen-tab-menu.nav-tabs li a:before, .post-list-item .recen-tab-menu.nav-tabs li a:after {
   position: absolute;

@@ -4,7 +4,7 @@ import { ParamsPost } from "types/model/Post";
 import instance from "../v1";
 
 class _PostApi {
-  create = (formData: any, backgroundUrl: string) =>
+  create = (formData: any, backgroundUrl: string, backgroundName: string) =>
     instance.post("/catalog/posts", {
       title: formData.title,
       content: formData.content,
@@ -13,6 +13,7 @@ class _PostApi {
       description: formData.description,
       sort_description: formData.sortDescription,
       background_url: backgroundUrl,
+      background_name: backgroundName,
       slug: formData.slug,
       is_active: 1,
     });

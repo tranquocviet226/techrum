@@ -25,6 +25,7 @@ export const FroalaEditor = ({ onChangeModel }: myProps) => {
     placeholderText: "Edit Your Content Here!",
     charCounterCount: false,
     heightMin: "200px",
+    attribution: false,
     fontFamily: {
       "Roboto,sans-serif": "Roboto",
       "Oswald,sans-serif": "Oswald",

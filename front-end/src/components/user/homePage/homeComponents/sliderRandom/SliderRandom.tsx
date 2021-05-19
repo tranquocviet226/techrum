@@ -1,13 +1,9 @@
-import { getPostFind } from "actions/user/postAction";
 import CategoryItem from "components/user/common/CategoryItem";
 import txtConstants from "constants/index";
 import { Path } from "constants/path";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import Slider from "react-slick";
-import { ComponentType } from "types/common/componentTypes";
-import { FindPostBody, Post } from "types/model/Post";
+import { Post } from "types/model/Post";
 import { formatDate } from "utils/function";
 import "./styles.css";
 
@@ -17,20 +13,7 @@ type Props = {
 
 const SliderRandom: React.FC<Props> = (props) => {
   const { randomPosts } = props;
-  const dispatch = useDispatch();
   const history = useHistory();
-
-  useEffect(() => {
-    getRandomPost();
-  }, []);
-
-  const getRandomPost = () => {
-    const body: FindPostBody = {
-      total_result: 12,
-      type: "rand",
-    };
-    dispatch(getPostFind(ComponentType.RANDOM_POSTS, body));
-  };
 
   const settings = {
     dots: false,
