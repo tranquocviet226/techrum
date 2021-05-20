@@ -1,10 +1,14 @@
 import { getPostsByCategory } from "actions/admin/postAction";
 import Aside from "components/user/aside";
 import txtConstants from "constants/index";
+import { Path } from "constants/path";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
+import colors from "utils/colors";
+import styles from "utils/styles";
 import CategoryItem from "./categoryComponents/CategoryItem";
 
 type Props = {
@@ -22,6 +26,7 @@ const CategoryPage: React.FC<Props> = (props) => {
   const categoryTitle = categoryFirst?.categories[0].title || "";
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     getPostByCategory();
@@ -35,6 +40,10 @@ const CategoryPage: React.FC<Props> = (props) => {
     );
   };
 
+  const handleGoHome = () => {
+    history.push({ pathname: `/${Path.HOME_PAGE}` });
+  };
+
   const _renderHeader = () => {
     return (
       <div className="container">
@@ -42,7 +51,10 @@ const CategoryPage: React.FC<Props> = (props) => {
           <div className="col-lg-12">
             <ol className="breadcrumb" data-wow-duration="2s">
               <li>
-                <i className="fa fa-home" /> <a href="">{txtConstants.home}</a>
+                <i className="fa fa-home" />{" "}
+                <a style={styles.title} onClick={handleGoHome}>
+                  {txtConstants.home}
+                </a>
                 <i className="fa fa-angle-right" />
               </li>
               <li>
@@ -58,7 +70,6 @@ const CategoryPage: React.FC<Props> = (props) => {
   return (
     <>
       {_renderHeader()}
-
       <div
         id="main-content"
         className="main-container blog-single post-layout-style1"

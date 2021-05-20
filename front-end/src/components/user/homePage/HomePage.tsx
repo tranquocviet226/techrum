@@ -1,3 +1,4 @@
+import { getPostFind } from "actions/user/postAction";
 import CategorySecondContainer from "containers/user/CategorySecondContainer";
 import DontMissContainer from "containers/user/DontMissContainer";
 import ReadNextContainer from "containers/user/ReadNextContainer";
@@ -5,15 +6,14 @@ import Slider from "containers/user/SliderContainer";
 import SliderRandomContainer from "containers/user/SliderRandomContainer";
 import WeekendTopContainer from "containers/user/WeekendTopContainer";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ScrollToTop from "services/ScrollToTop";
+import { ComponentType } from "types/common/componentTypes";
 import { Category, Post } from "types/model";
+import { FindPostBody } from "types/model/Post";
 import BannerAds2 from "./homeComponents/bannerAds2/BannerAds2";
 import WhatNew from "./homeComponents/whatNew/WhatNew";
-import { useDispatch } from "react-redux";
-import { FindPostBody } from "types/model/Post";
-import { getPostFind } from "actions/user/postAction";
-import { ComponentType } from "types/common/componentTypes";
-import { getPostsByCategory } from "actions/admin/postAction";
-import ScrollToTop from "services/ScrollToTop";
+import LazyLoad from "react-lazyload";
 
 type Props = {
   categories: Category[];
@@ -97,28 +97,56 @@ const HomePage: React.FC<Props> = (props) => {
 
   const _renderWeekendTop = () => {
     if (postWeekendTop && postWeekendTop.length > 0)
-      return <WeekendTopContainer />;
+      return (
+        <LazyLoad height={200}>
+          <WeekendTopContainer />
+        </LazyLoad>
+      );
   };
 
   const _renderWhatNew = () => {
-    if (categories && categories.length > 0) return <WhatNew />;
+    if (categories && categories.length > 0)
+      return (
+        <LazyLoad height={200}>
+          <WhatNew />
+        </LazyLoad>
+      );
   };
 
   const _renderSliderRandom = () => {
-    if (randomPosts && randomPosts.length > 0) return <SliderRandomContainer />;
+    if (randomPosts && randomPosts.length > 0)
+      return (
+        <LazyLoad height={200}>
+          <SliderRandomContainer />
+        </LazyLoad>
+      );
   };
 
   const _renderCategorySecond = () => {
     if (categorySecondPosts && categorySecondPosts.length > 0)
-      return <CategorySecondContainer />;
+      return (
+        <LazyLoad height={200}>
+          <CategorySecondContainer />
+        </LazyLoad>
+      );
   };
 
   const _renderDontMiss = () => {
-    if (dontMissPosts && dontMissPosts.length > 0) return <DontMissContainer />;
+    if (dontMissPosts && dontMissPosts.length > 0)
+      return (
+        <LazyLoad height={200}>
+          <DontMissContainer />
+        </LazyLoad>
+      );
   };
 
   const _renderReadNext = () => {
-    if (readNextPosts && readNextPosts.length > 0) return <ReadNextContainer />;
+    if (readNextPosts && readNextPosts.length > 0)
+      return (
+        <LazyLoad height={200}>
+          <ReadNextContainer />
+        </LazyLoad>
+      );
   };
 
   return (
@@ -130,7 +158,9 @@ const HomePage: React.FC<Props> = (props) => {
     >
       <ScrollToTop />
       <div className="elementor-section-wrap">
-        <Slider />
+        <LazyLoad height={200}>
+          <Slider />
+        </LazyLoad>
         {_renderWeekendTop()}
         {_renderWhatNew()}
         {_renderSliderRandom()}
