@@ -102,7 +102,7 @@ const TabContent = (props: TabContentProps) => {
   const getPostByCategory = () => {
     dispatch(
       getPostsByCategory(ComponentType.RATING_POSTS, {
-        total_result: 5,
+        total_result: 4,
         category_id: category_id,
       })
     );

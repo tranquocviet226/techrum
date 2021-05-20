@@ -50,7 +50,7 @@ const LoginComponent = () => {
               <p className="desc">
                 To keep connected with us please login with your personal info
               </p>
-              <button className="ghost login" id="signIn" onClick={toggle}>
+              <button className="ghost login" id="signIn">
                 Sign In
               </button>
             </div>
@@ -59,8 +59,8 @@ const LoginComponent = () => {
               <p className="desc">
                 Enter your personal details and start journey with us
               </p>
-              <button className="ghost login" id="signUp" onClick={toggle}>
-                Sign Up
+              <button className="ghost login" id="signUp" >
+               Hello world
               </button>
             </div>
           </div>

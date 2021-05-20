@@ -157,7 +157,7 @@ const CategoryFirst: React.FC<Props> = (props) => {
 
   return (
     <>
-      {categoryFirstPosts.length && (
+      {categoryFirstPosts && categoryFirstPosts.length > 0 ? (
         <section
           className="elementor-section elementor-inner-section elementor-element elementor-element-41ac85fd elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="41ac85fd"
@@ -207,6 +207,8 @@ const CategoryFirst: React.FC<Props> = (props) => {
             </div>
           </div>
         </section>
+      ) : (
+        <></>
       )}
     </>
   );

@@ -23,7 +23,7 @@ const FollowUs = () => {
                   <i className="fab fa-facebook-f apsc-facebook"></i>
                 </span>
                 <div className="div">
-                  <span className="apsc-count">8,047</span>
+                  <span className="apsc-count">9,999+</span>
                   <span className="apsc-media-type">Fans</span>
                 </div>
               </div>

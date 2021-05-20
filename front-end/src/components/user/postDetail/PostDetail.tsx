@@ -13,6 +13,7 @@ import { Post } from "types/model";
 import colors from "utils/colors";
 import { upsert } from "utils/function";
 import { getLocalStorage, setLocalStorage } from "utils/localStorage";
+import styles from "utils/styles";
 import CommentComponent from "./postComponents/CommentComponent";
 
 type Props = {
@@ -110,13 +111,13 @@ const PostDetail: React.FC<Props> = (props) => {
             <a href="#">{author}</a>
           </li>
           <li className="post-meta-date">
-            <i className="fa fa-clock-o" />
-            {moment(createdAt).format("lll")}
+            <i className="far fa-clock" />
+            {moment(createdAt).format("L")}
           </li>
           <li className="post-comment">
             <i className="fa fa-comments" />
             <a href="#" className="comments-link">
-              {Math.floor(Math.random() * 100000)}{" "}
+              {Math.floor(Math.random() * 100)}
             </a>
           </li>
         </ul>
@@ -132,19 +133,13 @@ const PostDetail: React.FC<Props> = (props) => {
             <ol className="breadcrumb" data-wow-duration="2s">
               <li>
                 <i className="fa fa-home" />{" "}
-                <a
-                  style={{ color: colors.baseOrange }}
-                  className="cur-po"
-                  onClick={handleGoHome}
-                >
+                <a style={styles.title} onClick={handleGoHome}>
                   {txtConstants.home}
                 </a>
                 <i className="fa fa-angle-right" />
               </li>
               <li>
-                <a style={{ color: colors.baseOrange }} className="cur-po">
-                  {firstCategory?.title}
-                </a>{" "}
+                <a style={styles.title}>{firstCategory?.title}</a>{" "}
               </li>
               <li>
                 <i className="fa fa-angle-right" />
@@ -171,7 +166,10 @@ const PostDetail: React.FC<Props> = (props) => {
                 {_renderHeader()}
                 <div className="post-body clearfix">
                   <div className="entry-content clearfix">
-                    <FroalaEditorView model={content} config={{attribution: false}}/>
+                    <FroalaEditorView
+                      model={content}
+                      config={{ attribution: false }}
+                    />
                   </div>
                 </div>
               </article>
