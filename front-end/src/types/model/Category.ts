@@ -6,7 +6,7 @@ interface Category {
   color: string;
   position: number;
   is_active: number;
-  background_image: string;
+  background_url: string;
   count: number;
   sub_category: Category[];
 }

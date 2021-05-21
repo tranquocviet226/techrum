@@ -13,6 +13,7 @@ export class CategoryFactoryService {
     const {
       slug,
       title,
+      background_url,
       color,
       position,
       is_searchable,
@@ -33,6 +34,7 @@ export class CategoryFactoryService {
     const dataCategory = new CategoryEntity({
       slug: slug,
       title: title,
+      background_url: background_url,
       color: color,
       position: position,
       is_searchable: is_searchable,

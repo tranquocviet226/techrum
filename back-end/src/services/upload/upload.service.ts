@@ -5,10 +5,8 @@ export class UploadService {
   constructor() {}
 
   async uploadFile(file: Express.Multer.File): Promise<any> {
-    const APP_URL = process.env.APP_URL;
-    const pathFile = APP_URL.concat('api/v1/upload/files/').concat(
-      file?.filename,
-    );
+    const MEDIA_URL = process.env.MEDIA_URL;
+    const pathFile = MEDIA_URL.concat(file?.filename);
 
     const data = {
       file_name: file?.filename,

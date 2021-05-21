@@ -4,6 +4,7 @@ import ColorLensIcon from "@material-ui/icons/ColorLens";
 import FingerprintIcon from "@material-ui/icons/Fingerprint";
 import HttpIcon from "@material-ui/icons/Http";
 import TitleIcon from "@material-ui/icons/Title";
+import ImageIcon from "@material-ui/icons/Image";
 import { FormikProps } from "formik";
 import { Category } from "types/model";
 import styles from "./CategoryForm.module.css";
@@ -17,6 +18,7 @@ type Props = {
 export interface FormValueCategory {
   parent_id: number;
   title: string;
+  background_url: any;
   slug: string;
   color: string;
   position: number;
@@ -32,6 +34,7 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
     touched,
     validForm,
     handleChange,
+    setFieldValue,
     handleSubmit,
     resetValid,
     categories,
@@ -53,6 +56,16 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
         </div>
         <div className={styles.input_error}>
           {validForm && touched.title && errors["title"]}
+        </div>
+        <div className={styles.input_container}>
+          <ImageIcon />
+          <TextField
+            type="file"
+            name="background_url"
+            onChange={(e: any) => setFieldValue("background_url", e.currentTarget.files[0])}
+            fullWidth
+            label="Image"
+          />
         </div>
         <div className={styles.input_container}>
           <HttpIcon />

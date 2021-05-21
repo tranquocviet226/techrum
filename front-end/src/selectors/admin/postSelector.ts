@@ -9,4 +9,5 @@ export const postSelector = (state: AppState) => ({
   categories: state.categories.categories,
   postDetail: state.posts.postDetail,
   ratingPosts: state.posts.ratingPosts,
+  managementPosts: state.posts.managementPosts,
 });
