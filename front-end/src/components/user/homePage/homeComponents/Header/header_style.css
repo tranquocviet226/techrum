@@ -162,7 +162,8 @@
 
 .header_navigation__list-item--link {
   text-decoration: none;
-  padding: 0 24px;
+  color: var(--bg-dropmenu);
+  padding: 0px 15px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -299,4 +300,41 @@
   .header.responsive .header_navigation__list-item {
     padding-top: 24px;
   }
+}
+.social-link li {
+  display: inline-block;
+  list-style-type: none;
+
+  width: 34px;
+ display: inline;
+}
+.social-link {
+  display: flex;
+  width: cald(100/4);
+  height: 70px;
+  background: rgba(255,255,255,.05);
+    padding: 0 20px 0 12px;
+    border-left: 1px solid rgba(255,255,255,.2);
+    border-right: 1px solid rgba(255,255,255,.2);
+    margin-top: 16px;
+    margin-left: 110px;
+}
+.ts-icon-search1:before {
+  content: "\e93f";
+  
+  
+}
+.nav-search{
+  text-align: center;
+  width: 65px;
+  height: 70px; 
+  border-right: 1px solid rgba(255,255,255,.2);
+}
+.social-icon1 {
+  margin-bottom: 1px;
+  display: block;
+}
+.search-nav {
+  width: 46px;
+  height: 70px;
 }
