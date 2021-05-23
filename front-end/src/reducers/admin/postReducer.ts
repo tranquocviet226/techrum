@@ -4,6 +4,7 @@ import {
   PostState,
   ResetPostsAction,
   UpdatePostsAction,
+  UpdatePostDeleteAction,
 } from "types/admin/postTypes";
 import { ComponentType } from "types/common/componentTypes";
 
@@ -21,6 +22,7 @@ const initialState: PostState = {
   relatedPosts: [],
   dontMissPosts: [],
   categoryDetailPosts: [],
+  managementPosts: [],
 };
 
 const postReducer = (
@@ -42,6 +44,11 @@ const postReducer = (
       return {
         ...state,
         postDetail: action.post,
+      };
+    case PostActionType.UPDATE_POST_DELETE:
+      return {
+        ...state,
+        ...updatePostDeleteByComponent(action, state),
       };
     default:
       return state;
@@ -96,6 +103,10 @@ const postsByComponent = (action: UpdatePostsAction) => {
       return {
         categoryDetailPosts: action.posts,
       };
+    case ComponentType.MANAGEMENT_POSTS:
+      return {
+        managementPosts: action.posts,
+      };
   }
 };
 
@@ -112,6 +123,21 @@ const postsResetByComponent = (action: ResetPostsAction) => {
     case ComponentType.CATEGORY_POSTS_1:
       return {
         categoryFirstPosts: [],
+      };
+  }
+};
+
+const updatePostDeleteByComponent = (
+  action: UpdatePostDeleteAction,
+  state: any
+) => {
+  switch (action.componentType) {
+    case ComponentType.MANAGEMENT_POSTS:
+      const newManagementPosts = state.managementPosts.filter(
+        (item: any) => item.id !== action.id
+      );
+      return {
+        managementPosts: newManagementPosts,
       };
   }
 };

@@ -1,6 +1,5 @@
 import { getPostsByCategory } from "actions/admin/postAction";
 import { Path } from "constants/path";
-import { DataPost } from "data";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";

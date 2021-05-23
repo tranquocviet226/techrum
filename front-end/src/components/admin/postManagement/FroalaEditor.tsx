@@ -5,16 +5,23 @@ import "froala-editor/css/third_party/embedly.min.css";
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import "froala-editor/js/plugins.pkgd.min.js";
 import "froala-editor/js/third_party/embedly.min.js";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Froala from "react-froala-wysiwyg";
 
 interface myProps {
+  modelData: any;
   onChangeModel: (model: string) => void;
 }
 
-export const FroalaEditor = ({ onChangeModel }: myProps) => {
+export const FroalaEditor = ({ onChangeModel, modelData }: myProps) => {
   const ref = useRef<any>(null);
   const [model, setModel] = useState<string>("");
+
+  useEffect(() => {
+    if (modelData) {
+      setModel(modelData);
+    }
+  }, [modelData]);
 
   const handleModelChange = (model: any) => {
     setModel(model);

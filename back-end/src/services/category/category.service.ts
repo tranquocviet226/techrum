@@ -11,8 +11,8 @@ import { getTreeRepository } from 'typeorm';
 
 @Injectable()
 export class CategoryService extends BaseService<
-CategoryEntity,
-CategoryRepository
+  CategoryEntity,
+  CategoryRepository
 > {
   constructor(
     repository: CategoryRepository,
@@ -59,15 +59,20 @@ CategoryRepository
     const errors = await validate(dataCategory);
     if (errors.length > 0) {
       const code = HttpStatus.FORBIDDEN;
-      return new CategoryResponse(false, code, errors.map((error, index) => ({
-        code: index,
-        message: error.toString()
-      })), undefined);
+      return new CategoryResponse(
+        false,
+        code,
+        errors.map((error, index) => ({
+          code: index,
+          message: error.toString(),
+        })),
+        undefined,
+      );
     } else {
       try {
         const data = await this.repository.create(dataCategory);
         await this.repository.save(data);
-        const code = HttpStatus.OK
+        const code = HttpStatus.OK;
         return new CategoryResponse(true, code, undefined, data);
       } catch (error) {
         return new CategoryResponse(
@@ -96,6 +101,69 @@ CategoryRepository
           undefined,
         );
       }
+    } catch (error) {
+      const response = new CategoryResponse(
+        false,
+        HttpStatus.FORBIDDEN,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
+
+  async findOneAndupdate(
+    id: number,
+    categoryRequest: CategoryRequest,
+  ): Promise<CategoryResponse> {
+    try {
+      const dataCategory = await this.categoryFactoryService.createCategoryTree(
+        categoryRequest,
+      );
+
+      await this.repository
+        .createQueryBuilder()
+        .update('categories')
+        .set(dataCategory)
+        .where('id = :id', { id: id })
+        .execute();
+
+      const response = new CategoryResponse(true, 200, undefined, {
+        message: 'Update category success!',
+      });
+      return response;
+    } catch (error) {
+      const response = new CategoryResponse(
+        false,
+        HttpStatus.FORBIDDEN,
+        [{ code: -1, message: error.message }],
+        undefined,
+      );
+      return response;
+    }
+  }
+
+  async findOneAndDelete(id: number): Promise<CategoryResponse> {
+    try {
+      const category = await this.repository.findOne(id);
+
+      const childrenTree = await getTreeRepository(
+        CategoryEntity,
+      ).findDescendants(category);
+
+      const idChildren: number[] = [];
+      childrenTree.map(item => {
+        idChildren.push(item.id);
+      });
+
+      childrenTree
+        .reverse()
+        .map(async item => await this.repository.delete(item));
+
+      const response = new CategoryResponse(true, 200, undefined, {
+        message: 'Delete Category tree success!',
+      });
+      return response;
     } catch (error) {
       const response = new CategoryResponse(
         false,

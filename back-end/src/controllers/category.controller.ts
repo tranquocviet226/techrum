@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CategoryRequest } from '@requests/category/category.request';
 import { CategoryResponse } from '@response/category/category.response';
@@ -41,5 +49,30 @@ export class CategoryController {
   @ApiResponse({ status: 401, description: SWAGGER_MSG.CATEGORY_FAIL })
   findOne(@Param('id') id: string): Promise<CategoryResponse> {
     return this.categoryService.findOne(id);
+  }
+
+  @Put(':id')
+  @ApiOkResponse({
+    status: 200,
+    type: CategoryResponse,
+    description: SWAGGER_MSG.CATEGORY_SUCCESS,
+  })
+  @ApiResponse({ status: 401, description: SWAGGER_MSG.CATEGORY_FAIL })
+  findOneAndUpdate(
+    @Param('id') id: number,
+    @Body() categoryRequest: CategoryRequest,
+  ): Promise<CategoryResponse> {
+    return this.categoryService.findOneAndupdate(id, categoryRequest);
+  }
+
+  @Delete(':id')
+  @ApiOkResponse({
+    status: 200,
+    type: CategoryResponse,
+    description: SWAGGER_MSG.CATEGORY_SUCCESS,
+  })
+  @ApiResponse({ status: 401, description: SWAGGER_MSG.CATEGORY_FAIL })
+  findOneAndDelete(@Param('id') id: number): Promise<CategoryResponse> {
+    return this.categoryService.findOneAndDelete(id);
   }
 }

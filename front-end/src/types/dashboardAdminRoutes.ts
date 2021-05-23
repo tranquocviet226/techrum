@@ -6,16 +6,16 @@ import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import PostAddIcon from "@material-ui/icons/PostAdd";
-import Unarchive from "@material-ui/icons/Unarchive";
 // core components/views for Admin layout
 import DashboardPage from "components/admin/dashboard/Dashboard";
 import Icons from "components/admin/icons/Icons";
 import Maps from "components/admin/maps/Maps";
 import NotificationsPage from "components/admin/notifications/Notifications";
+import PostCreate from "components/admin/postManagement/PostCreate";
 import Typography from "components/admin/typography/Typography";
-import UpgradeToPro from "components/admin/upgradeToPro/UpgradeToPro";
+import paths from "constants/path";
 import CategoryContainer from "containers/admin/category/CategoryContainer";
-import PostContainer from "containers/admin/post/PostContainer";
+import { default as PostContainer } from "containers/admin/post/PostManagementContainer";
 
 const dashboardRoutes = [
   {
@@ -67,11 +67,13 @@ const dashboardRoutes = [
     component: NotificationsPage,
     layout: "/admin",
   },
+];
+
+export const childrenRoutes = [
   {
-    path: "/upgrade-to-pro",
-    name: "Upgrade To PRO",
-    icon: Unarchive,
-    component: UpgradeToPro,
+    path: paths.POST_CREATE,
+    name: "Create Post",
+    component: PostCreate,
     layout: "/admin",
   },
 ];

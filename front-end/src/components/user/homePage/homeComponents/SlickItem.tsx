@@ -1,4 +1,4 @@
-import txtConstants from "constants/index";
+import txtConstants, { MEDIA_URL } from "constants/index";
 import { Post } from "types/model";
 import { formatDate } from "utils/function";
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const SlickItem = ({ item, onSelectPost }: Props) => {
-  const background_url = item?.background_url || "";
+  const background_url = MEDIA_URL.concat(item?.background_name);
   const categories = item?.categories || [];
   const title = item?.title || "";
   const author = item?.author || txtConstants.rootAuthor;

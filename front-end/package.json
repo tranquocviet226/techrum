@@ -21,6 +21,7 @@
         "@types/redux-persist": "^4.3.1",
         "@types/redux-saga": "^0.10.5",
         "@types/styled-components": "^5.1.9",
+        "antd": "^4.15.6",
         "chartist": "^0.11.4",
         "classnames": "^2.2.6",
         "dotenv": "^8.2.0",

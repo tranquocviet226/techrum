@@ -49,16 +49,29 @@ function getStyles(name: any, personName: any, theme: any) {
 type Props = {
   data: Category[];
   onChangeData: (value: [number]) => void;
+  categorySelected: number[];
 };
 
-export default function MultipleSelect({ data, onChangeData }: Props) {
+export default function MultipleSelect({
+  data,
+  onChangeData,
+  categorySelected,
+}: Props) {
   const classes = useStyles();
   const theme = useTheme();
   const [selectedData, setSelectedData] = React.useState<any>([]);
 
   useEffect(() => {
-    onChangeData(selectedData);
+    if (selectedData) {
+      onChangeData(selectedData);
+    }
   }, [selectedData]);
+
+  useEffect(() => {
+    if (categorySelected.length > 0) {
+      setSelectedData(categorySelected);
+    }
+  }, [categorySelected]);
 
   const handleChange = (event: any) => {
     setSelectedData(event.target.value);
