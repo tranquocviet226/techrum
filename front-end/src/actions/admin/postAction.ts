@@ -7,6 +7,9 @@ import {
   UpdatePostsAction,
   GetPostsByIDAction,
   SetPostDetailAction,
+  DeletePostByIdAction,
+  UpdatePostDeleteAction,
+  UpdatePostByIdAction
 } from "types/admin/postTypes";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
@@ -32,6 +35,33 @@ export const getPostById = (id: number): GetPostsByIDAction => ({
   id,
 });
 
+export const updatePostById = (
+  id: number,
+  formData: any
+): UpdatePostByIdAction => ({
+  type: PostActionType.UPDATE_POST_BY_ID,
+  id,
+  formData,
+});
+
+export const deletePostById = (
+  id: number,
+  componentType: ComponentType
+): DeletePostByIdAction => ({
+  type: PostActionType.DELETE_POST_BY_ID,
+  componentType,
+  id,
+});
+
+export const updatePostDelete = (
+  id: number,
+  componentType: ComponentType
+): UpdatePostDeleteAction => ({
+  type: PostActionType.UPDATE_POST_DELETE,
+  componentType,
+  id,
+});
+
 export const getPostsByCategory = (
   componentType: ComponentType,
   paramsPost?: ParamsPost
@@ -50,9 +80,7 @@ export const updatePosts = (
   posts,
 });
 
-export const setPostDetail = (
-  post: Post
-): SetPostDetailAction => ({
+export const setPostDetail = (post: Post): SetPostDetailAction => ({
   type: PostActionType.SET_POST_DETAIL,
   post,
 });

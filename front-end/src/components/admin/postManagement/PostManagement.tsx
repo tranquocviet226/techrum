@@ -1,201 +1,117 @@
-import { TextField, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import * as React from "react";
-import { useTranslation } from "react-i18next";
-import { FroalaEditor } from "./FroalaEditor";
-import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
-import "./PostManagement.css";
-import Selects from "./Selects";
-import { Category } from "types/model";
-import { connect, useDispatch } from "react-redux";
-import { createPost } from "actions/admin/postAction";
-import { postSelector } from "selectors/admin/postSelector";
-import { Dispatch } from "redux";
+import { makeStyles } from "@material-ui/core";
+import { deletePostById } from "actions/admin/postAction";
+import { getPostFind } from "actions/user/postAction";
+import txtConstants from "constants/index";
+import paths from "constants/path";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { ComponentType } from "types/common/componentTypes";
+import { FindPostBody, Post } from "types/model/Post";
+import colors from "utils/colors";
+import ModalCommon from "../common/Modal/ModalCommon";
+import PostItem from "./PostItem";
 
-const useStyles = makeStyles(() => ({
-  optionContainer: {
-    justifyContent: "center",
-    alignSelf: "center",
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
+const useStyles = makeStyles({
+  btnCreate: {
+    backgroundColor: colors.baseOrange,
+    border: "none",
+    borderRadius: 8,
+    padding: 10,
+    color: "white",
+    cursor: "pointer",
   },
-  pickerContainer: {
-    width: "100%",
-    margin: 8,
-  },
-  btnContainer: {
-    display: "flex",
-    width: "100%",
-    marginTop: 16,
-    justifyContent: "space-around",
-  },
-  pickerTextfield: {
-    width: "100%",
-  },
-}));
+});
 
 type Props = {
-  categories: Category[];
+  managementPosts: Post[];
 };
 
 const PostManagement: React.FC<Props> = (props) => {
-  const { t } = useTranslation(["ns1"]);
-  const { categories } = props;
-  const dispatch = useDispatch();
+  const { managementPosts } = props;
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
+  const [deleteId, setDeleteId] = useState<number>();
 
-  const [isPreview, setIsPreview] = React.useState<boolean>(false);
-  const [title, setTitle] = React.useState<string>("");
-  const [model, setModel] = React.useState<string>("");
-  const [category, setCategory] = React.useState<any>("");
-  const [postDate, setPostDate] = React.useState<any>("");
-  const [description, setDescription] = React.useState<string>("");
-  const [sortDescription, setSortDescription] = React.useState<string>("");
-  const [backgroundUrl, setBackgroundUrl] = React.useState<any>(null);
-  const [slug, setSlug] = React.useState<string>("");
+  useEffect(() => {
+    getAllPost();
+  }, []);
 
-  const handleModelChange = (model: string) => {
-    setModel(model);
+  const handleGoCreate = () => {
+    history.push({ pathname: paths.ADMIN + paths.POST_CREATE });
   };
 
-  const handleSubmit = (e: any) => {
-    const formData = {
-      title: title,
-      content: model,
-      category: category,
-      postDate: postDate,
-      description: description,
-      sortDescription: sortDescription,
-      backgroundUrl: backgroundUrl,
-      slug: slug,
+  const getAllPost = () => {
+    const body: FindPostBody = {
+      total_result: 20,
+      page: 1,
     };
-
-    dispatch(createPost(formData));
-    e.preventDefault();
+    dispatch(getPostFind(ComponentType.MANAGEMENT_POSTS, body));
   };
 
-  const onPreview = () => {
-    setIsPreview(!isPreview);
+  const handleDelete = (id: number) => {
+    setDeleteId(id);
+    setVisible(true);
   };
 
-  const handleChangeTitle = (e: any) => {
-    setTitle(e.target.value);
+  const handleOk = () => {
+    if (deleteId) {
+      dispatch(deletePostById(deleteId, ComponentType.MANAGEMENT_POSTS));
+    }
+    setVisible(false);
   };
 
-  const handleChangeCategory = (value: [number]) => {
-    setCategory(value);
-  };
-
-  const onChangeDate = (e: any) => {
-    setPostDate(e.target.value);
-  };
-
-  const handleChangeDescription = (e: any) => {
-    setDescription(e.target.value);
-  };
-
-  const handleChangeSortDescription = (e: any) => {
-    setSortDescription(e.target.value);
-  };
-
-  const handleChangeImage = (e: any) => {
-    setBackgroundUrl(e.target.files[0]);
-  };
-
-  const handleChangeSlug = (e: any) => {
-    setSlug(e.target.value);
-  };
-
-  const _renderOption = () => {
-    return <Selects data={categories} onChangeData={handleChangeCategory} />;
-  };
-
-  const _renderPicker = () => {
-    return (
-      <div className={classes.pickerContainer}>
-        <TextField
-          className={classes.pickerTextfield}
-          value={postDate}
-          onChange={onChangeDate}
-          id="date"
-          label={t("POST_SCREEN.post_date")}
-          type="date"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-      </div>
-    );
-  };
-
-  const _renderInput = () => {
-    return (
-      <div style={{ width: "100%" }}>
-        <TextField
-          onChange={handleChangeDescription}
-          fullWidth
-          label="Description"
-          className="mb-2"
-          required
-        />
-        <TextField
-          onChange={handleChangeSortDescription}
-          fullWidth
-          label="Sort description"
-        />
-        <TextField
-          type="file"
-          onChange={handleChangeImage}
-          fullWidth
-          label="Image"
-        />
-        <TextField onChange={handleChangeSlug} fullWidth label="Slug" />
-      </div>
-    );
-  };
-
-  const _renderButton = () => {
-    return (
-      <div className={classes.btnContainer}>
-        <Button onClick={onPreview} variant="contained" color="primary">
-          {isPreview ? t("POST_SCREEN.preview") : "HIDE"}
-        </Button>
-        <Button onClick={handleSubmit} variant="contained" color="secondary">
-          {t("POST_SCREEN.publish")}
-        </Button>
-      </div>
-    );
+  const handleCancel = () => {
+    setVisible(false);
   };
 
   return (
-    <div className="container">
-      <form noValidate>
-        <TextField
-          onChange={handleChangeTitle}
-          fullWidth
-          label={t("ns1:POST_SCREEN.post_title")}
-        />
-        <div className="editor_container">
-          <FroalaEditor
-            onChangeModel={(model: string) => handleModelChange(model)}
-          />
-        </div>
-        <div className={classes.optionContainer}>
-          {_renderOption()}
-          {_renderPicker()}
-          {_renderInput()}
-          {_renderButton()}
-        </div>
-      </form>
-      {isPreview ? <FroalaEditorView model={model} /> : null}
+    <div>
+      <ModalCommon
+        title={txtConstants.deletePost}
+        content={txtConstants.confirm}
+        visible={visible}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+      />
+      <div className="d-flex justify-content-between">
+        <button onClick={handleGoCreate} className={classes.btnCreate}>
+          CREATE POST
+        </button>
+        <button className={classes.btnCreate}>SEARCH</button>
+      </div>
+
+      <table>
+        <tbody>
+          <tr>
+            <td>ID</td>
+            <td>Thumbnail</td>
+            <td>Title</td>
+            <td>Views</td>
+            <td>Status</td>
+            <td>Created</td>
+            <td>Options</td>
+          </tr>
+          {managementPosts.map((item) => (
+            <PostItem key={item.id} item={item} handleDelete={handleDelete} />
+          ))}
+        </tbody>
+        <tbody>
+          <tr>
+            <td>ID</td>
+            <td>Thumbnail</td>
+            <td>Title</td>
+            <td>Views</td>
+            <td>Status</td>
+            <td>Created</td>
+            <td>Options</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  createPost: (formData: any) => dispatch(createPost(formData)),
-});
-
-export default connect(postSelector, mapDispatchToProps)(PostManagement);
+export default PostManagement;

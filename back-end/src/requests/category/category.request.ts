@@ -5,6 +5,7 @@ export class CategoryRequest {
   private _slug: string;
   private _title: string;
   private _color: string;
+  private _background_url: string;
   private _position: number;
   private _isSearchable: number;
   private _isActive: number;
@@ -16,6 +17,7 @@ export class CategoryRequest {
     _slug: string,
     _title: string,
     _color: string,
+    _background_url: string,
     _position: number,
     _isSearchable: number,
     _isActive: number,
@@ -26,6 +28,7 @@ export class CategoryRequest {
     this._slug = _slug;
     this._title = _title;
     this._color = _color;
+    this._background_url = _background_url;
     this._position = _position;
     this._isSearchable = _isSearchable;
     this._isActive = _isActive;
@@ -67,6 +70,15 @@ export class CategoryRequest {
 
   set color(value: string) {
     this._color = value;
+  }
+
+  @ApiProperty()
+  get background_url(): string {
+    return this._background_url;
+  }
+
+  set background_url(value: string) {
+    this._background_url = value;
   }
 
   @ApiProperty()

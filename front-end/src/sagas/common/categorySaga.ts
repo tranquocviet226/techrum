@@ -1,17 +1,16 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
 import { updateListCategory } from "actions/common/categoryAction";
 import { AxiosResponse } from "axios";
-import { DataCategory } from "data";
 import { CategoryApi } from "services/api";
+import { PostApi } from "services/api/admin/postApi";
 import {
   CategoryActionType,
-  CreateCategoryAction
+  CreateCategoryAction,
 } from "types/user/categoryTypes";
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
 import { setNotification } from "actions/common/notificationAction";
 
 function* getListCategorySaga() {
-
   try {
     const response: AxiosResponse<any> = yield call([
       CategoryApi,
@@ -22,35 +21,55 @@ function* getListCategorySaga() {
     if (data) {
       yield put(updateListCategory(data.data));
     } else {
-      yield put(updateListCategory(DataCategory));
     }
-  } catch (e) {
-    yield put(updateListCategory(DataCategory));
-  }
+  } catch (e) {}
 }
 
 function* createCategorySaga(action: CreateCategoryAction) {
   const { category, setErrors } = action;
+  const newFormData = new FormData();
+  newFormData.append("file", category?.background_url);
 
   try {
     const response: AxiosResponse<any> = yield call(
-      [CategoryApi, CategoryApi.create],
-      category
+      [PostApi, PostApi.uploadFile],
+      newFormData
     );
-
-    const data = parseJSON(checkStatusData(response.data));
+    const data = response?.data;
     if (data) {
-      setNotification({ type: "success", message: "Tạo thể loại thành công!" });
-      window.location.reload();
-    } else {
-      yield put(
-        setNotification({ type: "danger", message: data?.errors[0]?.message })
-      );
-      setErrors({ api: data?.errors[0]?.message });
+      const backgroundUrl = data?.link;
+      try {
+        const response: AxiosResponse<any> = yield call(
+          [CategoryApi, CategoryApi.create],
+          category,
+          backgroundUrl
+        );
+
+        const data = parseJSON(checkStatusData(response.data));
+        if (data) {
+          setNotification({
+            type: "success",
+            message: "Tạo thể loại thành công!",
+          });
+          window.location.reload();
+        } else {
+          yield put(
+            setNotification({
+              type: "danger",
+              message: data?.errors[0]?.message,
+            })
+          );
+          setErrors({ api: data?.errors[0]?.message });
+        }
+      } catch (errors) {
+        yield put(
+          setNotification({ type: "danger", message: errors[0]?.message })
+        );
+        setErrors({ api: errors?.message });
+      }
     }
-  } catch (e) {
-     yield put(setNotification({ type: "danger", message: e?.message }));
-    setErrors({ api: e?.message });
+  } catch (error) {
+    yield put(setNotification({ type: "danger", message: error?.message }));
   }
 }
 

@@ -9,7 +9,25 @@ class _PostApi {
       title: formData.title,
       content: formData.content,
       category_id: formData.category,
-      updated_at: formData.postData,
+      updated_at: formData.postDate,
+      description: formData.description,
+      sort_description: formData.sortDescription,
+      background_url: backgroundUrl,
+      background_name: backgroundName,
+      slug: formData.slug,
+      is_active: 1,
+    });
+  update = (
+    id: number,
+    formData: any,
+    backgroundUrl: string,
+    backgroundName: any
+  ) =>
+    instance.put(`/catalog/posts/${id}`, {
+      title: formData.title,
+      content: formData.content,
+      category_id: formData.category,
+      updated_at: formData.postDate,
       description: formData.description,
       sort_description: formData.sortDescription,
       background_url: backgroundUrl,
@@ -36,6 +54,7 @@ class _PostApi {
         ...paramsPost,
       },
     });
+  deletePostById = (id: number) => instance.delete(`/catalog/posts/${id}`);
 }
 
 export const PostApi = new _PostApi();

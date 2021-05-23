@@ -167,7 +167,7 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         code,
         [{ code: -1, message: error.message }],
         undefined,
-      );
+      );  
       return response;
     }
   }

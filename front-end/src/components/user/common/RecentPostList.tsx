@@ -1,6 +1,6 @@
+import { MEDIA_URL } from "constants/index";
 import keys from "constants/key";
 import { Path } from "constants/path";
-import { DataPost } from "data";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Post } from "types/model";
@@ -42,7 +42,7 @@ const PostItem = (props: PostItemProps) => {
   const { post } = props;
   const history = useHistory()
   const id = post?.id || 0
-  const background_url = post?.background_url || "";
+  const background_url = post?.background_url || MEDIA_URL.concat(post?.background_name);
   const categories = post?.categories || [];
   const title = post?.title || "";
   const created_at = post?.created_at || Date.now();
@@ -72,9 +72,9 @@ const PostItem = (props: PostItemProps) => {
           <a
             className="post-cat only-color"
             href=""
-            style={{ color: categories[0].color }}
+            style={{ color: categories && categories.length > 0 ? categories[0].color : "#FFF"}}
           >
-            {categories[0].title}
+            {categories && categories.length > 0 ? categories[0].title : ""}
           </a>
         </span>
         <h4 onClick={handleSelectPost} className="post-title">

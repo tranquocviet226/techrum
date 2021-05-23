@@ -14,9 +14,12 @@ import history from "services/RoutingService";
 import ScrollToTop from "services/ScrollToTop";
 import Notification from "components/common/Notification";
 import { AppState } from "reducers";
+import "antd/dist/antd.css";
 
 const App = () => {
-  const { message, type } = useSelector((state: AppState) => state.notification)
+  const { message, type } = useSelector(
+    (state: AppState) => state.notification
+  );
   useEffect(() => {
     moment.locale("vi");
   }, []);

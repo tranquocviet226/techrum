@@ -30,6 +30,9 @@ export class CategoryEntity extends BaseEntity {
   @Column()
   color: string
 
+  @Column({nullable: true})
+  background_url: string
+
   @TreeParent()
   parent: CategoryEntity;
 

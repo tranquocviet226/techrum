@@ -24,6 +24,7 @@ const CategoryFormik = withFormik<OtherProps, FormValueCategory>({
   mapPropsToValues: () => ({
     parent_id: 0,
     title: "",
+    background_url: "",
     slug: "",
     color: "#000000",
     position: 1,
@@ -32,7 +33,8 @@ const CategoryFormik = withFormik<OtherProps, FormValueCategory>({
   }),
   validationSchema: CategoryFormValidation,
   handleSubmit: (values, { props, setErrors }) => {
-    const { title, slug, color, parent_id } = values;
+    const { title, slug, color, parent_id, background_url } = values;
+
     const newCatgory: Category = {
       id: 1,
       title: title,
@@ -40,7 +42,7 @@ const CategoryFormik = withFormik<OtherProps, FormValueCategory>({
       parent_id: parent_id,
       color: color,
       position: 0,
-      background_image: "",
+      background_url: background_url,
       count: 1,
       is_active: 1,
       sub_category: [],

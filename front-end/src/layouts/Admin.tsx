@@ -16,11 +16,23 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import React, { createRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "types/dashboardAdminRoutes";
+import routes, { childrenRoutes } from "types/dashboardAdminRoutes";
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
+      if (prop.layout === "/admin") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+            exact
+          />
+        );
+      }
+    })}
+    {childrenRoutes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
           <Route
@@ -109,7 +121,6 @@ const Dashboard: React.FC<Props> = (props) => {
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />
-        {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>
             <div className={classes.container}>{switchRoutes}</div>

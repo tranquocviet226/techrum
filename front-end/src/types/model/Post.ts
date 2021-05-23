@@ -7,11 +7,15 @@ interface Post {
   description: string;
   sort_description: string;
   background_url: string;
+  background_name: string;
   redirect_to_url: string;
   categories: Category[];
   author: string;
   created_at: string;
+  updated_at: string;
   views: number;
+  is_active: number;
+  slug: string;
 }
 
 interface ParamsPost {
@@ -35,9 +39,9 @@ interface SortBy {
 }
 
 interface Condition {
-  target: string, // created_at
-  operator: string, // <=
-  value: string
+  target: string; // created_at
+  operator: string; // <=
+  value: string;
 }
 
 export type { Post, ParamsPost, FindPostBody };

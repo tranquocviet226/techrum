@@ -17,6 +17,7 @@ export interface PostState {
   relatedPosts: Post[];
   dontMissPosts: Post[];
   categoryDetailPosts: Post[];
+  managementPosts: Post[];
 }
 
 export enum PostActionType {
@@ -27,6 +28,9 @@ export enum PostActionType {
   UPDATE_POSTS = "UPDATE_POSTS",
   RESET_POSTS = "RESET_POSTS",
   SET_POST_DETAIL = "SET_POST_DETAIL",
+  DELETE_POST_BY_ID = "DELETE POST BY ID",
+  UPDATE_POST_DELETE = "UPDATE POST DELETE",
+  UPDATE_POST_BY_ID = "UPDATE POST BY ID",
 }
 
 export interface CreatePostAction extends Action {
@@ -42,6 +46,12 @@ export interface UploadFileAction extends Action {
 export interface GetPostsByIDAction extends Action {
   type: PostActionType.GET_POSTS_BY_ID;
   id: number;
+}
+
+export interface UpdatePostByIdAction extends Action {
+  type: PostActionType.UPDATE_POST_BY_ID;
+  id: number;
+  formData: any
 }
 
 export interface GetPostsByCategoryAction extends Action {
@@ -66,6 +76,18 @@ export interface SetPostDetailAction extends Action {
   post: Post;
 }
 
+export interface DeletePostByIdAction extends Action {
+  type: PostActionType.DELETE_POST_BY_ID;
+  componentType: ComponentType;
+  id: number;
+}
+
+export interface UpdatePostDeleteAction extends Action {
+  type: PostActionType.UPDATE_POST_DELETE;
+  componentType: ComponentType;
+  id: number;
+}
+
 export type PostActionTypes =
   | CreatePostAction
   | UploadFileAction
@@ -73,4 +95,7 @@ export type PostActionTypes =
   | GetPostsByCategoryAction
   | ResetPostsAction
   | SetPostDetailAction
-  | UpdatePostsAction;
+  | UpdatePostsAction
+  | DeletePostByIdAction
+  | UpdatePostDeleteAction
+  | UpdatePostByIdAction;
