@@ -4,6 +4,7 @@ import { all, call, put, takeEvery } from "redux-saga/effects";
 import { PostApiUser } from "services/api/user/postApiUser";
 import { FindPostAction, PostActionTypeUser } from "types/user/postTypes";
 import { checkStatusData, parseJSON } from "utils/request";
+import { setNotification } from "actions/common/notificationAction";
 
 function* getPostFindSaga(action: FindPostAction) {
   const { componentType, body } = action;
@@ -18,6 +19,7 @@ function* getPostFindSaga(action: FindPostAction) {
       yield put(updatePosts(componentType, data));
     }
   } catch (error) {
+     yield put(setNotification({ type: "danger", message: error.message }));
     console.log("err", error);
   }
 }

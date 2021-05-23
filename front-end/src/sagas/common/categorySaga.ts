@@ -8,6 +8,7 @@ import {
   CreateCategoryAction
 } from "types/user/categoryTypes";
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
+import { setNotification } from "actions/common/notificationAction";
 
 function* getListCategorySaga() {
 
@@ -39,11 +40,16 @@ function* createCategorySaga(action: CreateCategoryAction) {
 
     const data = parseJSON(checkStatusData(response.data));
     if (data) {
+      setNotification({ type: "success", message: "Tạo thể loại thành công!" });
       window.location.reload();
     } else {
+      yield put(
+        setNotification({ type: "danger", message: data?.errors[0]?.message })
+      );
       setErrors({ api: data?.errors[0]?.message });
     }
   } catch (e) {
+     yield put(setNotification({ type: "danger", message: e?.message }));
     setErrors({ api: e?.message });
   }
 }

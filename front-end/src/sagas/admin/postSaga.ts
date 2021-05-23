@@ -10,6 +10,7 @@ import { takeLatest, all, put, call, takeEvery } from "redux-saga/effects";
 import { checkStatusData, parseJSON } from "utils/request";
 import { setPostDetail, updatePosts } from "actions/admin/postAction";
 import { setLoading } from "actions/common/commonAction";
+import { setNotification } from "actions/common/notificationAction";
 
 function* createPostSaga(action: CreatePostAction) {
   const { formData } = action;
@@ -33,15 +34,23 @@ function* createPostSaga(action: CreatePostAction) {
         );
         const data = parseJSON(checkStatusData(response.data));
         if (data) {
+           yield put(
+             setNotification({ type: "success", message: "Đăng bài thành công!" })
+           );
           window.location.reload();
         }
       } catch (error) {
+        yield put(setNotification({ type: "danger", message: error?.message }));
         console.log(error);
       }
     } else {
+         yield put(
+           setNotification({ type: "danger", message: "Không có hình hoặc đăng hình bị lỗi!"})
+         );
       console.log("EROP");
     }
   } catch (e) {
+      yield put(setNotification({ type: "danger", message: e.message }));
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
   }
@@ -59,6 +68,7 @@ function* getPostsById(action: GetPostsByIDAction) {
       yield put(setPostDetail(data));
     }
   } catch (e) {
+      yield put(setNotification({ type: "danger", message: e?.message }));
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
   } finally {
@@ -77,6 +87,7 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
       yield put(updatePosts(action.componentType, data));
     }
   } catch (e) {
+    yield put(setNotification({ type: "danger", message: e?.message }));
     // errors by server response, setErrors of formik
     console.log("ERROR", e.message);
   } finally {
