@@ -16,6 +16,7 @@ interface OtherProps {
   ) => void;
   validForm: boolean;
   resetValid: () => void;
+  handleClose: () => void;
   categories: Category[];
 }
 

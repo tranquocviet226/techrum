@@ -6,6 +6,7 @@ import { CategoryRequest } from '@requests/category/category.request';
 import { CategoryResponse } from '@response/category/category.response';
 import { BaseService } from '@services/base.service';
 import { CategoryFactoryService } from '@services/category/category.factory.service';
+import { deleteFileFs } from '@utils/function';
 import { validate } from 'class-validator';
 import { getTreeRepository } from 'typeorm';
 
@@ -117,17 +118,15 @@ export class CategoryService extends BaseService<
     categoryRequest: CategoryRequest,
   ): Promise<CategoryResponse> {
     try {
-      const dataCategory = await this.categoryFactoryService.createCategoryTree(
-        categoryRequest,
-      );
+      const note = await this.repository.findOne(id);
+      note.title = categoryRequest?.title ? categoryRequest?.title : note.title;
+      note.slug = categoryRequest?.slug ? categoryRequest?.slug : note.slug;
+      note.color = categoryRequest?.color ? categoryRequest?.color : note.color;
+      note.background_url = categoryRequest?.background_url
+        ? categoryRequest?.background_url
+        : note.background_url;
 
-      await this.repository
-        .createQueryBuilder()
-        .update('categories')
-        .set(dataCategory)
-        .where('id = :id', { id: id })
-        .execute();
-
+      await this.repository.update(id, note);
       const response = new CategoryResponse(true, 200, undefined, {
         message: 'Update category success!',
       });
@@ -151,14 +150,15 @@ export class CategoryService extends BaseService<
         CategoryEntity,
       ).findDescendants(category);
 
-      const idChildren: number[] = [];
+      const idChildren: any[] = [];
       childrenTree.map(item => {
-        idChildren.push(item.id);
+        idChildren.push({ id: item.id, background_url: item.background_url });
       });
 
-      childrenTree
-        .reverse()
-        .map(async item => await this.repository.delete(item));
+      childrenTree.reverse().map(async item => {
+        await this.repository.delete(item.id);
+        deleteFileFs(item.background_url)
+      });
 
       const response = new CategoryResponse(true, 200, undefined, {
         message: 'Delete Category tree success!',

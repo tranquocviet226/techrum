@@ -467,7 +467,7 @@ img.pull-right {
   letter-spacing: 0.64px;
   color: #fc4a00;
   line-height: 25px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
 }
@@ -3540,6 +3540,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   color: #fc4a00;
   background: transparent;
   border: none;
+  font-weight: 700;
 }
 .featured-tab-item .nav-tabs .nav-link.active:before {
   position: absolute;
@@ -3555,6 +3556,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
 }
 .featured-tab-item .nav-tabs .nav-link .tab-head > span.tab-text-title {
   font-size: 17px;
+  font-weight: 700;
 }
 .featured-tab-item .tab-content {
   border-top: 0;
@@ -4000,7 +4002,7 @@ article.tag-html.tag-layout.tag-title .post-title a {
   text-transform: uppercase;
   color: #999;
   line-height: 30px;
-  font-weight: 800;
+  font-weight: 700;
   position: relative;
   display: block;
   letter-spacing: 0.64px;

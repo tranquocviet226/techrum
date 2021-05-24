@@ -1,7 +1,7 @@
 import txtConstants from "constants/index";
 import FeatureTabNews from "containers/user/FeatureTabNewsContainer";
 import TabContentNews from "containers/user/TabContentNewsContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NewsContent = () => {
   const [contentId, setContentId] = useState<number>(1);
@@ -9,6 +9,7 @@ const NewsContent = () => {
   const handleSelectCategory = (id: number) => {
     setContentId(id);
   };
+
   return (
     <div
       className="elementor-element elementor-element-7fc4cdd4 elementor-widget elementor-widget-newszone-post-tab"

@@ -70,7 +70,7 @@ const HomePage: React.FC<Props> = (props) => {
   const getListPostByCategorySecond = () => {
     const body: FindPostBody = {
       total_result: 5,
-      category_id: categories && categories?.length > 0 ? categories[1].id : 0,
+      category_id: categories && categories?.length > 1 ? categories[1].id : 0,
       sort_by: {
         target: "views",
         order: "DESC",

@@ -5,6 +5,7 @@ import { PostRepository } from '@repository/post.repository';
 import { PostBody, PostParams, PostRequest } from '@requests/index';
 import { PostResponse } from '@response/post/post.response';
 import { BaseService } from '@services/base.service';
+import { deleteFileFs } from '@utils/function';
 import { PostFactoryService } from './post.factory.service';
 
 @Injectable()
@@ -167,7 +168,7 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
         code,
         [{ code: -1, message: error.message }],
         undefined,
-      );  
+      );
       return response;
     }
   }
@@ -209,6 +210,8 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
   async deleteOne(id: string): Promise<PostResponse> {
     const code = HttpStatus.FORBIDDEN;
     try {
+      const post = await this.repository.findOne(id);
+      deleteFileFs(post.background_url);
       const deleteResult = await this.repository.delete(id);
       if (deleteResult.affected > 0) {
         const response = new PostResponse(
