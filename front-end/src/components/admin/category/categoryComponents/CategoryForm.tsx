@@ -13,6 +13,7 @@ type Props = {
   validForm: boolean;
   resetValid: () => void;
   categories: Category[];
+  handleClose: () => void;
 };
 
 export interface FormValueCategory {
@@ -36,6 +37,7 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
     handleChange,
     setFieldValue,
     handleSubmit,
+    handleClose,
     resetValid,
     categories,
   } = props;
@@ -62,7 +64,9 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
           <TextField
             type="file"
             name="background_url"
-            onChange={(e: any) => setFieldValue("background_url", e.currentTarget.files[0])}
+            onChange={(e: any) =>
+              setFieldValue("background_url", e.currentTarget.files[0])
+            }
             fullWidth
             label="Image"
           />
@@ -117,7 +121,7 @@ const CategoryForm = (props: Props & FormikProps<FormValueCategory>) => {
           <button type="submit" onClick={resetValid} className="login">
             Save
           </button>
-          <button type="reset" className="login">
+          <button onClick={handleClose} type="reset" className="login">
             Cancel
           </button>
         </div>

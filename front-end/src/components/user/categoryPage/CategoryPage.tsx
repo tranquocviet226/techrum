@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { ComponentType } from "types/common/componentTypes";
 import { Post } from "types/model";
-import colors from "utils/colors";
 import styles from "utils/styles";
 import CategoryItem from "./categoryComponents/CategoryItem";
 

@@ -89,6 +89,7 @@ const PostManagement: React.FC<Props> = (props) => {
             <td>ID</td>
             <td>Thumbnail</td>
             <td>Title</td>
+            <td>Categories</td>
             <td>Views</td>
             <td>Status</td>
             <td>Created</td>
@@ -103,6 +104,7 @@ const PostManagement: React.FC<Props> = (props) => {
             <td>ID</td>
             <td>Thumbnail</td>
             <td>Title</td>
+            <td>Categories</td>
             <td>Views</td>
             <td>Status</td>
             <td>Created</td>

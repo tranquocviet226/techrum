@@ -6,6 +6,8 @@ import {
   CreateCategoryAction,
   GetCategoriesAction,
   UpdateListCategoryAction,
+  UpdateCategoryByIdAction,
+  DeleteCategoryByIdAction,
 } from "types/user/categoryTypes";
 
 export const getListCategory = (): GetCategoriesAction => ({
@@ -26,4 +28,20 @@ export const createCategory = (
   type: CategoryActionType.CREATE,
   category: category,
   setErrors,
+});
+
+export const updateCategoryById = (
+  id: number,
+  formData: any
+): UpdateCategoryByIdAction => ({
+  type: CategoryActionType.UPDATE_BY_ID,
+  id: id,
+  formData: formData,
+});
+
+export const deleteCategoryById = (
+  id: number,
+): DeleteCategoryByIdAction => ({
+  type: CategoryActionType.DELETE_BY_ID,
+  id: id,
 });

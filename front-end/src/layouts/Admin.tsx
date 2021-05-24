@@ -92,7 +92,7 @@ const Dashboard: React.FC<Props> = (props) => {
         setMobileOpen(false);
       }
     }
-  });
+  }, []);
 
   useEffect(() => {
     getCategories();

@@ -14,6 +14,16 @@ class _CategoryApi {
       is_active: category.is_active,
       is_searchable: 1,
     });
+  update = (id: number, category: Category, background_url: string) =>
+    instance.put(`/catalog/categories/${id}`, {
+      title: category.title,
+      background_url: background_url,
+      slug: category.slug,
+      color: category.color,
+      position: category.position,
+      is_active: category.is_active,
+    });
+  delete = (id: number) => instance.delete(`/catalog/categories/${id}`);
 }
 
 export const CategoryApi = new _CategoryApi();

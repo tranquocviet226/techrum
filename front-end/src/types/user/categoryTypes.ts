@@ -11,6 +11,8 @@ export enum CategoryActionType {
   GET_LIST = "GET LIST CATEGORY",
   UPDATE_LIST = "UPDATE LIST CATEGORY",
   CREATE = "CREATE CATEGORY",
+  UPDATE_BY_ID = "UPDATE BY ID",
+  DELETE_BY_ID = "DELETE BY ID",
 }
 export interface GetCategoriesAction extends Action {
   type: CategoryActionType.GET_LIST;
@@ -27,7 +29,20 @@ export interface CreateCategoryAction extends Action {
   setErrors: (errors: FormikErrors<FormValueCategory>) => void;
 }
 
+export interface UpdateCategoryByIdAction extends Action {
+  type: CategoryActionType.UPDATE_BY_ID;
+  id: number;
+  formData: any;
+}
+
+export interface DeleteCategoryByIdAction extends Action {
+  type: CategoryActionType.DELETE_BY_ID;
+  id: number;
+}
+
 export type CategoryActionTypes =
   | GetCategoriesAction
   | UpdateListCategoryAction
-  | CreateCategoryAction;
+  | CreateCategoryAction
+  | UpdateCategoryByIdAction
+  | DeleteCategoryByIdAction;

@@ -107,6 +107,12 @@ function* deletePostById(action: DeletePostByIdAction) {
     );
     const data = parseJSON(checkStatusData(response.data));
     if (data) {
+      yield put(
+        setNotification({
+          type: "success",
+          message: "Xóa bài viết thành công!",
+        })
+      );
       yield put(updatePostDelete(action.id, action.componentType));
     }
   } catch (e) {

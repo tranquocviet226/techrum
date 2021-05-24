@@ -48,6 +48,19 @@ const useStyles = makeStyles({
     fontSize: 20,
     cursor: "pointer",
   },
+  category: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 50,
+    height: 20,
+    color: "#fff",
+    borderRadius: 4,
+    fontSize: 10,
+    padding: 4,
+    margin: 4,
+    fontWeight: 600,
+  },
 });
 
 type ItemProps = {
@@ -62,6 +75,7 @@ const PostItem: React.FC<ItemProps> = (props) => {
   const ID = item?.id;
   const [thumbnail, setThumbnail] = useState(item?.background_url);
   const title = item?.title || "";
+  const categories = item?.categories || [];
   const views = item?.views || 0;
   const updated_at = item?.updated_at || "";
   const is_active = item?.is_active || "";
@@ -85,6 +99,19 @@ const PostItem: React.FC<ItemProps> = (props) => {
         />
       </td>
       <td>{title}</td>
+      <td>
+        {categories.map((it) => (
+          <div
+            key={it.id}
+            className={classes.category}
+            style={{
+              backgroundColor: it.color,
+            }}
+          >
+            {it.title}
+          </div>
+        ))}
+      </td>
       <td>{views}</td>
       <td>
         <div

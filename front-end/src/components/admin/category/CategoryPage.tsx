@@ -8,6 +8,11 @@ import { useDispatch } from "react-redux";
 import { Category } from "types/model";
 import { Input, Select, Button } from "antd";
 import "./CategoryPage.css";
+import {
+  deleteCategoryById,
+  updateCategoryById,
+} from "actions/common/categoryAction";
+import ModalCommon from "../common/Modal/ModalCommon";
 
 const styles = makeStyles({
   container: {
@@ -41,6 +46,9 @@ const styles = makeStyles({
     display: "flex",
     justifyContent: "center",
   },
+  btnSave: {
+    marginRight: 30,
+  },
 });
 
 type Props = {
@@ -59,8 +67,10 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
   const [slug, setSlug] = useState<string>("");
   const [subCategory, setSubCategory] = useState<any[]>([]);
   const [color, setColor] = useState<string>("");
-  const [backgroundUrl, setBackgroundUrl] = useState<any>();
+  const [backgroundUrl, setBackgroundUrl] = useState<string>();
+  const [backgroundImageFile, setBackgroundImageFile] = useState<any>();
   const [children, setChildren] = useState<any[]>([]);
+  const [isShowModalConfirm, setIsShowModalConfirm] = useState<boolean>(false);
 
   useEffect(() => {
     if (categorySelected) {
@@ -104,6 +114,7 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
 
   const handleSelectCategory = (item: Category) => {
     setCategorySelected(item);
+    setBackgroundImageFile(undefined);
   };
 
   const handleChangeTitle = (e: any) => {
@@ -116,20 +127,29 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
     setColor(e.target.value);
   };
   const handleChangeImage = (e: any) => {
-    setBackgroundUrl(e.target.files[0]);
+    setBackgroundUrl(URL.createObjectURL(e.target.files[0]));
+    setBackgroundImageFile(e.target.files[0]);
   };
   const handleChangeSubCategory = (e: any) => {
     setSubCategory(e);
   };
 
   const handleSubmitUpdate = () => {
-    const formData = {
-      title: title,
-      slug: slug,
-      color: color,
-      backgroundUrl: backgroundUrl,
-    };
-    console.log(formData);
+    if (categorySelected) {
+      const formData = {
+        title: title,
+        slug: slug,
+        color: color,
+        backgroundImageFile: backgroundImageFile,
+      };
+      dispatch(updateCategoryById(categorySelected?.id, formData));
+    }
+  };
+
+  const handleDelete = () => {
+    if (categorySelected) {
+      dispatch(deleteCategoryById(categorySelected?.id));
+    }
   };
 
   const _renderTree = (data: Category[]) => {
@@ -177,10 +197,23 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
             <CategoryFormContainer
               validForm={validForm}
               resetValid={resetValid}
+              handleClose={() => dispatch(setShowModal(false))}
             />
           </div>
         </div>
       </div>
+    );
+  };
+
+  const _renderModalConfirm = () => {
+    return (
+      <ModalCommon
+        visible={isShowModalConfirm}
+        handleOk={handleDelete}
+        handleCancel={() => setIsShowModalConfirm(false)}
+        title={"Xóa danh mục"}
+        content={"Bạn có chắc chắn muốn xóa danh mục này không?"}
+      />
     );
   };
 
@@ -221,8 +254,20 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
           </div>
         </div>
         <div className={classes.btnSaveContainer}>
-          <Button onClick={handleSubmitUpdate} type="primary">
-            SAVE
+          <Button
+            type="primary"
+            onClick={handleSubmitUpdate}
+            className={classes.btnSave}
+          >
+            Save
+          </Button>
+
+          <Button
+            onClick={() => setIsShowModalConfirm(true)}
+            danger
+            type="primary"
+          >
+            Delete
           </Button>
         </div>
       </div>
@@ -233,6 +278,7 @@ const CategoryPage = ({ categories, isShowModal }: Props) => {
     <div>
       {isShowModal ? _renderModal() : null}
       <div className="d-flex justify-content-between">
+        {_renderModalConfirm()}
         <div></div>
         <Button onClick={openModal} type="primary">
           ADD
