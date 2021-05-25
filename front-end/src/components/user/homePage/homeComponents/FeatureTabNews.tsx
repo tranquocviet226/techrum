@@ -16,13 +16,18 @@ const FeatureTabNews = ({ selectCategory, categories }: Props) => {
 
   const onSelectCategory = (id: number) => {
     setActiveId(id);
-    selectCategory(id);
   };
+
+  useEffect(() => {
+    if (activeId) {
+      selectCategory(activeId);
+    }
+  }, [activeId]);
+  
   useEffect(() => {
     if (categories && categories.length > 0) {
       const randomCategory = getRandomCategory();
       setActiveId(randomCategory.id);
-      selectCategory(randomCategory.id);
     }
   }, [categories]);
 
