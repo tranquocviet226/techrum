@@ -1,12 +1,13 @@
 import txtConstants from "constants/index";
 import FeatureTabNews from "containers/user/FeatureTabNewsContainer";
 import TabContentNews from "containers/user/TabContentNewsContainer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const NewsContent = () => {
   const [contentId, setContentId] = useState<number>(1);
 
   const handleSelectCategory = (id: number) => {
+    console.log('id', id)
     setContentId(id);
   };
 

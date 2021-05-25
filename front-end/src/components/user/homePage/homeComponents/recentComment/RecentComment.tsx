@@ -34,8 +34,8 @@ const RecentComment = () => {
           >
             <div className="elementor-widget-container">
               <div className="ts-author-comments">
-                <CommentItem />
-                <CommentItem />
+                {/* <CommentItem />
+                <CommentItem /> */}
               </div>
             </div>
           </div>

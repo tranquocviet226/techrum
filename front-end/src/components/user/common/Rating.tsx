@@ -59,6 +59,12 @@ const TabRatingCategory = (props: FeatureTabProps) => {
     }
   }, [randomCategory]);
 
+  useEffect(() => {
+    if (activeId) {
+      selectCategory(activeId);
+    }
+  }, [activeId]);
+
   const getRandomListCategory = (categories: Category[]) => {
     let newArray = [...categories];
     const shuffled = newArray.sort(() => Math.random() - 0.5);
@@ -68,7 +74,6 @@ const TabRatingCategory = (props: FeatureTabProps) => {
 
   const onSelectCategory = (id: number) => {
     setActiveId(id);
-    selectCategory(id);
   };
 
   return (
