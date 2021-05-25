@@ -12,7 +12,7 @@ const SlickItem = ({ item, onSelectPost }: Props) => {
   const categories = item?.categories || [];
   const title = item?.title || "";
   const author = item?.author || txtConstants.rootAuthor;
-  const created_at = item?.created_at || Date.now();
+  const updated_at = item?.updated_at || Date.now();
   const views = item?.views || 0;
 
   return (
@@ -50,7 +50,7 @@ const SlickItem = ({ item, onSelectPost }: Props) => {
               <li>
                 <div className="txt_clip">
                   <i className="far fa-clock" />
-                  <a> {formatDate(created_at)}</a>
+                  <a> {formatDate(updated_at)}</a>
                 </div>
               </li>
               <li className="active">
