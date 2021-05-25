@@ -6,9 +6,9 @@ type Props = {
 
 const CategoryItem: React.FC<Props> = (props) => {
   const { item } = props;
-  const id = item?.id || 1;
   const color = item?.color || "";
   const title = item?.title || "";
+  
   return (
     <a
       className="post-cat cur-po"

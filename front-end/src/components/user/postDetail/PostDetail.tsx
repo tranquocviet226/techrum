@@ -32,7 +32,7 @@ const PostDetail: React.FC<Props> = (props) => {
   const categories = postDetail?.categories || [];
   const firstCategory = categories?.length > 0 ? categories[0] : undefined;
   const author = postDetail?.author || "admin";
-  const createdAt = postDetail?.created_at || Date.now();
+  const updated_at = postDetail?.updated_at || Date.now();
   const content = postDetail?.content || "";
 
   // Save recent post to localstorage
@@ -112,7 +112,7 @@ const PostDetail: React.FC<Props> = (props) => {
           </li>
           <li className="post-meta-date">
             <i className="far fa-clock" />
-            {moment(createdAt).format("L")}
+            {moment(updated_at).format("L")}
           </li>
           <li className="post-comment">
             <i className="fa fa-comments" />
