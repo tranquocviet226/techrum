@@ -165,11 +165,26 @@ const PostDetail: React.FC<Props> = (props) => {
                 {/* Article header */}
                 {_renderHeader()}
                 <div className="post-body clearfix">
-                  <div className="entry-content clearfix">
+                  <div
+                    className="entry-content clearfix"
+                    style={{ position: "relative" }}
+                  >
                     <FroalaEditorView
                       model={content}
                       config={{ attribution: false }}
                     />
+                    <div
+                      style={{
+                        width: "100%",
+                        height: 100,
+                        backgroundColor: "#FFF",
+                        position: "absolute",
+                        bottom: 3,
+                        left: 0,
+                        zIndex: 100,
+                        margin: 0,
+                      }}
+                    ></div>
                   </div>
                 </div>
               </article>
