@@ -1,3 +1,4 @@
+import PostCreate from "components/user/postManagement/PostCreate";
 import { Path } from "constants/path";
 import CategoryPageContainer from "containers/user/CategoryPageContainer";
 import HomePageContainer from "containers/user/HomePageContainer";
@@ -20,6 +21,12 @@ const dashboardRoutes = [
     path: Path.CATEGORY.concat("/:id"),
     name: "Category",
     component: CategoryPageContainer,
+    layout: "/",
+  },
+  {
+    path: Path.PUBLISH_POST,
+    name: "Publish Post",
+    component: PostCreate,
     layout: "/",
   },
 ];

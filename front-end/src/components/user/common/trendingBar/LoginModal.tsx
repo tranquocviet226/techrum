@@ -34,6 +34,7 @@ const LoginModal: React.FC<Props> = (props) => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
+  
   return (
     <Modal
       title="Đăng nhập"
