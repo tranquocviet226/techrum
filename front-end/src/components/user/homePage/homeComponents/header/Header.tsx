@@ -112,9 +112,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
               </li>
             ))}
           </ul>
-
         </a>
-
       ))}
 
       <a onClick={handleShowHeader} className="icon">
@@ -124,41 +122,42 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <ul className="social-link">
         <li className="">
           <a target="_blank" title="facebook" href="#">
-            <span className="social-icon1">  <i className="fab fa-facebook-f"></i> </span>
+            <span className="social-icon1">
+              <i className="fab fa-facebook-f"></i>{" "}
+            </span>
           </a>
         </li>
         <li className="">
           <a target="_blank" title="Twitter" href="#">
-            <span className="social-icon1">  <i className="fab fa-twitter"></i> </span>
+            <span className="social-icon1">
+              <i className="fab fa-twitter"></i>{" "}
+            </span>
           </a>
         </li>
         <li className="">
           <a target="_blank" title="Instrgram" href="#">
-            <span className="social-icon1">  <i className="fab fa-instagram"></i> </span>
+            <span className="social-icon1">
+              <i className="fab fa-instagram"></i>{" "}
+            </span>
           </a>
         </li>
         <li className="">
           <a target="_blank" title="Linkedin" href="#">
-            <span className="social-icon1">  
-            <i className="fab fa-linkedin-in"></i> </span>
+            <span className="social-icon1">
+              <i className="fab fa-linkedin-in"></i>{" "}
+            </span>
           </a>
         </li>
       </ul>
-      {/* end social-link */}
-
-      {/* search */}
       <div className="nav-search">
-        
-          <a target="_blank" title="Twitter" href="#" className="search-nav">
-            <span className="social-icon1">
+        <a target="_blank" title="Twitter" href="#" className="search-nav">
+          <span className="social-icon1">
             <i className="fas fa-search"></i>
-                 </span>
-          </a>
-      
+          </span>
+        </a>
       </div>
     </header>
   );
-
 };
 
 export default Header;

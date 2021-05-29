@@ -1,19 +1,21 @@
-import { takeLatest, all, put, call } from "redux-saga/effects";
+import { clearAuth, login, updateAuth } from "actions/admin/authAction";
+import { setLoading } from "actions/common/commonAction";
+import { setNotification } from "actions/common/notificationAction";
+import { AxiosResponse } from "axios";
+import { all, call, put, takeLatest } from "redux-saga/effects";
+import { AuthApi } from "services/api";
 import history from "services/RoutingService";
-import { updateAuth, clearAuth, login } from "actions/admin/authAction";
 import {
   AuthActionType,
   SignInAction,
-  SignUpAction,
+  SignUpAction
 } from "types/admin/authTypes";
-import { AuthApi } from "services/api";
-import { AxiosResponse } from "axios";
 import { checkStatus, checkStatusData, parseJSON } from "utils/request";
-import { setNotification } from "actions/common/notificationAction";
 
 function* signInSaga(action: SignInAction) {
   const { username, password, setErrors } = action;
   try {
+    yield put(setLoading(true));
     const response: AxiosResponse<any> = yield call([AuthApi, AuthApi.signIn], {
       username,
       password,
@@ -28,6 +30,7 @@ function* signInSaga(action: SignInAction) {
         })
       );
       setErrors({ api: "" });
+      yield put(setLoading(false));
     } else {
       yield put(
         setNotification({
@@ -35,6 +38,7 @@ function* signInSaga(action: SignInAction) {
           message: "Email hoặc mật khẩu không đúng!",
         })
       );
+      yield put(setLoading(false));
       setErrors({ api: response.statusText });
     }
   } catch (e) {
@@ -44,6 +48,7 @@ function* signInSaga(action: SignInAction) {
         message: "Email hoặc mật khẩu không đúng!",
       })
     );
+    yield put(setLoading(false));
     setErrors({ api: e.errors[0].message });
   }
 }
@@ -51,6 +56,7 @@ function* signInSaga(action: SignInAction) {
 function* signUpSaga(action: SignUpAction) {
   const { user, setErrors, toggle } = action;
   try {
+    yield put(setLoading(true));
     const response: AxiosResponse<any> = yield call(
       [AuthApi, AuthApi.signUp],
       user
@@ -70,6 +76,7 @@ function* signUpSaga(action: SignUpAction) {
       );
       setErrors({ api: "" });
       toggle();
+      yield put(setLoading(false));
     } else {
       yield put(
         setNotification({
@@ -78,6 +85,7 @@ function* signUpSaga(action: SignUpAction) {
         })
       );
       setErrors({ api: response.statusText });
+      yield put(setLoading(false));
     }
   } catch (e) {
     yield put(
@@ -87,6 +95,7 @@ function* signUpSaga(action: SignUpAction) {
       })
     );
     setErrors({ api: e?.message });
+    yield put(setLoading(false));
   }
 }
 
