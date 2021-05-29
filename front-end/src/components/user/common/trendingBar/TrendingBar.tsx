@@ -6,6 +6,8 @@ import RegisterModal from "./RegisterModal";
 import { Menu, Dropdown } from "antd";
 import { FormOutlined, UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import { logout } from "actions/admin/authAction";
+import { useHistory } from "react-router";
+import { Path } from "constants/path";
 
 type Props = {
   email?: string;
@@ -14,6 +16,7 @@ type Props = {
 const TrendingBar: React.FC<Props> = (props) => {
   const { email } = props;
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSwitchLogin, setIsSwitchLogin] = useState(true);
@@ -32,6 +35,10 @@ const TrendingBar: React.FC<Props> = (props) => {
 
   const handleLogout = () => {
     dispatch(logout());
+  };
+
+  const handleGoPublishPost = () => {
+    history.push({ pathname: Path.PUBLISH_POST });
   };
 
   const _renderLoginModal = () => {
@@ -65,7 +72,7 @@ const TrendingBar: React.FC<Props> = (props) => {
       }}
     >
       <Menu.Item icon={<UserOutlined />}>{txtConstants.profile}</Menu.Item>
-      <Menu.Item icon={<FormOutlined />}>{txtConstants.createPost}</Menu.Item>
+      <Menu.Item onClick={handleGoPublishPost} icon={<FormOutlined />}>{txtConstants.createPost}</Menu.Item>
       <Menu.Item onClick={handleLogout} icon={<LogoutOutlined />} danger>
         {txtConstants.logout}
       </Menu.Item>

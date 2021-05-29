@@ -6,13 +6,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { Category } from "types/model";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: "100%",
+    backgroundColor: "#FFF",
   },
   chips: {
     display: "flex",
@@ -79,7 +79,12 @@ export default function MultipleSelect({
 
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel id="demo-mutiple-chip-label">Category</InputLabel>
+      <InputLabel
+        id="demo-mutiple-chip-label"
+        style={{ marginLeft: 8, fontSize: 14, marginTop: 0 }}
+      >
+        Category
+      </InputLabel>
       <Select
         labelId="demo-mutiple-chip-label"
         id="demo-mutiple-chip"
