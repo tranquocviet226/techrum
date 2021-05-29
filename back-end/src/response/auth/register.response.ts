@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { BaseError, BaseResponse } from '@response/base.response';
+import { BaseResponse } from '@response/base.response';
 
-export class RegisterResponse extends BaseResponse<string>{}
+export class RegisterResponse extends BaseResponse<string> {}

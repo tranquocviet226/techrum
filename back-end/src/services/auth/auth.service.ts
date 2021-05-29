@@ -5,21 +5,22 @@ import { LoginResponse } from '@response/auth/login.response';
 import { RegisterResponse } from '@response/auth/register.response';
 import { TokenFactoryService } from '@services/auth/token.factory.service';
 import { AUTH_TYPE } from '@utils/constant';
-import { UserService } from './user.service';
+import { Response } from 'express';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UserService,
     private readonly tokenFactoryService: TokenFactoryService,
-    private readonly configService: ConfigService,
   ) {}
-  async login(email: string, password: string): Promise<LoginResponse> {
+  async login(email: string, password: string, response: Response): Promise<LoginResponse> {
     const user = await this.tokenFactoryService.validateUser(email, password);
     const {
       accessToken,
       expiresIn,
     } = await this.tokenFactoryService.generateJwtToken(user);
+    response.cookie('jwt', accessToken, {httpOnly: true})
     return new LoginResponse(true, 200, undefined, {
       access_token: accessToken,
       expires_in: expiresIn,

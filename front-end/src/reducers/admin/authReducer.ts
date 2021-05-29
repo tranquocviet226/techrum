@@ -20,6 +20,7 @@ const auth = (
         ...state,
         email: action.email,
         isAuth: action.isAuth,
+        accessToken: action.accessToken
       };
     case AuthActionType.CLEAR_AUTH:
       return { ...initialState };
