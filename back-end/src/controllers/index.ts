@@ -1,7 +1,8 @@
 //export controller
-import { AuthController } from './auth.controller';
-import { CategoryController } from './category.controller';
-import { PostController } from './post.controller';
+import { AuthController } from './auth/auth.controller';
+import { CategoryController } from './category/category.controller';
+import { PostController } from './post/post.controller';
+import { RoleController } from './role/role.controller';
 import { UploadController } from './upload.controller';
 
 export default [
@@ -9,4 +10,5 @@ export default [
   CategoryController,
   PostController,
   UploadController,
+  RoleController
 ];

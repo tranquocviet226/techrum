@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from '@controllers/auth/jwt.guard';
 import {
   Body,
   Controller,
@@ -6,6 +7,7 @@ import {
   Post,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CategoryRequest } from '@requests/category/category.request';
@@ -29,6 +31,7 @@ export class CategoryController {
     return this.categoryService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('')
   @ApiOkResponse({
     status: 200,
@@ -51,6 +54,7 @@ export class CategoryController {
     return this.categoryService.findOne(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   @ApiOkResponse({
     status: 200,
@@ -65,6 +69,7 @@ export class CategoryController {
     return this.categoryService.findOneAndupdate(id, categoryRequest);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @ApiOkResponse({
     status: 200,

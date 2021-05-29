@@ -37,7 +37,6 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log("error",error);
     if (!error.response)
       throw Object.assign({
         error_code: ERROR_CODES.uncaught,

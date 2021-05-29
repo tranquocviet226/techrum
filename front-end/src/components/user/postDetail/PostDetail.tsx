@@ -10,11 +10,11 @@ import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Post } from "types/model";
-import colors from "utils/colors";
 import { upsert } from "utils/function";
 import { getLocalStorage, setLocalStorage } from "utils/localStorage";
 import styles from "utils/styles";
 import CommentComponent from "./postComponents/CommentComponent";
+import "./styles.css"
 
 type Props = {
   postDetail: Post;
@@ -174,16 +174,7 @@ const PostDetail: React.FC<Props> = (props) => {
                       config={{ attribution: false }}
                     />
                     <div
-                      style={{
-                        width: "100%",
-                        height: 100,
-                        backgroundColor: "#FFF",
-                        position: "absolute",
-                        bottom: 3,
-                        left: 0,
-                        zIndex: 100,
-                        margin: 0,
-                      }}
+                      className={"hide-froala"}
                     ></div>
                   </div>
                 </div>

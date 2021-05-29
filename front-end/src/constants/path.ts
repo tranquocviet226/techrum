@@ -1,4 +1,4 @@
-const HOME_PAGE = "home";
+const HOME_PAGE = "";
 const POST = "post";
 const CATEGORY = "category";
 

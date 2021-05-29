@@ -13,9 +13,9 @@ import "assets/css/post-1878.css";
 import "assets/css/print.css";
 import "assets/css/woocommerce.css";
 import Logo from "components/user/common/Logo";
-import TrendingBar from "components/user/common/TrendingBar";
 import Footer from "components/user/footer";
 import Header from "containers/user/HeaderContainer";
+import TrendingBarContainer from "containers/user/TrendingBarContainer";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "types/dashboardUserRoutes";
@@ -42,7 +42,7 @@ const User: React.FC = () => {
   return (
     <div className="home page-template page-template-template page-template-homepage-template page-template-templatehomepage-template-php page page-id-1878 sidebar-active elementor-default elementor-kit-6 elementor-page elementor-page-1878">
       <div className="body-inner-content">
-        <TrendingBar />
+        <TrendingBarContainer />
         <Logo />
         <Header />
         {switchRoutes}

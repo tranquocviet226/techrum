@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseError, BaseResponse } from '@response/base.response';
+import { BaseResponse } from '@response/base.response';
 
 export class LoginResponse extends BaseResponse<Data> {}
 class Data {

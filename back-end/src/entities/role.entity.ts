@@ -1,12 +1,37 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { PermissionEntity } from './permission.entity';
+import { UserEntity } from './user.entity';
 
 @Entity({ name: 'roles' })
 export class RoleEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Unique(['name'])
   @Column()
-  permissions: string;
+  name: string;
+
+  @Column({ nullable: true })
+  description: string;
+
+  @ManyToMany(
+    type => UserEntity,
+    user => user.roles,
+  )
+  users: UserEntity[];
+
+  @ManyToMany(
+    type => PermissionEntity,
+    permission => permission.roles,
+  )
+  permission: PermissionEntity[];
 
   constructor(partial: Partial<RoleEntity>) {
     super();

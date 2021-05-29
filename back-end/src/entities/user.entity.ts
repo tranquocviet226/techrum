@@ -6,11 +6,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { JoinTable, ManyToMany } from 'typeorm/index';
+import { PostEntity } from './post.entity';
 
 @Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
@@ -22,25 +24,17 @@ export class UserEntity extends BaseEntity {
   @IsEmail({}, { message: 'Incorrect email' })
   email: string;
 
-  @Column({ name: 'first_name' })
-  @Length(3, 10, {
-    message:
-      'The firstName must be at least 3 but not longer than 10 characters',
-  })
+  @Column({ name: 'first_name', nullable: true })
   firstName: string;
 
-  @Column({ name: 'last_name' })
-  @Length(3, 10, {
-    message:
-      'The lastName must be at least 3 but not longer than 10 characters',
-  })
+  @Column({ name: 'last_name', nullable: true })
   lastName: string;
 
   @Exclude()
   @Column({ name: 'password' })
   password: string;
 
-  @Column({ name: 'permissions' })
+  @Column({ name: 'permissions', nullable: true })
   permissions: string;
 
   @Column({
@@ -64,17 +58,20 @@ export class UserEntity extends BaseEntity {
 
   @ManyToMany(type => RoleEntity, { cascade: true })
   @JoinTable({
-    name: 'user_roles',
+    name: 'users_roles',
     joinColumn: {
-      name: 'users',
+      name: 'user_id',
       referencedColumnName: 'id',
     },
     inverseJoinColumn: {
-      name: 'roles',
-      referencedColumnName: 'id',
+      name: 'role_id',
+      // referencedColumnName: 'role_id',
     },
   })
   roles: RoleEntity[];
+
+  @OneToMany(() => PostEntity, post => post.user)
+  posts: PostEntity[];
 
   constructor(partial: Partial<UserEntity>) {
     super();
