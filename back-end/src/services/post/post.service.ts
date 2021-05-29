@@ -1,7 +1,8 @@
 import { PostEntity } from '@entities/post.entity';
 import { CustomLoggerService } from '@logger/custom.logger.service';
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { PostRepository } from '@repository/post.repository';
+import { UserRepository } from '@repository/user.repository';
 import { PostBody, PostParams, PostRequest } from '@requests/index';
 import { PostResponse } from '@response/post/post.response';
 import { BaseService } from '@services/base.service';
@@ -14,6 +15,7 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     repository: PostRepository,
     logger: CustomLoggerService,
     private readonly postFactoryService: PostFactoryService,
+    private userRepository: UserRepository,
   ) {
     super(repository, logger);
   }
@@ -132,9 +134,15 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     }
   }
 
-  async createPost(postRequest: PostRequest): Promise<PostResponse> {
+  async createPost(
+    postRequest: PostRequest,
+    userId: number,
+  ): Promise<PostResponse> {
     try {
-      const post = await this.postFactoryService.postCreate(postRequest);
+      const post = await this.postFactoryService.postCreate(
+        postRequest,
+        userId,
+      );
       await this.repository.save(post);
       const response = new PostResponse(true, 200, undefined, post);
       return response;
@@ -173,11 +181,21 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     }
   }
 
-  async putOne(id: string, postRequest: PostRequest): Promise<PostResponse> {
+  async putOne(
+    id: string,
+    userId: number,
+    postRequest: PostRequest,
+  ): Promise<PostResponse> {
     try {
-      const oldPost = await this.repository.findOne(id);
-      if (oldPost) {
-        const post = await this.postFactoryService.postCreate(postRequest);
+      const oldPost = await this.repository.findOne(id, {
+        relations: ['user'],
+      });
+      console.log(userId)
+      if (oldPost && oldPost.user.id === userId) {
+        const post = await this.postFactoryService.postCreate(
+          postRequest,
+          oldPost.user.id,
+        );
         post.id = parseInt(id);
         const updateResult = await this.repository.save(post);
         const response = new PostResponse(
@@ -207,20 +225,30 @@ export class PostService extends BaseService<PostEntity, PostRepository> {
     }
   }
 
-  async deleteOne(id: string): Promise<PostResponse> {
+  async deleteOne(id: string, userId: number): Promise<PostResponse> {
     const code = HttpStatus.FORBIDDEN;
     try {
-      const post = await this.repository.findOne(id);
-      deleteFileFs(post.background_url);
-      const deleteResult = await this.repository.delete(id);
-      if (deleteResult.affected > 0) {
-        const response = new PostResponse(
-          true,
-          200,
-          undefined,
-          'Delete success!',
-        );
-        return response;
+      const post = await this.repository.findOne(id, { relations: ['user'] });
+      if (post && post.user.id === userId) {
+        deleteFileFs(post.background_url);
+        const deleteResult = await this.repository.delete(id);
+        if (deleteResult.affected > 0) {
+          const response = new PostResponse(
+            true,
+            200,
+            undefined,
+            'Delete success!',
+          );
+          return response;
+        } else {
+          const response = new PostResponse(
+            false,
+            code,
+            [{ code: -1, message: 'Not Found ID Post' }],
+            undefined,
+          );
+          return response;
+        }
       } else {
         const response = new PostResponse(
           false,

@@ -42,12 +42,12 @@ export const Header: React.FC<HeaderProps> = (props) => {
   }, []);
 
   const handleScroll = () => {
-    if (window.pageYOffset >= 300) {
-      setHeaderStyle("fixed");
-    } else {
-      setHeaderStyle("none");
-    }
-    setY(window.scrollY);
+    // if (window.pageYOffset >= 300) {
+    //   setHeaderStyle("fixed");
+    // } else {
+    //   setHeaderStyle("none");
+    // }
+    // setY(window.scrollY);
   };
 
   const handleShowHeader = () => {

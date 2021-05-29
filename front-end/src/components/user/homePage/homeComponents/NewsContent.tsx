@@ -6,8 +6,7 @@ import { useState } from "react";
 const NewsContent = () => {
   const [contentId, setContentId] = useState<number>(1);
 
-  const handleSelectCategory = (id: number) => {
-    console.log('id', id)
+  const handleSelectCategory = (id: number)   => {
     setContentId(id);
   };
 
