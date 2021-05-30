@@ -84,7 +84,7 @@ const PostItem = (props: PostItemProps) => {
         </h4>
         <div className="post-meta">
           <span className="post-date">
-            <i className="far fa-clock" aria-hidden="true" />
+            <i className="fa fa-clock-o" aria-hidden="true" />
             {formatDate(created_at)}
           </span>
         </div>

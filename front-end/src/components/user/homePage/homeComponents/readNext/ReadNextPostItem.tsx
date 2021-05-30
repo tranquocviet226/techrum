@@ -72,7 +72,7 @@ const ReadNextPostItem: React.FC<Props> = (props) => {
                 </a>
               </span>
               <span className="post-date">
-                <i className="far fa-clock" aria-hidden="true" />
+                <i className="fa fa-clock-o" aria-hidden="true" />
                 {formatDate(created_at)}
               </span>
             </div>

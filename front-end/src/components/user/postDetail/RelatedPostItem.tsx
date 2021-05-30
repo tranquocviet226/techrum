@@ -61,7 +61,7 @@ const RelatedPostItem: React.FC<Props> = (props) => {
             <a>{title}</a>
           </h3>
           <span className="post-date-info">
-            <i className="far fa-clock" />
+            <i className="fa fa-clock-o" />
             {formatDate(created_at)}
           </span>
         </div>

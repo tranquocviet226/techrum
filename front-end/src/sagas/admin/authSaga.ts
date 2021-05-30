@@ -45,11 +45,11 @@ function* signInSaga(action: SignInAction) {
     yield put(
       setNotification({
         type: "danger",
-        message: "Có lỗi xảy ra. Vui lòng thử lại sau",
+        message: "Email hoặc mật khẩu không đúng!",
       })
     );
     yield put(setLoading(false));
-    setErrors({ api: "Có lỗi xảy ra. Vui lòng thử lại sau" });
+    setErrors({ api: e.errors[0].message });
   }
 }
 

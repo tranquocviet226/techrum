@@ -83,7 +83,7 @@ const CategoryItem: React.FC<Props> = (props) => {
                   <i className="fa fa-user" /> <a>{author}</a>
                 </span>
                 <span className="post-meta-date">
-                  <i className="far fa-clock" />
+                  <i className="fa fa-clock-o" />
                   {formatDate(created_at)}
                 </span>{" "}
               </div>

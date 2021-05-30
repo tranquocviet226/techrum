@@ -1,67 +1,41 @@
-import { Button } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import { getUser } from "actions/user/userAction";
-import { User } from "entities/User";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Post } from "types/model";
-import "./styles.css";
-import colors from "utils/colors";
-import PostProfileItem from "./postItemProfile/PostProfileItem";
-
-type Props = {
-  user: User;
-  posts: Post[];
-};
-
-const Profile: React.FC<Props> = (props) => {
-  const { user, posts } = props;
-  const dispatch = useDispatch();
-
-  const id = user?.id || "";
-  const userName = user?.firstName || "" + " " + user?.lastName || "";
-  const email = user?.email || "";
-  const avatarUrl =
-    user?.avatarUrl ||
-    "https://techrum.org/api/v1/upload/files/47bbc2108845c99507135cdb52a3510467.jpg";
-
-  useEffect(() => {
-    getUserPost();
-  }, []);
-
-  const getUserPost = () => {
-    dispatch(getUser());
-  };
-
+const Profile = () => {
   return (
-    <div style={{ marginTop: 12, marginLeft: 8, marginRight: 8 }}>
+    <div className="container">
       <div className="main-body">
+        {/* Breadcrumb */}
+        <nav aria-label="breadcrumb" className="main-breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href="javascript:void(0)">User</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              User Profile
+            </li>
+          </ol>
+        </nav>
+        {/* /Breadcrumb */}
         <div className="row gutters-sm">
           <div className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
-                    src={avatarUrl}
+                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
                     alt="Admin"
                     className="rounded-circle"
                     width={150}
                   />
                   <div className="mt-3">
-                    <h4>{userName}</h4>
-                    <p className="text-secondary mb-1">{email}</p>
-                    <Button
-                      type="primary"
-                      style={{
-                        backgroundColor: colors.baseOrange,
-                        borderWidth: 0,
-                      }}
-                      shape="round"
-                      icon={<UploadOutlined />}
-                      size="middle"
-                    >
-                      Upload
-                    </Button>
+                    <h4>John Doe</h4>
+                    <p className="text-secondary mb-1">Full Stack Developer</p>
+                    <p className="text-muted font-size-sm">
+                      Bay Area, San Francisco, CA
+                    </p>
+                    <button className="btn btn-primary">Follow</button>
+                    <button className="btn btn-outline-primary">Message</button>
                   </div>
                 </div>
               </div>
@@ -88,7 +62,7 @@ const Profile: React.FC<Props> = (props) => {
                     </svg>
                     Website
                   </h6>
-                  <span className="text-secondary">https://techrum.org</span>
+                  <span className="text-secondary">https://bootdey.com</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -108,7 +82,7 @@ const Profile: React.FC<Props> = (props) => {
                     </svg>
                     Github
                   </h6>
-                  <span className="text-secondary">@techrum</span>
+                  <span className="text-secondary">bootdey</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -128,7 +102,7 @@ const Profile: React.FC<Props> = (props) => {
                     </svg>
                     Twitter
                   </h6>
-                  <span className="text-secondary">@techrum</span>
+                  <span className="text-secondary">@bootdey</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -150,7 +124,7 @@ const Profile: React.FC<Props> = (props) => {
                     </svg>
                     Instagram
                   </h6>
-                  <span className="text-secondary">@techrum</span>
+                  <span className="text-secondary">bootdey</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -170,7 +144,7 @@ const Profile: React.FC<Props> = (props) => {
                     </svg>
                     Facebook
                   </h6>
-                  <span className="text-secondary">@techrum</span>
+                  <span className="text-secondary">bootdey</span>
                 </li>
               </ul>
             </div>
@@ -180,59 +154,189 @@ const Profile: React.FC<Props> = (props) => {
               <div className="card-body">
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Mã số</h6>
+                    <h6 className="mb-0">Full Name</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{id}</div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <h6 className="mb-0">Họ và tên</h6>
-                  </div>
-                  <div className="col-sm-9 text-secondary">{userName}</div>
+                  <div className="col-sm-9 text-secondary">Kenneth Valdez</div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Email</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{email}</div>
+                  <div className="col-sm-9 text-secondary">fip@jukmuh.al</div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Số điện thoại</h6>
+                    <h6 className="mb-0">Phone</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary"></div>
+                  <div className="col-sm-9 text-secondary">(239) 816-9029</div>
                 </div>
-                <hr />
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <h6 className="mb-0">Địa chỉ</h6>
+                    <h6 className="mb-0">Mobile</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary"></div>
+                  <div className="col-sm-9 text-secondary">(320) 380-4539</div>
                 </div>
                 <hr />
                 <div className="row">
-                  <Button
-                    type="primary"
-                    style={{
-                      backgroundColor: colors.baseOrange,
-                      borderWidth: 0,
-                    }}
-                    shape="round"
-                    size="middle"
-                  >
-                    Cập nhật
-                  </Button>
+                  <div className="col-sm-3">
+                    <h6 className="mb-0">Address</h6>
+                  </div>
+                  <div className="col-sm-9 text-secondary">
+                    Bay Area, San Francisco, CA
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-12">
+                    <a
+                      className="btn btn-info "
+                      target="__blank"
+                      href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
+                    >
+                      Edit
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row gutters-sm" style={{marginLeft: -15, marginRight: -15}}>
-              {posts.map((item) => (
-                <PostProfileItem item={item} userName={userName} key={item.id}/>
-              ))}
+            <div className="row gutters-sm">
+              <div className="col-sm-6 mb-3">
+                <div className="card h-100">
+                  <div className="card-body">
+                    <h6 className="d-flex align-items-center mb-3">
+                      <i className="material-icons text-info mr-2">
+                        assignment
+                      </i>
+                      Project Status
+                    </h6>
+                    <small>Web Design</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "80%" }}
+                        aria-valuenow={80}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Website Markup</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "72%" }}
+                        aria-valuenow={72}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>One Page</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "89%" }}
+                        aria-valuenow={89}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Mobile Template</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "55%" }}
+                        aria-valuenow={55}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Backend API</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "66%" }}
+                        aria-valuenow={66}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6 mb-3">
+                <div className="card h-100">
+                  <div className="card-body">
+                    <h6 className="d-flex align-items-center mb-3">
+                      <i className="material-icons text-info mr-2">
+                        assignment
+                      </i>
+                      Project Status
+                    </h6>
+                    <small>Web Design</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "80%" }}
+                        aria-valuenow={80}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Website Markup</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "72%" }}
+                        aria-valuenow={72}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>One Page</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "89%" }}
+                        aria-valuenow={89}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Mobile Template</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "55%" }}
+                        aria-valuenow={55}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                    <small>Backend API</small>
+                    <div className="progress mb-3" style={{ height: "5px" }}>
+                      <div
+                        className="progress-bar bg-primary"
+                        role="progressbar"
+                        style={{ width: "66%" }}
+                        aria-valuenow={66}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

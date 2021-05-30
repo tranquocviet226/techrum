@@ -3,7 +3,6 @@ import { Path } from "constants/path";
 import CategoryPageContainer from "containers/user/CategoryPageContainer";
 import HomePageContainer from "containers/user/HomePageContainer";
 import PostDetail from "containers/user/PostDetailContainer";
-import ProfileContainer from "containers/user/ProfileContainer";
 
 const dashboardRoutes = [
   {
@@ -28,12 +27,6 @@ const dashboardRoutes = [
     path: Path.PUBLISH_POST,
     name: "Publish Post",
     component: PostCreate,
-    layout: "/",
-  },
-  {
-    path: Path.PROFILE,
-    name: "User profile",
-    component: ProfileContainer,
     layout: "/",
   },
 ];

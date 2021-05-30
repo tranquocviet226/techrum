@@ -1,10 +1,9 @@
 const HOME_PAGE = "";
 const POST = "post";
 const CATEGORY = "category";
-const PUBLISH_POST = "publish/post";
-const PROFILE = "user/profile";
+const PUBLISH_POST = "publish/post"
 
-export const Path = { HOME_PAGE, POST, CATEGORY, PUBLISH_POST, PROFILE };
+export const Path = { HOME_PAGE, POST, CATEGORY, PUBLISH_POST };
 
 const paths = {
   ADMIN: "/admin",

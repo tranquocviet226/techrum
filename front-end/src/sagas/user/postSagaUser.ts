@@ -20,6 +20,7 @@ function* getPostFindSaga(action: FindPostAction) {
     }
   } catch (error) {
      yield put(setNotification({ type: "danger", message: error.message }));
+    console.log("err", error);
   }
 }
 

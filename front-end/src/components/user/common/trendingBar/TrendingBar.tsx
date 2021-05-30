@@ -41,10 +41,6 @@ const TrendingBar: React.FC<Props> = (props) => {
     history.push({ pathname: Path.PUBLISH_POST });
   };
 
-  const handleGoProfile = () => {
-    history.push({ pathname: Path.PROFILE });
-  }
-
   const _renderLoginModal = () => {
     return (
       <LoginModal
@@ -75,7 +71,7 @@ const TrendingBar: React.FC<Props> = (props) => {
         paddingRight: 16,
       }}
     >
-      <Menu.Item onClick={handleGoProfile} icon={<UserOutlined />}>{txtConstants.profile}</Menu.Item>
+      <Menu.Item icon={<UserOutlined />}>{txtConstants.profile}</Menu.Item>
       <Menu.Item onClick={handleGoPublishPost} icon={<FormOutlined />}>{txtConstants.createPost}</Menu.Item>
       <Menu.Item onClick={handleLogout} icon={<LogoutOutlined />} danger>
         {txtConstants.logout}

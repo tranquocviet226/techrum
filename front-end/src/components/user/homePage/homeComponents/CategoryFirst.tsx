@@ -132,7 +132,7 @@ const CategoryFirst: React.FC<Props> = (props) => {
             </h4>
             <div className="post-meta">
               <span className="post-date">
-                <i className="far fa-clock"></i>
+                <i className="fa fa-clock-o"></i>
                 {formatDate(created_at)}
               </span>
             </div>
