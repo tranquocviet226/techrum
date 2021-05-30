@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, Modal } from "antd";
+import { Button, Upload, Form, Input, Modal } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import colors from "utils/colors";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { register } from "actions/admin/authAction";
 import { User } from "entities/User";
 import { setNotification } from "actions/common/notificationAction";
+import { APP_URL } from "constants/index";
 
 type Props = {
   onCloseModal: () => void;
@@ -19,6 +20,7 @@ const RegisterModal: React.FC<Props> = (props) => {
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
   const [fullname, setFullname] = useState<string>("");
+  const [avatar, setAvatar] = useState<any>();
   const [errors, setErrors] = useState<any>();
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const RegisterModal: React.FC<Props> = (props) => {
         email: email,
         password: password,
         lastName: fullname,
+        avatarUrl: avatar
       };
       dispatch(
         register(
@@ -56,6 +59,17 @@ const RegisterModal: React.FC<Props> = (props) => {
 
   const handleCancel = () => {
     onCloseModal();
+  };
+
+  const [fileList, setFileList] = useState<any>([]);
+
+  const onChangeAvatar = (newFileList: any) => {
+    setFileList(newFileList?.fileList);
+    setAvatar(newFileList?.file?.response?.link)
+  };
+
+  const onPreview = async (file: any) => {
+    let src = file.url;
   };
 
   return (
@@ -128,7 +142,24 @@ const RegisterModal: React.FC<Props> = (props) => {
             placeholder="Họ và tên"
           />
         </Form.Item>
-        {/* <span style={{color: "red", fontWeight: 500}}>{errors}</span> */}
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          <Form.Item>
+            <Upload
+              fileList={fileList}
+              onChange={onChangeAvatar}
+              onPreview={onPreview}
+              action={APP_URL.concat("upload")}
+              listType="picture-card"
+              maxCount={1}
+            >
+              {fileList.length < 1 && "+ Ảnh đại diện"}
+            </Upload>
+          </Form.Item>
+        </div>
         <Form.Item>
           <Form.Item valuePropName="checked" noStyle>
             Bạn đã có tài khoản?

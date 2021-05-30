@@ -15,6 +15,7 @@ class Auth {
       password: registerBody.password,
       firstName: registerBody?.firstName,
       lastName: registerBody?.lastName,
+      avatar_url: registerBody?.avatarUrl,
       permissions: registerBody?.permissions,
     });
 
