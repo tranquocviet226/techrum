@@ -41,6 +41,7 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
       email,
       first_name,
       last_name,
+      avatar_url,
       password,
       permissions,
       last_login,
@@ -52,6 +53,7 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
       email: email,
       firstName: first_name,
       lastName: last_name,
+      avatar_url: avatar_url,
       password: hashedPassword,
       permissions: permissions,
       lastLogin: last_login,
@@ -62,7 +64,7 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
     // Validation
     const errors = await validate(dataUser);
     if (errors.length > 0) {
-      const objError = errors[0].constraints
+      const objError = errors[0].constraints;
       return {
         status: false,
         message: objError[Object.keys(objError)[0]],
@@ -96,10 +98,17 @@ export class UserService extends BaseService<UserEntity, UserRepository> {
             code: 200,
           };
         } catch (error) {
-          console.log(error)
+          console.log(error);
           return new BaseResponse(false, 400, error, undefined);
         }
       }
     }
+  }
+
+  async getUserPost(userId: number): Promise<any> {
+    const user = this.repository.findOne(userId, {
+      relations: ['posts'],
+    });
+    return user;
   }
 }

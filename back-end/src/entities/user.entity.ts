@@ -30,6 +30,9 @@ export class UserEntity extends BaseEntity {
   @Column({ name: 'last_name', nullable: true })
   lastName: string;
 
+  @Column({ name: 'avatar_url', nullable: true })
+  avatar_url: string;
+
   @Exclude()
   @Column({ name: 'password' })
   password: string;
