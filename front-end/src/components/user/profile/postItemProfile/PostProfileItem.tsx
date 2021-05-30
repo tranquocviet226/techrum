@@ -2,20 +2,21 @@ import txtConstants from "constants/index";
 import { Path } from "constants/path";
 import { useHistory } from "react-router";
 import { Post } from "types/model";
+import colors from "utils/colors";
 import { formatDate } from "utils/function";
 
 type Props = {
   item: Post;
+  userName: string
 };
 
-const CategoryItem: React.FC<Props> = (props) => {
-  const { item } = props;
+const PostProfileItem: React.FC<Props> = (props) => {
+  const { item, userName } = props;
   const history = useHistory();
 
   const id = item?.id || 0;
   const title = item?.title || "";
   const background_url = item?.background_url || "";
-  const categories = item?.categories || [];
   const author = item?.author || txtConstants.rootAuthor;
   const created_at = item?.created_at || Date.now();
   const description = item?.description || "";
@@ -23,7 +24,6 @@ const CategoryItem: React.FC<Props> = (props) => {
   const handleGoPostDetail = () => {
     history.push({ pathname: `/${Path.POST}/${id}` });
   };
-
   return (
     <div className="col-lg-6">
       <article
@@ -43,32 +43,17 @@ const CategoryItem: React.FC<Props> = (props) => {
               />
             </a>
             <div className="grid-cat">
-              {categories.map((it) => (
-                <a
-                  key={it.id}
-                  className="post-cat"
-                  style={{
-                    backgroundColor: it.color,
-                    color: "#ffffff",
-                  }}
-                >
-                  <span
-                    className="before"
-                    style={{
-                      backgroundColor: it.color,
-                      color: "#ffffff",
-                    }}
-                  />
-                  {it.title}
-                  <span
-                    className="after"
-                    style={{
-                      backgroundColor: it.color,
-                      color: "#ffffff",
-                    }}
-                  />
-                </a>
-              ))}
+            <div className="post-meta">
+              <div className="post-meta">
+                <span className="post-author" style={{color: "#000"}}>
+                  <i className="fa fa-user" style={{color: colors.baseOrange}} /> <a>{userName || author}</a>
+                </span>
+                <span className="post-meta-date" style={{color: "#000"}}>
+                  <i className="far fa-clock" style={{color: colors.baseOrange}}/>
+                  {formatDate(created_at)}
+                </span>
+              </div>
+            </div>
             </div>
           </div>
           <div className="post-content">
@@ -76,17 +61,6 @@ const CategoryItem: React.FC<Props> = (props) => {
               <h3 onClick={handleGoPostDetail} className="post-title md">
                 <a>{title}</a>
               </h3>
-            </div>
-            <div className="post-meta">
-              <div className="post-meta">
-                <span className="post-author">
-                  <i className="fa fa-user" /> <a>{author}</a>
-                </span>
-                <span className="post-meta-date">
-                  <i className="far fa-clock" />
-                  {formatDate(created_at)}
-                </span>{" "}
-              </div>
             </div>
             <div className="entry-blog-summery">
               <p>{description} </p>
@@ -98,4 +72,4 @@ const CategoryItem: React.FC<Props> = (props) => {
   );
 };
 
-export default CategoryItem;
+export default PostProfileItem;

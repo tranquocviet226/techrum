@@ -5,6 +5,7 @@ import categoryReducer from "./user/categoryReducer";
 import commonReducer from "./common/commonReducer";
 import notificationReducer from "./common/notificationReducer";
 import postReducer from './admin/postReducer';
+import userReducer from './user/userReducer';
 
 const allReducers = combineReducers({
   common: commonReducer,
@@ -12,6 +13,7 @@ const allReducers = combineReducers({
   categories: categoryReducer,
   posts: postReducer,
   notification: notificationReducer,
+  user: userReducer
 });
 
 const rootReducer = (state: any, action: any) => {
