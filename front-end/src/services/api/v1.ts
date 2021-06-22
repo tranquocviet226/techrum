@@ -54,7 +54,7 @@ instance.interceptors.response.use(
 );
 
 const logoutIfUnauthenticated = (error: any) => {
-  if (error.response.data.error_code === ERROR_CODES.unauthenticated) {
+  if (error.response.data.statusCode === ERROR_CODES.unauthenticated) {
     store.dispatch(clearAuth());
     localStorage.removeItem(PERSIST_KEY);
     history.replace("/");

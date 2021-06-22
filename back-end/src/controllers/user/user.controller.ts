@@ -18,7 +18,7 @@ export class UserController {
   })
   @ApiResponse({ status: 401, description: "Failure" })
   deletePost(@Request() req: any): Promise<PostResponse> {
-    const userId = 130;
+    const userId = req?.user?.id;
     return this.userService.getUserPost(userId);
   }
 }

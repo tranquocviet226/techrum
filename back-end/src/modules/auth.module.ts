@@ -1,5 +1,4 @@
 import { AuthController } from '@controllers/auth/auth.controller';
-import { JwtStrategy } from '@controllers/auth/jwt.strategy';
 import { CustomLoggerService } from '@logger/custom.logger.service';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';

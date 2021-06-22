@@ -40,8 +40,6 @@ async function bootstrap() {
   });
   SwaggerModule.setup(SWAGGER_API_DOCS, app, apiDocument);
 
-  app.useStaticAssets(join(__dirname, '..', 'files'));
-  app.use(cors()); // Use this after the variable declaration
   await app.listen(APP_PORT || 3000);
 }
 (async () => await bootstrap())();
