@@ -1,14 +1,17 @@
 import { AuthModule } from '@modules/auth.module';
-import { CatalogModule } from '@modules/catalog.module';
+import { CatalogModule } from '@modules/catalog/catalog.module';
+import { RoleModule } from '@modules/role.module';
 import { UploadModule } from '@modules/upload.module';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as cors from 'cors'
+import * as cors from 'cors';
+import * as cookieParser from 'cookie-parser';
 import { join } from 'path';
 import { AppModule } from './app.module';
+import { UserModule } from '@modules/user/user.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -20,8 +23,9 @@ async function bootstrap() {
   const APP_PORT = config.get<number>('app_port');
 
   // app.setGlobalPrefix("api/v1");
+  app.use(cookieParser());
   app.useStaticAssets(join(__dirname, '..', 'files'));
-  app.use(cors()) // Use this after the variable declaration
+  app.use(cors()); // Use this after the variable declaration
   app.useGlobalPipes(new ValidationPipe());
 
   const options = new DocumentBuilder()
@@ -32,12 +36,10 @@ async function bootstrap() {
     .build();
 
   const apiDocument = SwaggerModule.createDocument(app, options, {
-    include: [AuthModule, CatalogModule, UploadModule],
+    include: [AuthModule, RoleModule, CatalogModule, UploadModule, UserModule],
   });
   SwaggerModule.setup(SWAGGER_API_DOCS, app, apiDocument);
 
-  app.useStaticAssets(join(__dirname, '..', 'files'));
-  app.use(cors()) // Use this after the variable declaration
   await app.listen(APP_PORT || 3000);
 }
 (async () => await bootstrap())();

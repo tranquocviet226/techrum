@@ -10,11 +10,11 @@ import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Post } from "types/model";
-import colors from "utils/colors";
 import { upsert } from "utils/function";
 import { getLocalStorage, setLocalStorage } from "utils/localStorage";
 import styles from "utils/styles";
 import CommentComponent from "./postComponents/CommentComponent";
+import "./styles.css"
 
 type Props = {
   postDetail: Post;
@@ -32,7 +32,7 @@ const PostDetail: React.FC<Props> = (props) => {
   const categories = postDetail?.categories || [];
   const firstCategory = categories?.length > 0 ? categories[0] : undefined;
   const author = postDetail?.author || "admin";
-  const createdAt = postDetail?.created_at || Date.now();
+  const updated_at = postDetail?.updated_at || Date.now();
   const content = postDetail?.content || "";
 
   // Save recent post to localstorage
@@ -112,7 +112,7 @@ const PostDetail: React.FC<Props> = (props) => {
           </li>
           <li className="post-meta-date">
             <i className="far fa-clock" />
-            {moment(createdAt).format("L")}
+            {moment(updated_at).format("L")}
           </li>
           <li className="post-comment">
             <i className="fa fa-comments" />
@@ -165,11 +165,17 @@ const PostDetail: React.FC<Props> = (props) => {
                 {/* Article header */}
                 {_renderHeader()}
                 <div className="post-body clearfix">
-                  <div className="entry-content clearfix">
+                  <div
+                    className="entry-content clearfix"
+                    style={{ position: "relative" }}
+                  >
                     <FroalaEditorView
                       model={content}
                       config={{ attribution: false }}
                     />
+                    <div
+                      className={"hide-froala"}
+                    ></div>
                   </div>
                 </div>
               </article>

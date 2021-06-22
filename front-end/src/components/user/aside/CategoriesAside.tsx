@@ -37,7 +37,7 @@ const CategoryAside = (props: CategoryProps) => {
   const history = useHistory();
 
   const id = category?.id || 0;
-  const color = category?.color || "";
+  const background_url = category?.background_url || "";
   const title = category?.title || "";
 
   const handleSelectCategory = () => {
@@ -52,7 +52,7 @@ const CategoryAside = (props: CategoryProps) => {
         onClick={handleSelectCategory}
         className="rocket-lazyload lazyloaded"
         style={{
-          backgroundColor: color,
+          backgroundImage: `url("${background_url}")`,
         }}
         data-ll-status="loaded"
       >

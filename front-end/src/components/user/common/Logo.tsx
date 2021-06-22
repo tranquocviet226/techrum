@@ -1,11 +1,17 @@
 import logo from "assets/img/logo/logo.png";
 import text from "assets/img/logo/text.png";
+import { Path } from "constants/path";
+import { useHistory } from "react-router";
 
 const styles = {
   logo: { height: 40, width: "auto", maxWidth: 200 },
 };
 
 const Logo = () => {
+  const history = useHistory()
+  const handleGoHome = () => {
+    history.push(`/${Path.HOME_PAGE}`)
+  }
   return (
     <div
       className="header-middle-area"
@@ -14,7 +20,7 @@ const Logo = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 col-lg-3 align-self-center">
-            <div className="logo-area d-flex">
+            <div onClick={handleGoHome} className="logo-area d-flex cur-po">
               <img
                 className="img-fluid logo-dark"
                 style={styles.logo}

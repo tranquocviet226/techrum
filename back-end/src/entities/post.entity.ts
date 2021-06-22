@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinTable,
+  ManyToOne,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -76,19 +77,8 @@ export class PostEntity extends BaseEntity {
   })
   categories: CategoryEntity[];
 
-  @ManyToMany(type => UserEntity, { cascade: true })
-  @JoinTable({
-    name: 'post_user',
-    joinColumn: {
-      name: 'post_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'user_id',
-      referencedColumnName: 'id',
-    },
-  })
-  user: UserEntity[];
+  @ManyToOne(() => UserEntity, user => user.posts)
+  user: UserEntity;
 
   constructor(partial: Partial<PostEntity>) {
     super();

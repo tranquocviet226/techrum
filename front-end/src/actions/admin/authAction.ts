@@ -35,11 +35,13 @@ export const register = (
 
 export const updateAuth = (
   email: string,
-  isAuth: boolean
+  isAuth: boolean,
+  accessToken: string
 ): UpdateAuthAction => ({
   type: AuthActionType.UPDATE_AUTH,
   email: email,
   isAuth: isAuth,
+  accessToken: accessToken
 });
 
 export const clearAuth = (): ClearAuthAction => ({

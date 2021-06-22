@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Put } from '@nestjs/common';
+import { Body, Controller, Post, Put, Res } from '@nestjs/common';
 import {
   ApiOkResponse,
   ApiResponse,
@@ -12,6 +12,7 @@ import { LoginResponse } from '@response/auth/login.response';
 import { RegisterResponse } from '@response/auth/register.response';
 import { AuthService } from '@services/auth/auth.service';
 import { SWAGGER_MSG } from '@utils/constant';
+import { Response } from 'express';
 
 @ApiTags('Auth Controller')
 @Controller('auth')
@@ -25,9 +26,12 @@ export class AuthController {
     description: SWAGGER_MSG.AUTH_SUCCESS,
   })
   @ApiResponse({ status: 401, description: SWAGGER_MSG.AUTH_FAIL })
-  async login(@Body() loginRequest: LoginRequest): Promise<LoginResponse> {
+  async login(
+    @Body() loginRequest: LoginRequest,
+    @Res({ passthrough: true }) response: Response,
+  ): Promise<LoginResponse> {
     const { username, password } = loginRequest;
-    return await this.authService.login(username, password);
+    return await this.authService.login(username, password, response);
   }
 
   @Post('register')

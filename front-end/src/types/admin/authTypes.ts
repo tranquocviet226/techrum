@@ -24,6 +24,7 @@ export interface UpdateAuthAction extends Action {
   type: AuthActionType.UPDATE_AUTH;
   email: string;
   isAuth: boolean;
+  accessToken: string
 }
 
 export interface ClearAuthAction extends Action {

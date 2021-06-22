@@ -13,9 +13,10 @@ class Auth {
     instance.post("auth/register", {
       email: registerBody.email,
       password: registerBody.password,
-      firstName: registerBody.firstName,
-      lastName: registerBody.lastName,
-      permissions: registerBody.permissions,
+      firstName: registerBody?.firstName,
+      lastName: registerBody?.lastName,
+      avatar_url: registerBody?.avatarUrl,
+      permissions: registerBody?.permissions,
     });
 
   // logout = () => this.client.delete('/sessions');

@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { LoginResponse } from '@response/auth/login.response';
 import * as bcrypt from 'bcrypt';
-import { UserService } from './user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class TokenFactoryService {
@@ -26,7 +26,6 @@ export class TokenFactoryService {
         ),
       );
     }
-    // system using bcrypt of laravel
     //if want compare for bcrypt of nodejs using code bellow !
     const currentPasswordHash = user.password.replace('$2y$', '$2a$');
 
@@ -54,17 +53,14 @@ export class TokenFactoryService {
 
     return {
       accessToken: await this.jwtService.signAsync(payload, {
-        expiresIn: this.configService.get<string>('time_to_life'),
+        expiresIn: parseInt(this.configService.get<string>('time_to_life')) || 2592000,
       }),
       expiresIn: this.getTimeExpiresIn(),
     };
   }
 
   getTimeExpiresIn(): number {
-    const timeToLife =
-      parseInt(this.configService.get<string>('time_to_life')) | 30;
-    const today = new Date();
-    today.setDate(today.getDate() + timeToLife);
-    return today.getTime();
+    const date = parseInt(this.configService.get<string>('time_to_life')) || 2592000
+    return date;
   }
 }

@@ -76,7 +76,7 @@ function* getPostsById(action: GetPostsByIDAction) {
       yield put(setPostDetail(data));
     }
   } catch (e) {
-    yield put(setNotification({ type: "danger", message: e?.message }));
+
   } finally {
     yield put(setLoading(false));
   }
@@ -93,7 +93,7 @@ function* getPostsByCategorySaga(action: GetPostsByCategoryAction) {
       yield put(updatePosts(action.componentType, data));
     }
   } catch (e) {
-    yield put(setNotification({ type: "danger", message: e?.message }));
+
   } finally {
   }
 }
