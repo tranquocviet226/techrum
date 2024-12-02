@@ -35,7 +35,7 @@
     "@types/passport-local": "^1.0.33",
     "bcrypt": "^5.0.0",
     "class-transformer": "^0.3.1",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.13.2",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "http-status": "^1.4.2",
