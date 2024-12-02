@@ -50,7 +50,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "swagger-ui-express": "^4.1.4",
-    "typeorm": "^0.2.26",
+    "typeorm": "^0.3.7",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
